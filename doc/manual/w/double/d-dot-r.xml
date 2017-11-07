@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-d-dot-r" role="DOUBLE" xreflabel="d.r">
+  <glossterm>
+    <indexterm role="forth"><primary>d.r</primary></indexterm>
+    <cmdsynopsis>
+      <command>d.r</command>
+      <group role="stack">
+        <arg>d</arg>
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display <parameter>d</parameter> in the current base right
+      aligned in a field <parameter>n</parameter> characters wide.
+    </para>
+    <para>
+      The field will overflow if <parameter>n</parameter> is smaller
+      than the number of characters required to display
+      <parameter>d</parameter>.
+    </para>
+    <example>
+      <title>d.r</title>
+      <screen>
+<userinput>10. 0 d.r<keysym>&larrhk;</keysym></userinput> 10 ok
+<userinput>10. 1 d.r<keysym>&larrhk;</keysym></userinput> 10 ok
+<userinput>10. 2 d.r<keysym>&larrhk;</keysym></userinput> 10 ok
+<userinput>10. 3 d.r<keysym>&larrhk;</keysym></userinput>  10 ok
+<userinput>10. 4 d.r<keysym>&larrhk;</keysym></userinput>   10 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

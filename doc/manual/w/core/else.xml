@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-else" role="CORE,IC" xreflabel="else">
+  <glossterm>
+    <indexterm role="forth"><primary>else</primary></indexterm>
+    <cmdsynopsis>
+      <command>else</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>orig1</arg>
+              <arg>--</arg>
+              <arg>orig2</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Resolve <parameter>orig<subscript>1</subscript></parameter>.
+            Compile <xref linkend="impl-paren-branch"/> and allocate
+            a cell for the branch address, returning
+            <parameter>orig<subscript>2</subscript></parameter>
+            as a pointer to the branch address.
+            <parameter>orig<subscript>2</subscript></parameter>
+            will be resolved by a consumer of
+            <parameter>orig<subscript>2</subscript></parameter>,
+            usually <xref linkend="core-then"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Continue execution.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>else</title>
+      <screen>
+<userinput>: test if ." T" else ." F" then space ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>true test<keysym>&larrhk;</keysym></userinput> T  ok
+<userinput>false test<keysym>&larrhk;</keysym></userinput> F  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

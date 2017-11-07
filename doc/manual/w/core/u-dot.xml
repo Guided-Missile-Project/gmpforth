@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-u-dot" role="CORE" xreflabel="u.">
+  <glossterm>
+    <indexterm role="forth"><primary>u.</primary></indexterm>
+    <cmdsynopsis>
+      <command>u.</command>
+      <group role="stack">
+        <arg>u</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display <parameter>u</parameter> as an unsigned number in the current
+      <xref linkend="user-base"/>.
+    </para>
+    <example>
+      <title>u.</title>
+      <screen>
+<userinput>100 u.<keysym>&larrhk;</keysym></userinput> 100  ok
+<userinput>-100 u.<keysym>&larrhk;</keysym></userinput> 4294967196  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

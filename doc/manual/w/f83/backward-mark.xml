@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-backward-mark" role="F83" xreflabel="&lt;mark">
+  <glossterm>
+    <indexterm role="forth"><primary>&lt;mark</primary></indexterm>
+    <cmdsynopsis>
+      <command>&lt;mark</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return an address to be resolved later by
+      <xref linkend="f83-backward-resolve"/> 
+    </para>
+    <example>
+      <title>&lt;mark</title>
+      <screen>
+<userinput>&lt;mark . <keysym>&larrhk;</keysym></userinput> 14828  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

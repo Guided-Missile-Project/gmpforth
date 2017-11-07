@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-defer-fetch" role="CORE-EXT" xreflabel="defer@">
+  <glossterm>
+    <indexterm role="forth"><primary>defer@</primary></indexterm>
+    <cmdsynopsis>
+      <command>defer@</command>
+      <group role="stack">
+        <arg>xt1</arg>
+        <arg>--</arg>
+        <arg>xt2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+       Return <parameter>xt2</parameter> which is the current
+       configured action of <parameter>xt1</parameter> created by
+       <xref linkend="core-ext-defer"/>.
+    </para>
+    <example>
+      <title>defer@</title>
+      <screen>
+<userinput>defer x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' x defer@ .name<keysym>&larrhk;</keysym></userinput> abort ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="core-ext-action-of"/>
+    <glossseealso otherterm="core-ext-defer"/>
+    <glossseealso otherterm="core-ext-defer-store"/>
+    <glossseealso otherterm="core-ext-is"/>
+    -->
+  </glossdef>
+</glossentry>

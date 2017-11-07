@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-end-code" role="IMPL" xreflabel="end-code">
+  <glossterm>
+    <indexterm role="forth"><primary>end-code</primary></indexterm>
+    <cmdsynopsis>
+      <command>end-code</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Terminate a <xref linkend="tools-ext-code"/> or <xref
+      linkend="tools-ext-semicolon-code"/> sequence.
+    </para>
+  </glossdef>
+</glossentry>

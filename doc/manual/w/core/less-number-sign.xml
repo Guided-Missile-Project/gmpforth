@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-less-number-sign" role="CORE" xreflabel="&lt;#">
+  <glossterm>
+    <indexterm role="forth"><primary>&lt;#</primary></indexterm>
+    <cmdsynopsis>
+      <command>&lt;#</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Begin a pictured numeric output sequence.
+    </para>
+    <para>
+      The buffer containing the converted string starts just below
+      <xref linkend="core-ext-pad"/> and is
+      <xref linkend="impl-paren-pad"/> characters.
+    </para>
+    <example>
+      <title>&lt;#</title>
+      <screen>
+<userinput>101. &lt;# # # # # #&gt; type<keysym>&larrhk;</keysym></userinput> 0101 ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="impl-paren-pad"/>
+    <glossseealso otherterm="core-number-sign-greater"/>
+    <glossseealso otherterm="core-number-sign-s"/>
+    <glossseealso otherterm="core-less-number-sign"/>
+    -->
+  </glossdef>
+</glossentry>

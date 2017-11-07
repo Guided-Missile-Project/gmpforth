@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-body-to" role="F83" xreflabel="body&gt;">
+  <glossterm>
+    <indexterm role="forth"><primary>body&gt;</primary></indexterm>
+    <cmdsynopsis>
+      <command>body&gt;</command>
+      <group role="stack">
+        <arg>pfa</arg>
+        <arg>--</arg>
+        <arg>cfa</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>cfa</parameter> is the code field or
+      <parameter>xt</parameter> associated with the
+      parameter field <parameter>pfa</parameter>.
+    </para>
+    <example>
+      <title>body&gt;</title>
+      <screen>
+<userinput>variable test  100 test !<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test body> execute ?<keysym>&larrhk;</keysym></userinput> 100  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

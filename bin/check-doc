@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# Check for missing docs
+#
+
+W=doc/manual/w
+
+for file in $*
+do
+  b=`basename $file .fs`
+  d=`dirname $file`
+  c=`basename $d`
+  doc=$W/$c/$b.xml
+  if [ ! -f $doc ]
+  then
+     # if it's not in the obvious place, see if it's anywhere
+     loc=`find $W -name $b.xml -print`
+     if [ -z "$loc" ]
+     then
+         echo $doc
+     fi
+  fi
+done

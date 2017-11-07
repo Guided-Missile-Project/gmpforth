@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-include-quote" role="IMPL" xreflabel="include&quot;">
+  <glossterm>
+    <indexterm role="forth"><primary>include"</primary></indexterm>
+    <cmdsynopsis>
+      <command>include"</command>
+      <group role="stack">
+        <arg>&ldquo;file&rdquo;</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Save the current input stream and interpret the source file
+      <parameter>file</parameter>. The source file is treated as one
+      long string, and is not parsed line-by-line. The current input
+      stream is restored when interpretation is complete.
+    </para>
+    <para>
+      If the path to the file is relative, then each of the
+      directories in the include path is searched. The directory
+      containing <parameter>file</parameter> will be automatically
+      prepended to the search path while <parameter>file</parameter>
+      is parsed.  <note><para> Not available on all targets. Path
+      searching is only available for cross-compilation.
+      </para></note>
+    </para>
+  </glossdef>
+</glossentry>

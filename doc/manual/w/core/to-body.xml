@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-to-body" role="CORE" xreflabel="&gt;body">
+  <glossterm>
+    <indexterm role="forth"><primary>&gt;body</primary></indexterm>
+    <cmdsynopsis>
+      <command>&gt;body</command>
+      <group role="stack">
+        <arg>xt</arg>
+        <arg>--</arg>
+        <arg>pfa</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the parameter field address <parameter>pfa</parameter>
+      corresponding to <parameter>xt</parameter>.
+    </para>
+    <para>
+      This operation is valid for every word defined in the dictionary,
+      whether it was defined by <xref linkend="core-create"/> or not.
+    </para>
+    <example>
+      <title>&gt;body</title>
+      <screen>
+<userinput>: test base ? ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' test &gt;body @ .name<keysym>&larrhk;</keysym></userinput> base ok
+<userinput>' test &gt;body cell+ @ .name<keysym>&larrhk;</keysym></userinput> ? ok
+<userinput>' test &gt;body 2 cells + @ .name<keysym>&larrhk;</keysym></userinput> exit ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

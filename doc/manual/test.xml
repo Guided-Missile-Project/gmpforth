@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<!-- GMP Forth Style sheet development -->
+<book>
+  <title>GMP Forth</title>
+  <chapter id="words">
+    <title>Words</title>
+    <section>
+      <title/>
+      <para>
+        All <application>GMP Forth</application> words are described in
+        the following section. Not all words are available for all
+        targets; some words may have multiple implementations providing
+        different levels of functionality.
+      </para>
+    </section>
+    <glossary role='forth'>
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="w/core/tick.xml"/>
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="w/impl/paren-error-undef.xml"/>
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="w/exception/catch.xml"/>
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="w/exception/throw.xml"/>
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="w/fig/zero.xml"/>
+      <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="w/core/execute.xml"/>
+    </glossary>
+  </chapter>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="index.xml"/>
+</book>
+
+
+
+

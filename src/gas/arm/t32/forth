@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# run arm forth on QEMU
+here=`dirname $0`
+exec $here/../../../../bin/raw-stdio ${QEMU_A32:-qemu-arm}  -cpu cortex-m3 $here/forth.elf

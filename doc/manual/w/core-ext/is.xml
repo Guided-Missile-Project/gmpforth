@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-is" role="CORE-EXT" xreflabel="is">
+  <glossterm>
+    <indexterm role="forth"><primary>is</primary></indexterm>
+    <cmdsynopsis>
+      <command>is</command>
+      <group role="stack">
+        <arg>xt</arg>
+        <arg></arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Store <parameter>xt</parameter> in the value
+      <parameter>name</parameter>, defined by
+      <xref linkend="core-ext-defer"/>.
+    </para>
+    <para>
+      <xref linkend="core-ext-is"/> is a synomym for <xref
+      linkend="core-ext-to"/> and so defining words can use
+      <xref linkend="core-ext-is"/> semantics in the same way.
+    </para>
+    <para>
+      If <parameter>name</parameter> does not have a store function in
+      the first cell of its body, then the operation is unpredictable.
+    </para>
+    <para>
+      <xref linkend="core-ext-is"/> behaves as expected when
+            <xref linkend="core-postpone"/>,
+            <xref linkend="core-ext-bracket-compile"/>,
+            <xref linkend="core-tick"/> or
+            <xref linkend="core-bracket-tick"/> is applied.
+    </para>
+    <example>
+      <title>is</title>
+      <screen>
+<userinput>: test ." TEST" ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>defer x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' test is x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>x<keysym>&larrhk;</keysym></userinput> TEST ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

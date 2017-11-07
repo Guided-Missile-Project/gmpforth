@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-evaluate" role="CORE" xreflabel="evaluate">
+  <glossterm>
+    <indexterm role="forth"><primary>evaluate</primary></indexterm>
+    <cmdsynopsis>
+      <command>evaluate</command>
+      <group role="stack">
+        <arg>i*x</arg>
+        <arg>c-addr</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+        <arg>j*x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Save the current input source, 
+      set the string <parameter>c-addr</parameter> <parameter>u</parameter>
+      as the current input source and then interpret. Restore the input
+      source when interpretation is complete.
+    </para>
+    <para>
+      Any exceptions <xref linkend="exception-throw"/>n will be caught and
+      <xref linkend="exception-throw"/>n again after the original input
+      source is restored.
+    </para>
+    <!-- document error conditions like
+           - name not found
+           - bad numeric conversion
+           - all the various exceptions that this word can throw
+         more in (evaluate) -->
+    <example>
+      <title>evaluate</title>
+      <screen>
+<userinput>s" 1 1 + . " evaluate<keysym>&larrhk;</keysym></userinput> 2  ok
+<userinput>s" foo " evaluate<keysym>&larrhk;</keysym></userinput> foo ? er-13
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

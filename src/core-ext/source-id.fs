@@ -1,0 +1,2 @@
+: SOURCE-ID ( -- n ) (srcid) @ ;
+

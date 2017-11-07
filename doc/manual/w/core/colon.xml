@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-colon" role="CORE" xreflabel=":">
+  <glossterm>
+    <indexterm role="forth"><primary>:</primary></indexterm>
+    <cmdsynopsis>
+      <command>:</command>
+      <group role="stack">
+        <arg>&ldquo;name&rdquo;</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Create a colon definition called <parameter>name</parameter> and
+      enter the compilation state.
+    </para>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term><parameter>name</parameter> Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>i*x</arg>
+              <arg>--</arg>
+              <arg>j*x</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Execute the colon definition <parameter>name</parameter>,
+            accepting zero or more input arguments <parameter>i*x</parameter>
+            and returning zero or more ourput arguments
+            <parameter>j*x</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>:</title>
+      <screen>
+<userinput>: test 1 1 + . ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

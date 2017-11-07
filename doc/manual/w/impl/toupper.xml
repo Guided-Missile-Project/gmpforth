@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-toupper" role="IMPL" xreflabel="toupper">
+  <glossterm>
+    <indexterm role="forth"><primary>toupper</primary></indexterm>
+    <cmdsynopsis>
+      <command>toupper</command>
+      <group role="stack">
+        <arg>c1</arg>
+        <arg>--</arg>
+        <arg>c2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>c<subscript>2</subscript></parameter> is the
+      <acronym>ASCII</acronym> upper case representation of
+      <parameter>c<subscript>1</subscript></parameter> if
+      <parameter>c<subscript>1</subscript></parameter> is a
+      lower case <acronym>ASCII</acronym> letter, otherwise
+      <parameter>c<subscript>2</subscript></parameter> is the
+      same as <parameter>c<subscript>1</subscript></parameter>.
+    </para>
+    <example>
+      <title>toupper</title>
+      <screen>
+<userinput>char a toupper emit<keysym>&larrhk;</keysym></userinput> A ok
+<userinput>char 0 toupper emit<keysym>&larrhk;</keysym></userinput> 0 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

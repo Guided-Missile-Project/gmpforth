@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-read-line" role="IMPL" xreflabel="(error-read-line)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-read-line)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-read-line)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>READ-LINE</quote>.
+    </para>
+    <example>
+      <title>(error-read-line)</title>
+      <screen>
+<userinput>(error-read-line) .<keysym>&larrhk;</keysym></userinput> -71 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

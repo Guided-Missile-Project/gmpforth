@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-s-quote" role="IMPL,C" xreflabel="(s&quot;)">
+  <glossterm>
+    <indexterm role="forth"><primary>(s")</primary></indexterm>
+    <cmdsynopsis>
+      <command>(s")</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>c-addr</arg>
+        <arg>u</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Push the address and length of the counted string in the following cell.
+      Execution continues with the cell following the counted string.
+    </para>
+    <example>
+      <title>(s")</title>
+      <screen>
+<userinput>: S&lt; [char] &gt; parse postpone (s") (",) ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>immediate compile-only<keysym>&larrhk;</keysym></userinput>
+<userinput>: Q S&lt; XYZ&gt; type ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>Q<keysym>&larrhk;</keysym></userinput> XYZ ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

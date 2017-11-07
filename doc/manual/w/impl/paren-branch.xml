@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-branch" role="IMPL,C" xreflabel="(branch)">
+  <glossterm>
+    <indexterm role="forth"><primary>(branch)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(branch)</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Unconditionally branch to the address contained in the cell
+      immediately following the current IP.
+    </para>
+    <para>
+      This word is used by <xref linkend="core-else"/> and similar words to
+      implement <quote>unconditional branch</quote> semantics.
+    </para>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-loop" role="IMPL,C" xreflabel="(loop)">
+  <glossterm>
+    <indexterm role="forth"><primary>(loop)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(loop)</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Increment the current loop index by one. If the loop index
+      equals the loop limit, exit the loop, otherwise transfer control
+      to the beginning of the loop.
+    </para>
+    <para>
+      This word is used by <xref linkend="core-loop"/> to
+      implement <xref linkend="core-loop"/> semantics.
+    </para>
+  </glossdef>
+</glossentry>

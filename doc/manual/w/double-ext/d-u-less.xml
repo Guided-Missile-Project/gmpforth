@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-ext-u-less" role="DOUBLE-EXT" xreflabel="du&lt;">
+  <glossterm>
+    <indexterm role="forth"><primary>du&lt;</primary></indexterm>
+    <cmdsynopsis>
+      <command>du&lt;</command>
+      <group role="stack">
+        <arg>du1</arg>
+        <arg>du2</arg>
+        <arg>--</arg>
+        <arg>flag</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return <xref linkend="core-ext-true"/> if unsigned double number
+      <parameter>du<subscript>1</subscript></parameter> is less than
+      unsigned double number
+      <parameter>du<subscript>2</subscript></parameter>, otherwise
+      return <xref linkend="core-ext-false"/>.
+    </para>
+    <example>
+      <title>du&lt;</title>
+      <screen>
+<userinput>1 0 2. du&lt; .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput>2. 1. du&lt; .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>-1. 1. du&lt; .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>1. -1. du&lt; .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

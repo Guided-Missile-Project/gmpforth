@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-u-two-slash" role="IMPL" xreflabel="u2/">
+  <glossterm>
+    <indexterm role="forth"><primary>u2/</primary></indexterm>
+    <cmdsynopsis>
+      <command>u2/</command>
+      <group role="stack">
+        <arg>u1</arg>
+        <arg>--</arg>
+        <arg>u2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Divide <parameter>u<subscript>1</subscript></parameter> by 2
+      returning <parameter>u<subscript>2</subscript></parameter>.
+      If the sign bit of <parameter>u<subscript>1</subscript></parameter>
+      is set, the sign bit of <parameter>u<subscript>2</subscript></parameter>
+      will be cleared.
+    </para>
+    <example>
+      <title>u2/</title>
+      <screen>
+<userinput>100 u2/ .<keysym>&larrhk;</keysym></userinput> 50  ok
+<userinput>-100 u2/ .<keysym>&larrhk;</keysym></userinput> 2147483598  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

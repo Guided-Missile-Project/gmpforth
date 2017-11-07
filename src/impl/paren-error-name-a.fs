@@ -1,0 +1,1 @@
+-32 CONSTANT (error-name-a)             \ invalid name argument (e.g., TO name)

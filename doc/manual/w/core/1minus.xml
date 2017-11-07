@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-1minus" role="CORE" xreflabel="1-">
+  <glossterm>
+    <indexterm role="forth"><primary>1-</primary></indexterm>
+    <cmdsynopsis>
+      <command>1-</command>
+      <group role="stack">
+        <arg>n2</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Subtract 1 from <parameter>n<subscript>1</subscript></parameter>
+      returning <parameter>n<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>1-</title>
+      <screen>
+<userinput>100 1- .<keysym>&larrhk;</keysym></userinput> 99  ok
+<userinput>-100 1- .<keysym>&larrhk;</keysym></userinput> -101  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

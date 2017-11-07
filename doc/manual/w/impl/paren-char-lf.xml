@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-char-lf" role="IMPL" xreflabel="(=lf)">
+  <glossterm>
+    <indexterm role="forth"><primary>(=lf)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(=lf)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the <acronym>ASCII</acronym> line feed
+      character LF.
+    </para>
+    <example>
+      <title>(=lf)</title>
+      <screen>
+<userinput>(=lf) .<keysym>&larrhk;</keysym></userinput> 10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

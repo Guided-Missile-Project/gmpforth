@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-to-name" role="F83" xreflabel="&gt;name">
+  <glossterm>
+    <indexterm role="forth"><primary>&gt;name</primary></indexterm>
+    <cmdsynopsis>
+      <command>&gt;name</command>
+      <group role="stack">
+        <arg>xt</arg>
+        <arg>--</arg>
+        <arg>nfa</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the name field address <parameter>nfa</parameter>
+      corresponding to <parameter>xt</parameter>.
+    </para>
+    <example>
+      <title>&gt;name</title>
+      <screen>
+<userinput>' cold >name 10 dump<keysym>&larrhk;</keysym></userinput>
+    35BC  84 63 6F 6C 64  0  0  0 E0  4  0  0 A0  1  0  0  .cold........... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

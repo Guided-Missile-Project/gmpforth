@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="exception-catch" role="EXCEPTION" xreflabel="catch">
+  <glossterm>
+    <indexterm role="forth"><primary>catch</primary></indexterm>
+    <cmdsynopsis>
+      <command>catch</command>
+      <group role="stack">
+        <arg>i*x</arg>
+        <arg>xt</arg>
+        <arg>--</arg>
+        <arg>j*x</arg>
+        <arg>0</arg>
+        <arg>|</arg>
+        <arg>i*x</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Push an exception frame onto the return stack and
+      <xref linkend="core-execute"/> <parameter>xt</parameter>.
+    </para>
+    <para>
+      If an exception is not <xref linkend="exception-throw"/>n,
+      <xref linkend="fig-zero"/> is pushed on top of the stack values
+      pushed by the execution of <parameter>xt</parameter>.
+    </para>
+    <para>
+      If an exception is <xref linkend="exception-throw"/>n, the <xref
+      linkend="exception-throw"/> stack depth is set to the depth
+      prior to calling <xref linkend="exception-catch"/>
+      with  <parameter>xt</parameter> replaced by the throw code.
+    </para>
+    <para>
+      Note that is it only the stack depth(s) are reset. There is no
+      guarantee that the stack values will bear any relationship to
+      the original values passed in.
+    </para>
+    <example>
+      <title>catch</title>
+      <screen>
+<userinput>: test2 2 = if 100 throw then 200 ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>1 2 3 ' test2 catch .s<keysym>&larrhk;</keysym></userinput> 1 2 200 0  ok
+<userinput>2drop dup .s<keysym>&larrhk;</keysym></userinput> 1 2 2  ok
+<userinput>' test2 catch .s<keysym>&larrhk;</keysym></userinput> 1 2 4 100  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

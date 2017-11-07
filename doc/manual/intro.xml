@@ -1,0 +1,48 @@
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter id="intro">
+  <title>Introduction</title>
+  <para>
+    Something
+  </para>
+  <section>
+    <title>Conventions used in this manual</title>
+    <para>
+      <application>GMP Forth</application> word usage is usually
+      illustrated with examples in an interactive terminal session.
+    </para>
+    <example id="intro-interactive-session">
+      <title>Interactive <application>GMP Forth</application> session</title>
+      <screen>
+<userinput>1 1 + .<co id="u"/><keysym>&larrhk;</keysym><co id="r"/></userinput> 2  ok<co id="c"/>
+      </screen>
+    </example>
+    <calloutlist>
+      <callout arearefs="u">
+        <para>
+          User input is indicated <userinput>like this</userinput>,
+          which represents characters that you would type.
+        </para>
+      </callout>
+      <callout arearefs="r">
+        <para>
+          <keysym>&larrhk;</keysym> represents the key that indicates
+          input should be accepted, often via a word like
+          <xref linkend="core-accept"/>.
+          On many keyboards this key is labeled <keysym>Enter</keysym>
+          or <keysym>Return</keysym>, and is often just called the
+          <quote>Return key</quote>.
+        </para>
+      </callout>
+      <callout arearefs="c">
+        <para>
+          Terminal output is indicated 
+          <computeroutput>like this</computeroutput>, which represents
+          characters that <application>GMP
+          Forth</application> displays with words like <xref linkend="core-emit"/>
+          or <xref linkend="core-type"/>.
+        </para>
+      </callout>
+    </calloutlist>
+  </section>
+</chapter>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-two-constant" role="DOUBLE" xreflabel="2constant">
+  <glossterm>
+    <indexterm role="forth"><primary>2constant</primary></indexterm>
+    <cmdsynopsis>
+      <command>2constant</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>&ldquo;name&rdquo;</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Create a double cell constant <parameter>name</parameter> with
+      the value <parameter>x<subscript>1</subscript></parameter>
+      <parameter>x<subscript>2</subscript></parameter>.
+    </para>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term><parameter>name</parameter> Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>x1</arg>
+              <arg>x2</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Push <parameter>x<subscript>1</subscript></parameter>
+            <parameter>x<subscript>2</subscript></parameter> on the
+            stack.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>2constant</title>
+      <screen>
+<userinput>100. constant y<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>y d.<keysym>&larrhk;</keysym></userinput> 100  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

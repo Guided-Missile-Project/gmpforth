@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-float-invalid" role="IMPL" xreflabel="(error-float-invalid)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-float-invalid)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-float-invalid)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>floating-point invalid argument</quote>.
+    </para>
+    <example>
+      <title>(error-float-invalid)</title>
+      <screen>
+<userinput>(error-float-invalid) .<keysym>&larrhk;</keysym></userinput> -46 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

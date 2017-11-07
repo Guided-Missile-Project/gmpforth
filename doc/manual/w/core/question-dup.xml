@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-question-dup" role="CORE" xreflabel="?dup">
+  <glossterm>
+    <indexterm role="forth"><primary>?dup</primary></indexterm>
+    <cmdsynopsis>
+      <command>?dup</command>
+      <group role="stack">
+        <arg>x</arg>
+        <arg>--</arg>
+        <arg>0</arg>
+        <arg>|</arg>
+        <arg>x</arg>
+        <arg>x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Duplicate <parameter>x</parameter> if <parameter>x</parameter> is
+      not zero.
+    </para>
+    <example>
+      <title>?dup</title>
+      <screen>
+<userinput>0 ?dup .s<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>1+ ?dup .s<keysym>&larrhk;</keysym></userinput> 1 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

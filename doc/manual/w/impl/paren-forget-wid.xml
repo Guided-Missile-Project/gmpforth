@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-forget-wid" role="IMPL" xreflabel="(forget-wid)">
+  <glossterm>
+    <indexterm role="forth"><primary>(forget-wid)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(forget-wid)</command>
+      <group role="stack">
+        <arg>addr</arg>
+        <arg>wid</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Trim the wordlist <parameter>wid</parameter> such that the last entry
+in the list is below <parameter>addr</parameter>. If the wordlist name
+pointer is greater than or equal to <parameter>addr</parameter>, then
+zero the wordlist name pointer.
+    </para>
+    <example>
+      <title>(forget-wid)</title>
+      <screen>
+<userinput>here : foo ; forth-wordlist (forget-wid)<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' foo<keysym>&larrhk;</keysym></userinput> foo ? er-13
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

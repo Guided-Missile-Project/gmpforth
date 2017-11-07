@@ -1,0 +1,69 @@
+#!/bin/sh
+#
+# profile forth executable using gfp
+#
+#
+
+# VALGRIND_LIB=`pwd` valgrind -v --trace-symtab --tool=gfp ../src/gas/x86_64/forth 2>&1 | tee out2
+#VG_LOC=/usr/local/src/valgrind-3.10.0/coregrind/
+VG_LOC=
+
+VALGRIND_LIB=vg
+
+export VALGRIND_LIB
+
+# keep tmps?
+keep=0
+
+# trace debug
+trace=""
+
+while [ $# -gt 0 ]
+do
+    case $1 in
+        "-h" )
+            echo "profile [-h] [-o output] file"
+            exit 0
+            ;;
+        "-o" )
+            shift
+            output=$1
+            ;;
+        "-k" )
+            keep=1
+            ;;
+        "-t" )
+            shift
+            trace="$trace $1"
+            ;;
+        *)
+            file=$1
+            ;;
+    esac
+    shift
+done
+
+#
+# generate symbol table
+#
+symtab=/tmp/vg-profile-${USER}.$$
+symfile=${file}.debug
+if [ ! -f $symfile ]
+then
+    symfile=$file
+fi
+nm $symfile > $symtab
+
+text=`grep "T _start" $symtab | awk '{print $1}'`
+
+if [ -f $output ]
+then
+    rm -f $output
+fi
+
+${VGLOC}valgrind $trace --tool=gfp --input=$file --output=$output --symtab=$symtab --text=$text $file
+
+if [ $keep -eq 0 ]
+then
+    rm -f $symtab
+fi

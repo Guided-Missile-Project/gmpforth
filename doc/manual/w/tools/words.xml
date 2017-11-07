@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-words" role="TOOLS" xreflabel="words">
+  <glossterm>
+    <indexterm role="forth"><primary>words</primary></indexterm>
+    <cmdsynopsis>
+      <command>words</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display all words in the first vocabulary in the vocabulary search order.
+    </para>
+    <example>
+      <title>words</title>
+      <screen>
+<userinput>words<keysym>&larrhk;</keysym></userinput>
+cold sm/rem fm/mod ? words .name (name$) dump .s .( \ u.r .r d. d.r dabs find 
+word mod m* catch throw (",) refill (find) (context) source-id search-wordlist 
+(search-wordlist) (match-name) &gt;name link&gt; n&gt;link l&gt;name restore-input 
+save-input compile, latest cs-roll cs-pick /string &lt;&gt; 0&lt;&gt; casecompare sgn ?do 
+again pad parse parse-name (parse-end) (parse-begin) (scan) ] [char] ['] [ 
+while until u. type then spaces space source sign s&gt;d s" rshift repeat recurse 
+quit postpone negate move within cmove&gt; cmove min max lshift loop literal leave 
+key compile-only immediate (mark) if hold here fill evaluate (evaluate) 
+environment? emit else does&gt; (;code) name&gt; do dnegate hex decimal (create) 
+(?name) cr count chars char+ char cells cell+ c, begin allot aligned align 
+ahead accept abs abort ?dup &gt;number digit toupper &gt;body &gt; = &lt;# ; 2swap 2over 
+2dup 2drop 2@ 2! 1- 1+ ." . , +loop +! ( ' #s #&gt; # ud/mod (reset) (urx?) (urx@) 
+(utx?) (utx!) (quit) gmpforth 1 0 false true (lex-max-name) (lex-compile-only) 
+(lex-immediate) (lex-start) (error-write-line) (error-write-file) 
+(error-resize-file) (error-reposition-file) (error-rename-file) 
+(error-read-line) (error-read-file) (error-open-file) (error-flush-file) 
+(error-file-status) (error-file-size) (error-file-position) (error-delete-file) 
+(error-create-file) (error-close-file) (error-resize) (error-free) 
+(error-allocate) (error-fpp) (error-char) (error-quit) (error-float-fault) 
+(error-float-o) (error-exception-o) (error-control-o) (error-changed) 
+(error-search-u) (error-search-o) (error-postpone) (error-deleted) 
+(error-float-invalid) (error-float-stack-u) (error-float-stack-o) 
+(error-float-range) (error-float-div) (error-precision) (error-base) 
+(error-eof) (error-file-not-found) (error-file-io) (error-file-pos) 
+(error-blk-invalid) (error-blk-write) (error-blk-read) (error-name-a) 
+(error-body) (error-obsolete) (error-nesting) (error-interrupt) 
+(error-recursion) (error-loop-u) (error-return-i) (error-num) (error-align) 
+(error-control) (error-unsupported) (error-read-only) (error-def-o) 
+(error-string-o) (error-num-o) (error-no-name) (error-forget) 
+(error-compile-only) (error-undef) (error-type) (error-range) (error-div) 
+(error-mem) (error-dict) (error-do) (error-return-u) (error-return-o) 
+(error-stack-u) (error-stack-o) (error-abort") (error-abort) (pad) 
+(#wordlist) bl (=cr) (=lf) (=rub) (=bs) erf dpl (rp0) (sp0) cx7 cx6 cx5 cx4 cx3 
+cx2 cx1 context (vocs) current (srcid) (boot) (tx!) (tx?) (rx@) (rx?) (src) 
+(here) (hld) base state (#source) &gt;in blk user (user) forth vocabulary (cell) 
+(does,) constant variable : create (io) d- d+ nr&gt; n&gt;r 2r&gt; 2r@ 2&gt;r m*/ m+ u2/ 2/ 
+2* &lt; 0&lt; 0= xor unloop um/mod um* u&lt; or invert and /mod / - + */mod */ * j i 
+(loop) (leave) (do) (+loop) (?do) exit execute bye (s") (dolit) (branch) 
+(0branch) swap rot roll r@ r&gt; pick over dup drop depth &gt;r -rot sp@ rp@ sp! rp! 
+c@ c! @ !  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

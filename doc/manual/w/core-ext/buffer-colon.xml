@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-buffer-colon" role="CORE-EXT" xreflabel="buffer:">
+  <glossterm>
+    <indexterm role="forth"><primary>buffer:</primary></indexterm>
+    <cmdsynopsis>
+      <command>buffer:</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>u</arg>
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Create a <xref linkend="core-constant"/> called
+            <parameter>name</parameter> with a value of an aligned
+            data space address. Allocate <parameter>n</parameter>
+            bytes of data space at the aligned address.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>addr</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return the aligned address <parameter>addr</parameter> above.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>
+      The data space is allocated by <xref linkend="core-allot"/>.
+    </para>
+    <example>
+      <title>buffer:</title>
+      <screen>
+<userinput>10 buffer: buf<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>buf .<keysym>&larrhk;</keysym></userinput> 134539232  ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="core-ext-defer"/>
+    <glossseealso otherterm="core-ext-defer-fetch"/>
+    <glossseealso otherterm="core-ext-defer-store"/>
+    <glossseealso otherterm="core-ext-is"/>
+    -->
+  </glossdef>
+</glossentry>

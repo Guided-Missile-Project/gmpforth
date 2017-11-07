@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-nesting" role="IMPL" xreflabel="(error-nesting)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-nesting)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-nesting)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>compiler nesting</quote>.
+    </para>
+    <example>
+      <title>(error-nesting)</title>
+      <screen>
+<userinput>(error-nesting) .<keysym>&larrhk;</keysym></userinput> -29 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

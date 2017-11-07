@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-quit" role="CORE" xreflabel="quit">
+  <glossterm>
+    <indexterm role="forth"><primary>quit</primary></indexterm>
+    <cmdsynopsis>
+      <command>quit</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Initialize the interpreter with <xref linkend="impl-paren-reset"/>
+      and begin interpretation. The return stack pointer is reset,
+      but the data stack pointer is not.
+    </para>
+    <para>
+      Interpretation will terminate if the input becomes unavailable.
+    </para>
+    <example>
+      <title>quit</title>
+      <screen>
+<userinput>quit<keysym>&larrhk;</keysym></userinput>
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

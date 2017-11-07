@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-ud-slash-mod" role="IMPL" xreflabel="ud/mod">
+  <glossterm>
+    <indexterm role="forth"><primary>ud/mod</primary></indexterm>
+    <cmdsynopsis>
+      <command>ud/mod</command>
+      <group role="stack">
+        <arg>ud1</arg>
+        <arg>u1</arg>
+        <arg>--</arg>
+        <arg>u2</arg>
+        <arg>ud2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Divide double number <parameter>ud<subscript>1</subscript></parameter>
+      by single number
+      <parameter>u<subscript>1</subscript></parameter>, returning
+      the single number remainder
+      <parameter>u<subscript>2</subscript></parameter>
+      and the double number quotient
+      <parameter>ud<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>ud/mod</title>
+      <screen>
+<userinput>105. 10 ud/mod d. .<keysym>&larrhk;</keysym></userinput> 10 5  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

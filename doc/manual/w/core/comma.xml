@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-comma" role="CORE" xreflabel=",">
+  <glossterm>
+    <indexterm role="forth"><primary>,</primary></indexterm>
+    <cmdsynopsis>
+      <command>,</command>
+      <group role="stack">
+        <arg>x</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Store <parameter>x</parameter> in one cell at <xref linkend="core-here"/>
+      and advance <xref linkend="core-here"/> by one cell.
+    </para>
+    <para>
+      Targets that require aligned addresses when storing cell sized data
+      will throw an error, interrupt, or fault, depending on the target
+      implementation.
+    </para>
+    <example>
+      <title>,</title>
+      <screen>
+<userinput>here 10 , ?<keysym>&larrhk;</keysym></userinput> 10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

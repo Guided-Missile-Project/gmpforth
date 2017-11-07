@@ -1,0 +1,3 @@
+: ABORT ( -- )
+    (error-abort) throw ;
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-lex-immediate" role="IMPL" xreflabel="(lex-immediate)">
+  <glossterm>
+    <indexterm role="forth"><primary>(lex-immediate)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(lex-immediate)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the <parameter>immediate</parameter> bit
+      in the lex byte.
+    </para>
+    <example>
+      <title>(lex-immediate)</title>
+      <screen>
+<userinput>(lex-immediate) .<keysym>&larrhk;</keysym></userinput> 64 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

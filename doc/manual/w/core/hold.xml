@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-hold" role="CORE" xreflabel="hold">
+  <glossterm>
+    <indexterm role="forth"><primary>hold</primary></indexterm>
+    <cmdsynopsis>
+      <command>hold</command>
+      <group role="stack">
+        <arg>char</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Prepend <parameter>char</parameter> to the pictured numeric
+      output buffer.
+    </para>
+    <para>
+      This word is usually used between <xref linkend="core-less-number-sign"/>
+      and <xref linkend="core-number-sign-greater"/>
+      for inserting <acronym>ASCII</acronym> characters into numeric
+      conversions.
+    </para>
+    <para>
+      The conditions for <xref linkend="core-hold"/> need to be valid
+      if <xref linkend="core-number-sign"/> is used outside of
+      <xref linkend="core-less-number-sign"/> and
+      <xref linkend="core-number-sign-greater"/>, otherwise the converted
+      character may be stored into some unintentional location.
+    </para>
+    <example>
+      <title>hold</title>
+      <screen>
+<userinput>101. &lt;# char a hold #s char z hold #&gt; type<keysym>&larrhk;</keysym></userinput> z101a ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,1 @@
+-46 CONSTANT (error-float-invalid)      \ floating-point invalid argument

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-unsupported" role="IMPL" xreflabel="(error-unsupported)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-unsupported)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-unsupported)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>unsupported operation</quote>.
+    </para>
+    <example>
+      <title>(error-unsupported)</title>
+      <screen>
+<userinput>(error-unsupported) .<keysym>&larrhk;</keysym></userinput> -21 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

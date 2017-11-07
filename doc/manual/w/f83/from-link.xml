@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-from-link" role="F83" xreflabel="link&gt;">
+  <glossterm>
+    <indexterm role="forth"><primary>link&gt;</primary></indexterm>
+    <cmdsynopsis>
+      <command>link&gt;</command>
+      <group role="stack">
+        <arg>lfa</arg>
+        <arg>--</arg>
+        <arg>cfa</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>cfa</parameter> is the code field or
+      <parameter>xt</parameter> associated with the
+      link field <parameter>lfa</parameter>.
+    </para>
+    <example>
+      <title>link&gt;</title>
+      <screen>
+<userinput>: test ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>current @ @ link&gt; ' test = .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

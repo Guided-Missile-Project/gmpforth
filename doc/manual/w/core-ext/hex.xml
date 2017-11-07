@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-hex" role="CORE-EXT" xreflabel="hex">
+  <glossterm>
+    <indexterm role="forth"><primary>hex</primary></indexterm>
+    <cmdsynopsis>
+      <command>hex</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Set <xref linkend="user-base"/> to 10.
+    </para>
+    <example>
+      <title>hex</title>
+      <screen>
+<userinput>hex a5 decimal .<keysym>&larrhk;</keysym></userinput> 165  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

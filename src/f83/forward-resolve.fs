@@ -1,0 +1,2 @@
+: >RESOLVE ( addr -- )
+  here swap ! ;

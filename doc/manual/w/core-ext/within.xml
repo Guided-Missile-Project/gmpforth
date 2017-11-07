@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-within" role="CORE-EXT" xreflabel="within">
+  <glossterm>
+    <indexterm role="forth"><primary>within</primary></indexterm>
+    <cmdsynopsis>
+      <command>within</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>x3</arg>
+        <arg>--</arg>
+        <arg>flag</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return <xref linkend="core-ext-true"/> if
+      <parameter>x<subscript>1</subscript></parameter> is greater
+      than or equal to <parameter>x<subscript>2</subscript></parameter>
+      and <parameter>x<subscript>1</subscript></parameter> is less than
+      <parameter>x<subscript>3</subscript></parameter>,
+      otherwise return <xref linkend="core-ext-false"/>.
+    </para>
+    <para>
+      All parameters are assumed to be comparable as either all signed
+      or all unsigned single cell values.
+    </para>
+    <example>
+      <title>within</title>
+      <screen>
+<userinput>-4 -3 3 within .<keysym>&larrhk;</keysym></userinput> 0  ok 
+<userinput>-3 -3 3 within .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput>-2 -3 3 within .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput> 2 -3 3 within .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput> 3 -3 3 within .<keysym>&larrhk;</keysym></userinput> 0  ok 
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-type" role="IMPL" xreflabel="(error-type)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-type)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-type)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>argument type mismatch</quote>.
+    </para>
+    <example>
+      <title>(error-type)</title>
+      <screen>
+<userinput>(error-type) .<keysym>&larrhk;</keysym></userinput> -12 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

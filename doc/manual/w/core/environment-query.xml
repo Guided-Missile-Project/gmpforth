@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-environment-query" role="CORE" xreflabel="environment?">
+  <glossterm>
+    <indexterm role="forth"><primary>environment?</primary></indexterm>
+    <cmdsynopsis>
+      <command>environment?</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+        <arg>false | i*x true</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      If the value corresponding to the environmental query string
+      <parameter>c-addr</parameter> <parameter>u</parameter> is known,
+      return string dependent value(s) and <xref linkend="core-ext-true"/>,
+      otherwise return <xref linkend="core-ext-false"/>.
+    </para>
+    <para>
+      The implementation unconditionaly returns <xref
+      linkend="core-ext-false"/> so the parameters are effectively
+      ignored.
+    </para>
+    <example>
+      <title>environment?</title>
+      <screen>
+<userinput>s" /pad" environment? .<keysym>&larrhk;</keysym></userinput> 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-align" role="CORE" xreflabel="align">
+  <glossterm>
+    <indexterm role="forth"><primary>align</primary></indexterm>
+    <cmdsynopsis>
+      <command>align</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      If <xref linkend="core-here"/> is not an <parameter>a-addr</parameter>,
+      allocate space in the dictionary until it is.
+    </para>
+    <example>
+      <title>align</title>
+      <screen>
+<userinput>hex here .<keysym>&larrhk;</keysym></userinput> 38AC  ok
+<userinput>0 c, here .<keysym>&larrhk;</keysym></userinput> 38AD  ok
+<userinput>align here .<keysym>&larrhk;</keysym></userinput> 38B0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

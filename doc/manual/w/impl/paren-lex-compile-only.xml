@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-lex-compile-only" role="IMPL" xreflabel="(lex-compile-only)">
+  <glossterm>
+    <indexterm role="forth"><primary>(lex-compile-only)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(lex-compile-only)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the <parameter>compile-only</parameter> bit
+      in the lex byte.
+    </para>
+    <example>
+      <title>(lex-compile-only)</title>
+      <screen>
+<userinput>(lex-compile-only) .<keysym>&larrhk;</keysym></userinput> 32 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

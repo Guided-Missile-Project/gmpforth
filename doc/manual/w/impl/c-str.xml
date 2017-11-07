@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-c-str" role="IMPL" xreflabel="c-str">
+  <glossterm>
+    <indexterm role="forth"><primary>c-str</primary></indexterm>
+    <cmdsynopsis>
+      <command>c-str</command>
+      <group role="stack">
+        <arg>addr1</arg>
+        <arg>len</arg>
+        <arg>--</arg>
+        <arg>addr2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Construct a C style NUL terminated string <parameter>addr2</parameter>
+from the string represented by <parameter>addr1</parameter>
+<parameter>len</parameter>. The C string is transient as it is
+constructed in <xref linkend="user-paren-scratch"/>, and must be
+smaller than the size of the scratch area.
+    </para>
+    <example>
+      <title>c-str</title>
+      <screen>
+<userinput>s" /dev/null" c-str 10 dump<keysym>&larrhk;</keysym></userinput>
+ 804CD98  2F 64 65 76 2F 6E 75 6C 6C  0 75 6C 6C  0  0  0  /dev/null.ull... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

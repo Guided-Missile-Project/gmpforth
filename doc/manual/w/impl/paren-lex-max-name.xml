@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-lex-max-name" role="IMPL" xreflabel="(lex-max-name)">
+  <glossterm>
+    <indexterm role="forth"><primary>(lex-max-name)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(lex-max-name)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant corresponding to the maximum number of characters in a
+      dictionary entry, and a mask for the character count in the lex byte.
+    </para>
+    <example>
+      <title>(lex-max-name)</title>
+      <screen>
+<userinput>(lex-max-name) .<keysym>&larrhk;</keysym></userinput> 31 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

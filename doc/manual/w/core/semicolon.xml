@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-semicolon" role="CORE,IC" xreflabel=";">
+  <glossterm>
+    <indexterm role="forth"><primary>;</primary></indexterm>
+    <cmdsynopsis>
+      <command>;</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Terminate a colon (<xref linkend="core-colon"/>) definition and enter the
+      interpretation state.
+    </para>
+    <example>
+      <title>;</title>
+      <screen>
+<userinput>: test 1 1 + . ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

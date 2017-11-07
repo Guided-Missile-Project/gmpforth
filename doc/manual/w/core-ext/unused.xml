@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-unused" role="CORE-EXT" xreflabel="unused">
+  <glossterm>
+    <indexterm role="forth"><primary>unused</primary></indexterm>
+    <cmdsynopsis>
+      <command>unused</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>u</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Returns remaining space in the dictionary from <xref linkend="core-here"/>.
+    </para>
+    <example>
+      <title>unused</title>
+      <screen>
+<userinput>unused .<keysym>&larrhk;</keysym></userinput> 65536  ok
+<userinput>10 allot unused .<keysym>&larrhk;</keysym></userinput> 65526  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

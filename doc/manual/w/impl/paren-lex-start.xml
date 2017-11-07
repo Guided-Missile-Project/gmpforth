@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-lex-start" role="IMPL" xreflabel="(lex-start)">
+  <glossterm>
+    <indexterm role="forth"><primary>(lex-start)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(lex-start)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the <parameter>start</parameter> bit
+      in the lex byte.
+    </para>
+    <example>
+      <title>(lex-start)</title>
+      <screen>
+<userinput>(lex-start) .<keysym>&larrhk;</keysym></userinput> 128 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

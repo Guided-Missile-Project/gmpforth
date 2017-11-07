@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-rp-fetch" role="IMPL" xreflabel="rp@">
+  <glossterm>
+    <indexterm role="forth"><primary>rp@</primary></indexterm>
+    <cmdsynopsis>
+      <command>rp@</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the current return stack index. Whether
+      <parameter>n</parameter> is an offset or an address is target
+      dependent.
+    </para>
+    <example>
+      <title>rp@</title>
+      <screen>
+<userinput>rp@ .<keysym>&larrhk;</keysym></userinput> 17  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,2 @@
+: GET-CURRENT ( -- wid )
+   current @ ;

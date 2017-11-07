@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-semis-code" role="IMPL,C" xreflabel="(;code)">
+  <glossterm>
+    <indexterm role="forth"><primary>(;code)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(;code)</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Arrange the <acronym>CFA</acronym> of the <xref linkend="fig-latest"/> word
+      to point to the address of the cell immediately following.
+    </para>
+    <para>
+      This word is used to implement the semantics of <xref linkend="core-does"/>.
+      <!-- also ;code, if and when that ever gets implemented -->
+    </para>
+    <figure float="0">
+      <title>(;code) Layout</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata format="PDF" fileref="figure/paren-semis-code.pdf"/>
+        </imageobject>
+        <imageobject>
+          <imagedata format="SVG" fileref="figure/paren-semis-code.svg"/>
+        </imageobject>
+        <imageobject>
+          <imagedata format="PNG" fileref="figure/paren-semis-code.png"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </glossdef>
+</glossentry>

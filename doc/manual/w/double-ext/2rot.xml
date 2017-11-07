@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-ext-two-rot" role="DOUBLE-EXT" xreflabel="2rot">
+  <glossterm>
+    <indexterm role="forth"><primary>2rot</primary></indexterm>
+    <cmdsynopsis>
+      <command>2rot</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>x3</arg>
+        <arg>x4</arg>
+        <arg>x5</arg>
+        <arg>x6</arg>
+        <arg>--</arg>
+        <arg>x3</arg>
+        <arg>x4</arg>
+        <arg>x5</arg>
+        <arg>x6</arg>
+        <arg>x1</arg>
+        <arg>x2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Rotate the top three pairs of elements of the stack such that
+      the third pair of elements of the stack are brought to the top.
+    </para>
+    <example>
+      <title>2rot</title>
+      <screen>
+<userinput>1 2 3 4 5 6 2rot .s<keysym>&larrhk;</keysym></userinput> 3 4 5 6 1 2  ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="impl-dash-rot"/>
+    -->
+  </glossdef>
+</glossentry>

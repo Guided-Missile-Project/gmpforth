@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-do" role="CORE,IC" xreflabel="do">
+  <glossterm>
+    <indexterm role="forth"><primary>do</primary></indexterm>
+    <cmdsynopsis>
+      <command>do</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>do-sys</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile <xref linkend="impl-paren-do"/> and allocate
+            a cell for the corresponding loop termination address,
+            returning <parameter>do-sys</parameter>
+            as a pointer to the loop termination address.
+            <parameter>do-sys</parameter>
+            will be resolved by a consumer of <parameter>do-sys</parameter>,
+            usually <xref linkend="core-loop"/> or
+            <xref linkend="core-plus-loop"/> .
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>n1</arg>
+              <arg>n2</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Begin the loop sequence with 
+            loop limit <parameter>n<subscript>1</subscript></parameter>
+            and loop index
+            <parameter>n<subscript>2</subscript></parameter>.
+          </para>
+          <para>
+            If <parameter>n<subscript>1</subscript></parameter> equals
+            <parameter>n<subscript>2</subscript></parameter>, then the loop
+            will execute 2<superscript>bits/cell</superscript> times.
+          </para>
+          <para>
+            <parameter>n<subscript>1</subscript></parameter> and
+            <parameter>n<subscript>2</subscript></parameter> are
+            always treated as signed single cell integers, regardless
+            of their actual type.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>do</title>
+      <screen>
+<userinput>: test do i . loop ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>4 2 test<keysym>&larrhk;</keysym></userinput> 2 3  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

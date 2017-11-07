@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Update DOCBOOK xml files based on given template
+#
+
+xfrm=$1
+shift
+
+for file in $*
+do
+  if [ "$file" != "schemas.xml" ]
+  then
+      xsltproc --nonet $xfrm $file | sed -e 's/"?>$/" ?>/'  -e 's/EN" "/EN"\n                  "/' -e 's/\xe2\x86\xa9/\&larrhk;/g'  -e 's/\xe2\x80\x9c/\&ldquo;/g'  -e 's/\xe2\x80\x9d/\&rdquo;/g'  -e 's/\xe2\x89\xa4/\&le;/g' > $file.tmp
+      rm -f $file
+      mv $file.tmp $file
+  fi
+done

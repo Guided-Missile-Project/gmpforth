@@ -1,0 +1,1 @@
+-72 CONSTANT (error-RENAME-FILE)        \ RENAME-FILE

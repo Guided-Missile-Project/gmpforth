@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-ext-cs-roll" role="TOOLS-EXT" xreflabel="cs-roll">
+  <glossterm>
+    <indexterm role="forth"><primary>cs-roll</primary></indexterm>
+    <cmdsynopsis>
+      <command>cs-roll</command>
+      <group role="stack">
+        <arg>u*(dest|orig)</arg>
+        <arg>n</arg>
+        <arg>--</arg>
+        <arg>u*(dest|orig)</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Rotate |<parameter>n</parameter>| <parameter>(dest|orig)</parameter>
+      values on the stack. If <parameter>n</parameter> is positive, the
+      rotation direction is such that the <parameter>n</parameter>th
+      item on the stack is rotated to the top of the stack. If
+      <parameter>n</parameter> is negative (a non-standard extension),
+      the rotation direction is the reverse of the positive case. If
+      <parameter>n</parameter> is zero, then no rotation is performed.
+    </para>
+    <para>
+      As a non-standard extension, this word is available in the interpret
+      <xref linkend="user-state"/>.
+    </para>
+    <example>
+      <title>cs-roll</title>
+      <screen>
+<userinput>1 2 3 4 5 .s<keysym>&larrhk;</keysym></userinput> 1 2 3 4 5  ok
+<userinput>3 cs-roll .s<keysym>&larrhk;</keysym></userinput> 1 3 4 5 2  ok
+<userinput>-2 cs-roll .s<keysym>&larrhk;</keysym></userinput> 1 3 2 4 5  ok
+<userinput>0 cs-roll .s<keysym>&larrhk;</keysym></userinput> 1 3 2 4 5  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

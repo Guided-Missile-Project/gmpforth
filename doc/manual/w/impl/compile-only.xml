@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-compile-only" role="IMPL" xreflabel="compile-only">
+  <glossterm>
+    <indexterm role="forth"><primary>compile-only</primary></indexterm>
+    <cmdsynopsis>
+      <command>compile-only</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Mark the <xref linkend="fig-latest"/> dictionary entry as only
+      executable in the compile <xref linkend="user-state"/>. Words so marked
+      will throw a <xref linkend="impl-paren-error-compile-only"/> exception
+      when executed in the interpret <xref linkend="user-state"/>.
+    </para>
+    <example>
+      <title>compile-only</title>
+      <screen>
+<userinput>: test ; compile-only<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> test ? er-14
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

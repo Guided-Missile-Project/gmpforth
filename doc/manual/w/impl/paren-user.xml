@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-user" role="IMPL" xreflabel="(user)">
+  <glossterm>
+    <indexterm role="forth"><primary>(user)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(user)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A global variable that contains the base address of the current
+      user area.
+    </para>
+    <para>
+      This is only present in target implementations that do not dedicate
+      a CPU register for this purpose.
+    </para>
+    <example>
+      <title>(user)</title>
+      <screen>
+<userinput>blk (user) @ - .<keysym>&larrhk;</keysym></userinput> 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

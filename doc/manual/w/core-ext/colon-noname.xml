@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-colon-no-name" role="CORE-EXT" xreflabel=":noname">
+  <glossterm>
+    <indexterm role="forth"><primary>:noname</primary></indexterm>
+    <cmdsynopsis>
+      <command>:noname</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>xt</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Create an unnamed colon definition and enter the compilation
+      state. When the definition is complete, return the execution
+      token <parameter>xt</parameter>.
+    </para>
+    <example>
+      <title>:noname</title>
+      <screen>
+<userinput>:noname 123 ; execute .s<keysym>&larrhk;</keysym></userinput> 123  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

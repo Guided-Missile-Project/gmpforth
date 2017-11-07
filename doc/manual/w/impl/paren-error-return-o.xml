@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-return-o" role="IMPL" xreflabel="(error-return-o)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-return-o)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-return-o)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>return stack overflow</quote>.
+    </para>
+    <example>
+      <title>(error-return-o)</title>
+      <screen>
+<userinput>(error-return-o) .<keysym>&larrhk;</keysym></userinput> -5 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-defer" role="CORE-EXT,I" xreflabel="defer">
+  <glossterm>
+    <indexterm role="forth"><primary>defer</primary></indexterm>
+    <cmdsynopsis>
+      <command>defer</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Create <parameter>name</parameter> so that it will execute
+            a word subsequently supplied by <xref linkend="core-ext-is"/> or
+            <xref linkend="core-ext-defer-store"/> when called.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>i*x</arg>
+              <arg>--</arg>
+              <arg>j*x</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Execute the word that is configured.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>
+      <xref linkend="core-ext-defer"/> creates words that have
+      configurable runtime behavior, and is one way of creating
+      executable forward references. By default
+      <parameter>name</parameter> is configured to execute <xref
+      linkend="core-abort"/>.
+    </para>
+    <example>
+      <title>defer</title>
+      <screen>
+<userinput>: test ." TEST" ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>defer x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' test is x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>x<keysym>&larrhk;</keysym></userinput> TEST ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="core-ext-action-of"/>
+    <glossseealso otherterm="core-ext-defer-fetch"/>
+    <glossseealso otherterm="core-ext-defer-store"/>
+    <glossseealso otherterm="core-ext-is"/>
+    -->
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-r-fetch" role="CORE,C" xreflabel="r@">
+  <glossterm>
+    <indexterm role="forth"><primary>r@</primary></indexterm>
+    <cmdsynopsis>
+      <command>r@</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Copy <parameter>x</parameter> from the top of the return stack.
+    </para>
+    <example>
+      <title>r@</title>
+      <screen>
+<userinput>: @+  >r + r@ * r> + ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>3 4 5 @+ .<keysym>&larrhk;</keysym></userinput> 40  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

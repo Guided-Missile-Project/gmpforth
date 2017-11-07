@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-save-input" role="CORE-EXT" xreflabel="save-input">
+  <glossterm>
+    <indexterm role="forth"><primary>save-input</primary></indexterm>
+    <cmdsynopsis>
+      <command>save-input</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>xN</arg>
+        <arg>&hellip;</arg>
+        <arg>x0</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Save the current input source position for subsequent use by
+      <xref linkend="core-ext-restore-input"/>.
+    </para>
+    <example>
+      <title>save-input</title>
+      <screen>
+<userinput>: test save-input n>r s" ' test . " evaluate nr> restore-input ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test 14476<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' test .<keysym>&larrhk;</keysym></userinput> 14476  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

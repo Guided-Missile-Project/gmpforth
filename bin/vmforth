@@ -1,0 +1,2 @@
+#!/bin/sh
+exec bin/gmpfc $* -I. -Isrc/vm -Isrc -H -N0 -e forth32.fs fig/cold.fs

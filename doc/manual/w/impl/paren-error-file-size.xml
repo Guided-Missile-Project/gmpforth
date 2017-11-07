@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-file-size" role="IMPL" xreflabel="(error-file-size)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-file-size)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-file-size)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>FILE-SIZE</quote>.
+    </para>
+    <example>
+      <title>(error-file-size)</title>
+      <screen>
+<userinput>(error-file-size) .<keysym>&larrhk;</keysym></userinput> -66 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

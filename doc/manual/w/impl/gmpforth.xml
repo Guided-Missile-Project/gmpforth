@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-gmpforth" role="IMPL" xreflabel="gmpforth">
+  <glossterm>
+    <indexterm role="forth"><primary>gmpforth</primary></indexterm>
+    <cmdsynopsis>
+      <command>gmpforth</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display the name of this Forth system.
+    </para>
+    <example>
+      <title>gmpforth</title>
+      <screen>
+<userinput>gmpforth<keysym>&larrhk;</keysym></userinput> vm-le GMP Forth ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

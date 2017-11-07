@@ -1,0 +1,1 @@
+-56 CONSTANT (error-quit)               \ QUIT

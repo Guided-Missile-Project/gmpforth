@@ -1,0 +1,86 @@
+TESTING Annex Implementation words
+
+DECIMAL
+
+TESTING .name
+
+T{ ' .NAME .NAME -> }T
+
+TESTING UM*
+
+T{ 10 5 um*  -> 50. }T
+
+TESTING UM/
+
+T{ 10. 5 um/ -> 2 }T
+
+T{ 10. 4 um/ -> 2 }T
+
+TESTING UM*/
+
+T{ 10000. 5 8 um*/  -> 6250. }T
+
+TESTING UT/
+
+T{ 10. 0 5 ut/ -> 2. }T
+
+T{ 10. 0 4 ut/ -> 2. }T
+
+TESTING WORDLIST Names
+
+WORDLIST CONSTANT WID
+
+WID CELL+ CELL+ CONSTANT WID$
+
+: MARK ;
+
+HERE  S" WIDNAME" (",) CONSTANT WIDNAME
+
+WIDNAME WID$ !
+
+FORGET MARK
+
+\ wordlist name address beyond address being forgotten so the
+\ wordlist name should be zero
+
+T{ WID$ @ -> 0 }T
+
+TESTING ALSO Exceptions
+
+: ALSO-EXCP ( n -- )  0 DO ALSO LOOP ;
+
+CURRENT CONTEXT - (CELL) / CONSTANT CTX-DEPTH
+
+ONLY FORTH DEFINITIONS
+
+: ALSO-EXCP-0   CTX-DEPTH     ALSO-EXCP ;
+: ALSO-EXCP-1   CTX-DEPTH 1 - ALSO-EXCP ;
+
+T{ ' ALSO-EXCP-0 CATCH -> (ERROR-SEARCH-O) }T
+
+ONLY FORTH DEFINITIONS
+
+T{ ' ALSO-EXCP-1 CATCH -> 0 }T
+
+ONLY FORTH DEFINITIONS
+
+TESTING PREVIOUS Exceptions
+
+ONLY FORTH DEFINITIONS
+
+T{ ' PREVIOUS CATCH -> (ERROR-SEARCH-U) }T
+
+ONLY FORTH DEFINITIONS
+
+T{ ALSO ' PREVIOUS CATCH -> 0 }T
+
+ONLY FORTH DEFINITIONS
+
+TESTING SET-ORDER Exceptions
+
+: SET-ORDER-EXCP
+   CTX-DEPTH 1+ DUP >R 0 DO 0 LOOP R> SET-ORDER ;
+
+T{ SET-ORDER-EXCP CATCH -> (ERROR-SEARCH-O) }T
+
+CR .( End of Annex Implementation word tests) CR

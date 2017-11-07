@@ -1,0 +1,1 @@
+-31 CONSTANT (error-body)               \ >BODY used on non-CREATEd definition

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-abs" role="CORE" xreflabel="abs">
+  <glossterm>
+    <indexterm role="forth"><primary>abs</primary></indexterm>
+    <cmdsynopsis>
+      <command>abs</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+        <arg>u</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>u</parameter> is the absolute value of
+      <parameter>n</parameter>.
+    </para>
+    <example>
+      <title>abs</title>
+      <screen>
+<userinput>100 abs .<keysym>&larrhk;</keysym></userinput> 100  ok
+<userinput>-100 abs .<keysym>&larrhk;</keysym></userinput> 100  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

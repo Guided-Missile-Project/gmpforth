@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-literal" role="CORE,IC" xreflabel="literal">
+  <glossterm>
+    <indexterm role="forth"><primary>literal</primary></indexterm>
+    <cmdsynopsis>
+      <command>literal</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Unavailable.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>x</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile <xref linkend="impl-paren-dolit"/> followed
+            by <parameter>x</parameter> into the current definition.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>x</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Push <parameter>x</parameter> on the stack.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>literal</title>
+      <screen>
+<userinput>: test [ 10 10 * ] literal . ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 100  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

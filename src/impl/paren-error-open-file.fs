@@ -1,0 +1,1 @@
+-69 CONSTANT (error-OPEN-FILE)          \ OPEN-FILE

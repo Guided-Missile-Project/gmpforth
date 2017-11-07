@@ -1,0 +1,3 @@
+: .(  ( -- )
+  [char] ) parse type ; immediate
+

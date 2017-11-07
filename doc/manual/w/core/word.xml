@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-word" role="CORE" xreflabel="word">
+  <glossterm>
+    <indexterm role="forth"><primary>word</primary></indexterm>
+    <cmdsynopsis>
+      <command>word</command>
+      <group role="stack">
+        <arg>char</arg>
+        <arg>&ldquo;&lt;chars&gt;ccc&lt;char&gt;&rdquo;</arg>
+        <arg>--</arg>
+        <arg>c-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Skipping leading delimiter <parameter>char</parameter>, parse
+      <parameter>ccc</parameter> from the input stream up to trailing
+      delimiter <parameter>char</parameter>. Return parsed characters
+      <parameter>ccc</parameter> as a counted string stored at transient
+      area <parameter>c-addr</parameter>. Subsequent uses of
+      <xref linkend="core-word"/> may overwrite this transient area.
+    </para>
+    <para>
+      String buffer starts at <xref linkend="core-here"/> and extends
+      to the end of the dictionary. Strings longer than
+      <constant>255</constant> characters
+      will have a count of the actual string length modulo
+      <constant>256</constant>.
+    </para>
+    <example>
+      <title>word</title>
+      <screen>
+<userinput>bl word foo count dup . dump<keysym>&larrhk;</keysym></userinput> 3
+    3881  66 6F 6F  0  0  0  0  0  0  0  0  0  0  0  0  0  foo............. ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

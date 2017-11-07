@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# run mips forth on QEMU
+here=`dirname $0`
+exec $here/../../../../bin/raw-stdio ${QEMU_MIPS_64:-qemu64-mips} $here/forth.elf

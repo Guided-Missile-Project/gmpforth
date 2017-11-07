@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-begin" role="CORE,IC" xreflabel="begin">
+  <glossterm>
+    <indexterm role="forth"><primary>begin</primary></indexterm>
+    <cmdsynopsis>
+      <command>begin</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>dest</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Supply a <parameter>dest</parameter> for a subsequent
+            consumer of <parameter>dest</parameter> such as
+            <xref linkend="core-until"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Continue execution.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>begin</title>
+      <screen>
+<userinput>: test 0 begin dup . 1+ dup 5 > until ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 0 1 2 3 4 5  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-paren-src-zero" role="USER" xreflabel="(src0)">
+  <glossterm>
+    <indexterm role="forth"><primary>(src0)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(src0)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable that contains the address of the beginning of
+      the current source input buffer.
+    </para>
+  </glossdef>
+</glossentry>

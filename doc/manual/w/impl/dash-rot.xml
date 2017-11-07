@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-dash-rot" role="IMPL" xreflabel="-rot">
+  <glossterm>
+    <indexterm role="forth"><primary>-rot</primary></indexterm>
+    <cmdsynopsis>
+      <command>-rot</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>n3</arg>
+        <arg>--</arg>
+        <arg>n3</arg>
+        <arg>n1</arg>
+        <arg>n2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Reverse rotate the top three stack entries.
+    </para>
+    <example>
+      <title>-rot</title>
+      <screen>
+<userinput>1 2 3 -rot .s<keysym>&larrhk;</keysym></userinput> 3 1 2  ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="core-rot"/>
+    -->
+  </glossdef>
+</glossentry>

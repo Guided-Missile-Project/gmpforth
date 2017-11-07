@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-u-m-star-slash" role="IMPL" xreflabel="um*/">
+  <glossterm>
+    <indexterm role="forth"><primary>um*/</primary></indexterm>
+    <cmdsynopsis>
+      <command>um*/</command>
+      <group role="stack">
+        <arg>ud1</arg>
+        <arg>u1</arg>
+        <arg>u2</arg>
+        <arg>--</arg>
+        <arg>ud2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <!-- scale unsigned double ud1 by the ratio of u1/u2 -->
+      Multiply unsigned double
+      <parameter>ud<subscript>1</subscript></parameter> by unsigned
+      single <parameter>u<subscript>1</subscript></parameter>, then
+      divide the intermediate triple cell product by
+      <parameter>u<subscript>2</subscript></parameter>, returning the
+      unsigned double quotient
+      <parameter>ud<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>um*/</title>
+      <screen>
+<userinput>10000. 5 8 um*/ d.<keysym>&larrhk;</keysym></userinput> 6250  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

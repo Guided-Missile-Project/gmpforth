@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-paren-abort-quote-dollar" role="USER" xreflabel="(abort&quot;$)">
+  <glossterm>
+    <indexterm role="forth"><primary>(abort"$)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(abort"$)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable used during exception handling to point to a
+      counted string related to the exception.
+    </para>
+  </glossdef>
+</glossentry>

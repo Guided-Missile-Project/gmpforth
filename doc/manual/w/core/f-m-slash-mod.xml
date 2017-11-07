@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-f-m-slash-mod" role="CORE" xreflabel="fm/mod">
+  <glossterm>
+    <indexterm role="forth"><primary>fm/mod</primary></indexterm>
+    <cmdsynopsis>
+      <command>fm/mod</command>
+      <group role="stack">
+        <arg>d</arg>
+        <arg>n1</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+        <arg>n3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Divide double number <parameter>d</parameter> by
+      <parameter>n<subscript>1</subscript></parameter>, returning
+      the remainder <parameter>n<subscript>2</subscript></parameter>
+      and the floored quotient
+      <parameter>n<subscript>3</subscript></parameter>.
+    </para>
+    <para>
+      The behavior of division by zero or quotient overflow
+      is target and implementation
+      dependent, and may result in program termination.
+    </para>
+    <example>
+      <title>fm/mod</title>
+      <screen>
+<userinput> 10.  7 fm/mod . .<keysym>&larrhk;</keysym></userinput> 1 3  ok
+<userinput> 10. -7 fm/mod . .<keysym>&larrhk;</keysym></userinput> -2 -4  ok
+<userinput>-10.  7 fm/mod . .<keysym>&larrhk;</keysym></userinput> -2 4  ok
+<userinput>-10. -7 fm/mod . .<keysym>&larrhk;</keysym></userinput> 1 -3  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

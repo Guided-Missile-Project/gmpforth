@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-char-rub" role="IMPL" xreflabel="(=rub)">
+  <glossterm>
+    <indexterm role="forth"><primary>(=rub)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(=rub)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the <acronym>ASCII</acronym> character
+      DEL.
+    </para>
+    <para>
+      <quote>rub</quote> is an abbreviation of <quote>rubout</quote>,
+      which is an archaic key cap label for the DEL character.
+    </para>
+    <example>
+      <title>(=rub)</title>
+      <screen>
+<userinput>(=rub) .<keysym>&larrhk;</keysym></userinput> 127  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

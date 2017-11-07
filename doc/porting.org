@@ -1,0 +1,652 @@
+Notes on porting GMP Forth to various architectures
+
+Architectures below are an intersection between what's available for
+ELF targets on GNU binutils and what's available for Linux system
+emulation on QEMU.
+
+* GMP machine model
+
+| A  | scratch                       |          |p2,r1
+| B  | scratch                       |          |p3,r2
+| C  | scratch                       |          |t2
+| IP | Instruction pointer           |          |ip
+| RP | Return stack pointer          |          |rp
+| SP | Parameter Stack pointer       |          |sp
+| FP | Floating point Stack pointer  | optional |fp
+| W  | Parameter Area pointer / temp |          |t1
+| U  | User Area Pointer             |          |u
+| T  | Cached TOS of SP              | optional |p1
+| F  | Cached TOS of FP              | optional |f1
+| Z  | zero                          | optional |
+
+* arm
+
+** references
+Procedure Call Standard for the ARM Architecture
+RealView Compilation Tools Assembler Guide
+
+** thumb
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| R0   |     |          |        |   |       | A     |
+| R1   |     |          |        |   |       | B     |
+| R2   |     |          |        |   |       | C     |
+| R3   |     |          |        |   |       | T     |
+| R4   |     |          |        |   |       | IP    |
+| R5   |     |          |        |   |       | RP    |
+| R6   |     |          |        |   |       | W     |
+| R7   |     |          |        |   |       | U     |
+| R8   |     |          |        |   |       | FP    |
+| R9   |     |          |        |   |       |       |
+| R10  |     |          |        |   |       |       |
+| R11  |     |          |        |   |       |       |
+| R12  |     |          |        |   |       |       |
+| R13  | SP  |          |        |   |       | SP    |
+| R14  | LR  |          |        |   |       |       |
+| R15  | PC  |          |        |   |       |       |
+
+
+** aarch32
+
+| Name | Sym | Function                     | Callee | C |  Linux | GMP   |
+|      |     |                              | Saved? |   |        | Forth |
+|------+-----+------------------------------+--------+---+--------+-------|
+| R0   | a1  | C arg1 ret1                  |        | y |      1 | A     |
+| R1   | a2  | arg2 ret2                    |        | y |      2 | B     |
+| R2   | a3  | arg3                         |        | y |      3 | C     |
+| R3   | a4  | arg4                         |        | y |      4 |       |
+| R4   | v1  |                              | y      |   |      5 |       |
+| R5   | v2  |                              | y      |   |      6 |       |
+| R6   | v3  |                              | y      |   |      7 | T     |
+| R7   | v4  |                              | y      |   | callno |       |
+| R8   | v5  |                              | y      |   |        | IP    |
+| R9   | v6  | Platform register            | ?      |   |        | FP    |
+| R10  | v7  | Variable 7                   | y      |   |        | RP    |
+| R11  | v8  | Variable 8                   |        |   |        | U     |
+| R12  | IP  | Intra-procedure call scratch |        |   |        | W     |
+| R13  | SP  | Stack pointer                | y      |   |        | SP    |
+| R14  | LR  | Link Register                |        |   |        | -     |
+| R15  | PC  | Program counter              |        |   |        | -     |
+| D0   | PC  | FPU                          |        |   |        | F     |
+
+*** NOTES
+SP is 8 byte aligned on calls (incl syscall?
+64 bit syscall args are aligned to even address
+
+register usage: $GCC/gcc/config/arm/arm.h
+                $LINUX/arch/arm/kernel/entry-header.S
+
+*** TODO
+How is R9 used in SVR4?
+
+
+** aarch64
+
+| Name | Sym   | Function | Callee | C |    Linux | GMP   |
+|      |       |          | Saved? |   |          | Forth |
+|------+-------+----------+--------+---+----------+-------|
+| X0   |       |          |        |   |        1 |       |
+| X1   |       |          |        |   |        2 |       |
+| X2   |       |          |        |   |        3 |       |
+| X3   |       |          |        |   |        4 |       |
+| X4   |       |          |        |   |        5 |       |
+| X5   |       |          |        |   |        6 |       |
+| X6   |       |          |        |   |        7 |       |
+| X7   |       |          |        |   | callno32 |       |
+| X8   |       |          |        |   |          |       |
+| X9   |       | temp     |        |   |          | A     |
+| X10  |       | temp     |        |   |          | B     |
+| X11  |       | temp     |        |   |          | C     |
+| X12  |       | temp     |        |   |          |       |
+| X13  |       | temp     |        |   |          |       |
+| X14  |       | temp     |        |   |          |       |
+| X15  |       | temp     |        |   |          |       |
+| X16  | IP0   |          |        |   |          |       |
+| X17  | IP1   |          |        |   |          |       |
+| X18  |       | platform |        |   |          |       |
+| X19  |       |          | y      |   |          |       |
+| X20  |       |          | y      |   |          | T     |
+| X21  |       |          | y      |   |          | IP    |
+| X22  |       |          | y      |   |          | RP    |
+| X23  |       |          | y      |   |          | FP    |
+| X24  |       |          | y      |   |          | U     |
+| X25  |       |          | y      |   |          | W     |
+| X26  |       |          | y      |   | callno64 |       |
+| X27  |       |          | y      |   |          |       |
+| X28  |       |          | y      |   |          |       |
+| X29  | FP    | frame    |        |   |          |       |
+| X30  | LR    |          |        |   |          |       |
+| SP   | SP/ZR |          |        |   |          |  SP   |
+| V0   |       | FPU      |        |   |          |  F    |
+
+
+$LINUX/arch/arm64/kernel/entry.S
+$GCC/gcc/config/aarch64/aarch64.h
+
+
+* cris 
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| R0   |     |          |        |   |       |       |
+| R1   |     |          |        |   |       |       |
+| R2   |     |          |        |   |       |       |
+| R3   |     |          |        |   |       |       |
+| R4   |     |          |        |   |       |       |
+| R5   |     |          |        |   |       |       |
+| R6   |     |          |        |   |       |       |
+| R7   |     |          |        |   |       |       |
+| R8   |     |          |        |   |       |       |
+| R9   |     |          |        |   |       |       |
+| R10  |     |          |        |   |       |       |
+| R11  |     |          |        |   |       |       |
+| R12  |     |          |        |   |       |       |
+| R13  |     |          |        |   |       |       |
+| R14  |     |          |        |   |       |       |
+| R15  | PC  |          |        |   |       |       |
+| P5   | 0   |          |        |   |       |       |
+
+* x86
+** i386
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| EAX  |     |          |        |   |       | W     |
+| EBX  |     |          |        |   |       |       |
+| ECX  |     |          |        |   |       |       |
+| EDX  |     |          |        |   |       |       |
+| ESI  |     |          |        |   |       | IP    |
+| EDI  |     |          |        |   |       | U     |
+| ESP  |     |          |        |   |       | SP    |
+| EBP  |     |          |        |   |       | RP    |
+| EIP  |     |          |        |   |       |       |
+
+** x86_64
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| RAX  |     |          |        |   |       | W     |
+| RBX  |     |          |        |   |       |       |
+| RCX  |     |          |        |   |       |       |
+| RDX  |     |          |        |   |       |       |
+| RSI  |     |          |        |   |       | IP    |
+| RDI  |     |          |        |   |       |       |
+| RSP  |     |          |        |   |       | SP    |
+| RBP  |     |          |        |   |       | RP    |
+| RIP  |     |          |        |   |       |       |
+| R8   |     |          |        |   |       |       |
+| R9   |     |          |        |   |       |       |
+| R10  |     |          |        |   |       |       |
+| R11  |     |          |        |   |       |       |
+| R12  |     |          |        |   |       |       |
+| R13  |     |          |        |   |       | U     |
+| R14  |     |          |        |   |       |       |
+| R15  |     |          |        |   |       |       |
+
+* lm32 
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| R0   |     |          |        |   |       |       |
+| R1   |     |          |        |   |       |       |
+| R2   |     |          |        |   |       |       |
+| R3   |     |          |        |   |       |       |
+| R4   |     |          |        |   |       |       |
+| R5   |     |          |        |   |       |       |
+| R6   |     |          |        |   |       |       |
+| R7   |     |          |        |   |       |       |
+| R8   |     |          |        |   |       |       |
+| R9   |     |          |        |   |       |       |
+| R10  |     |          |        |   |       |       |
+| R11  |     |          |        |   |       |       |
+| R12  |     |          |        |   |       |       |
+| R13  |     |          |        |   |       |       |
+| R14  |     |          |        |   |       |       |
+| R15  |     |          |        |   |       |       |
+| R16  |     |          |        |   |       |       |
+| R17  |     |          |        |   |       |       |
+| R18  |     |          |        |   |       |       |
+| R19  |     |          |        |   |       |       |
+| R20  |     |          |        |   |       |       |
+| R21  |     |          |        |   |       |       |
+| R22  |     |          |        |   |       |       |
+| R23  |     |          |        |   |       |       |
+| R24  |     |          |        |   |       |       |
+| R25  |     |          |        |   |       |       |
+| R26  |     |          |        |   |       |       |
+| R27  |     |          |        |   |       |       |
+| R28  |     |          |        |   |       |       |
+| R29  |     |          |        |   |       |       |
+| R30  |     |          |        |   |       |       |
+| R31  |     |          |        |   |       |       |
+
+
+* m68k 
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| D0   |     |          |        |   |       |       |
+| D1   |     |          |        |   |       |       |
+| D2   |     |          |        |   |       |       |
+| D3   |     |          |        |   |       |       |
+| D4   |     |          |        |   |       |       |
+| D5   |     |          |        |   |       |       |
+| D6   |     |          |        |   |       |       |
+| D7   |     |          |        |   |       |       |
+| A0   |     |          |        |   |       |       |
+| A1   |     |          |        |   |       |       |
+| A2   |     |          |        |   |       |       |
+| A3   |     |          |        |   |       |       |
+| A4   |     |          |        |   |       |       |
+| A5   |     |          |        |   |       |       |
+| A6   |     |          |        |   |       |       |
+| A7   |     |          |        |   |       |       |
+
+
+
+* microblaze
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| R0   |     |          |        |   |       |       |
+| R1   |     |          |        |   |       |       |
+| R2   |     |          |        |   |       |       |
+| R3   |     |          |        |   |       |       |
+| R4   |     |          |        |   |       |       |
+| R5   |     |          |        |   |       |       |
+| R6   |     |          |        |   |       |       |
+| R7   |     |          |        |   |       |       |
+| R8   |     |          |        |   |       |       |
+| R9   |     |          |        |   |       |       |
+| R10  |     |          |        |   |       |       |
+| R11  |     |          |        |   |       |       |
+| R12  |     |          |        |   |       |       |
+| R13  |     |          |        |   |       |       |
+| R14  |     |          |        |   |       |       |
+| R15  |     |          |        |   |       |       |
+| R16  |     |          |        |   |       |       |
+| R17  |     |          |        |   |       |       |
+| R18  |     |          |        |   |       |       |
+| R19  |     |          |        |   |       |       |
+| R20  |     |          |        |   |       |       |
+| R21  |     |          |        |   |       |       |
+| R22  |     |          |        |   |       |       |
+| R23  |     |          |        |   |       |       |
+| R24  |     |          |        |   |       |       |
+| R25  |     |          |        |   |       |       |
+| R26  |     |          |        |   |       |       |
+| R27  |     |          |        |   |       |       |
+| R28  |     |          |        |   |       |       |
+| R29  |     |          |        |   |       |       |
+| R30  |     |          |        |   |       |       |
+| R31  |     |          |        |   |       |       |
+
+** be
+** le
+* mips
+
+| Name | Sym  | Function | Callee | C |  Linux | GMP   |
+|      |      |          | Saved? |   |        | Forth |
+|------+------+----------+--------+---+--------+-------|
+| R0   | zero |          |        |   |        |       |
+| R1   | at   |          |        |   |        |       |
+| R2   | v0   |          |        |   | callno |       |
+| R3   | v1   |          |        |   |        |       |
+| R4   | a0   |          |        |   |      1 |       |
+| R5   | a1   |          |        |   |      2 |       |
+| R6   | a2   |          |        |   |      3 |       |
+| R7   | a3   |          |        |   |      4 |       |
+| R8   | t0   |          |        |   |      5 |       |
+| R9   | t1   |          |        |   |      6 |       |
+| R10  | t2   |          |        |   |        |       |
+| R11  | t3   |          |        |   |        |       |
+| R12  | t4   |          |        |   |        |       |
+| R13  | t5   |          |        |   |        |       |
+| R14  | t6   |          |        |   |        | A     |
+| R15  | t7   |          |        |   |        | B     |
+| R16  | t8   |          |        |   |        | C     |
+| R17  | t9   |          |        |   |        | W     |
+| R18  | s0   |          |        |   |        | IP    |
+| R19  | s1   |          |        |   |        | RP    |
+| R20  | s2   |          |        |   |        | FP    |
+| R21  | s3   |          |        |   |        | U     |
+| R22  | s4   |          |        |   |        | T     |
+| R23  | s5   |          |        |   |        |       |
+| R24  | s6   |          |        |   |        |       |
+| R25  | s7   |          |        |   |        |       |
+| R26  | s8   |          |        |   |        |       |
+| R27  | k0   |          |        |   |        |       |
+| R28  | k1   |          |        |   |        |       |
+| R29  | gp   |          |        |   |        |       |
+| R30  | sp   |          |        |   |        | SP    |
+| R31  | ra   |          |        |   |        |       |
+
+linux-3.17.2/arch/mips/kernel/scall*.S  
+host-gcc-final-4.8.3/gcc/config/mips/mips.h
+
+** mips32
+** mips32el
+** mips64
+** mips64el
+* openrisc
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| R0   |     |          |        |   |       |       |
+| R1   |     |          |        |   |       |       |
+| R2   |     |          |        |   |       |       |
+| R3   |     |          |        |   |       |       |
+| R4   |     |          |        |   |       |       |
+| R5   |     |          |        |   |       |       |
+| R6   |     |          |        |   |       |       |
+| R7   |     |          |        |   |       |       |
+| R8   |     |          |        |   |       |       |
+| R9   |     |          |        |   |       |       |
+| R10  |     |          |        |   |       |       |
+| R11  |     |          |        |   |       |       |
+| R12  |     |          |        |   |       |       |
+| R13  |     |          |        |   |       |       |
+| R14  |     |          |        |   |       |       |
+| R15  |     |          |        |   |       |       |
+| R16  |     |          |        |   |       |       |
+| R17  |     |          |        |   |       |       |
+| R18  |     |          |        |   |       |       |
+| R19  |     |          |        |   |       |       |
+| R20  |     |          |        |   |       |       |
+| R21  |     |          |        |   |       |       |
+| R22  |     |          |        |   |       |       |
+| R23  |     |          |        |   |       |       |
+| R24  |     |          |        |   |       |       |
+| R25  |     |          |        |   |       |       |
+| R26  |     |          |        |   |       |       |
+| R27  |     |          |        |   |       |       |
+| R28  |     |          |        |   |       |       |
+| R29  |     |          |        |   |       |       |
+| R30  |     |          |        |   |       |       |
+| R31  |     |          |        |   |       |       |
+
+* ppc 
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| R0   |     |          |        |   |       |       |
+| R1   |     |          |        |   |       |       |
+| R2   |     |          |        |   |       |       |
+| R3   |     |          |        |   |       |       |
+| R4   |     |          |        |   |       |       |
+| R5   |     |          |        |   |       |       |
+| R6   |     |          |        |   |       |       |
+| R7   |     |          |        |   |       |       |
+| R8   |     |          |        |   |       |       |
+| R9   |     |          |        |   |       |       |
+| R10  |     |          |        |   |       |       |
+| R11  |     |          |        |   |       |       |
+| R12  |     |          |        |   |       |       |
+| R13  |     |          |        |   |       |       |
+| R14  |     |          |        |   |       |       |
+| R15  |     |          |        |   |       |       |
+| R16  |     |          |        |   |       |       |
+| R17  |     |          |        |   |       |       |
+| R18  |     |          |        |   |       |       |
+| R19  |     |          |        |   |       |       |
+| R20  |     |          |        |   |       |       |
+| R21  |     |          |        |   |       |       |
+| R22  |     |          |        |   |       |       |
+| R23  |     |          |        |   |       |       |
+| R24  |     |          |        |   |       |       |
+| R25  |     |          |        |   |       |       |
+| R26  |     |          |        |   |       |       |
+| R27  |     |          |        |   |       |       |
+| R28  |     |          |        |   |       |       |
+| R29  |     |          |        |   |       |       |
+| R30  |     |          |        |   |       |       |
+| R31  |     |          |        |   |       |       |
+
+** ppc32
+** ppc64
+** ppcemb
+* sh4
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| R0   |     |          |        |   |       |       |
+| R1   |     |          |        |   |       |       |
+| R2   |     |          |        |   |       |       |
+| R3   |     |          |        |   |       |       |
+| R4   |     |          |        |   |       |       |
+| R5   |     |          |        |   |       |       |
+| R6   |     |          |        |   |       |       |
+| R7   |     |          |        |   |       |       |
+| R8   |     |          |        |   |       |       |
+| R9   |     |          |        |   |       |       |
+| R10  |     |          |        |   |       |       |
+| R11  |     |          |        |   |       |       |
+| R12  |     |          |        |   |       |       |
+| R13  |     |          |        |   |       |       |
+| R14  |     |          |        |   |       |       |
+| R15  |     |          |        |   |       |       |
+
+** sh4
+** sh4eb
+* sparc
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| %g0  |     |          |        |   |       |       |
+| %g1  |     |          |        |   |       |       |
+| %g2  |     |          |        |   |       |       |
+| %g3  |     |          |        |   |       |       |
+| %g4  |     |          |        |   |       |       |
+| %g5  |     |          |        |   |       |       |
+| %g6  |     |          |        |   |       |       |
+| %g7  |     |          |        |   |       |       |
+| %o0  |     |          |        |   |       |       |
+| %o1  |     |          |        |   |       |       |
+| %o2  |     |          |        |   |       |       |
+| %o3  |     |          |        |   |       |       |
+| %o4  |     |          |        |   |       |       |
+| %o5  |     |          |        |   |       |       |
+| %o6  |     |          |        |   |       |       |
+| %o7  |     |          |        |   |       |       |
+| %i0  |     |          |        |   |       |       |
+| %i1  |     |          |        |   |       |       |
+| %i2  |     |          |        |   |       |       |
+| %i3  |     |          |        |   |       |       |
+| %i4  |     |          |        |   |       |       |
+| %i5  |     |          |        |   |       |       |
+| %i6  |     |          |        |   |       |       |
+| %i7  |     |          |        |   |       |       |
+| %l0  |     |          |        |   |       |       |
+| %l1  |     |          |        |   |       |       |
+| %l2  |     |          |        |   |       |       |
+| %l3  |     |          |        |   |       |       |
+| %l4  |     |          |        |   |       |       |
+| %l5  |     |          |        |   |       |       |
+| %l6  |     |          |        |   |       |       |
+| %l7  |     |          |        |   |       |       |
+
+** sparc32
+** sparc64 
+* xtensa
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| A0   |     |          |        |   |       |       |
+| A1   |     |          |        |   |       |       |
+| A2   |     |          |        |   |       |       |
+| A3   |     |          |        |   |       |       |
+| A4   |     |          |        |   |       |       |
+| A5   |     |          |        |   |       |       |
+| A6   |     |          |        |   |       |       |
+| A7   |     |          |        |   |       |       |
+| A8   |     |          |        |   |       |       |
+| A9   |     |          |        |   |       |       |
+| A10  |     |          |        |   |       |       |
+| A11  |     |          |        |   |       |       |
+| A12  |     |          |        |   |       |       |
+| A13  |     |          |        |   |       |       |
+| A14  |     |          |        |   |       |       |
+| A15  |     |          |        |   |       |       |
+
+** xtensa
+** xtensaeb
+* alpha 
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| R0   |     |          |        |   |       |       |
+| R1   |     |          |        |   |       |       |
+| R2   |     |          |        |   |       |       |
+| R3   |     |          |        |   |       |       |
+| R4   |     |          |        |   |       |       |
+| R5   |     |          |        |   |       |       |
+| R6   |     |          |        |   |       |       |
+| R7   |     |          |        |   |       |       |
+| R8   |     |          |        |   |       |       |
+| R9   |     |          |        |   |       |       |
+| R10  |     |          |        |   |       |       |
+| R11  |     |          |        |   |       |       |
+| R12  |     |          |        |   |       |       |
+| R13  |     |          |        |   |       |       |
+| R14  |     |          |        |   |       |       |
+| R15  |     |          |        |   |       |       |
+| R16  |     |          |        |   |       |       |
+| R17  |     |          |        |   |       |       |
+| R18  |     |          |        |   |       |       |
+| R19  |     |          |        |   |       |       |
+| R20  |     |          |        |   |       |       |
+| R21  |     |          |        |   |       |       |
+| R22  |     |          |        |   |       |       |
+| R23  |     |          |        |   |       |       |
+| R24  |     |          |        |   |       |       |
+| R25  |     |          |        |   |       |       |
+| R26  |     |          |        |   |       |       |
+| R27  |     |          |        |   |       |       |
+| R28  |     |          |        |   |       |       |
+| R29  |     |          |        |   |       |       |
+| R30  |     |          |        |   |       |       |
+| R31  |     |          |        |   |       |       |
+
+* s390
+
+%rN 	the 16 general purpose registers, 0 <= N <= 15
+%fN 	the 16 floating point registers, 0 <= N <= 15
+%aN 	the 16 access registers, 0 <= N <= 15
+%cN 	the 16 control registers, 0 <= N <= 15
+%lit 	an alias for the general purpose register %r13
+%sp 	an alias for the general purpose register %r15 
+
+| Name | Sym | Function | Callee | C | Linux | GMP   |
+|      |     |          | Saved? |   |       | Forth |
+|------+-----+----------+--------+---+-------+-------|
+| %r0  |     |          |        |   |       |       |
+| %r1  |     |          |        |   |       |       |
+| %r2  |     |          |        |   |       |       |
+| %r3  |     |          |        |   |       |       |
+| %r4  |     |          |        |   |       |       |
+| %r5  |     |          |        |   |       |       |
+| %r6  |     |          |        |   |       |       |
+| %r7  |     |          |        |   |       |       |
+| %r8  |     |          |        |   |       |       |
+| %r9  |     |          |        |   |       |       |
+| %r10 |     |          |        |   |       |       |
+| %r11 |     |          |        |   |       |       |
+| %r12 |     |          |        |   |       |       |
+| %r13 |     |          |        |   |       |       |
+| %r14 |     |          |        |   |       |       |
+| %r15 |     |          |        |   |       |       |
+| %a0  |     |          |        |   |       |       |
+| %a1  |     |          |        |   |       |       |
+| %a2  |     |          |        |   |       |       |
+| %a3  |     |          |        |   |       |       |
+| %a4  |     |          |        |   |       |       |
+| %a5  |     |          |        |   |       |       |
+| %a6  |     |          |        |   |       |       |
+| %a7  |     |          |        |   |       |       |
+| %a8  |     |          |        |   |       |       |
+| %a9  |     |          |        |   |       |       |
+| %a10 |     |          |        |   |       |       |
+| %a11 |     |          |        |   |       |       |
+| %a12 |     |          |        |   |       |       |
+| %a13 |     |          |        |   |       |       |
+| %a14 |     |          |        |   |       |       |
+| %a15 |     |          |        |   |       |       |
+| %c0  |     |          |        |   |       |       |
+| %c1  |     |          |        |   |       |       |
+| %c2  |     |          |        |   |       |       |
+| %c3  |     |          |        |   |       |       |
+| %c4  |     |          |        |   |       |       |
+| %c5  |     |          |        |   |       |       |
+| %c6  |     |          |        |   |       |       |
+| %c7  |     |          |        |   |       |       |
+| %c8  |     |          |        |   |       |       |
+| %c9  |     |          |        |   |       |       |
+| %c10 |     |          |        |   |       |       |
+| %c11 |     |          |        |   |       |       |
+| %c12 |     |          |        |   |       |       |
+| %c13 |     |          |        |   |       |       |
+| %c14 |     |          |        |   |       |       |
+| %c15 |     |          |        |   |       |       |
+| %f0  |     |          |        |   |       |       |
+| %f1  |     |          |        |   |       |       |
+| %f2  |     |          |        |   |       |       |
+| %f3  |     |          |        |   |       |       |
+| %f4  |     |          |        |   |       |       |
+| %f5  |     |          |        |   |       |       |
+| %f6  |     |          |        |   |       |       |
+| %f7  |     |          |        |   |       |       |
+| %f8  |     |          |        |   |       |       |
+| %f9  |     |          |        |   |       |       |
+| %f10 |     |          |        |   |       |       |
+| %f11 |     |          |        |   |       |       |
+| %f12 |     |          |        |   |       |       |
+| %f13 |     |          |        |   |       |       |
+| %f14 |     |          |        |   |       |       |
+| %f15 |     |          |        |   |       |       |
+
+* mmix
+
+MMIX allows for a relatively simple model, as the large
+register space (256 registers), minimal "OS" interface,
+and assembler model allows using the GMP Forth model
+register names directly (via GREG decls).
+
+| IP | Instruction pointer     |          |
+| RP | Return stack pointer    |          |
+| SP | Parameter Stack pointer |          |
+| W  | Parameter Area pointer  |          |
+| U  | User Area Pointer       |          |
+| T  | Cached TOS of P         | optional |
+| A  | scratch                 |          |
+| B  | scratch                 |          |
+| C  | scratch                 |          |
+
+
+
+MMIX facilitates experimentation with different
+register usage models (pure stack, cached TOS, etc.).
+
+Code Model shorthand
+
+ cPR
+
+   P=number of parameter stack elements cached (0-2)
+   R=number of return stack elements cached (0-2)
+
+ c00 - pure stacks no caching
+ c10 - PTOS cached
+ c11 - PTOS, RTOS cached

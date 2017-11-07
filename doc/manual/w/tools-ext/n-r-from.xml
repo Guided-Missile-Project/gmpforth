@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-ext-n-r-from" role="TOOLS-EXT,C" xreflabel="nr&gt;">
+  <glossterm>
+    <indexterm role="forth"><primary>nr&gt;</primary></indexterm>
+    <cmdsynopsis>
+      <command>nr&gt;</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>i*x</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Retrieve the data most recently pushed on the return stack by
+      <xref linkend="tools-ext-n-to-r"/>. <parameter>n</parameter>
+      is the number of cells retrieved.
+    </para>
+    <para>
+      Behavior is target dependent if the data on the top of the
+      return stack was not placed by
+      <xref linkend="tools-ext-n-to-r"/>. Generally, data from the
+      return stack will be treated as if it was placed there by
+      <xref linkend="tools-ext-n-to-r"/> and one or more items will
+      be popped off the return stack.
+    </para>
+    <example>
+      <title>nr&gt;</title>
+      <screen>
+<userinput>: test save-input n>r s" ' test . " evaluate nr> restore-input ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test 14476<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' test .<keysym>&larrhk;</keysym></userinput> 14476  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,22 @@
+target remote localhost:3000
+display/i $pc
+display/x $x10
+display/x $x11
+display/x $x12
+display/x $x13
+display/x $x14
+display/x $x15
+display/x $x19
+display/x $x20
+display/x $x21
+display/x $x22
+display/x $x23
+display/x $x24
+display/x $x25
+display/x $x30
+display/x $x31
+display/x $cpsr 
+# NZCV highest nibble
+
+
+

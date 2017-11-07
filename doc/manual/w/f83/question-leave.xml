@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-question-leave" role="F83,IC" xreflabel="?leave">
+  <glossterm>
+    <indexterm role="forth"><primary>?leave</primary></indexterm>
+    <cmdsynopsis>
+      <command>?leave</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      If <parameter>n</parameter> is <xref linkend="core-ext-true"/>,
+      transfer control immediately to the end of the enclosing loop as
+      if the loop had reached the termination condition, otherwise
+      continue execution.
+    </para>
+    <para>
+      If there is no enclosing loop, or the loop parameters are
+      unavailable because <xref linkend="core-unloop"/> was called
+      or data was pushed on the return stack, then control will
+      be transferred to an undefined location.
+    </para>
+    <example>
+      <title>?leave</title>
+      <screen>
+<userinput>: test 10 0 do i . i 5 > ?leave ." z" loop ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 0 z1 z2 z3 z4 z5 z6  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

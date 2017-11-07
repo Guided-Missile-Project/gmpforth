@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-does-comma" role="IMPL" xreflabel="(does,)">
+  <glossterm>
+    <indexterm role="forth"><primary>(does,)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(does,)</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Compile target dependent data into the dictionary at
+      <xref linkend="core-here"/> to implement the runtime semantics
+      of <xref linkend="core-does"/>.
+    </para>
+    <example>
+      <title>(does,)</title>
+      <screen>
+vm-le GMP Forth
+<userinput>here (does,) 254 c, 10 dump<keysym>&larrhk;</keysym></userinput>
+    3830  63  0  0  0 FE  0  0  0  0  0  0  0  0  0  0  0  c............... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

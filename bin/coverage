@@ -1,0 +1,242 @@
+#!/usr/bin/env ruby
+#
+# coverage tool
+#
+# merges profile data with disasm output to produce a coverage report
+#
+
+require 'yaml'
+require 'pp'
+
+class Coverage
+
+  def initialize
+    @count = {}
+    @exe = nil
+    @cover = {}
+    @name = nil
+    @wordsize=nil
+    @marker_offset=nil
+    @endcode = false
+    @sym = {}
+    @temperature = {}
+    @instr = {}
+    @op = {}
+    @w_count = {}
+    @calls = {}
+    @code = {}
+    @insn = 0
+    ARGV[0..-1].each { |f| read_stat(f) }
+    profile(@exe)
+  end
+
+  def read_stat(file)
+    File.open(file) { |yf| merge_stat(YAML::load(yf)) }
+  end
+
+  def merge_stat(data)
+    if @exe.nil?
+      @exe = data['argv'][0]
+    elsif @exe != data['argv'][0]
+      raise "executable mismatch"
+    end
+    data.each do |top_key,top_value|
+      next if top_value.nil?
+      case top_key
+      when 'pc_count', 'ip_count'
+        top_value.each do |addr,count|
+          @count[addr] = @count[addr].nil? ? count : (@count[addr] + count)
+        end
+      when 'w_count'
+        top_value.each do |addr,count|
+          @w_count[addr] =
+             @w_count[addr].nil? ? count : (@w_count[addr] + count)
+        end
+      when 'instr'
+        # gfp instrumentation marks
+        top_value.each_key { |k| @instr[k] = true }
+      when 'op'
+        # trace_next marks
+        top_value.each_key { |k| @op[k] = true }
+      end
+    end
+    # consistency check - these values should be the same
+    # raise 'oops' if @stat['op'] != data['op']
+  end
+
+  def process(line)
+    prefix = ' ' * 12
+    case line
+      #             *** arch:i386:x86-64 mach:i386:x86-64 word:64 addr:64
+      #33,34 x86_64
+      #  400150 e8 5b 00 00 00          | callq    4001b0 <_init>
+      #21,22 i386
+      # 80480c0 e8 5b 00 00 | call    8048120 <__trace_block_start_25>
+    when /^\*\*\*\s+arch:\S+\s+mach:\S+\s+word:(\d+)\s+addr:\d+/
+      @wordsize=$1.to_i
+      case @wordsize
+      when 64
+        @marker_offset=33
+      when 32
+        @marker_offset=21
+      else
+        raise "Unsupported wordsize #{wordsize}"
+      end
+    when /^\s*([0-9a-f]+)\s+[0-9a-f]+\s+>\s+(\S+)\s+(\S+)/
+      # code field
+      cfa = $1.to_i(16)
+      defn = $2
+      name = $3
+      raise "dup name #{name}" if !@cover[name].nil?
+      @name = name
+      if defn == 'CODE'
+        @code[name] = cfa
+      end
+      n = @w_count[cfa]
+      if n.nil?
+        prefix = '      ******'
+        n = 0
+      else
+        prefix = '%12d' % n
+      end
+      @cover[@name] = [0,0]
+      # mark reference
+      if @sym[@name].nil?
+        @sym[@name] = 0
+      end
+      @sym[@name] += 1
+      @calls[@name] = n
+    when /^\s*(\h+)\s+(\h+\s+)+(\|)\s+(.+)\s*$/
+      # word may be marked live
+      addr = $1.to_i(16)
+      value = $2
+      marker = $3
+      symname = $4
+      raise "wordsize unknown" if @marker_offset.nil?
+      offset,offset_end = Regexp.last_match.offset(3)
+      if offset == @marker_offset && !@endcode
+        @cover[@name][1] += 1 if !@name.nil?
+        n = @count[addr]
+        if n.nil?
+          prefix = '      ******'
+        else
+          prefix = '%12d' % n
+          if !@name.nil?
+            @cover[@name][0] += 1
+            @temperature[@name] = [
+              @temperature[@name].nil? ? 0 : @temperature[@name],
+              n
+            ].max
+            if !@code[@name].nil?
+              @insn += n
+            end
+          end
+        end
+      else
+        # any other address
+        addr = $1.to_i(16)
+        n = @count[addr]
+        if !n.nil?
+          # line wasn't marked live but was referenced anyway
+          prefix = '!%11d' % n
+#        else
+#          # marker didn't match
+#          prefix = '+%11d' % offset
+        end
+      end
+      # if this address was instrumented, then mark the line
+      if @instr[addr] && @op[addr]
+        prefix[0] = '@'
+      elsif @instr[addr]
+        prefix[0] = '%'
+      elsif @op[addr]
+        prefix[0] = '?'
+      end
+#    else
+#      prefix = '      %%%%%%'
+    when /^\s*<__trace_endcode\w+>:\s*$/
+      # kill coverage analysis after this label as it's expected to be
+      # unexecuted NOPS. If it *is* executed, then indicate that.
+      @endcode = true
+    when /^\s*<\w+>:\s*$/
+      @endcode = false
+    end
+    puts "#{prefix}#{line}"
+  end
+
+  def slurp(fd)
+    while !fd.eof?
+      process(fd.gets.chomp)
+    end
+  end
+
+  def profile(exe)
+    cmd = "profile/disasm #{exe}"
+    if File.exists?("#{exe}.debug")
+      cmd << " #{exe}.debug"
+    end
+    IO.popen(cmd) { |fd| slurp(fd) }
+    coverage_report
+    call_report
+    temperature_report
+  end
+
+  def coverage_report
+    count = 0
+    fully_covered = 0
+    partially_covered = 0
+    not_covered = 0
+    referenceable = 0
+    puts
+    puts "Coverage"
+    puts
+    @cover.sort.each do |name,a|
+      covered,total = a
+      count += 1
+      if total != 0
+        if covered == 0
+          not_covered += 1
+        elsif total == covered
+          fully_covered += 1
+        else
+          partially_covered += 1
+        end
+        cov = ((covered.to_f * 100) / total.to_f)
+        puts "%32s %8.2f%%" % [name,cov]
+      else
+        referenceable += 1
+        ref = @sym[name].nil? ? 0 : 100
+        puts "%32s %8.2f%%" % [ name, ref ]
+      end
+    end
+    puts
+    puts "    fully covered: #{'%4d' % fully_covered}"
+    puts "partially covered: #{'%4d' % partially_covered}"
+    puts "      not covered: #{'%4d' % not_covered}"
+    puts "    referenceable: #{'%4d' % referenceable}"
+    puts "            total: #{'%4d' % count}"
+    puts "mach instructions: #{'%d' % @insn}"
+  end
+
+  def report_inv(title, h)
+    puts
+    puts title
+    puts
+    h.to_a.sort{|x,y| y[1]<=>x[1]}.each do |name,value|
+      puts "%32s %d" % [name,value]
+    end
+  end
+
+  def temperature_report
+    report_inv("Temperature", @temperature)
+  end
+
+  def call_report
+    report_inv("Calls", @calls)
+  end
+
+end
+
+
+
+Coverage.new

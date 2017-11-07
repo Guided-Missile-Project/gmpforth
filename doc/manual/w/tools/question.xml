@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-question" role="TOOLS" xreflabel="?">
+  <glossterm>
+    <indexterm role="forth"><primary>?</primary></indexterm>
+    <cmdsynopsis>
+      <command>?</command>
+      <group role="stack">
+        <arg>a-addr</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display the contents of the cell at <parameter>a-addr</parameter>
+      according to the current base.
+    </para>
+    <para>
+      Because <xref linkend="tools-dot-s"/> is implemented in terms of
+      <xref linkend="core-dot"/>, the pictured numeric output area is
+      modified.
+    </para>
+    <example>
+      <title>?</title>
+      <screen>
+<userinput>base ?<keysym>&larrhk;</keysym></userinput> 10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-compile-comma" role="CORE-EXT" xreflabel="compile,">
+  <glossterm>
+    <indexterm role="forth"><primary>compile,</primary></indexterm>
+    <cmdsynopsis>
+      <command>compile,</command>
+      <group role="stack">
+        <arg>xt</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+<!-- works in compile -->
+    <para>
+      Add <parameter>xt</parameter> to the dictionary at <xref linkend="core-comma"/>.
+    </para>
+    <para>
+      In an Indirect Threaded Interpeter, this word is effectively a
+      synonym for <xref linkend="core-comma"/> and inherits that
+      word's characteristics and limitations.
+    </para>
+    <example>
+      <title>compile,</title>
+      <screen>
+<userinput>: test ." TEST" ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>here ' test compile, @ execute<keysym>&larrhk;</keysym></userinput> TEST ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

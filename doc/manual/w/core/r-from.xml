@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-r-from" role="CORE,C" xreflabel="r&gt;">
+  <glossterm>
+    <indexterm role="forth"><primary>r&gt;</primary></indexterm>
+    <cmdsynopsis>
+      <command>r&gt;</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Pop <parameter>x</parameter> from the top of the return stack.
+    </para>
+    <example>
+      <title>r&gt;</title>
+      <screen>
+<userinput>: +* &gt;r + r&gt; * ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>2 3 4 +* .<keysym>&larrhk;</keysym></userinput> 20  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

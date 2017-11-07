@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-recurse" role="CORE,IC" xreflabel="recurse">
+  <glossterm>
+    <indexterm role="forth"><primary>recurse</primary></indexterm>
+    <cmdsynopsis>
+      <command>recurse</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Recursively call the current definition. If used after
+      <xref linkend="core-does"/> it will call the current definition starting at the
+      beginning.
+    </para>
+    <example>
+      <title>recurse</title>
+      <screen>
+<userinput>: tri dup if dup 1- recurse + then ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>0 tri . 0<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>1 tri . 1<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>2 tri . 3<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>4 tri . 10<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

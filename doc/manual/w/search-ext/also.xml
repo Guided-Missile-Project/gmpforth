@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="search-ext-also" role="SEARCH-EXT" xreflabel="also">
+  <glossterm>
+    <indexterm role="forth"><primary>also</primary></indexterm>
+    <cmdsynopsis>
+      <command>also</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Duplicate the context vocabulary at the beginning of the search
+      order. An exception will be thrown if the maximum number of
+      context vocabularies is exceeded.
+    </para>
+    <example>
+      <title>also</title>
+      <screen>
+<userinput>cr order also cr order<keysym>&larrhk;</keysym></userinput>
+forth / forth
+forth forth / forth ok
+<userinput>also also also also also also also also<keysym>&larrhk;</keysym></userinput> also ? er-49
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

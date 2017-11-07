@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-equals" role="DOUBLE" xreflabel="d=">
+  <glossterm>
+    <indexterm role="forth"><primary>d=</primary></indexterm>
+    <cmdsynopsis>
+      <command>d=</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>--</arg>
+        <arg>flag</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return <xref linkend="core-ext-true"/> if
+      <parameter>u<subscript>1</subscript></parameter>
+      is equal to <parameter>u<subscript>2</subscript></parameter>,
+      otherwise return <xref linkend="core-ext-false"/>.
+    </para>
+    <example>
+      <title>d=</title>
+      <screen>
+<userinput>1. 2. d= .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>1 0 1. d= .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-u-m-slash" role="IMPL" xreflabel="um/">
+  <glossterm>
+    <indexterm role="forth"><primary>um/</primary></indexterm>
+    <cmdsynopsis>
+      <command>um/</command>
+      <group role="stack">
+        <arg>ud</arg>
+        <arg>u1</arg>
+        <arg>--</arg>
+        <arg>u2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Divide double <parameter>ud</parameter> by single
+      <parameter>u<subscript>1</subscript></parameter>, returning the
+      single quotient <parameter>u<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>um/</title>
+      <screen>
+<userinput>10. 2 um/ .<keysym>&larrhk;</keysym></userinput> 5  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

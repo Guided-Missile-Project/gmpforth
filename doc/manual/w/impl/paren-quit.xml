@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-quit" role="IMPL" xreflabel="(quit)">
+  <glossterm>
+    <indexterm role="forth"><primary>(quit)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(quit)</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Reset the input source, interpret the input and print any response.
+    </para>
+    <example>
+      <title>(quit)</title>
+      <screen>
+<userinput>(quit)<keysym>&larrhk;</keysym></userinput>
+<userinput>1<keysym>&larrhk;</keysym></userinput>  ok ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

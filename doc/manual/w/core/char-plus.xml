@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-char-plus" role="CORE" xreflabel="char+">
+  <glossterm>
+    <indexterm role="forth"><primary>char+</primary></indexterm>
+    <cmdsynopsis>
+      <command>char+</command>
+      <group role="stack">
+        <arg>c-addr1</arg>
+        <arg>--</arg>
+        <arg>c-addr2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Add 1 to
+      <parameter>c-addr<subscript>1</subscript></parameter>,
+      returning <parameter>c-addr<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>char+</title>
+      <screen>
+<userinput>here dup . char+ .<keysym>&larrhk;</keysym></userinput> 14520 14521  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

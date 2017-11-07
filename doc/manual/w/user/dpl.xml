@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-dpl" role="USER" xreflabel="dpl">
+  <glossterm>
+    <indexterm role="forth"><primary>dpl</primary></indexterm>
+    <cmdsynopsis>
+      <command>dpl</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+    </para>
+  </glossdef>
+</glossentry>

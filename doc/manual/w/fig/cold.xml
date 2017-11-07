@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="fig-cold" role="FIG" xreflabel="cold">
+  <glossterm>
+    <indexterm role="forth"><primary>cold</primary></indexterm>
+    <cmdsynopsis>
+      <command>cold</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Initialize and execute the outer interpreter.
+    </para>
+    <para>
+      Usually the first word executed by the <application>GMP Forth</application>
+      inner interpreter.
+    </para>
+    <example>
+      <title>cold</title>
+      <screen>
+<userinput>cold<keysym>&larrhk;</keysym></userinput> vm-le GMP Forth
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="file-open-file" role="FILE" xreflabel="open-file">
+  <glossterm>
+    <indexterm role="forth"><primary>open-file</primary></indexterm>
+    <cmdsynopsis>
+      <command>open-file</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>u</arg>
+        <arg>fam</arg>
+        <arg>--</arg>
+        <arg>fd</arg>
+        <arg>ior</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Open the file represented by the string
+      <parameter>c-addr</parameter> <parameter>u</parameter> using
+      file access method <parameter>fam</parameter>. If
+      <parameter>ior</parameter> is zero, then
+      <parameter>fd</parameter> is the file descriptor. If
+      <parameter>ior</parameter> is not zero, then
+      <parameter>fd</parameter> is undefined and
+      <parameter>ior</parameter> is a result code as returned by <xref
+      linkend="impl-paren-ior"/>.
+    </para>
+    <example>
+      <title>open-file</title>
+      <screen>
+<userinput>s" /dev/null" r/o open-file .s<keysym>&larrhk;</keysym></userinput> 3 0  ok
+<userinput>s" /dev/nulX" r/o open-file .s<keysym>&larrhk;</keysym></userinput> -2 -1002  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

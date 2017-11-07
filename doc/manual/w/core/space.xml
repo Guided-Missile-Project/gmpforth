@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-space" role="CORE" xreflabel="space">
+  <glossterm>
+    <indexterm role="forth"><primary>space</primary></indexterm>
+    <cmdsynopsis>
+      <command>space</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display a <xref linkend="core-bl"/> character.
+    </para>
+    <example>
+      <title>space</title>
+      <screen>
+<userinput>64 dup emit space emit<keysym>&larrhk;</keysym></userinput> @ @ ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

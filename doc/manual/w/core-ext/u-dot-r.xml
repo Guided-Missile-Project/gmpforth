@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-u-dot-r" role="CORE-EXT" xreflabel="u.r">
+  <glossterm>
+    <indexterm role="forth"><primary>u.r</primary></indexterm>
+    <cmdsynopsis>
+      <command>u.r</command>
+      <group role="stack">
+        <arg>u</arg>
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display <parameter>n<subscript>1</subscript></parameter> right
+      justified in a field <parameter>n<subscript>2</subscript></parameter>
+      characters wide.
+      If <parameter>n<subscript>1</subscript></parameter>
+      requires more characters than provided by
+      <parameter>n<subscript>2</subscript></parameter>, then
+      all digits of <parameter>n<subscript>1</subscript></parameter>
+      are displayed with no leading spaces.
+    </para>
+    <example>
+      <title>u.r</title>
+      <screen>
+<userinput> 100 12 u.r<keysym>&larrhk;</keysym></userinput>          100 ok
+<userinput>-100 12 u.r<keysym>&larrhk;</keysym></userinput>   4294967196 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

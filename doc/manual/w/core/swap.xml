@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-swap" role="CORE" xreflabel="swap">
+  <glossterm>
+    <indexterm role="forth"><primary>swap</primary></indexterm>
+    <cmdsynopsis>
+      <command>swap</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+        <arg>n1</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Swap the top two elements on the stack.
+    </para>
+    <example>
+      <title>swap</title>
+      <screen>
+<userinput>1 2 swap .s<keysym>&larrhk;</keysym></userinput> 2 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

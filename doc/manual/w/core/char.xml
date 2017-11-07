@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-char" role="CORE" xreflabel="char">
+  <glossterm>
+    <indexterm role="forth"><primary>char</primary></indexterm>
+    <cmdsynopsis>
+      <command>char</command>
+      <group role="stack">
+        <arg>&ldquo;&lt;spaces&gt;name&rdquo;</arg>
+        <arg>--</arg>
+        <arg>c</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Parse <parameter>name</parameter>, returning the first character
+      <parameter>c</parameter>.
+    </para>
+    <example>
+      <title>char</title>
+      <screen>
+<userinput>char Abcde .<keysym>&larrhk;</keysym></userinput> 65  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

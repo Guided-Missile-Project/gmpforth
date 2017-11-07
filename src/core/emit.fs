@@ -1,0 +1,3 @@
+: EMIT ( c -- )
+    (tx!) @ execute ;
+

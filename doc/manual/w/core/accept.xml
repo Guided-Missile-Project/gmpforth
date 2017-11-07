@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-accept" role="CORE" xreflabel="accept">
+  <glossterm>
+    <indexterm role="forth"><primary>accept</primary></indexterm>
+    <cmdsynopsis>
+      <command>accept</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>u1</arg>
+        <arg>--</arg>
+        <arg>u2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Receive a string via <xref linkend="core-key"/> of up to
+      <parameter>u<subscript>1</subscript></parameter> characters.
+      <parameter>u<subscript>2</subscript></parameter> is the number
+      of characters stored in the buffer <parameter>c-addr</parameter>.
+      Each character received (except for those described below) is displayed
+      via <xref linkend="core-emit"/>.
+    </para>
+    <para>
+      Returns when a key corresponding to
+      <xref linkend="impl-paren-char-cr"/> is received. A
+      <xref linkend="core-space"/> is displayed in place of the
+      <xref linkend="impl-paren-char-cr"/> character.
+    </para>
+    <para>
+      If a key corresponding to <xref linkend="impl-paren-char-rub"/> or
+      <xref linkend="impl-paren-char-bs"/> is received, then, if more than
+      one character has been stored, the storage pointer is decremented
+      by one character, and the sequence
+      <xref linkend="impl-paren-char-bs"/>
+      <xref linkend="core-space"/>
+      <xref linkend="impl-paren-char-bs"/>
+      is displayed to erase the character from the screen.
+    </para>
+    <para>
+      No terminal facilities are assumed other then the ability to
+      erase a character from the screen using the sequence described above.
+    </para>
+    <example>
+      <title>accept</title>
+      <screen>
+<userinput>pad 10 accept dup . pad swap dump<keysym>&larrhk;</keysym></userinput> ABCDE 5
+ 804E174  41 42 43 44 45  0  0  0  0  0  0  0  0  0  0  0  ABCDE........... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

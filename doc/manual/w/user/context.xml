@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-context" role="USER" xreflabel="context">
+  <glossterm>
+    <indexterm role="forth"><primary>context</primary></indexterm>
+    <cmdsynopsis>
+      <command>context</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A variable containing the <parameter>wid</parameter> of the first
+      wordlist to be searched. Subsequent wordlists to be searched are
+      in the cells following <xref linkend="user-context"/> up to the
+      cell before <xref linkend="user-current"/>.
+    </para>
+    <example>
+      <title>context</title>
+      <screen>
+<userinput>context @ ' forth >body = .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

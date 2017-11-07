@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+#
+# Generate w/<wordset>/schemas.xml
+#
+
+require "pp"
+
+ws = {}
+
+ARGV.each do |path|
+  base = File.basename(path)
+  dir = File.dirname(path)
+  next if base == 'schemas.xml'
+  if ws[dir].nil?
+    ws[dir] = []
+  end
+  ws[dir] << base
+end
+ws.each do |path,files|
+  File.open("#{path}/schemas.xml", 'w+') do |f|
+    f.puts '<?xml version="1.0"?>'
+    f.puts '<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">'
+    files.sort.each { |file| f.puts "  <uri resource=\"#{file}\" typeId=\"DocBook\"/>" }
+    f.puts '</locatingRules>'
+  end
+end

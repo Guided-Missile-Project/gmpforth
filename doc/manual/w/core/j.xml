@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-j" role="CORE,C" xreflabel="j">
+  <glossterm>
+    <indexterm role="forth"><primary>j</primary></indexterm>
+    <cmdsynopsis>
+      <command>j</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>x</parameter> is the value of the next outer loop index.
+    </para>
+    <para>
+      If this word is used outside of a <xref linkend="core-do"/>
+      <xref linkend="core-loop"/> control structure, the
+      value is undefined.
+    </para>
+    <example>
+      <title>j</title>
+      <screen>
+<userinput>: test cr 4 0 do ." (" 2 0 do i . j . loop ." )" loop ; test<keysym>&larrhk;</keysym></userinput>
+(0 0 1 0 )(0 1 1 1 )(0 2 1 2 )(0 3 1 3 ) ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

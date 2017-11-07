@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-align" role="IMPL" xreflabel="(error-align)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-align)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-align)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>address alignment exception</quote>.
+    </para>
+    <example>
+      <title>(error-align)</title>
+      <screen>
+<userinput>(error-align) .<keysym>&larrhk;</keysym></userinput> -23  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

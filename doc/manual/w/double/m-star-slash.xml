@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-m-star-slash" role="DOUBLE" xreflabel="m*/">
+  <glossterm>
+    <indexterm role="forth"><primary>m*/</primary></indexterm>
+    <cmdsynopsis>
+      <command>m*/</command>
+      <group role="stack">
+        <arg>d1</arg>
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+        <arg>d2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Multiply <parameter>d<subscript>1</subscript></parameter> by
+      <parameter>n<subscript>1</subscript></parameter>, then divide
+      the intermediate triple cell product by
+      <parameter>n<subscript>2</subscript></parameter>, returning
+      the double quotient <parameter>d<subscript>2</subscript></parameter>.
+    </para>
+    <para>
+      The result is undefined and target dependent if
+      <parameter>n<subscript>2</subscript></parameter> is less than
+      or equal to zero, or the quotient
+      <parameter>d<subscript>2</subscript></parameter> is out of range.
+    </para>
+    <example>
+      <title>m*/</title>
+      <screen>
+<userinput>100000000000000000. 314159265 1000000000 m*/ d.<keysym>&larrhk;</keysym></userinput> 31415926500000000  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

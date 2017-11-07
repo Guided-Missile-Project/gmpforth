@@ -1,0 +1,23 @@
+target remote localhost:3000
+display/i $pc
+display/x $s0
+display/x $s1
+display/x $s2
+display/x $s3
+display/x $s4
+display/x $s5
+display/x $s6
+display/x $s7
+display/x $s8
+display/x $t0
+display/x $t1
+display/x $t2
+display/x $t3
+display/x $t8
+display/x $t9
+display/x $gp
+display/x $sp
+display/x $ra
+
+
+

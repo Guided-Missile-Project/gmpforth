@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-plus-loop" role="CORE,IC" xreflabel="+loop">
+  <glossterm>
+    <indexterm role="forth"><primary>+loop</primary></indexterm>
+    <cmdsynopsis>
+      <command>+loop</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>do-sys</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile <xref linkend="impl-paren-plus-loop"/> with a target address of
+            <parameter>do-sys</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>n</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Add <parameter>n</parameter> to the loop index and branch to the
+            beginning of the loop if the loop limit is not exceeded.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>
+      If the loop parameters are unavailable, then <xref linkend="core-plus-loop"/>
+      will just cause chaos by using whatever is on the return stack as the
+      loop parameters.
+    </para>
+    <example>
+      <title>+loop</title>
+      <screen>
+<userinput>: test 10 0 do i . 3 +loop ; test<keysym>&larrhk;</keysym></userinput> 0 3 6 9  ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="core-do"/>
+    <glossseealso otherterm="core-ext-question-do"/>
+    <glossseealso otherterm="core-leave"/>
+    <glossseealso otherterm="core-i"/>
+    <glossseealso otherterm="core-j"/>
+    -->
+  </glossdef>
+</glossentry>

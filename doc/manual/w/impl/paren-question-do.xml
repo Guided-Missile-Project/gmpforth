@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-question-do" role="IMPL,C" xreflabel="(?do)">
+  <glossterm>
+    <indexterm role="forth"><primary>(?do)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(?do)</command>
+      <group role="stack">
+        <!-- not happy with u|n, leaving with n for now  -->
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      If the loop index
+      <parameter>n<subscript>1</subscript></parameter> equals the loop
+      limit <parameter>n<subscript>2</subscript></parameter>, branch
+      to the address contained in the cell immediately following the
+      current IP. Otherwise, begin a loop sequence with the given loop
+      limit and loop index starting with the
+      word in the second cell immediately following the current IP.
+    </para>
+    <para>
+      This word is used by <xref linkend="core-ext-question-do"/> to
+      implement <xref linkend="core-ext-question-do"/> semantics.
+    </para>
+  </glossdef>
+</glossentry>

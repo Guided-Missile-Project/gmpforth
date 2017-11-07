@@ -1,0 +1,1 @@
+-66 CONSTANT (error-FILE-SIZE)          \ FILE-SIZE

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-word" role="IMPL,C" xreflabel="(word)">
+  <glossterm>
+    <indexterm role="forth"><primary>(word)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(word)</command>
+      <group role="stack">
+        <arg>xt</arg>
+        <arg>n1</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Compile or interpret <parameter>xt</parameter> and associated
+      lex byte <parameter>n<subscript>1</subscript></parameter>. If
+      <xref linkend="user-state"/> is non-zero, and the lex byte
+      <parameter>n<subscript>1</subscript></parameter> does not
+      indicate that <parameter>xt</parameter> is <xref
+      linkend="core-immediate"/>, compile <parameter>xt</parameter>,
+      otherwise execute <parameter>xt</parameter>. If <xref
+      linkend="user-state"/> is zero and the lex byte
+      <parameter>n<subscript>1</subscript></parameter> does not
+      indicate that <parameter>xt</parameter> is <xref
+      linkend="impl-compile-only"/>, execute
+      <parameter>xt</parameter>.
+    </para>
+    <para>
+      Return zero if the lex byte
+      <parameter>n<subscript>1</subscript></parameter> was appropriate
+      for the operation requested, otherwise return an appropriate
+      throw code. If <parameter>xt</parameter> raises an exception
+      itself, that exception is thrown normally; any throw codes from
+      this word are only as a result of
+      <parameter>n<subscript>1</subscript></parameter> checking.
+    </para>
+    <example>
+      <title>(word)</title>
+      <screen>
+<userinput>: test ['] .s 0 (word) ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput>test 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

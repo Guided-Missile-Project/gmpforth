@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-base" role="CORE" xreflabel="base">
+  <glossterm>
+    <indexterm role="forth"><primary>base</primary></indexterm>
+     <!-- implemented as a USER variable, but is a CORE word  -->
+    <cmdsynopsis>
+      <command>base</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable that contains the current numeric base.
+    </para>
+    <example>
+      <title>base</title>
+      <screen>
+<userinput>hex ffff 8 base ! .<keysym>&larrhk;</keysym></userinput> 177777  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

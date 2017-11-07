@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-paren-rx-question" role="USER" xreflabel="(rx?)">
+  <glossterm>
+    <indexterm role="forth"><primary>(rx?)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(rx?)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable containing the <parameter>xt</parameter> of the
+      console input test function.
+    </para>
+    <para>
+      This must be paired with the corresponding
+      <xref linkend="user-paren-rx-fetch"/> function.
+    </para>
+    <example>
+      <title>(rx?)</title>
+      <screen>
+<userinput>(rx?) @ .name<keysym>&larrhk;</keysym></userinput> (urx?) ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

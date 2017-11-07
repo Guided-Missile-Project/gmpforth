@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+#
+# gmpfc: GMP Forth compiler
+#
+#
+
+require 'optparse'
+require 'gmpforth'
+require 'gmpforth/cli'
+
+c = GMPForth::CLI.cli
+exit(c) if c.is_a? Numeric

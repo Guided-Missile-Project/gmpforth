@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-parse" role="CORE-EXT" xreflabel="parse">
+  <glossterm>
+    <indexterm role="forth"><primary>parse</primary></indexterm>
+    <cmdsynopsis>
+      <command>parse</command>
+      <group role="stack">
+        <arg>char</arg>
+        <arg>&ldquo;ccc&lt;char&gt;&rdquo;</arg>
+        <arg>--</arg>
+        <arg>c-addr</arg>
+        <arg>len</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Parse the input stream up to and including the delimiter character
+      <parameter>char</parameter>, returning the string
+      <parameter>c-addr</parameter> <parameter>len</parameter>.
+    </para>
+    <para>
+      If <parameter>char</parameter> is positive, then
+      <parameter>char</parameter> is matched exactly. If
+      <parameter>char</parameter> is negative, then any character
+      found that has an <acronym>ASCII </acronym> value less than or
+      equal to <parameter>-char</parameter> (that is, the positive
+      value of <parameter>char</parameter>) will match. This is used
+      to allow any control character including <xref
+      linkend='core-bl'/> to be matched with <command>parse</command>
+      with the phrase <command>bl negate parse</command>.
+    </para>
+    <para>
+      As a non-standard extension, <command>parse-name</command> will
+      set the value of <xref linkend="user-to-in-minus"/> to the
+      offset of the beginning of the word being parsed.
+    </para>
+    <para>
+      An exception with throw-code -256 will be raised if <xref
+      linkend='user-to-in'/> is less than zero or greater than the
+      size of the input buffer being parsed.
+    </para>
+    <example>
+      <title>parse</title>
+      <screen>
+<userinput>: ?dump ?dup if dump else drop ." empty " then ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: get{ [char] } parse ?dump ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>get{ }<keysym>&larrhk;</keysym></userinput> empty  ok
+<userinput>get{ 123}<keysym>&larrhk;</keysym></userinput>
+    3685  31 32 33 7D 68 61 72 5D 20 7D 20 70 61 72 73 65  123}har] } parse ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

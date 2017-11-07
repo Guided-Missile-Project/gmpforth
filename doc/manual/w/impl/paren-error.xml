@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error" role="IMPL" xreflabel="(error)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error)</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      If <parameter>n</parameter> is non-zero, and <xref
+      linkend="user-paren-abort-quote-dollar"/> is non-zero, set <xref
+      linkend="user-paren-abort-quote-dollar"/> to point to the most recent
+      name parsed by <xref linkend="core-ext-parse-name"/>.
+    </para>
+    <para>
+      This allows a parsed name associated with an exception to be
+      preserved so it can be displayed by the outermost text
+      interpreter, even if the parsed name is associated with a
+      transient memory region.
+    </para>
+    <example>
+      <title>(error)</title>
+      <screen>
+<userinput>-3 (error) (abort"$) @ count dump<keysym>&larrhk;</keysym></userinput>
+    4509  28 65 72 72 6F 72 29 20 3F 20  0  0  0  0  0  0  (error) ? ...... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

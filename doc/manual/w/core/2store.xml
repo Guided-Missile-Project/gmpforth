@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-2store" role="CORE" xreflabel="2!">
+  <glossterm>
+    <indexterm role="forth"><primary>2!</primary></indexterm>
+    <cmdsynopsis>
+      <command>2!</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>a-addr</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Store <parameter>x<subscript>2</subscript></parameter> at the address
+      <parameter>a-addr</parameter> and
+      <parameter>x<subscript>1</subscript></parameter> in the following cell.
+      Some targets may act exceptionally
+      if <parameter>a-addr</parameter> is not aligned.
+    </para>
+    <example>
+      <title>2!</title>
+      <screen>
+<userinput>1 2 pad 2!<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>pad ?<keysym>&larrhk;</keysym></userinput> 2  ok
+<userinput>pad cell+ ?<keysym>&larrhk;</keysym></userinput> 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

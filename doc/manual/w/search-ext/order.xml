@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="search-ext-order" role="SEARCH-EXT" xreflabel="order">
+  <glossterm>
+    <indexterm role="forth"><primary>order</primary></indexterm>
+    <cmdsynopsis>
+      <command>order</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display the context search order and current wordlist. The
+      context list is displayed first, in search order, followed by a
+      slash, and then the current wordlist.
+    </para>
+    <example>
+      <title>order</title>
+      <screen>
+<userinput>order<keysym>&larrhk;</keysym></userinput> forth / forth ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

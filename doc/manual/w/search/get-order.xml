@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="search-get-order" role="SEARCH" xreflabel="get-order">
+  <glossterm>
+    <indexterm role="forth"><primary>get-order</primary></indexterm>
+    <cmdsynopsis>
+      <command>get-order</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+        <arg>wid1</arg>
+        <arg>wid-n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Get the context search order.
+    </para>
+    <example>
+      <title>get-order</title>
+      <screen>
+<userinput>getorder . .wid<keysym>&larrhk;</keysym></userinput> 1 forth ok
+     </screen>
+    </example>
+  </glossdef>
+</glossentry>

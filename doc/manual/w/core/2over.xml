@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-2over" role="CORE" xreflabel="2over">
+  <glossterm>
+    <indexterm role="forth"><primary>2over</primary></indexterm>
+    <cmdsynopsis>
+      <command>2over</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>x3</arg>
+        <arg>x4</arg>
+        <arg>--</arg>
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>x3</arg>
+        <arg>x4</arg>
+        <arg>x1</arg>
+        <arg>x2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Copy <parameter>x<subscript>1</subscript></parameter> and
+      <parameter>x<subscript>2</subscript></parameter> to the top
+      of the data stack.
+    </para>
+    <example>
+      <title>2over</title>
+      <screen>
+<userinput>1 2 3 4 2over .s<keysym>&larrhk;</keysym></userinput> 1 2 3 4 1 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

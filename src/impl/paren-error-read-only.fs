@@ -1,0 +1,1 @@
+-20 CONSTANT (error-read-only)          \ write to a read-only location

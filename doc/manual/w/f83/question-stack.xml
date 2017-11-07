@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-question-stack" role="F83" xreflabel="?stack">
+  <glossterm>
+    <indexterm role="forth"><primary>?stack</primary></indexterm>
+    <cmdsynopsis>
+      <command>?stack</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      If the current stack pointer has underflowed the parameter stack
+      bounds, throw <xref linkend="impl-paren-error-stack-u"/>. If the
+      current stack pointer has overflowed the parameter stack bounds,
+      throw <xref linkend="impl-paren-error-stack-o"/>. If the current
+      stack pointer is within the parameter stack bounds, continue
+      execution.
+    </para>
+    <para>
+      Targets that check stack bounds within the machine model will implement
+      this word as a no-op.
+    </para>
+    <example>
+      <title>?stack</title>
+      <screen>
+<userinput>drop ?stack<keysym>&larrhk;</keysym></userinput> ?stack ? er-4
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-no-name" role="IMPL" xreflabel="(error-no-name)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-no-name)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-no-name)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>attempt to use zero-length string as a name</quote>.
+    </para>
+    <example>
+      <title>(error-no-name)</title>
+      <screen>
+<userinput>(error-no-name) .<keysym>&larrhk;</keysym></userinput> -16 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

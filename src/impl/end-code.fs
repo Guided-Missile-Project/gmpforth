@@ -1,0 +1,2 @@
+: END-CODE ( -- ) smudge ;
+

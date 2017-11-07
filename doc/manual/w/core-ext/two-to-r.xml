@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-two-to-r" role="CORE-EXT,C" xreflabel="2&gt;r">
+  <glossterm>
+    <indexterm role="forth"><primary>2&gt;r</primary></indexterm>
+    <cmdsynopsis>
+      <command>2&gt;r</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>--</arg>
+      </group>
+      <group role="stack">
+        <arg>R:</arg>
+        <arg>--</arg>
+        <arg>x1</arg>
+        <arg>x2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Move <parameter>x<subscript>1</subscript></parameter> and
+      <parameter>x<subscript>2</subscript></parameter> from the
+      data stack to the return stack.
+    </para>
+    <example>
+      <title>2&gt;r</title>
+      <screen>
+<userinput>: test 1 2 3 2&gt;r 1+ 2r&gt; .s ; test<keysym>&larrhk;</keysym></userinput> 2 2 3  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

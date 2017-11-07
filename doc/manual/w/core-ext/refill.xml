@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-refill" role="CORE-EXT" xreflabel="refill">
+  <glossterm>
+    <indexterm role="forth"><primary>refill</primary></indexterm>
+    <cmdsynopsis>
+      <command>refill</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>flag</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Fill the input buffer via <xref linkend="core-accept"/>
+      if <xref linkend="core-ext-source-id"/> is greater than or equal to zero,
+      returning <xref linkend="core-ext-true"/> if the input source
+      was available, in which case the input accepted is available via
+      <xref linkend="core-source"/>, or <xref linkend="core-ext-false"/>
+      if the input source was not available.
+    </para>
+    <example>
+      <title>refill</title>
+      <screen>
+<userinput>refill<keysym>&larrhk;</keysym></userinput> 
+<userinput>123<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>.s<keysym>&larrhk;</keysym></userinput> -1 123  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

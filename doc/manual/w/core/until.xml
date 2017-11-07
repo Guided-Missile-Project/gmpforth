@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-until" role="CORE,IC" xreflabel="until">
+  <glossterm>
+    <indexterm role="forth"><primary>until</primary></indexterm>
+    <cmdsynopsis>
+      <command>until</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>dest</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile <xref linkend="impl-paren-zero-branch"/> followed by
+            <parameter>dest</parameter>.
+            <parameter>dest</parameter>
+            is generally supplied by <xref linkend="core-begin"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>x --</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Branch to <parameter>dest</parameter> if
+            <parameter>x</parameter> is zero. Generally,
+            <parameter>dest</parameter> is
+            the beginning of a <xref linkend="core-begin"/>
+            <xref linkend="core-until"/> loop.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>until</title>
+      <screen>
+<userinput>: test 0 begin dup . 1+ dup 5 > until drop ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 0 1 2 3 4 5  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

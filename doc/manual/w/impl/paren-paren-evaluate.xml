@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-paren-evaluate" role="IMPL" xreflabel="((evaluate))">
+  <glossterm>
+    <indexterm role="forth"><primary>((evaluate))</primary></indexterm>
+    <cmdsynopsis>
+      <command>((evaluate))</command>
+      <group role="stack">
+        <arg>...</arg>
+        <arg>xt</arg>
+        <arg>--</arg>
+        <arg>...</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Save the current input, execute <parameter>xt</parameter>, which may
+also accept additional arguments on the stack. Evaluate the resultant
+input stream until the input stream is exhausted, and then restore the
+original input stream. Any exceptions thrown during setup or
+evaluation will be rethrown after the original input stream is
+restored.
+    </para>
+    <example>
+      <title>((evaluate))</title>
+      <screen>
+<userinput>1 1 s" + ." ' ($evaluate) ((evaluate))<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

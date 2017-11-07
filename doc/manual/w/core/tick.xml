@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-tick" role="CORE" xreflabel="'">
+  <glossterm>
+    <indexterm role="forth"><primary>'</primary></indexterm>
+    <cmdsynopsis>
+      <command>'</command>
+      <group role="stack">
+        <arg>&ldquo;&lt;spaces&gt;name&rdquo;</arg>
+        <arg>--</arg>
+        <arg>xt</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Parse <parameter>name</parameter> from the input stream and
+      attempt to find <parameter>name</parameter> in the dictionary.
+      Return the execution token of
+      <parameter>name</parameter> if it was found, otherwise
+      throw a <xref linkend="impl-paren-error-undef"/> exception.
+    </para>
+    <example>
+      <title>'</title>
+      <screen>
+<userinput>' gmpforth .<keysym>&larrhk;</keysym></userinput> 4784  ok
+<userinput>' gmpforth execute<keysym>&larrhk;</keysym></userinput> vm-le GMP Forth ok
+<userinput>' foo .<keysym>&larrhk;</keysym></userinput> foo ? er-13
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

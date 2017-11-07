@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-char-bs" role="IMPL" xreflabel="(=bs)">
+  <glossterm>
+    <indexterm role="forth"><primary>(=bs)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(=bs)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the <acronym>ASCII</acronym> backspace
+      character BS.
+    </para>
+    <example>
+      <title>(=bs)</title>
+      <screen>
+<userinput>(=bs) .<keysym>&larrhk;</keysym></userinput> 8  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

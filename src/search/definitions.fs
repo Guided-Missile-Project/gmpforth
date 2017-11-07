@@ -1,0 +1,2 @@
+: DEFINITIONS ( -- )
+   context @ set-current ;

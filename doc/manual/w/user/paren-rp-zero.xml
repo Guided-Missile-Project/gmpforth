@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-paren-rp-zero" role="USER" xreflabel="(rp0)">
+  <glossterm>
+    <indexterm role="forth"><primary>(rp0)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(rp0)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable containing the base of the return stack.
+    </para>
+    <para>
+      This is undefined or may be unavailable for target implementations
+      where the return stack is not directly addressable.
+    </para>
+  </glossdef>
+</glossentry>

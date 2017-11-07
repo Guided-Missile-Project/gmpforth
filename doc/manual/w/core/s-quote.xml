@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-s-quote" role="CORE,I" xreflabel="s&quot;">
+  <glossterm>
+    <indexterm role="forth"><primary>s"</primary></indexterm>
+    <cmdsynopsis>
+      <command>s"</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;ccc&lt;quote&gt;&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Parse the input stream up to the next double quote
+            character, then compile <xref linkend="impl-paren-s-quote"/>
+            followed by the parsed string. The string must be less than
+            256 characters long.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>c-addr</arg>
+              <arg>len</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return the address and length of the compiled string literal.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>c-addr</arg>
+              <arg>len</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            As a non-standard extension, return the address and length
+            of an interpreted string literal. Multiple string literals
+            are allowed in a single input line.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>s"</title>
+      <screen>
+<userinput>s" abc" s" def" type type<keysym>&larrhk;</keysym></userinput> defabc ok
+<userinput>: test s" string literal" type ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> string literal ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

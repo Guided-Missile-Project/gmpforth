@@ -1,0 +1,2 @@
+: [COMPILE]
+   ' compile, ; immediate

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section>
+  <title/>
+  <para>
+    All <application>GMP Forth</application> words are described in
+    the following section. Not all words are available for all
+    targets; some words may have multiple implementations providing
+    different levels of functionality.
+  </para>
+  <para>
+    Each glossary entry contains the name of the Forth word, the
+    stack effect of the word, indications if it is immediate or compile-only,
+    and the wordset that contains the word.
+  </para>
+  <table frame='none'>
+    <title>Stack Diagram Data Types</title>
+    <tgroup cols='3' align='left'>
+      <colspec colname='c1' colwidth="1in"/>
+      <colspec colname='c2' colwidth="3in"/>
+      <colspec colname='c3' colwidth="0.5in"/>
+      <thead>
+        <row>
+          <entry>Symbol</entry>
+          <entry>Description</entry>
+          <entry>#Cells</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry><parameter>flag</parameter></entry>
+          <entry>
+            <xref linkend="core-ext-true"/> or <xref linkend="core-ext-false"/>
+          </entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>true</parameter></entry>
+          <entry><xref linkend="core-ext-true"/> value</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>false</parameter></entry>
+          <entry><xref linkend="core-ext-false"/> value</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>char</parameter></entry>
+          <entry>character value</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>n</parameter></entry>
+          <entry>signed numeric value</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>+n</parameter></entry>
+          <entry>non-negative numeric value</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>u</parameter></entry>
+          <entry>unsigned numeric value</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>u|n</parameter></entry>
+          <entry>unsigned or signed numeric value</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>x</parameter></entry>
+          <entry>unsigned or signed numeric value</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>xt</parameter></entry>
+          <entry>execution token</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>addr</parameter></entry>
+          <entry>unaligned memory address</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>a-addr</parameter></entry>
+          <entry>aligned memory address</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>c-addr</parameter></entry>
+          <entry>character aligned memory address</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>d</parameter></entry>
+          <entry>signed double numeric value</entry>
+          <entry>2</entry>
+        </row>
+        <row>
+          <entry><parameter>+d</parameter></entry>
+          <entry>non-negative double numeric value</entry>
+          <entry>2</entry>
+        </row>
+        <row>
+          <entry><parameter>ud</parameter></entry>
+          <entry>unsigned double numeric value</entry>
+          <entry>2</entry>
+        </row>
+        <row>
+          <entry><parameter>ut</parameter></entry>
+          <entry>unsigned triple numeric value</entry>
+          <entry>3</entry>
+        </row>
+        <row>
+          <entry><parameter>d|ud</parameter></entry>
+          <entry>signed or unsigned double numeric value</entry>
+          <entry>2</entry>
+        </row>
+        <row>
+          <entry><parameter>xd</parameter></entry>
+          <entry>signed or unsigned pair of single numeric values</entry>
+          <entry>2</entry>
+        </row>
+        <row>
+          <entry><parameter>colon-sys</parameter></entry>
+          <entry>colon definition address reference</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>do-sys</parameter></entry>
+          <entry>do-loop structure address reference</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>case-sys</parameter></entry>
+          <entry>case-endcase structure address reference</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>of-sys</parameter></entry>
+          <entry>of-endof structure address reference</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>orig</parameter></entry>
+          <entry>control flow origin address</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>dest</parameter></entry>
+          <entry>control flow destination address</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>loop-sys</parameter></entry>
+          <entry>loop control parameters</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>nest-sys</parameter></entry>
+          <entry>definitions cells FIXME: huh?</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>wid</parameter></entry>
+          <entry>wordlist identifier</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>nfa</parameter></entry>
+          <entry>name field address</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>lfa</parameter></entry>
+          <entry>link field address</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>cfa</parameter></entry>
+          <entry>code field address (xt)</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>pfa</parameter></entry>
+          <entry>parameter field address</entry>
+          <entry>1</entry>
+        </row>
+        <row>
+          <entry><parameter>i*x</parameter></entry>
+          <entry>variable number of any type</entry>
+          <entry>0..n</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</section>

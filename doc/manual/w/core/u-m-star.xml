@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-u-m-star" role="CORE" xreflabel="um*">
+  <glossterm>
+    <indexterm role="forth"><primary>um*</primary></indexterm>
+    <cmdsynopsis>
+      <command>um*</command>
+      <group role="stack">
+        <arg>u1</arg>
+        <arg>u2</arg>
+        <arg>--</arg>
+        <arg>ud</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Multiply <parameter>u<subscript>1</subscript></parameter> by
+      <parameter>u<subscript>2</subscript></parameter>, returning
+      the unsigned double product
+      <parameter>ud</parameter>.
+    </para>
+    <example>
+      <title>um*</title>
+      <screen>
+<userinput>4 7 um* d.<keysym>&larrhk;</keysym></userinput> 28  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

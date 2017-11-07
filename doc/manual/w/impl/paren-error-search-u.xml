@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-search-u" role="IMPL" xreflabel="(error-search-u)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-search-u)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-search-u)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>search-order underflow</quote>.
+    </para>
+    <example>
+      <title>(error-search-u)</title>
+      <screen>
+<userinput>(error-search-u) .<keysym>&larrhk;</keysym></userinput> -50 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

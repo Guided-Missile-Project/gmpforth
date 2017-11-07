@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-dot-wid" role="IMPL" xreflabel=".wid">
+  <glossterm>
+    <indexterm role="forth"><primary>.wid</primary></indexterm>
+    <cmdsynopsis>
+      <command>.wid</command>
+      <group role="stack">
+        <arg>wid</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display the <xref linkend='f83-vocabulary'/> name of
+      <parameter>wid</parameter>.
+    </para>
+    <example>
+      <title>.wid</title>
+      <screen>
+<userinput>' forth >body .wid<keysym>&larrhk;</keysym></userinput> forth ok
+<userinput>wordlist .wid<keysym>&larrhk;</keysym></userinput> 134535164  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

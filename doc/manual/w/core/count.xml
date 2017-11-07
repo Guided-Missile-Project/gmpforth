@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-count" role="CORE" xreflabel="count">
+  <glossterm>
+    <indexterm role="forth"><primary>count</primary></indexterm>
+    <cmdsynopsis>
+      <command>count</command>
+      <group role="stack">
+        <arg>c-addr1</arg>
+        <arg>--</arg>
+        <arg>c-addr2</arg>
+        <arg>u</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      From the counted string
+      <parameter>c-addr<subscript>1</subscript></parameter>
+      return the address of the first character as
+      <parameter>c-addr<subscript>2</subscript></parameter>
+      and the count <parameter>u</parameter>.
+    </para>
+    <example>
+      <title>count</title>
+      <screen>
+<userinput>s" abc" dup pad c! pad 1+ swap cmove pad 10 dump<keysym>&larrhk;</keysym></userinput>
+    38C0   3 61 62 63  0  0  0  0  0  0  0  0  0  0  0  0  .abc............ ok
+<userinput>pad count . .<keysym>&larrhk;</keysym></userinput> 3 38C1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

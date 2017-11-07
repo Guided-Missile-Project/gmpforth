@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-u-t-star" role="IMPL" xreflabel="ut*">
+  <glossterm>
+    <indexterm role="forth"><primary>ut*</primary></indexterm>
+    <cmdsynopsis>
+      <command>ut*</command>
+      <group role="stack">
+        <arg>ud</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+        <arg>ut</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Multiply <parameter>ud</parameter> by
+      <parameter>u</parameter>, returning
+      the unsigned triple product
+      <parameter>ut</parameter>.
+    </para>
+    <example>
+      <title>ut*</title>
+      <screen>
+<userinput>4. 7 ut* .s<keysym>&larrhk;</keysym></userinput> 28 0 0 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

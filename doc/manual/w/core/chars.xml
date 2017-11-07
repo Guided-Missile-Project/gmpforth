@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-chars" role="CORE,I" xreflabel="chars">
+  <glossterm>
+    <indexterm role="forth"><primary>chars</primary></indexterm>
+    <cmdsynopsis>
+      <command>chars</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the number of address units in
+      <parameter>n<subscript>1</subscript></parameter> characters.
+    </para>
+     <example>
+      <title>chars</title>
+      <screen>
+<userinput>5 chars .<keysym>&larrhk;</keysym></userinput> 5  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

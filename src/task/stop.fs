@@ -1,0 +1,1 @@
+: STOP (task) sleep pause ;

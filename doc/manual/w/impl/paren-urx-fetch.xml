@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-urx-fetch" role="IMPL" xreflabel="(urx@)">
+  <glossterm>
+    <indexterm role="forth"><primary>(urx@)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(urx@)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>c</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return a character from the console. This will block if a
+      character is not ready to be received.
+    </para>
+    <example>
+      <title>(urx@)</title>
+      <screen>
+<userinput>(urx@) .<keysym>&larrhk;</keysym>A</userinput> 65  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

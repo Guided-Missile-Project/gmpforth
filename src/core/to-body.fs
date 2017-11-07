@@ -1,0 +1,2 @@
+: >BODY ( xt -- a )
+    cell+ ;

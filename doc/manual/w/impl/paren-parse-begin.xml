@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-parse-begin" role="IMPL" xreflabel="(parse-begin)">
+  <glossterm>
+    <indexterm role="forth"><primary>(parse-begin)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(parse-begin)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>c-addr</arg>
+        <arg>u</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Begin parsing by returning the start address of the parse area
+      and the number of unparsed characters left.
+    </para>
+    <example>
+      <title>(parse-begin)</title>
+      <screen>
+<userinput>(parse-begin) dump<keysym>&larrhk;</keysym></userinput>
+    363E  64 75 6D 70 20 63 72 20 3B 65 20 2E 22 20 20 2E  dump cr ;e ."  . ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="impl-paren-parse-end"/>
+    -->
+  </glossdef>
+</glossentry>

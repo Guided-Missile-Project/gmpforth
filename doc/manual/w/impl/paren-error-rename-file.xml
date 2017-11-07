@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-rename-file" role="IMPL" xreflabel="(error-rename-file)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-rename-file)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-rename-file)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>RENAME-FILE</quote>.
+    </para>
+    <example>
+      <title>(error-rename-file)</title>
+      <screen>
+<userinput>(error-rename-file) .<keysym>&larrhk;</keysym></userinput> -72 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

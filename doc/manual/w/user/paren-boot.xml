@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-paren-boot" role="USER" xreflabel="(boot)">
+  <glossterm>
+    <indexterm role="forth"><primary>(boot)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(boot)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable that contains the execution token of the word that
+      initialized the system from a cold start.
+    </para>
+    <example>
+      <title>(boot)</title>
+      <screen>
+<userinput>(boot) @ &gt;name 10 dump<keysym>&larrhk;</keysym></userinput>
+    12D4  86 28 71 75 69 74 29  0 E0  4  0  0 A0  1  0  0  .(quit)......... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

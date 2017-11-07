@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-greater-than" role="CORE" xreflabel="&gt;">
+  <glossterm>
+    <indexterm role="forth"><primary>&gt;</primary></indexterm>
+    <cmdsynopsis>
+      <command>&gt;</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>--</arg>
+        <arg>flag</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return <xref linkend="core-ext-true"/> if
+      <parameter>n<subscript>1</subscript></parameter>
+      is greater than <parameter>n<subscript>2</subscript></parameter>,
+      otherwise return <xref linkend="core-ext-false"/>.
+    </para>
+    <example>
+      <title>&gt;</title>
+      <screen>
+<userinput>1 2 &gt; .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>2 2 &gt; .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>2 1 &gt; .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

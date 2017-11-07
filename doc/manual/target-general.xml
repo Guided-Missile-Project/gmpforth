@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section id="target-general">
+  <title>General Information</title>
+  <para>
+    <application>GMP Forth</application> supports a variety of machine
+    targets. Each of the targets and their characteristics are
+    described in the tables below. Characteristics common to all targets
+    are described in "some table".
+  </para>
+  <para>
+    Many of the implementation options decribed in <xref
+    linkend="target_impl_options"/> are either dependent on the target
+    machine architecture, or on the particular implementation of a
+    word used on the target, where a word may have multiple
+    implementations with varying features.
+  </para>
+  <qandaset>
+    <qandadiv id="target_impl_options">
+      <title>Implementation Options</title>
+      <qandaentry>
+        <question>
+          <para> Aligned address requirements</para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Behavior of <xref linkend="core-emit"/></para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-emit"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Character editing of <xref linkend="core-accept"/></para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-accept"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Character set</para>
+        </question>
+        <answer>
+          <para><acronym>ASCII</acronym></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Character-aligned address requirements</para>
+        </question>
+        <answer>
+          <para>None</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Character-set-extensions matching characteristics</para>
+        </question>
+        <answer>
+          <para>What? You are using something other than ASCII? Are
+          you crazy or something?</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Conditions under which control characters match a space delimiter
+          </para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Format of the control-flow stack</para>
+        </question>
+        <answer>
+          <para>Data stack</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Conversion of digits larger than thirty-five</para>
+        </question>
+        <answer>
+          <para>Uses ASCII characters past Z</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Display after input terminates in <xref linkend="core-accept"/>
+          </para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-accept"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Exception abort sequence</para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-abort"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Input line terminator</para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-accept"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Maximum size of a counted string, in characters</para>
+        </question>
+        <answer>
+          <para>255</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Maximum size of a parsed string</para>
+        </question>
+        <answer>
+          <para>255</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Maximum size of a definition name, in characters</para>
+        </question>
+        <answer>
+          <para>31</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Maximum string length for
+            <xref linkend="core-environment-query"/>, in characters
+          </para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-environment-query"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Method of selecting input device</para>
+        </question>
+        <answer>
+          <para>See <xref linkend="user-paren-rx-fetch"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Method of selecting output device</para>
+        </question>
+        <answer>
+          <para>See <xref linkend="user-paren-tx-store"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Methods of dictionary compilation</para>
+        </question>
+        <answer>
+          <para>Cross-compiler or native</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Number of bits in one address unit</para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Number representation and arithmetic</para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Ranges for
+            <parameter>n</parameter>,
+            <parameter>+n</parameter>,
+            <parameter>u</parameter>,
+            <parameter>d</parameter>,
+            <parameter>+d</parameter>, and
+            <parameter>ud</parameter>
+          </para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Read-only data-space regions</para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Size of buffer at <xref linkend="core-word"/></para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-word"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Size of one cell in address units</para>
+        </question>
+        <answer>
+          <para>Target dependent; generally 2, 4, or 8</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Size of one character in address units</para>
+        </question>
+        <answer>
+          <para>Target dependent; generally 1</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Size of the keyboard terminal input buffer</para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-ext-refill"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Size of the pictured numeric output string buffer</para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-less-number-sign"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Size of the scratch area whose address is returned by
+            <xref linkend="core-ext-pad"/>
+          </para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-ext-pad"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>System case-sensitivity characteristics</para>
+        </question>
+        <answer>
+          <para>Aggressively Case Insentitive</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>System prompt</para>
+        </question>
+        <answer>
+          <para><constant>ok</constant></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Type of division rounding</para>
+        </question>
+        <answer>
+          <para>Target dependent; generally symmetric</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Values of <xref linkend="user-state"/> when true</para>
+        </question>
+        <answer>
+          <para>See <xref linkend="user-state"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Values returned after arithmetic overflow</para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Whether the current definition can be found after
+            <xref linkend="core-does"/>
+          </para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-does"/></para>
+        </answer>
+      </qandaentry>
+    </qandadiv>
+    <qandadiv>
+      <title>Ambiguous Conditions</title>
+      <qandaentry>
+        <question>
+          <para>
+            A <parameter>name</parameter> is neither a valid
+            definition name nor a valid number during text
+            interpretation
+          </para>
+        </question>
+        <answer>
+          <para>Throw an exception; see <xref linkend="core-evaluate"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>A definition name exceeded the maximum length allowed</para>
+        </question>
+        <answer>
+          <para>
+            <emphasis>Oops.</emphasis>
+            <ulink url="http://www.barelyworking.com/issues/98">
+            <citetitle>Bug #98</citetitle>
+          </ulink>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Addressing a region not listed in data space</para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Argument type incompatible with specified input parameter
+          </para>
+        </question>
+        <answer>
+          <para>Uses argument as-is</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Attempting to obtain the execution token with undefined
+            interpretation semantics
+          </para>
+        </question>
+        <answer>
+          <para>No problem</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Dividing by zero</para>
+        </question>
+        <answer>
+          <para><quote>Simply lift bolt</quote></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            <anchor id="data_stack_overflow"/>Data stack overflow
+          </para>
+        </question>
+        <answer>
+          <para>Happily smashes into the dictionary</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          
+          <para>
+            <anchor id="return_stack_overflow"/>Return stack overflow
+          </para>
+        </question>
+        <answer>
+          <para>Dances with Data Stack</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Insufficient space for loop-control parameters</para>
+        </question>
+        <answer>
+          <para>
+            Oh well. See <link linkend="return_stack_overflow">Return
+            Stack Overflow</link>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Insufficient space in the dictionary</para>
+        </question>
+        <answer>
+          <para>
+            <quote>640K ought to be enough for anybody.</quote> See
+            <link linkend="data_stack_overflow">Data stack overflow</link>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Interpreting a word with undefined interpretation
+            semantics
+          </para>
+        </question>
+        <answer>
+          <para>
+            Throw an exception; see <xref linkend="core-evaluate"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Modifying the contents of the input buffer or a string
+            literal
+          </para>
+        </question>
+        <answer>
+          <para>No problemo.</para>
+          <para>
+            Unless you stuck the string in some sort of read-only
+            memory - good luck with that.
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Overflow of a pictured numeric output string</para>
+        </question>
+        <answer>
+          <para>Yet Another Dictionary Smash</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Parsed string overflow</para>
+        </question>
+        <answer>
+          <para>Nothing good will come of this.</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Producing a result out of range</para>
+        </question>
+        <answer>
+          <para>Blithefully ignored</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Data stack underflow</para>
+        </question>
+        <answer>
+          <para>Kaboom, eventually</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Return stack underflow</para>
+        </question>
+        <answer>
+          <para>Hope there was something good to eat on the data stack</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Unexpected end of input buffer, resulting in an attempt to
+            use a zero-length string as a <parameter>name</parameter>
+          </para>
+        </question>
+        <answer>
+          <para>Good question</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            <xref linkend="user-to-in"/> greater than size of input buffer
+          </para>
+        </question>
+        <answer>
+          <para>
+            See <xref linkend="core-ext-parse"/> and
+            <xref linkend="core-ext-parse-name"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            <xref linkend="core-recurse"/> appears after <xref
+            linkend="core-does"/>
+          </para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-does"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Argument input source different than current input source
+            <xref linkend="core-ext-restore-input"/>
+          </para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-ext-restore-input"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Data space containing definitions is de-allocated</para>
+        </question>
+        <answer>
+          <para>Mmm! Scrambled Dictionary! The new taste sensation!</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Data space read/write with incorrect alignment</para>
+        </question>
+        <answer>
+          <para>
+            Target dependent. Do not expect anything good to come from this.
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Data-space pointer not properly aligned</para>
+        </question>
+        <answer>
+          <para>
+            See <xref linkend="core-comma"/> and <xref linkend="core-c-comma"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Less than <parameter>u</parameter>+2 stack items</para>
+        </question>
+        <answer>
+          <para>
+            See <xref linkend="core-ext-pick"/> and
+            <xref linkend="core-ext-roll"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Loop-control parameters not available</para>
+        </question>
+        <answer>
+          <para>
+            See <xref linkend="core-plus-loop"/>,
+            <xref linkend="core-i"/>,
+            <xref linkend="core-j"/>,
+            <xref linkend="core-leave"/>,
+            <xref linkend="core-loop"/>,
+            <xref linkend="core-unloop"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Most recent definition does not have a name</para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-immediate"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            <xref linkend="core-ext-to"/> not followed directly by a
+            name defined by a word with <xref linkend="core-ext-to"/>
+            runtime semantics
+          </para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-ext-to"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+          <parameter>name</parameter> not found</para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-postpone"/>,
+          <xref linkend="core-bracket-tick"/>,
+          <xref linkend="core-ext-bracket-compile"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Parameters are not of the same type</para>
+        </question>
+        <answer>
+          <para>
+            See <xref linkend="core-do"/>,
+            <xref linkend="core-ext-question-do"/>,
+            <xref linkend="core-ext-within"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            <xref linkend="core-postpone"/>,
+            <xref linkend="core-ext-bracket-compile"/>,
+            <xref linkend="core-tick"/> or
+            <xref linkend="core-bracket-tick"/> applied to
+          <xref linkend="core-ext-to"/>
+          </para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-ext-to"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            String longer than a counted string returned by
+            <xref linkend="core-word"/>
+          </para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-word"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            <parameter>u</parameter> greater than or equal to the
+            number of bits in a cell
+          </para>
+        </question>
+        <answer>
+          <para>
+            See <xref linkend="core-lshift"/>, <xref linkend="core-rshift"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Word not defined via <xref linkend="core-create"/>
+          </para>
+        </question>
+        <answer>
+          <para>
+            See <xref linkend="core-to-body"/>,
+            <xref linkend="core-does"/>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Words improperly used outside
+            <xref linkend="core-less-number-sign"/> and
+            <xref linkend="core-number-sign-greater"/>
+          </para>
+        </question>
+        <answer>
+          <para>
+            See <xref linkend="core-number-sign"/>,
+            <xref linkend="core-number-sign-s"/>,
+            <xref linkend="core-hold"/>,
+            <xref linkend="core-ext-holds"/>,
+            <xref linkend="core-sign"/>
+          </para>
+        </answer>
+      </qandaentry>
+    </qandadiv>
+    <qandadiv>
+      <title>Other Stuff</title>
+      <qandaentry>
+        <question>
+          <para>
+            List of non-standard words using <xref linkend="core-ext-pad"/>
+          </para>
+        </question>
+        <answer>
+          <para>None</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Operator&rsquor;s terminal facilities available</para>
+        </question>
+        <answer>
+          <para>See <xref linkend="core-accept"/></para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Program data space available, in address units</para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Return stack space available, in cells</para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>System dictionary space required, in address units</para>
+        </question>
+        <answer>
+          <para>Target dependent</para>
+        </answer>
+      </qandaentry>
+    </qandadiv>
+  </qandaset>
+</section>

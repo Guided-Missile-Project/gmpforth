@@ -1,0 +1,2 @@
+#!/bin/sh
+exec bin/gmpfc -I. -Isrc/vm -Isrc -e forth32.fs keyloop.fs

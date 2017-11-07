@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-base" role="IMPL" xreflabel="(error-base)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-base)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-base)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for
+      <quote>
+        invalid <xref linkend="user-base"/> for floating point conversion
+        </quote>.
+    </para>
+    <example>
+      <title>(error-base)</title>
+      <screen>
+<userinput>(error-base) .<keysym>&larrhk;</keysym></userinput> -40  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

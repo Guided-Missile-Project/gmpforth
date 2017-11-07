@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-parse-end" role="IMPL" xreflabel="(parse-end)">
+  <glossterm>
+    <indexterm role="forth"><primary>(parse-end)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(parse-end)</command>
+      <group role="stack">
+        <arg>u</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      End parsing by updating the new start of the parse area by
+      <parameter>u</parameter>+1 if the new start of the parse area is
+      less than <xref linkend="user-paren-number-source"/> or
+      <parameter>u</parameter> if it isn't. Typically,
+      <parameter>u</parameter> is the length of the parsed entity, not
+      including the delimiter.  The increment by one is intended to
+      account for any delimiter character present.
+    </para>
+    <!--
+    <glossseealso otherterm="impl-paren-parse-begin"/>
+    -->
+  </glossdef>
+</glossentry>

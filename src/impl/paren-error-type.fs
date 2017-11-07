@@ -1,0 +1,1 @@
+-12 CONSTANT (error-type)               \ argument type mismatch

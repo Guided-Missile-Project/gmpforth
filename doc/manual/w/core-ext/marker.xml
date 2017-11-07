@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-marker" role="CORE-EXT" xreflabel="marker">
+  <glossterm>
+    <indexterm role="forth"><primary>marker</primary></indexterm>
+    <cmdsynopsis>
+      <command>marker</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+Create a word <parameter>name</parameter> with the execution semantics below.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+Restore the dictionary to the state just before
+<parameter>name</parameter> was created, i.e., <xref
+linkend="tools-ext-forget"/> all words up to and including
+<parameter>name</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>marker</title>
+      <screen>
+<userinput>marker foo<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' foo . 4234280<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>foo<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' foo .<keysym>&larrhk;</keysym></userinput> foo ? er-13
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

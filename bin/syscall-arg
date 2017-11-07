@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+#
+# Generate syscall arg map
+#
+#  Array of bytes indexed by syscall: value is number of argumenst for syscall
+#
+
+require 'yaml'
+require 'pp'
+
+def sysargmap(h)
+  s = []
+  q = 0
+  h['syscall'].each do |syscall, data|
+    n = data['args'].length
+    s[syscall] = n
+    q = [q,syscall+1].max
+  end
+
+  puts "        /* #{h['arch']} #{h['os']} */"
+  puts "linux_sysargs:"
+  s.each_with_index do |n, syscall|
+    ss = "%3d" % syscall
+    if n.nil?
+      n = 7
+      name = 'undefined'
+    else
+      name = h['syscall'][syscall]['name']
+    end
+    func = "%-32s" % name
+    nn = "%3d" % n
+    puts "        .byte #{nn}     /* #{ss} #{func}*/"
+  end
+  puts "linux_sysargs_end:"
+end
+
+File.open(ARGV[0]) { |yf| sysargmap(YAML::load(yf)) }
+

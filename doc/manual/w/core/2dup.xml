@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-2dup" role="CORE" xreflabel="2dup">
+  <glossterm>
+    <indexterm role="forth"><primary>2dup</primary></indexterm>
+    <cmdsynopsis>
+      <command>2dup</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>--</arg>
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>x1</arg>
+        <arg>x2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Duplicate the top two items from the data stack.
+    </para>
+    <example>
+      <title>2dup</title>
+      <screen>
+<userinput>1 2 2dup .s<keysym>&larrhk;</keysym></userinput> 1 2 1 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

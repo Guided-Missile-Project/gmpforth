@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-plus-store" role="CORE" xreflabel="+!">
+  <glossterm>
+    <indexterm role="forth"><primary>+!</primary></indexterm>
+    <cmdsynopsis>
+      <command>+!</command>
+      <group role="stack">
+        <arg>u</arg>
+        <arg>a-addr</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Increment the single cell contents of <parameter>a-addr</parameter>
+      by <parameter>u</parameter>.
+    </para>
+    <example>
+      <title>+!</title>
+      <screen>
+<userinput>10 (hld) +! (hld) ?<keysym>&larrhk;</keysym></userinput> 10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

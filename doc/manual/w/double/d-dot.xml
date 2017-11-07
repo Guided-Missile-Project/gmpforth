@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-d-dot" role="DOUBLE" xreflabel="d.">
+  <glossterm>
+    <indexterm role="forth"><primary>d.</primary></indexterm>
+    <cmdsynopsis>
+      <command>d.</command>
+      <group role="stack">
+        <arg>d</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display <parameter>d</parameter> in the current base followed by a space.
+    </para>
+    <example>
+      <title>d.</title>
+      <screen>
+<userinput>10. d.<keysym>&larrhk;</keysym></userinput> 10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-pad" role="CORE-EXT" xreflabel="pad">
+  <glossterm>
+    <indexterm role="forth"><primary>pad</primary></indexterm>
+    <cmdsynopsis>
+      <command>pad</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>c-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the address of a transient memory region reserved for
+      application use. This address will remain stable as long as
+      <xref linkend="core-here"/> remains stable.
+    </para>
+    <example>
+      <title>pad</title>
+      <screen>
+<userinput>pad 10 dump<keysym>&larrhk;</keysym></userinput>
+    3944   0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  ................ ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

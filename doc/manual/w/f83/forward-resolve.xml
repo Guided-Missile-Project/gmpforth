@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-forward-resolve" role="F83" xreflabel="&gt;resolve">
+  <glossterm>
+    <indexterm role="forth"><primary>&gt;resolve</primary></indexterm>
+    <cmdsynopsis>
+      <command>&gt;resolve</command>
+      <group role="stack">
+        <arg>addr</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Store <xref linkend="core-here"/> into <parameter>addr</parameter>,
+      resolving a forward address reference typically supplied by
+      <xref linkend="f83-forward-mark"/>.
+    </para>
+    <example>
+      <title>&gt;resolve</title>
+      <screen>
+<userinput>&gt;mark dup &gt;resolve ? <keysym>&larrhk;</keysym></userinput> 14828  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

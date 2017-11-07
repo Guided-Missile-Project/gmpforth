@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-rshift" role="CORE" xreflabel="rshift">
+  <glossterm>
+    <indexterm role="forth"><primary>rshift</primary></indexterm>
+    <cmdsynopsis>
+      <command>rshift</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+        <arg>x2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>x<subscript>2</subscript></parameter> is
+      <parameter>x<subscript>1</subscript></parameter> shifted
+      right by <parameter>u</parameter> bits. Vacated bits are
+      set to 0. 
+    </para>
+    <para>
+      Behavior is undefined and target dependent if
+      <parameter>u</parameter> is greater than or equal to
+      the number of bits in a cell.
+    </para>
+    <example>
+      <title>rshift</title>
+      <screen>
+<userinput>10 3 rshift .<keysym>&larrhk;</keysym></userinput> 1  ok
+<userinput>-1 30 rshift .<keysym>&larrhk;</keysym></userinput> 3  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

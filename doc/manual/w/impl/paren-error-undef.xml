@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-undef" role="IMPL" xreflabel="(error-undef)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-undef)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-undef)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>undefined word</quote>.
+    </para>
+    <example>
+      <title>(error-undef)</title>
+      <screen>
+<userinput>(error-undef) .<keysym>&larrhk;</keysym></userinput> -13 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

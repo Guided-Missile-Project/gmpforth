@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-leave" role="IMPL,C" xreflabel="(leave)">
+  <glossterm>
+    <indexterm role="forth"><primary>(leave)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(leave)</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Immediately exit the current do-loop.
+    </para>
+    <para>
+      This word is used by <xref linkend="core-leave"/> to
+      implement <xref linkend="core-leave"/> semantics.
+    </para>
+    <example>
+      <title>(leave)</title>
+      <screen>
+<userinput>: XLEAVE cr .s cr postpone (leave) ; immediate compile-only<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: WLOOP 10 0 do xleave loop ;<keysym>&larrhk;</keysym></userinput>
+134537708 
+ ok
+<userinput>WLOOP<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-sgn" role="IMPL" xreflabel="sgn">
+  <glossterm>
+    <indexterm role="forth"><primary>sgn</primary></indexterm>
+    <cmdsynopsis>
+      <command>sgn</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+        <arg>-1|0|+1</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return <constant>-1</constant> if <parameter>n</parameter> is
+      less than zero, <constant>0</constant> if <parameter>n</parameter> is
+      equal to zero, or <constant>1</constant> if <parameter>n</parameter> is
+      greater than zero.
+    </para>
+    <example>
+      <title>sgn</title>
+      <screen>
+<userinput>-100 sgn .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput>0 sgn .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>100 sgn .<keysym>&larrhk;</keysym></userinput> 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

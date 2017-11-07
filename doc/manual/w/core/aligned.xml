@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-aligned" role="CORE" xreflabel="aligned">
+  <glossterm>
+    <indexterm role="forth"><primary>aligned</primary></indexterm>
+    <cmdsynopsis>
+      <command>aligned</command>
+      <group role="stack">
+        <arg>addr</arg>
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the first <parameter>a-addr</parameter> that is greater
+      then or equal to <parameter>addr</parameter>.
+    </para>
+    <example>
+      <title>aligned</title>
+      <screen>
+<userinput>hex cff aligned .<keysym>&larrhk;</keysym></userinput> D00  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-backslash" role="CORE-EXT,I" xreflabel="\">
+  <glossterm>
+    <indexterm role="forth"><primary>\</primary></indexterm>
+    <cmdsynopsis>
+      <command>\</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Comment to the end of the current line by discarding all
+      characters in the current input stream until the end of a line or the
+      end of the input buffer is reached.
+    </para>
+    <example>
+      <title>\</title>
+      <screen>
+<userinput>\ comment<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: test ( -- )<keysym>&larrhk;</keysym></userinput>
+<userinput>   \ this is a comment<keysym>&larrhk;</keysym></userinput>
+<userinput>   ." test " ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> test  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

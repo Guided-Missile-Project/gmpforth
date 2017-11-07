@@ -1,0 +1,3 @@
+: KEY ( -- c )
+    (rx@) @ execute ;
+

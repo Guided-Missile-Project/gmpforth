@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-float-stack-o" role="IMPL" xreflabel="(error-float-stack-o)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-float-stack-o)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-float-stack-o)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>floating-point stack overflow
+</quote>.
+    </para>
+    <example>
+      <title>(error-float-stack-o)</title>
+      <screen>
+<userinput>(error-float-stack-o) .<keysym>&larrhk;</keysym></userinput> -44 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

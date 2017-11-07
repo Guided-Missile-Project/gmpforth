@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="fig-plus-minus" role="FIG" xreflabel="+-">
+  <glossterm>
+    <indexterm role="forth"><primary>+-</primary></indexterm>
+    <cmdsynopsis>
+      <command>+-</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+        <arg>n3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Negate <parameter>n<subscript>1</subscript></parameter> if
+      <parameter>n<subscript>2</subscript></parameter> is less than zero.
+    </para>
+    <example>
+      <title>+-</title>
+      <screen>
+<userinput>10 -1 +- .s<keysym>&larrhk;</keysym></userinput> -10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

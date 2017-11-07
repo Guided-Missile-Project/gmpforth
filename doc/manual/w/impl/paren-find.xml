@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-find" role="IMPL" xreflabel="(find)">
+  <glossterm>
+    <indexterm role="forth"><primary>(find)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(find)</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>u1</arg>
+        <arg>--</arg>
+        <arg>xt</arg>
+        <arg>u2</arg>
+        <arg>|</arg>
+        <arg>c-addr</arg>
+        <arg>u1</arg>
+        <arg>false</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Search the wordlists in <xref linkend="user-context"/> and <xref
+      linkend="user-current"/> for a word with a name given by the
+      string <parameter>c-addr</parameter>
+      <parameter>u<subscript>1</subscript></parameter>.
+    </para>
+    <para>
+      If the word was found, push the execution token <parameter>xt</parameter>
+      and the lex byte
+      <parameter>u<subscript>2</subscript></parameter> on the stack.
+    </para>
+    <para>
+      If the word was not found, leave the string
+      <parameter>c-addr</parameter>
+      <parameter>u<subscript>1</subscript></parameter>
+      on the stack, and push <parameter>false</parameter>.
+    </para>
+    <example>
+      <title>(find)</title>
+      <screen>
+<userinput>s" cold" (find) .s<keysym>&larrhk;</keysym></userinput> 13708 132  ok
+<userinput>drop &gt;name 10 dump<keysym>&larrhk;</keysym></userinput>
+    3584  84 63 6F 6C 64  0  0  0 E0  4  0  0 A0  1  0  0  .cold........... ok
+<userinput>s" xyz" (find) .s<keysym>&larrhk;</keysym></userinput> 14128 3 0  ok
+<userinput>drop dump<keysym>&larrhk;</keysym></userinput>
+    3730  78 79 7A 64  0  0  0  0  0  0  0  0  0  0  0  0  xyzd............ ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

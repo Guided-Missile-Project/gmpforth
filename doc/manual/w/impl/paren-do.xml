@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-do" role="IMPL,C" xreflabel="(do)">
+  <glossterm>
+    <indexterm role="forth"><primary>(do)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(do)</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Begin a loop sequence with
+      <parameter>n<subscript>1</subscript></parameter> as the loop
+      index and <parameter>n<subscript>2</subscript></parameter> as
+      the loop limit starting with the word in the second cell
+      immediately following the current IP.
+    </para>
+    <para>
+      This word is used by <xref linkend="core-do"/> to
+      implement <xref linkend="core-do"/> semantics.
+    </para>
+    <example>
+      <title>(do)</title>
+      <screen>
+<userinput>: +DO postpone 1+ postpone (do) >mark ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>immediate compile-only<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: X 5 0 +do i . loop ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>x<keysym>&larrhk;</keysym></userinput> 1 2 3 4  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,453 @@
+|                   |               | Impl.  | Test   | Doc    |
+| Word              | Facility      | Status | Status | Status |
+|-------------------+---------------+--------+--------+--------|
+| !                 | CORE          | *      | *      | *      |
+| #                 | CORE          | *      | *      | *      |
+| #>                | CORE          | *      | *      | *      |
+| #S                | CORE          | *      | *      | *      |
+| '                 | CORE          | *      | *      | *      |
+| (                 | CORE          | *      | P      | *      |
+| (                 | FILE          |        |        |        |
+| (LOCAL)           | LOCAL         |        |        |        |
+| *                 | CORE          | *      | *      | *      |
+| */                | CORE          | *      | *      | *      |
+| */MOD             | CORE          | *      | *      | *      |
+| +                 | CORE          | *      | *      | *      |
+| +!                | CORE          | *      | *      | *      |
+| +FIELD            | FACILITY EXT  |        |        |        |
+| +LOOP             | CORE          | *      | *      | *      |
+| +X/STRING         | XCHAR EXT     |        |        |        |
+| -                 | CORE          | *      | *      | *      |
+| -TRAILING         | STRING        |        |        |        |
+| -TRAILING-GARBAGE | XCHAR EXT     |        |        |        |
+| ,                 | CORE          | *      | *      | *      |
+| .                 | CORE          | *      | *      | *      |
+| ."                | CORE          | *      | *      | *      |
+| .(                | CORE EXT      | *      | *      | *      |
+| .R                | CORE EXT      | *      | *      | *      |
+| .S                | TOOLS         | *      | *      | *      |
+| /                 | CORE          | *      | *      | *      |
+| /MOD              | CORE          | *      | *      | *      |
+| /STRING           | STRING        | *      | P      | *      |
+| 0<                | CORE          | *      | *      | *      |
+| 0<>               | CORE EXT      | *      | P      | *      |
+| 0=                | CORE          | *      | *      | *      |
+| 0>                | CORE EXT      | *      | *      | *      |
+| 1+                | CORE          | *      | *      | *      |
+| 1-                | CORE          | *      | *      | *      |
+| 2!                | CORE          | *      | *      | *      |
+| 2*                | CORE          | *      | *      | *      |
+| 2/                | CORE          | *      | *      | *      |
+| 2>R               | CORE EXT      | *      | *      | *      |
+| 2@                | CORE          | *      | *      | *      |
+| 2CONSTANT         | DOUBLE        | *      | *      | *      |
+| 2DROP             | CORE          | *      | *      | *      |
+| 2DUP              | CORE          | *      | *      | *      |
+| 2LITERAL          | DOUBLE        | *      | *      | *      |
+| 2OVER             | CORE          | *      | *      | *      |
+| 2R>               | CORE EXT      | *      | *      | *      |
+| 2R@               | CORE EXT      | *      | *      | *      |
+| 2ROT              | DOUBLE EXT    | *      | *      | *      |
+| 2SWAP             | CORE          | *      | *      | *      |
+| 2VALUE            | DOUBLE EXT    | *      | *      | *      |
+| 2VARIABLE         | DOUBLE        | *      | *      | *      |
+| :                 | CORE          | *      | *      | *      |
+| :NONAME           | CORE EXT      | *      | *      | *      |
+| ;                 | CORE          | *      | *      | *      |
+| ;CODE             | TOOLS EXT     | *      | P      | *      |
+| <                 | CORE          | *      | *      | *      |
+| <#                | CORE          | *      | *      | *      |
+| <>                | CORE EXT      | *      | *      | *      |
+| =                 | CORE          | *      | *      | *      |
+| >                 | CORE          | *      | *      | *      |
+| >BODY             | CORE          | *      | *      | *      |
+| >FLOAT            | FLOATING      |        |        |        |
+| >IN               | CORE          | *      | *      | *      |
+| >NUMBER           | CORE          | *      | *      | *      |
+| >R                | CORE          | *      | *      | *      |
+| ?                 | TOOLS         | *      | *      | *      |
+| ?DO               | CORE EXT      | *      | *      | *      |
+| ?DUP              | CORE          | *      | *      | *      |
+| @                 | CORE          | *      | *      | *      |
+| ABORT             | CORE          | *      | *      | *      |
+| ABORT             | EXCEPTION EXT |        |        | *      |
+| ABORT"            | CORE          | *      | *      | *      |
+| ABORT"            | EXCEPTION EXT | *      |        |        |
+| ABS               | CORE          | *      | *      | *      |
+| ACCEPT            | CORE          | *      | *      | *      |
+| ACTION-OF         | CORE EXT      | *      | *      | *      |
+| AGAIN             | CORE EXT      | *      | P      | *      |
+| AHEAD             | TOOLS EXT     | *      | P      | *      |
+| ALIGN             | CORE          | *      | *      | *      |
+| ALIGNED           | CORE          | *      | *      | *      |
+| ALLOCATE          | MEMORY        |        |        |        |
+| ALLOT             | CORE          | *      | *      | *      |
+| ALSO              | SEARCH EXT    | *      | *      | *      |
+| AND               | CORE          | *      | *      | *      |
+| ASSEMBLER         | TOOLS EXT     |        |        |        |
+| AT-XY             | FACILITY      |        |        |        |
+| BASE              | CORE          | *      | *      | *      |
+| BEGIN             | CORE          | *      | *      | *      |
+| BEGIN-STRUCTURE   | FACILITY EXT  |        |        |        |
+| BIN               | FILE          |        |        |        |
+| BL                | CORE          | *      | *      | *      |
+| BLANK             | STRING        |        |        |        |
+| BLK               | BLOCK         |        |        |        |
+| BLOCK             | BLOCK         |        |        |        |
+| BUFFER            | BLOCK         |        |        |        |
+| BUFFER:           | CORE EXT      | *      | *      | *      |
+| BYE               | TOOLS EXT     | *      | P      | *      |
+| C!                | CORE          | *      | *      | *      |
+| C"                | CORE EXT      | *      | *      | *      |
+| C,                | CORE          | *      | *      | *      |
+| C@                | CORE          | *      | *      | *      |
+| CASE              | CORE EXT      | *      | *      | *      |
+| CATCH             | EXCEPTION     | *      | P      | *      |
+| CELL+             | CORE          | *      | *      | *      |
+| CELLS             | CORE          | *      | *      | *      |
+| CFIELD:           | FACILITY EXT  |        |        |        |
+| CHAR              | CORE          | *      | *      | *      |
+| CHAR              | XCHAR EXT     |        |        |        |
+| CHAR+             | CORE          | *      | *      | *      |
+| CHARS             | CORE          | *      | *      | *      |
+| CLOSE-FILE        | FILE          | *      | *      | *      |
+| CMOVE             | STRING        | *      | P      | *      |
+| CMOVE>            | STRING        | *      | P      | *      |
+| CODE              | TOOLS EXT     | *      | P      | *      |
+| COMPARE           | STRING        |        |        |        |
+| COMPILE,          | CORE EXT      | *      | P      | *      |
+| CONSTANT          | CORE          | *      | *      | *      |
+| COUNT             | CORE          | *      | *      | *      |
+| CR                | CORE          | *      | *      | *      |
+| CREATE            | CORE          | *      | *      | *      |
+| CREATE-FILE       | FILE          |        |        |        |
+| CS-PICK           | TOOLS EXT     | *      | *      | *      |
+| CS-ROLL           | TOOLS EXT     | *      | *      | *      |
+| D+                | DOUBLE        | *      | *      | *      |
+| D-                | DOUBLE        | *      | *      | *      |
+| D.                | DOUBLE        | *      | *      | *      |
+| D.R               | DOUBLE        | *      | *      | *      |
+| D0<               | DOUBLE        | *      | *      | *      |
+| D0=               | DOUBLE        | *      | *      | *      |
+| D2*               | DOUBLE        | *      | *      | *      |
+| D2/               | DOUBLE        | *      | *      | *      |
+| D<                | DOUBLE        | *      | *      | *      |
+| D=                | DOUBLE        | *      | *      | *      |
+| D>F               | FLOATING      |        |        |        |
+| D>S               | DOUBLE        | *      | *      | *      |
+| DABS              | DOUBLE        | *      | *      | *      |
+| DECIMAL           | CORE          | *      | *      | *      |
+| DEFER             | CORE EXT      | *      | *      | *      |
+| DEFER!            | CORE EXT      | *      | *      | *      |
+| DEFER@            | CORE EXT      | *      | *      | *      |
+| DEFINITIONS       | SEARCH        | *      | *      | *      |
+| DELETE-FILE       | FILE          |        |        |        |
+| DEPTH             | CORE          | *      | *      | *      |
+| DF!               | FLOATING EXT  |        |        |        |
+| DF                | FLOATING EXT  |        |        |        |
+| DFALIGN           | FLOATING EXT  |        |        |        |
+| DFALIGNED         | FLOATING EXT  |        |        |        |
+| DFFIELD:          | FLOATING EXT  |        |        |        |
+| DFLOAT+           | FLOATING EXT  |        |        |        |
+| DFLOATS           | FLOATING EXT  |        |        |        |
+| DMAX              | DOUBLE        | *      | *      | *      |
+| DMIN              | DOUBLE        | *      | *      | *      |
+| DNEGATE           | DOUBLE        | *      | *      | *      |
+| DO                | CORE          | *      | *      | *      |
+| DOES>             | CORE          | *      | *      | *      |
+| DROP              | CORE          | *      | *      | *      |
+| DU<               | DOUBLE EXT    | *      | *      | *      |
+| DUMP              | TOOLS         | *      | *      | *      |
+| DUP               | CORE          | *      | *      | *      |
+| EDITOR            | TOOLS EXT     |        |        |        |
+| EKEY              | FACILITY EXT  |        |        |        |
+| EKEY>CHAR         | FACILITY EXT  |        |        |        |
+| EKEY>FKEY         | FACILITY EXT  |        |        |        |
+| EKEY>XCHAR        | XCHAR EXT     |        |        |        |
+| EKEY?             | FACILITY EXT  |        |        |        |
+| ELSE              | CORE          | *      | *      | *      |
+| EMIT              | CORE          | *      | *      | *      |
+| EMIT?             | FACILITY EXT  |        |        |        |
+| EMPTY-BUFFERS     | BLOCK EXT     |        |        |        |
+| END-STRUCTURE     | FACILITY EXT  |        |        |        |
+| ENDCASE           | CORE EXT      | *      | *      | *      |
+| ENDOF             | CORE EXT      | *      | *      | *      |
+| ENVIRONMENT?      | CORE          | *      | *      | *      |
+| ERASE             | CORE EXT      | *      | *      | *      |
+| EVALUATE          | CORE          | *      | *      | *      |
+| EVALUATE          | BLOCK         |        |        |        |
+| EXECUTE           | CORE          | *      | *      | *      |
+| EXIT              | CORE          | *      | *      | *      |
+| F!                | FLOATING      |        |        |        |
+| F*                | FLOATING      |        |        |        |
+| F**               | FLOATING EXT  |        |        |        |
+| F+                | FLOATING      |        |        |        |
+| F-                | FLOATING      |        |        |        |
+| F.                | FLOATING EXT  |        |        |        |
+| F/                | FLOATING      |        |        |        |
+| F0<               | FLOATING      |        |        |        |
+| F0=               | FLOATING      |        |        |        |
+| F<                | FLOATING      |        |        |        |
+| F>D               | FLOATING      |        |        |        |
+| F>S               | FLOATING EXT  |        |        |        |
+| F                 | FLOATING      |        |        |        |
+| FABS              | FLOATING EXT  |        |        |        |
+| FACOS             | FLOATING EXT  |        |        |        |
+| FACOSH            | FLOATING EXT  |        |        |        |
+| FALIGN            | FLOATING      |        |        |        |
+| FALIGNED          | FLOATING      |        |        |        |
+| FALOG             | FLOATING EXT  |        |        |        |
+| FALSE             | CORE EXT      | *      | *      | *      |
+| FASIN             | FLOATING EXT  |        |        |        |
+| FASINH            | FLOATING EXT  |        |        |        |
+| FATAN             | FLOATING EXT  |        |        |        |
+| FATAN2            | FLOATING EXT  |        |        |        |
+| FATANH            | FLOATING EXT  |        |        |        |
+| FCONSTANT         | FLOATING      |        |        |        |
+| FCOS              | FLOATING EXT  |        |        |        |
+| FCOSH             | FLOATING EXT  |        |        |        |
+| FDEPTH            | FLOATING      |        |        |        |
+| FDROP             | FLOATING      |        |        |        |
+| FDUP              | FLOATING      |        |        |        |
+| FE.               | FLOATING EXT  |        |        |        |
+| FEXP              | FLOATING EXT  |        |        |        |
+| FEXPM1            | FLOATING EXT  |        |        |        |
+| FFIELD:           | FLOATING EXT  |        |        |        |
+| FIELD:            | FACILITY EXT  |        |        |        |
+| FILE-POSITION     | FILE          |        |        |        |
+| FILE-SIZE         | FILE          | *      | *      | *      |
+| FILE-STATUS       | FILE EXT      |        |        |        |
+| FILL              | CORE          | *      | *      | *      |
+| FIND              | CORE          | *      | *      | *      |
+| FIND              | SEARCH        | *      | P      |        |
+| FLITERAL          | FLOATING      |        |        |        |
+| FLN               | FLOATING EXT  |        |        |        |
+| FLNP1             | FLOATING EXT  |        |        |        |
+| FLOAT+            | FLOATING      |        |        |        |
+| FLOATS            | FLOATING      |        |        |        |
+| FLOG              | FLOATING EXT  |        |        |        |
+| FLOOR             | FLOATING      |        |        |        |
+| FLUSH             | BLOCK         |        |        |        |
+| FLUSH-FILE        | FILE EXT      |        |        |        |
+| FM/MOD            | CORE          | *      | *      | *      |
+| FMAX              | FLOATING      |        |        |        |
+| FMIN              | FLOATING      |        |        |        |
+| FNEGATE           | FLOATING      |        |        |        |
+| FORGET            | TOOLS EXT     | *      | *      | *      |
+| FORTH             | SEARCH EXT    | *      | P      |        |
+| FORTH-WORDLIST    | SEARCH        | *      | P      | *      |
+| FOVER             | FLOATING      |        |        |        |
+| FREE              | MEMORY        |        |        |        |
+| FROT              | FLOATING      |        |        |        |
+| FROUND            | FLOATING      |        |        |        |
+| FS.               | FLOATING EXT  |        |        |        |
+| FSIN              | FLOATING EXT  |        |        |        |
+| FSINCOS           | FLOATING EXT  |        |        |        |
+| FSINH             | FLOATING EXT  |        |        |        |
+| FSQRT             | FLOATING EXT  |        |        |        |
+| FSWAP             | FLOATING      |        |        |        |
+| FTAN              | FLOATING EXT  |        |        |        |
+| FTANH             | FLOATING EXT  |        |        |        |
+| FTRUNC            | FLOATING EXT  |        |        |        |
+| FVALUE            | FLOATING EXT  |        |        |        |
+| FVARIABLE         | FLOATING      |        |        |        |
+| F~                | FLOATING EXT  |        |        |        |
+| GET-CURRENT       | SEARCH        | *      | P      | *      |
+| GET-ORDER         | SEARCH        | *      | P      | *      |
+| HERE              | CORE          | *      | *      | *      |
+| HEX               | CORE EXT      | *      | *      | *      |
+| HOLD              | CORE          | *      | *      | *      |
+| HOLDS             | CORE EXT      | *      | *      | *      |
+| I                 | CORE          | *      | *      | *      |
+| IF                | CORE          | *      | *      | *      |
+| IMMEDIATE         | CORE          | *      | *      | *      |
+| INCLUDE           | FILE EXT      |        |        |        |
+| INCLUDE-FILE      | FILE          |        |        |        |
+| INCLUDED          | FILE          |        |        |        |
+| INVERT            | CORE          | *      | *      | *      |
+| IS                | CORE EXT      | *      | *      | *      |
+| J                 | CORE          | *      | *      | *      |
+| K-ALT-MASK        | FACILITY EXT  |        |        |        |
+| K-CTRL-MASK       | FACILITY EXT  |        |        |        |
+| K-DELETE          | FACILITY EXT  |        |        |        |
+| K-DOWN            | FACILITY EXT  |        |        |        |
+| K-END             | FACILITY EXT  |        |        |        |
+| K-F1              | FACILITY EXT  |        |        |        |
+| K-F10             | FACILITY EXT  |        |        |        |
+| K-F11             | FACILITY EXT  |        |        |        |
+| K-F12             | FACILITY EXT  |        |        |        |
+| K-F2              | FACILITY EXT  |        |        |        |
+| K-F3              | FACILITY EXT  |        |        |        |
+| K-F4              | FACILITY EXT  |        |        |        |
+| K-F5              | FACILITY EXT  |        |        |        |
+| K-F6              | FACILITY EXT  |        |        |        |
+| K-F7              | FACILITY EXT  |        |        |        |
+| K-F8              | FACILITY EXT  |        |        |        |
+| K-F9              | FACILITY EXT  |        |        |        |
+| K-HOME            | FACILITY EXT  |        |        |        |
+| K-INSERT          | FACILITY EXT  |        |        |        |
+| K-LEFT            | FACILITY EXT  |        |        |        |
+| K-NEXT            | FACILITY EXT  |        |        |        |
+| K-PRIOR           | FACILITY EXT  |        |        |        |
+| K-RIGHT           | FACILITY EXT  |        |        |        |
+| K-SHIFT-MASK      | FACILITY EXT  |        |        |        |
+| K-UP              | FACILITY EXT  |        |        |        |
+| KEY               | CORE          | *      | P      | *      |
+| KEY?              | FACILITY      |        |        |        |
+| LEAVE             | CORE          | *      | *      | *      |
+| LIST              | BLOCK EXT     |        |        |        |
+| LITERAL           | CORE          | *      | *      | *      |
+| LOAD              | BLOCK         |        |        |        |
+| LOCALS            | LOCAL EXT     |        |        |        |
+| LOOP              | CORE          | *      | *      | *      |
+| LSHIFT            | CORE          | *      | *      | *      |
+| M*                | CORE          | *      | *      | *      |
+| M*/               | DOUBLE        | *      | *      | *      |
+| M+                | DOUBLE        | *      | *      | *      |
+| MARKER            | CORE EXT      | *      | *      | *      |
+| MAX               | CORE          | *      | *      | *      |
+| MIN               | CORE          | *      | *      | *      |
+| MOD               | CORE          | *      | *      | *      |
+| MOVE              | CORE          | *      | *      | *      |
+| MS                | FACILITY EXT  |        |        |        |
+| N>R               | TOOLS EXT     | *      | *      | *      |
+| NAME>COMPILE      | TOOLS EXT     | *      | *      |        |
+| NAME>INTERPRET    | TOOLS EXT     | *      | *      |        |
+| NAME>STRING       | TOOLS EXT     | *      | *      |        |
+| NEGATE            | CORE          | *      | *      | *      |
+| NIP               | CORE EXT      | *      | *      | *      |
+| NR>               | TOOLS EXT     | *      | *      | *      |
+| OF                | CORE EXT      | *      | *      | *      |
+| ONLY              | SEARCH EXT    | *      | P      | *      |
+| OPEN-FILE         | FILE          | *      | *      | *      |
+| OR                | CORE          | *      | *      | *      |
+| ORDER             | SEARCH EXT    | *      | P      | *      |
+| OVER              | CORE          | *      | *      | *      |
+| PAD               | CORE EXT      | *      | *      | *      |
+| PAGE              | FACILITY      |        |        |        |
+| PARSE             | CORE EXT      | *      | *      | *      |
+| PARSE             | XCHAR EXT     |        |        |        |
+| PARSE-NAME        | CORE EXT      | *      | *      | *      |
+| PICK              | CORE EXT      | *      | *      | *      |
+| POSTPONE          | CORE          | *      | *      | *      |
+| PRECISION         | FLOATING EXT  |        |        |        |
+| PREVIOUS          | SEARCH EXT    | *      | *      | *      |
+| QUIT              | CORE          | *      | P      | *      |
+| R/O               | FILE          | *      | *      | *      |
+| R/W               | FILE          |        |        |        |
+| R>                | CORE          | *      | *      | *      |
+| R@                | CORE          | *      | *      | *      |
+| READ-FILE         | FILE          |        |        |        |
+| READ-LINE         | FILE          |        |        |        |
+| RECURSE           | CORE          | *      | *      | *      |
+| REFILL            | CORE EXT      | *      | P      | *      |
+| REFILL            | BLOCK EXT     |        |        |        |
+| REFILL            | FILE EXT      |        |        |        |
+| RENAME-FILE       | FILE EXT      |        |        |        |
+| REPEAT            | CORE          | *      | *      | *      |
+| REPLACES          | STRING EXT    |        |        |        |
+| REPOSITION-FILE   | FILE          |        |        |        |
+| REPRESENT         | FLOATING      |        |        |        |
+| REQUIRE           | FILE EXT      |        |        |        |
+| REQUIRED          | FILE EXT      |        |        |        |
+| RESIZE            | MEMORY        |        |        |        |
+| RESIZE-FILE       | FILE          |        |        |        |
+| RESTORE-INPUT     | CORE EXT      | *      | P      | *      |
+| ROLL              | CORE EXT      | *      | *      | *      |
+| ROT               | CORE          | *      | *      | *      |
+| RSHIFT            | CORE          | *      | *      | *      |
+| S"                | CORE          | *      | *      | *      |
+| S"                | FILE          |        |        |        |
+| S>D               | CORE          | *      | *      | *      |
+| S>F               | FLOATING EXT  |        |        |        |
+| SAVE-BUFFERS      | BLOCK         |        |        |        |
+| SAVE-INPUT        | CORE EXT      | *      | P      | *      |
+| SCR               | BLOCK EXT     |        |        |        |
+| SEARCH            | STRING        |        |        |        |
+| SEARCH-WORDLIST   | SEARCH        | *      | *      | *      |
+| SEE               | TOOLS         |        |        |        |
+| SET-CURRENT       | SEARCH        | *      | *      | *      |
+| SET-ORDER         | SEARCH        | *      | P      | *      |
+| SET-PRECISION     | FLOATING EXT  |        |        |        |
+| SF!               | FLOATING EXT  |        |        |        |
+| SF                | FLOATING EXT  |        |        |        |
+| SFALIGN           | FLOATING EXT  |        |        |        |
+| SFALIGNED         | FLOATING EXT  |        |        |        |
+| SFFIELD:          | FLOATING EXT  |        |        |        |
+| SFLOAT+           | FLOATING EXT  |        |        |        |
+| SFLOATS           | FLOATING EXT  |        |        |        |
+| SIGN              | CORE          | *      | *      | *      |
+| SLITERAL          | STRING        |        |        |        |
+| SM/REM            | CORE          | *      | *      | *      |
+| SOURCE            | CORE          | *      | *      | *      |
+| SOURCE-ID         | CORE EXT      | *      | *      | *      |
+| SOURCE-ID         | FILE          |        |        |        |
+| SPACE             | CORE          | *      | *      | *      |
+| SPACES            | CORE          | *      | *      | *      |
+| STATE             | CORE          | *      | *      |        |
+| STATE             | TOOLS EXT     | *      |        |        |
+| SUBSTITUTE        | STRING EXT    |        |        |        |
+| SWAP              | CORE          | *      | *      | *      |
+| SYNONYM           | TOOLS EXT     | *      | *      |        |
+| S\"               | FILE EXT      |        |        |        |
+| S\"               | CORE EXT      | *      | *      | *      |
+| THEN              | CORE          | *      | *      | *      |
+| THROW             | EXCEPTION     | *      | P      | *      |
+| THRU              | BLOCK EXT     |        |        |        |
+| TIME&DATE         | FACILITY EXT  |        |        |        |
+| TO                | CORE EXT      | *      | *      | *      |
+| TRAVERSE-WORDLIST | TOOLS EXT     | *      |        |        |
+| TRUE              | CORE EXT      | *      | *      | *      |
+| TUCK              | CORE EXT      | *      | *      | *      |
+| TYPE              | CORE          | *      | *      | *      |
+| U.                | CORE          | *      | *      | *      |
+| U.R               | CORE EXT      | *      | *      | *      |
+| U<                | CORE          | *      | *      | *      |
+| U>                | CORE EXT      | *      | *      | *      |
+| UM*               | CORE          | *      | *      | *      |
+| UM/MOD            | CORE          | *      | *      | *      |
+| UNESCAPE          | STRING EXT    |        |        |        |
+| UNLOOP            | CORE          | *      | *      | *      |
+| UNTIL             | CORE          | *      | P      | *      |
+| UNUSED            | CORE EXT      | *      | *      | *      |
+| UPDATE            | BLOCK         |        |        |        |
+| VALUE             | CORE EXT      | *      | *      | *      |
+| VARIABLE          | CORE          | *      | *      | *      |
+| W/O               | FILE          |        |        |        |
+| WHILE             | CORE          | *      | *      | *      |
+| WITHIN            | CORE EXT      | *      | *      | *      |
+| WORD              | CORE          | *      | *      | *      |
+| WORDLIST          | SEARCH        | *      | *      | *      |
+| WORDS             | TOOLS         | *      | *      | *      |
+| WRITE-FILE        | FILE          |        |        |        |
+| WRITE-LINE        | FILE          |        |        |        |
+| X-SIZE            | XCHAR         |        |        |        |
+| X-WIDTH           | XCHAR EXT     |        |        |        |
+| XC!+              | XCHAR         |        |        |        |
+| XC!+?             | XCHAR         |        |        |        |
+| XC,               | XCHAR         |        |        |        |
+| XC-SIZE           | XCHAR         |        |        |        |
+| XC-WIDTH          | XCHAR EXT     |        |        |        |
+| XC                | XCHAR         |        |        |        |
+| XCHAR+            | XCHAR         |        |        |        |
+| XCHAR-            | XCHAR EXT     |        |        |        |
+| XEMIT             | XCHAR         |        |        |        |
+| XHOLD             | XCHAR EXT     |        |        |        |
+| XKEY              | XCHAR         |        |        |        |
+| XKEY?             | XCHAR         |        |        |        |
+| XOR               | CORE          | *      | *      | *      |
+| X\STRING-         | XCHAR EXT     |        |        |        |
+| [                 | CORE          | *      | *      | *      |
+| [']               | CORE          | *      | *      | *      |
+| [CHAR]            | CORE          | *      | *      | *      |
+| [CHAR]            | XCHAR EXT     |        |        |        |
+| [COMPILE]         | CORE EXT      | *      | *      | *      |
+| [DEFINED]         | TOOLS EXT     | *      | *      |        |
+| [ELSE]            | TOOLS EXT     | *      | *      |        |
+| [IF]              | TOOLS EXT     | *      | *      |        |
+| [THEN]            | TOOLS EXT     | *      | *      |        |
+| [UNDEFINED]       | TOOLS EXT     | *      | *      |        |
+| \                 | CORE EXT      | *      | *      | *      |
+| \                 | BLOCK EXT     | *      |        |        |
+| ]                 | CORE          | *      | *      | *      |
+| {:                | LOCAL EXT     |        |        |        |

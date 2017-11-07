@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-ext-two-value" role="DOUBLE-EXT,I" xreflabel="2value">
+  <glossterm>
+    <indexterm role="forth"><primary>2value</primary></indexterm>
+    <cmdsynopsis>
+      <command>2value</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>x1</arg>
+              <arg>x2</arg>
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Create a double cell value <parameter>name</parameter>
+            with the initial value
+            <parameter>x<subscript>1</subscript></parameter>
+            <parameter>x<subscript>2</subscript></parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>x1</arg>
+              <arg>x2</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Push <parameter>x<subscript>1</subscript></parameter> and
+            <parameter>x<subscript>2</subscript></parameter> on the
+            stack.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>
+      <xref linkend="double-ext-two-value"/> creates words that behave
+      like <xref linkend="double-two-constant"/> but the value pushed
+      can be modified by <xref linkend="core-ext-to"/>.
+    </para>
+    <example>
+      <title>2value</title>
+      <screen>
+<userinput>5. 2value x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>x d.<keysym>&larrhk;</keysym></userinput> 5  ok
+<userinput>10. to x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>x d.<keysym>&larrhk;</keysym></userinput> 10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

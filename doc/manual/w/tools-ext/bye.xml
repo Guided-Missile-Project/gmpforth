@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-ext-bye" role="TOOLS-EXT" xreflabel="bye">
+  <glossterm>
+    <indexterm role="forth"><primary>bye</primary></indexterm>
+    <cmdsynopsis>
+      <command>bye</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return control to the host operating system or calling application.
+    </para>
+    <example>
+      <title>bye</title>
+      <screen>
+<userinput>." BYE! " cr bye cr ." See you again"<keysym>&larrhk;</keysym></userinput> BYE!
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

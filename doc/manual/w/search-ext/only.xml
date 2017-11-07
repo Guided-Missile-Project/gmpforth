@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="search-ext-only" role="SEARCH-EXT" xreflabel="only">
+  <glossterm>
+    <indexterm role="forth"><primary>only</primary></indexterm>
+    <cmdsynopsis>
+      <command>only</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Clear the context search order and set the current wordlist to
+      <xref linkend='f83-forth'/>.
+    </para>
+    <example>
+      <title>only</title>
+      <screen>
+<userinput>cr also order only cr order<keysym>&larrhk;</keysym></userinput>
+forth forth / forth
+/ forth ok
+<userinput>forth cr order<keysym>&larrhk;</keysym></userinput>
+forth / forth ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

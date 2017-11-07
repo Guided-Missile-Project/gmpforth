@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-execute" role="CORE" xreflabel="execute">
+  <glossterm>
+    <indexterm role="forth"><primary>execute</primary></indexterm>
+    <cmdsynopsis>
+      <command>execute</command>
+      <group role="stack">
+        <arg>i*x</arg>
+        <arg>xt</arg>
+        <arg>--</arg>
+        <arg>j*x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Execute the word represented by <parameter>xt</parameter>.
+    </para>
+    <example>
+      <title>execute</title>
+      <screen>
+<userinput>1 1 ' + execute .<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

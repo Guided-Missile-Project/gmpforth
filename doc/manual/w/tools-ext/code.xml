@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-ext-code" role="TOOLS-EXT" xreflabel="code">
+  <glossterm>
+    <indexterm role="forth"><primary>code</primary></indexterm>
+    <cmdsynopsis>
+      <command>code</command>
+      <group role="stack">
+        <arg>&ldquo;name&rdquo;</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Create a machine code definition called <parameter>name</parameter>.
+      The syntax for the machine code is target dependent. The code
+      definition is terminated by <xref linkend="impl-end-code"/>
+    </para>
+    <example>
+      <title>code</title>
+      <screen>
+<userinput>code p3 128 64 3 + + , end-code<keysym>&larrhk;</keysym></userinput>  ok 
+<userinput>p3 .s<keysym>&larrhk;</keysym></userinput> 3  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-allot" role="CORE" xreflabel="allot">
+  <glossterm>
+    <indexterm role="forth"><primary>allot</primary></indexterm>
+    <cmdsynopsis>
+      <command>allot</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Adjust <xref linkend="core-here"/> by <parameter>n</parameter>
+      address units. If <parameter>n</parameter> is greater than zero,
+      dictionary space is allocated.
+      If <parameter>n</parameter> is less than zero,
+      dictionary space is released.
+      If <parameter>n</parameter> is equal to zero,
+      <xref linkend="core-here"/> is unchanged.
+    </para>
+    <para>
+      Address alignment, if required by the caller, remains the
+      responsibility of the caller.
+    </para>
+    <example>
+      <title>allot</title>
+      <screen>
+<userinput>hex here .<keysym>&larrhk;</keysym></userinput> 38B0  ok
+<userinput>10 allot here .<keysym>&larrhk;</keysym></userinput> 38C0  ok
+<userinput>-5 allot here .<keysym>&larrhk;</keysym></userinput> 38BB  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

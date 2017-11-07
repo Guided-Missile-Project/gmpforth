@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-type" role="CORE" xreflabel="type">
+  <glossterm>
+    <indexterm role="forth"><primary>type</primary></indexterm>
+    <cmdsynopsis>
+      <command>type</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display the character string
+      <parameter>c-addr</parameter> <parameter>u</parameter>.
+    </para>
+    <example>
+      <title>type</title>
+      <screen>
+<userinput>s" this is a test" type<keysym>&larrhk;</keysym></userinput> this is a test ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

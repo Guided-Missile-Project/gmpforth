@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-reposition-file" role="IMPL" xreflabel="(error-reposition-file)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-reposition-file)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-reposition-file)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>REPOSITION-FILE</quote>.
+    </para>
+    <example>
+      <title>(error-reposition-file)</title>
+      <screen>
+<userinput>(error-reposition-file) .<keysym>&larrhk;</keysym></userinput> -73 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-blk-write" role="IMPL" xreflabel="(error-blk-write)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-blk-write)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-blk-write)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>block write exception</quote>.
+    </para>
+    <example>
+      <title>(error-blk-write)</title>
+      <screen>
+<userinput>(error-blk-write) .<keysym>&larrhk;</keysym></userinput> -34  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

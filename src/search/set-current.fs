@@ -1,0 +1,2 @@
+: SET-CURRENT ( wid -- )
+   current ! ;

@@ -1,0 +1,1 @@
+-19 CONSTANT (error-def-o)              \ definition name too long

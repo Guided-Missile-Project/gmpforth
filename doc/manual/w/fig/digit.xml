@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="fig-digit" role="FIG" xreflabel="digit">
+  <glossterm>
+    <indexterm role="forth"><primary>digit</primary></indexterm>
+    <cmdsynopsis>
+      <command>digit</command>
+      <group role="stack">
+        <arg>c</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+        <arg>n</arg>
+        <arg>true</arg>
+        <arg>|</arg>
+        <arg>false</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+       if <parameter>c</parameter> is valid for the base
+       <parameter>u</parameter> convert character
+       <parameter>c</parameter> to digit <parameter>n</parameter>
+       in base <parameter>u</parameter> and push
+       <xref linkend="core-ext-true"/>.
+    </para>
+    <para>
+       if <parameter>c</parameter> is not valid for the base
+       <parameter>u</parameter>, push <xref linkend="core-ext-false"/>.
+    </para>
+    <example>
+      <title>digit</title>
+      <screen>
+<userinput>char 1 10 digit . .<keysym>&larrhk;</keysym></userinput> -1 1  ok
+<userinput>char Z 10 digit .<keysym>&larrhk;</keysym></userinput> 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

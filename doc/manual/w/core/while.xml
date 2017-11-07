@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-while" role="CORE,IC" xreflabel="while">
+  <glossterm>
+    <indexterm role="forth"><primary>while</primary></indexterm>
+    <cmdsynopsis>
+      <command>while</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>dest</arg>
+              <arg>--</arg>
+              <arg>orig dest</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile <xref linkend="impl-paren-zero-branch"/> followed by
+            an unresolved branch address, placing <parameter>orig</parameter>
+            under the existing <parameter>dest</parameter>.
+            <parameter>dest</parameter>
+            is generally supplied by <xref linkend="core-begin"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>x</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            If <parameter>x</parameter> is not zero, continue
+            execution with the words following <xref linkend="core-while"/>,
+            otherwise branch to the word following whatever resolved
+            <parameter>orig</parameter>, generally
+            <xref linkend="core-repeat"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>while</title>
+      <screen>
+<userinput>: test 5 begin ?dup while dup . 1- repeat ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 5 4 3 2 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

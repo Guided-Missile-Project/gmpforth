@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-blk" role="BLOCK" xreflabel="blk">
+  <glossterm>
+    <indexterm role="forth"><primary>blk</primary></indexterm>
+    <!-- implemented as a USER variable, but is a BLOCK word  -->
+    <cmdsynopsis>
+      <command>blk</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable that contains the number of the current mass
+      storage block being interpreted. If <xref linkend="user-blk"/>
+      is zero, then <xref linkend="core-ext-source-id"/> indictates
+      the current input source.
+      <note>
+        <para>
+          Block support is currently not implemented.
+        </para>
+      </note>
+    </para>
+  </glossdef>
+</glossentry>

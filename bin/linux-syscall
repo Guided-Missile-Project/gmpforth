@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+#
+# linux-syscall
+#
+# convoluted Linux syscall metadata extractor
+
+require 'linux/syscall'
+
+sys = Linux::Syscall.new
+sys.cli
+sys.get
+sys.gen

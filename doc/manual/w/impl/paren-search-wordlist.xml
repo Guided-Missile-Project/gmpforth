@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-search-wordlist" role="IMPL" xreflabel="(search-wordlist)">
+  <glossterm>
+    <indexterm role="forth"><primary>(search-wordlist)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(search-wordlist)</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>u1</arg>
+        <arg>wid</arg>
+        <arg>--</arg>
+        <arg>0</arg>
+        <arg>|</arg>
+        <arg>xt</arg>
+        <arg>u2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Search <parameter>wid</parameter> for a name matching the string
+      <parameter>c-addr</parameter>
+      <parameter>u<subscript>1</subscript></parameter>. If the
+      name is found, return <parameter>xt</parameter> and the non-zero lex
+      byte <parameter>u<subscript>2</subscript></parameter>, otherwise return
+      <constant>0</constant>.
+    </para>
+    <example>
+      <title>(search-wordlist)</title>
+      <screen>
+<userinput>s" cold" context @ (search-wordlist) . .name<keysym>&larrhk;</keysym></userinput> 132 cold ok
+<userinput>s" if" context @ (search-wordlist) . .name<keysym>&larrhk;</keysym></userinput> 226 if ok
+<userinput>s" foo" context @ (search-wordlist) .<keysym>&larrhk;</keysym></userinput> 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-stack-u" role="IMPL" xreflabel="(error-stack-u)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-stack-u)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-stack-u)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>stack underflow</quote>.
+    </para>
+    <example>
+      <title>(error-stack-u)</title>
+      <screen>
+<userinput>(error-stack-u) .<keysym>&larrhk;</keysym></userinput> -4 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

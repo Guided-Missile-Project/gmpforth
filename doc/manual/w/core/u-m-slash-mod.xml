@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-u-m-slash-mod" role="CORE" xreflabel="um/mod">
+  <glossterm>
+    <indexterm role="forth"><primary>um/mod</primary></indexterm>
+    <cmdsynopsis>
+      <command>um/mod</command>
+      <group role="stack">
+        <arg>ud</arg>
+        <arg>u1</arg>
+        <arg>--</arg>
+        <arg>u2</arg>
+        <arg>u3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Divide <parameter>ud</parameter> by
+      <parameter>u<subscript>1</subscript></parameter>, returning
+      the remainder <parameter>u<subscript>2</subscript></parameter>
+      and the quotient <parameter>u<subscript>3</subscript></parameter>.
+    </para>
+    <para>
+      The behavior of division by zero or quotient overflow
+      is target and implementation
+      dependent and may result in program termination.
+    </para>
+    <example>
+      <title>um/mod</title>
+      <screen>
+<userinput>100. 8 um/mod . .<keysym>&larrhk;</keysym></userinput> 12 4  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

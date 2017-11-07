@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-drop" role="CORE" xreflabel="drop">
+  <glossterm>
+    <indexterm role="forth"><primary>drop</primary></indexterm>
+    <cmdsynopsis>
+      <command>drop</command>
+      <group role="stack">
+        <arg>x</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Remove the top item from the stack.
+    </para>
+    <example>
+      <title>drop</title>
+      <screen>
+<userinput>1 2 drop .s<keysym>&larrhk;</keysym></userinput> 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-do" role="IMPL" xreflabel="(error-do)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-do)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-do)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>do-loops nested too deeply during execution</quote>.
+    </para>
+    <example>
+      <title>(error-do)</title>
+      <screen>
+<userinput>(error-do) .<keysym>&larrhk;</keysym></userinput> -7 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

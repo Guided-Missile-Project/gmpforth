@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-cells" role="CORE" xreflabel="cells">
+  <glossterm>
+    <indexterm role="forth"><primary>cells</primary></indexterm>
+    <cmdsynopsis>
+      <command>cells</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the number of address units in
+      <parameter>n<subscript>1</subscript></parameter> cells.
+    </para>
+     <example>
+      <title>cells</title>
+      <screen>
+<userinput>5 cells .<keysym>&larrhk;</keysym></userinput> 20  ok
+      </screen>
+    </example>
+ </glossdef>
+</glossentry>

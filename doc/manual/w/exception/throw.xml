@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="exception-throw" role="EXCEPTION" xreflabel="throw">
+  <glossterm>
+    <indexterm role="forth"><primary>throw</primary></indexterm>
+    <cmdsynopsis>
+      <command>throw</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      If <parameter>n</parameter> is non-zero, return control the most
+      recent <xref linkend="exception-catch"/>. If <parameter>n</parameter>
+      is zero, pop <parameter>n</parameter> and continue execution.
+    </para>
+    <example>
+      <title>throw</title>
+      <screen>
+<userinput>: test -5 throw ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> test ? er-5
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

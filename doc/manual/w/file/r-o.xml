@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="file-r-o" role="FILE" xreflabel="r/o">
+  <glossterm>
+    <indexterm role="forth"><primary>r/o</primary></indexterm>
+    <cmdsynopsis>
+      <command>r/o</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>fam</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Return a file access method code for handling a file in read-only mode.
+    </para>
+    <example>
+      <title>r/o</title>
+      <screen>
+<userinput>s" /dev/null" r/o open-file throw close-file throw<keysym>&larrhk;</keysym></userinput>
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

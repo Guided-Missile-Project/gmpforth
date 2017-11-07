@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-star-slash" role="CORE" xreflabel="*/">
+  <glossterm>
+    <indexterm role="forth"><primary>*/</primary></indexterm>
+    <cmdsynopsis>
+      <command>*/</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>n3</arg>
+        <arg>--</arg>
+        <arg>n4</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Multiply <parameter>n<subscript>1</subscript></parameter> by
+      <parameter>n<subscript>2</subscript></parameter>, then divide
+      the intermediate double cell product by
+      <parameter>n<subscript>3</subscript></parameter>, returning
+      the quotient <parameter>n<subscript>4</subscript></parameter>.
+    </para>
+    <example>
+      <title>*/</title>
+      <screen>
+<userinput>100 5 8 */ .<keysym>&larrhk;</keysym></userinput> 62  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

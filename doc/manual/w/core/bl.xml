@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-bl" role="CORE" xreflabel="bl">
+  <glossterm>
+    <indexterm role="forth"><primary>bl</primary></indexterm>
+    <cmdsynopsis>
+      <command>bl</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant corresponding the the <acronym>ASCII</acronym> space
+      character.
+    </para>
+    <example>
+      <title>bl</title>
+      <screen>
+<userinput>bl .<keysym>&larrhk;</keysym></userinput> 32 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

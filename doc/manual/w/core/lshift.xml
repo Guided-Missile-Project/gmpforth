@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-lshift" role="CORE" xreflabel="lshift">
+  <glossterm>
+    <indexterm role="forth"><primary>lshift</primary></indexterm>
+    <cmdsynopsis>
+      <command>lshift</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+        <arg>x2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>x<subscript>2</subscript></parameter> is
+      <parameter>x<subscript>1</subscript></parameter> shifted
+      left by <parameter>u</parameter> bits. Vacated bits are
+      set to 0. 
+    </para>
+    <para>
+      Behavior is undefined and target dependent if
+      <parameter>u</parameter> is greater than or equal to
+      the number of bits in a cell.
+    </para>
+    <example>
+      <title>lshift</title>
+      <screen>
+<userinput>10 3 lshift .<keysym>&larrhk;</keysym></userinput> 80  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

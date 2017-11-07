@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-min" role="CORE" xreflabel="min">
+  <glossterm>
+    <indexterm role="forth"><primary>min</primary></indexterm>
+    <cmdsynopsis>
+      <command>min</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+        <arg>n3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>n<subscript>3</subscript></parameter> is the lesser
+      (in the sense of <xref linkend="core-less"/>) of
+      <parameter>n<subscript>1</subscript></parameter> or
+      <parameter>n<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>min</title>
+      <screen>
+<userinput>1 2 min .<keysym>&larrhk;</keysym></userinput> 1  ok
+<userinput>-1 1 min .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

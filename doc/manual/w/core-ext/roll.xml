@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-roll" role="CORE-EXT" xreflabel="roll">
+  <glossterm>
+    <indexterm role="forth"><primary>roll</primary></indexterm>
+    <cmdsynopsis>
+      <command>roll</command>
+      <group role="stack">
+        <arg>i*x</arg>
+        <arg>n</arg>
+        <arg>---</arg>
+        <arg>i*x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Rotate the top <parameter>n</parameter> elements on the stack.
+      If <parameter>n</parameter> is zero, no changes are made to the stack.
+      If <parameter>n</parameter> is positive, then the
+      <parameter>n+1</parameter>th element is brought to the top of the stack.
+      As a non-standard extension, if <parameter>n</parameter> is negative,
+      the top of the stack is rotated in the opposite direction to
+      the <parameter>|n+1|</parameter>th position.
+    </para>
+    <para>
+      <quote>1 <xref linkend="core-ext-roll"/></quote> is equivalent to
+      <xref linkend="core-swap"/>,
+      <quote>2 <xref linkend="core-ext-roll"/></quote> is equivalent to
+      <xref linkend="core-rot"/>,
+      <quote>-2 <xref linkend="core-ext-roll"/></quote> is equivalent to
+      <xref linkend="impl-dash-rot"/>.
+    </para>
+    <para>
+      If there are fewer than <parameter>n+1</parameter> elements on the
+      stack, then anomolous data may be places on the stack, or an exception
+      thrown, depending on the target.
+    </para>
+    <example>
+      <title>roll</title>
+      <screen>
+<userinput>1 2 3 4 5 .s<keysym>&larrhk;</keysym></userinput> 1 2 3 4 5  ok
+<userinput>1 roll .s<keysym>&larrhk;</keysym></userinput> 1 2 3 5 4  ok
+<userinput>2 roll .s<keysym>&larrhk;</keysym></userinput> 1 2 5 4 3  ok
+<userinput>3 roll .s<keysym>&larrhk;</keysym></userinput> 1 5 4 3 2  ok
+<userinput>-2 roll .s<keysym>&larrhk;</keysym></userinput> 1 5 2 4 3  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

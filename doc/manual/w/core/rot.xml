@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-rot" role="CORE" xreflabel="rot">
+  <glossterm>
+    <indexterm role="forth"><primary>rot</primary></indexterm>
+    <cmdsynopsis>
+      <command>rot</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>n3</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+        <arg>n3</arg>
+        <arg>n1</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Rotate the top three elements of the stack such that the third
+      element of the stack is brought to the top.
+    </para>
+    <example>
+      <title>rot</title>
+      <screen>
+<userinput>1 2 3 rot .s<keysym>&larrhk;</keysym></userinput> 2 3 1  ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="impl-dash-rot"/>
+    -->
+  </glossdef>
+</glossentry>

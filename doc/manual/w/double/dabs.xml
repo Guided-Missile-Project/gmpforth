@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-dabs" role="DOUBLE" xreflabel="dabs">
+  <glossterm>
+    <indexterm role="forth"><primary>dabs</primary></indexterm>
+    <cmdsynopsis>
+      <command>dabs</command>
+      <group role="stack">
+        <arg>d</arg>
+        <arg>--</arg>
+        <arg>ud</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Double number <parameter>ud</parameter> is the absolute value of
+      double number <parameter>d</parameter>.
+    </para>
+    <example>
+      <title>dabs</title>
+      <screen>
+<userinput>100. dabs d.<keysym>&larrhk;</keysym></userinput> 100  ok
+<userinput>-100 -1 dabs d.<keysym>&larrhk;</keysym></userinput> 100  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

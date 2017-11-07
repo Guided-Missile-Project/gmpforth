@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# run arm forth on QEMU
+here=`dirname $0`
+exec $here/../../../../bin/raw-stdio ${QEMU_A64:-qemu-aarch64}  $here/forth.elf

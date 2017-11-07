@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-rp-store" role="IMPL" xreflabel="rp!">
+  <glossterm>
+    <indexterm role="forth"><primary>rp!</primary></indexterm>
+    <cmdsynopsis>
+      <command>rp!</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Set the return stack index to <parameter>n</parameter>. Whether
+      <parameter>n</parameter> is an offset or an address is target
+      dependent.
+    </para>
+    <example>
+      <title>rp!</title>
+      <screen>
+<userinput>rp@ rp!<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

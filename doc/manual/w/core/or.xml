@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-or" role="CORE" xreflabel="or">
+  <glossterm>
+    <indexterm role="forth"><primary>or</primary></indexterm>
+    <cmdsynopsis>
+      <command>or</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>--</arg>
+        <arg>x3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      OR <parameter>x<subscript>1</subscript></parameter> with
+      <parameter>x<subscript>2</subscript></parameter>, returning
+      the bitwise OR <parameter>x<subscript>3</subscript></parameter>.
+    </para>
+    <example>
+      <title>or</title>
+      <screen>
+<userinput>hex f00f ab0 or . decimal<keysym>&larrhk;</keysym></userinput> FABF  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

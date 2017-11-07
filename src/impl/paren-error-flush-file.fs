@@ -1,0 +1,1 @@
+-68 CONSTANT (error-FLUSH-FILE)         \ FLUSH-FILE

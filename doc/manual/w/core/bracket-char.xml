@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-bracket-char" role="CORE,IC" xreflabel="[char]">
+  <glossterm>
+    <indexterm role="forth"><primary>[char]</primary></indexterm>
+    <cmdsynopsis>
+      <command>[char]</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile an <xref linkend="core-literal"/>
+            <acronym>ASCII</acronym>
+            value of the first character in <parameter>name</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>char</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return the
+            <acronym>ASCII</acronym>
+            value of the first character in <parameter>name</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>[char]</title>
+      <screen>
+<userinput>: test [char] { emit ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> { ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

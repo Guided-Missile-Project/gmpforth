@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-resize" role="IMPL" xreflabel="(error-resize)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-resize)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-resize)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>RESIZE</quote>.
+    </para>
+    <example>
+      <title>(error-resize)</title>
+      <screen>
+<userinput>(error-resize) .<keysym>&larrhk;</keysym></userinput> -61 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

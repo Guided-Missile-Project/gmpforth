@@ -1,0 +1,2 @@
+: (interpret) ( -- )
+   query (evaluate) ;

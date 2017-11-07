@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+${RUBY:-ruby} test/test_cli_top.rb $*

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-zero-equal" role="DOUBLE" xreflabel="d0=">
+  <glossterm>
+    <indexterm role="forth"><primary>d0=</primary></indexterm>
+    <cmdsynopsis>
+      <command>d0=</command>
+      <group role="stack">
+        <arg>d</arg>
+        <arg>--</arg>
+        <arg>flag</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return <xref linkend="core-ext-true"/> if double number
+      <parameter>d</parameter> is equal to zero, otherwise return
+      <xref linkend="core-ext-false"/>.
+    </para>
+    <example>
+      <title>d0=</title>
+      <screen>
+<userinput>-100. d0= .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>0. d0= .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput>100 0 d0= .<keysym>&larrhk;</keysym></userinput> 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

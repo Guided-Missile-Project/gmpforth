@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-immediate" role="CORE" xreflabel="immediate">
+  <glossterm>
+    <indexterm role="forth"><primary>immediate</primary></indexterm>
+    <cmdsynopsis>
+      <command>immediate</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Mark the <xref linkend="fig-latest"/> dictionary entry as
+      executable in the compile <xref linkend="user-state"/>. Words so marked
+      will execute when used in the compile state.
+    </para>
+    <!-- what happens if most recent definition does not have a name -->
+    <example>
+      <title>immediate</title>
+      <screen>
+<userinput>: hello ." hello" ; immediate<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: test hello ;<keysym>&larrhk;</keysym></userinput> hello ok
+<userinput>test<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

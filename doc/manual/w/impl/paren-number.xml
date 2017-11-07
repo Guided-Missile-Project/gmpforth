@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-number" role="IMPL,C" xreflabel="(number)">
+  <glossterm>
+    <indexterm role="forth"><primary>(number)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(number)</command>
+      <group role="stack">
+        <arg>d1</arg>
+        <arg>|</arg>
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+        <arg>n3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Compile or interpret
+      <parameter>d<subscript>1</subscript></parameter> or
+      <parameter>n<subscript>1</subscript></parameter> according to
+      <parameter>n<subscript>2</subscript></parameter>. If <xref
+      linkend="user-state"/> is non-zero, compile
+      <parameter>d<subscript>1</subscript></parameter> as a double
+      number if <parameter>n<subscript>2</subscript></parameter>
+      equals 2, otherwise compile
+      <parameter>n<subscript>1</subscript></parameter> as a single
+      number. If <xref linkend="user-state"/> is zero, leave
+      <parameter>d<subscript>1</subscript></parameter> or
+      <parameter>n<subscript>1</subscript></parameter> unchanged. If
+      there are any exceptional conditions, return an appropriate
+      throw code, otherwise return zero.
+    </para>
+    <example>
+      <title>(number)</title>
+      <screen>
+<userinput>: test s" 2.0" number? (number) .s ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 20 0 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

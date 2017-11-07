@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="fig-latest" role="FIG" xreflabel="latest">
+  <glossterm>
+    <indexterm role="forth"><primary>latest</primary></indexterm>
+    <cmdsynopsis>
+      <command>latest</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>nfa</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the name field <parameter>nfa</parameter>
+      of the most recent dictionary entry.
+    </para>
+    <example>
+      <title>latest</title>
+      <screen>
+<userinput>: test ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>latest 10 dump<keysym>&larrhk;</keysym></userinput>
+    3884  84 74 65 73 74  0  0  0 E0  4  0  0 EC  1  0  0  .test........... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

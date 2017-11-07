@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-c-quote" role="CORE,I,C" xreflabel="c&quot;">
+  <glossterm>
+    <indexterm role="forth"><primary>c"</primary></indexterm>
+    <cmdsynopsis>
+      <command>c"</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;ccc&lt;quote&gt;&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Parse the input stream up to the next double quote
+            character, then compile <xref
+            linkend="impl-paren-s-quote"/> followed by the parsed
+            string. Additional words are compiled such that the
+            counted string address is left on the stack. The string
+            must be less than 256 characters long.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>c-addr</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return the address of the compiled string literal starting
+            with the count byte.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>c"</title>
+      <screen>
+<userinput><keysym>&larrhk;</keysym></userinput>
+<userinput>: test c" string literal" type ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test count type<keysym>&larrhk;</keysym></userinput> string literal ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

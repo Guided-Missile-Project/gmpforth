@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-blk-read" role="IMPL" xreflabel="(error-blk-read)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-blk-read)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-blk-read)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>block read exception</quote>.
+    </para>
+    <example>
+      <title>(error-blk-read)</title>
+      <screen>
+<userinput>(error-blk-read) .<keysym>&larrhk;</keysym></userinput> -33  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-again" role="CORE-EXT,IC" xreflabel="again">
+  <glossterm>
+    <indexterm role="forth"><primary>again</primary></indexterm>
+    <cmdsynopsis>
+      <command>again</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>dest</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile <xref linkend="impl-paren-branch"/> followed by
+            <parameter>dest</parameter>.
+            <parameter>dest</parameter>
+            is generally supplied by <xref linkend="core-begin"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Unconditionally branch to <parameter>dest</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>again</title>
+      <screen>
+<userinput>: test 0 begin dup 5 > if drop exit then dup . 1+ again ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 0 1 2 3 4 5  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-forward-mark" role="F83" xreflabel="&gt;mark">
+  <glossterm>
+    <indexterm role="forth"><primary>&gt;mark</primary></indexterm>
+    <cmdsynopsis>
+      <command>&gt;mark</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Reserve space in the dictionary for an address to be resolved later by
+      <xref linkend="f83-forward-resolve"/> 
+    </para>
+    <example>
+      <title>&gt;mark</title>
+      <screen>
+<userinput>&gt;mark ? <keysym>&larrhk;</keysym></userinput> 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

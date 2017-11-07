@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-c-store" role="CORE" xreflabel="c!">
+  <glossterm>
+    <indexterm role="forth"><primary>c!</primary></indexterm>
+    <cmdsynopsis>
+      <command>c!</command>
+      <group role="stack">
+        <arg>char</arg>
+        <arg>addr</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Store <parameter>char</parameter> at the address
+      <parameter>addr</parameter>.
+    </para>
+    <example>
+      <title>c!</title>
+      <screen>
+<userinput>10 pad c!<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>pad 10 dump<keysym>&larrhk;</keysym></userinput>
+    38AC   A  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  ................ ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

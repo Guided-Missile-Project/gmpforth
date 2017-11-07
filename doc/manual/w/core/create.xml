@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-create" role="CORE" xreflabel="create">
+  <glossterm>
+    <indexterm role="forth"><primary>create</primary></indexterm>
+    <cmdsynopsis>
+      <command>create</command>
+      <group role="stack">
+        <arg>&ldquo;name&rdquo;</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Create a dictionary entry called <parameter>name</parameter>,
+      <xref linkend="core-align"/>ing the parameter address if necessary.
+      No parameter space is allocated in the dictionary.
+    </para>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term><parameter>name</parameter> Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>a-addr</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return the parameter address <parameter>a-addr</parameter>
+            for <parameter>name</parameter>.
+          </para>
+          <para>
+            Execution behavior may be modified by <xref linkend="core-does"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>create</title>
+      <screen>
+<userinput>create x 10 ,<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>x ?<keysym>&larrhk;</keysym></userinput> 10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-question-name" role="IMPL" xreflabel="(?name)">
+  <glossterm>
+    <indexterm role="forth"><primary>(?name)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(?name)</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Throw a <xref linkend="impl-paren-error-no-name"/> exception if
+      <parameter>n</parameter> is zero or throw a
+      <xref linkend="impl-paren-error-def-o"/> exception if n is greater
+      than <xref linkend="impl-paren-lex-max-name"/>. 
+    </para>
+    <para>
+      Used to ensure a dictionary name has a length greater than zero and
+      not greater than the maximum length of a name.
+    </para>
+    <example>
+      <title>(?name)</title>
+      <screen>
+<userinput>s" " (?name) .s<keysym>&larrhk;</keysym></userinput> (?name) ? er-13
+<userinput>s" 1" (?name) .s<keysym>&larrhk;</keysym></userinput> 14128 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

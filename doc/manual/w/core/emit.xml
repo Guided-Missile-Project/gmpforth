@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-emit" role="CORE" xreflabel="emit">
+  <glossterm>
+    <indexterm role="forth"><primary>emit</primary></indexterm>
+    <cmdsynopsis>
+      <command>emit</command>
+      <group role="stack">
+        <arg>c</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display <parameter>c</parameter>.
+    </para>
+    <para>
+      If <parameter>c</parameter> is a control character, the behavior
+      is completely determined by the output device characteristics.
+    </para>
+    <example>
+      <title>emit</title>
+      <screen>
+<userinput>char x 1+ emit<keysym>&larrhk;</keysym></userinput> y ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

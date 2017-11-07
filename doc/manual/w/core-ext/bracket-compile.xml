@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-bracket-compile" role="CORE-EXT" xreflabel="[compile]">
+  <glossterm>
+    <indexterm role="forth"><primary>[compile]</primary></indexterm>
+    <cmdsynopsis>
+      <command>[compile]</command>
+      <group role="stack">
+        <arg>&ldquo;w&rdquo;</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Parse a name <parameter>w</parameter> and append the compilation
+      semantics of <parameter>w</parameter> into the current definition.
+      An error will be thrown if <parameter>w</parameter> is not found.
+    </para>
+    <example>
+      <title>[compile]</title>
+      <screen>
+<userinput>: imm ." imm " ; immediate<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: nim ." nim " ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: test [compile] imm [compile] nim ; immediate<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: test2 test ;<keysym>&larrhk;</keysym></userinput>  imm  ok
+<userinput>test2<keysym>&larrhk;</keysym></userinput> nim  ok
+<userinput>: test3 [compile] foo ;<keysym>&larrhk;</keysym></userinput> foo ? er-13 
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

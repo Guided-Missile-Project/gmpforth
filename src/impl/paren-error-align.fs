@@ -1,0 +1,1 @@
+-23 CONSTANT (error-align)              \ address alignment exception

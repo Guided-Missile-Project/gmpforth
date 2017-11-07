@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-forth" role="F83" xreflabel="forth">
+  <glossterm>
+    <indexterm role="forth"><primary>forth</primary></indexterm>
+    <cmdsynopsis>
+      <command>forth</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Sets the context vocabulary to the forth wordlist.
+    </para>
+  </glossdef>
+</glossentry>

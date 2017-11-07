@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-dnegate" role="DOUBLE" xreflabel="dnegate">
+  <glossterm>
+    <indexterm role="forth"><primary>dnegate</primary></indexterm>
+    <cmdsynopsis>
+      <command>dnegate</command>
+      <group role="stack">
+        <arg>d1</arg>
+        <arg>--</arg>
+        <arg>d2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>d<subscript>2</subscript></parameter> is the negative of
+      <parameter>d<subscript>1</subscript></parameter>.
+    </para>
+    <example>
+      <title>dnegate</title>
+      <screen>
+<userinput>100. dnegate d.<keysym>&larrhk;</keysym></userinput> -100  ok
+<userinput>-100. dnegate d.<keysym>&larrhk;</keysym></userinput> 100  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

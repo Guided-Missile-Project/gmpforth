@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-endof" role="CORE-EXT,IC" xreflabel="endof">
+  <glossterm>
+    <indexterm role="forth"><primary>endof</primary></indexterm>
+    <cmdsynopsis>
+      <command>endof</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>orig1</arg>
+              <arg>--</arg>
+              <arg>orig2</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Mark the end of an <xref
+            linkend="core-ext-of"/>&hellip; <xref
+            linkend="core-ext-endof"/> construct used within <xref
+            linkend="core-ext-case"/>&hellip;<xref
+            linkend="core-ext-endcase"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Continue execution.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>endof</title>
+      <screen>
+<userinput>: test case<keysym>&larrhk;</keysym></userinput>
+<userinput>0 of ." zero " endof<keysym>&larrhk;</keysym></userinput>
+<userinput>1 of ." one " endof<keysym>&larrhk;</keysym></userinput>
+<userinput>.<keysym>&larrhk;</keysym></userinput>
+<userinput>endcase ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>0 test<keysym>&larrhk;</keysym></userinput> zero  ok
+<userinput>1 test<keysym>&larrhk;</keysym></userinput> one  ok
+<userinput>2 test<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

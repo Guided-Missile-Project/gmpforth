@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-cell-plus" role="CORE" xreflabel="cell+">
+  <glossterm>
+    <indexterm role="forth"><primary>cell+</primary></indexterm>
+    <cmdsynopsis>
+      <command>cell+</command>
+      <group role="stack">
+        <arg>a-addr1</arg>
+        <arg>--</arg>
+        <arg>a-addr2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Add <xref linkend="thirty-two-cell"/> to
+      <parameter>a-addr<subscript>1</subscript></parameter>,
+      returning <parameter>a-addr<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>cell+</title>
+      <screen>
+<userinput>here dup . cell+ .<keysym>&larrhk;</keysym></userinput> 14520 14524  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

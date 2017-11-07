@@ -1,0 +1,7 @@
+        .include        "mdefs.inc"
+        .include        "defs.inc"
+        .include        "pre.inc"
+        .include        "start.inc"
+        .include        "kernel.inc"
+        .include        "post.inc"
+        .include        "mpost.inc"

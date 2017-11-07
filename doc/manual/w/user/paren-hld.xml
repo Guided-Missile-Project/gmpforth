@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-paren-hld" role="USER" xreflabel="(hld)">
+  <glossterm>
+    <indexterm role="forth"><primary>(hld)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(hld)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable that contains the current address of the pictured
+      numeric putput string.
+    </para>
+    <example>
+      <title>(hld)</title>
+      <screen>
+vm-le GMP Forth
+<userinput>(hld) ?<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>1 .<keysym>&larrhk;</keysym></userinput> 1  ok
+<userinput>(hld) ?<keysym>&larrhk;</keysym></userinput> 14451  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

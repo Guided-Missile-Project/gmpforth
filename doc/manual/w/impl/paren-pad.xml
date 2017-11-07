@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-pad" role="IMPL" xreflabel="(pad)">
+  <glossterm>
+    <indexterm role="forth"><primary>(pad)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(pad)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>u</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant corresponding to the number of bytes that
+      <xref linkend="core-ext-pad"/> is offset from
+      <xref linkend="core-here"/>.
+    </para>
+    <example>
+      <title>(pad)</title>
+      <screen>
+<userinput>(pad) .<keysym>&larrhk;</keysym></userinput> 68 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

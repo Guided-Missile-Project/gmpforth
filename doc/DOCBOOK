@@ -1,0 +1,150 @@
+DOCBOOK style guide
+
+Version
+
+  Docbook version used is 4.3, as that's the most recent version supported by
+  RHEL 4.
+
+Stylesheet
+
+  (HTML) use.id.as.filename=1
+  (FO)   index.div.title.properties.space-before.minimum=8pt
+           (see Build problems)
+  (ALL)  index.on.type=1
+
+nXML
+
+  Needs a schemas.xml file for schema associations
+
+  dbstart.rnc needs to be augmented with elements that it doesn't
+  recognize as top level elements. Currently this is just 'glossentry'.
+
+  dbnotn.rnc needs PDF added to recognize PDF as a valid graphics format
+
+The following elements require a unique and readable ID. This will
+allow chunked HTML to have rational file names, and allow generation
+of individual sections for checking.
+
+  appendix
+  article
+  bibliography
+  book
+  chapter
+  colophon
+  glossary
+  index
+  part
+  preface
+  refentry
+  reference
+  sect1
+  section (first level)
+  set
+  setindex
+
+Tables shall be in CALS format
+
+  There are numerous known limitations with tables in passivetex, so it is best
+  to minimize the use of tables. For table cells, using only the attributes
+  referenced where the TeX code is generated (in fotex.sty) seems to have
+  helped a lot.
+
+  Tables must specify a fixed width.
+
+  Special support for tables with cell borders is required in the stylesheet.
+  
+
+Forth word reference entries
+
+  <glossentry id="store">
+  <indexterm role="forth"><primary>!</primary></indexterm>
+        <cmdsynopsis>
+          <command>!</command>
+          <group role="stack">
+            <arg>n</arg>
+            <arg>a</arg>
+            <arg>--</arg>
+          </group>
+        </cmdsynopsis>
+
+  For words that have different stack effects depending on compilation
+  or execution, use cmdsynopsis in a variablelist.
+  Glossary layout goal:
+
+  <no page break>
+  WORD          ( input -- output )         IC  wordset
+
+    Description...
+
+  or:
+
+  WORD                                      IC  wordset
+   Compilation: ( input -- output )
+
+    Compilation description...
+
+   Execution: ( input -- output )
+
+    Execution description...
+
+Figures
+
+  Created in inkscape
+    Select figure
+    Set page size to selection
+      Save a copy as pdf
+  inkscape source files: doc/manual/inkscape
+  pdf files: doc/manual/w/*/figure
+
+  svn propset svn:mime-type application/pdf (FILE.pdf)
+
+  Text uses the following fonts
+    Nimbus Roman No9 L  (serif)
+    Nimbus Sans L       (sans serif)
+    Nimbus Mono L       (monospace)
+
+
+passivetex:
+
+  Math in attributes:
+  
+    passivetex doesn't like math in FO attributes, and will
+    generate an error like:
+
+
+      l.356 ....minimum="10pt * 0.8" start-indent="0pt">
+                                              A</fo:block></fo:block></f...
+
+      !  ==> Fatal error occurred, the output PDF file is not finished!
+
+    This has been resolved in one instance by generating FO output directly
+
+      xmlto fo <file>
+
+    and then searching for the offending string in the FO
+    stylesheets. Hopefully, the math will resolve to the default value
+    of a parameter, which can then be changed in the stylesheet.
+
+  Memory:
+
+    ! TeX capacity exceeded, sorry [pool size=1172308].
+    ! TeX capacity exceeded, sorry [hash size=60000].
+
+    /usr/share/texmf/web2c/texmf.cnf
+
+--- /usr/share/texmf/web2c/texmf.cnf.orig       2012-02-11 09:46:51.000000000 -0800
++++ /usr/share/texmf/web2c/texmf.cnf    2012-02-13 20:00:38.000000000 -0800
+@@ -514,11 +514,11 @@
+ 
+ % Extra space for the hash table of control sequences (which allows 10K
+ % names as distributed).
+-hash_extra = 50000
++hash_extra = 80000
+ 
+ % Max number of characters in all strings, including all error messages,
+ % help texts, font names, control sequences.  These values apply to TeX and MP.
+-pool_size = 1250000
++pool_size = 2250000
+ % Minimum pool space after TeX/MP's own strings; must be at least
+ % 25000 less than pool_size, but doesn't need to be nearly that large.
+ string_vacancies = 90000

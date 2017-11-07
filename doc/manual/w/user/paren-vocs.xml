@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-paren-vocs" role="USER" xreflabel="(vocs)">
+  <glossterm>
+    <indexterm role="forth"><primary>(vocs)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(vocs)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable containing the address of the most recently defined
+      <xref linkend="f83-vocabulary"/>.
+    </para>
+    <example>
+      <title>(vocs)</title>
+      <screen>
+<userinput>' forth >body (vocs) @ = .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

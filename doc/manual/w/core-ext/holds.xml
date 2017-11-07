@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-holds" role="CORE-EXT" xreflabel="holds">
+  <glossterm>
+    <indexterm role="forth"><primary>holds</primary></indexterm>
+    <cmdsynopsis>
+      <command>holds</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Prepend the string <parameter>c-addr</parameter>
+      <parameter>u</parameter> to the pictured numeric
+      output buffer.
+    </para>
+    <para>
+      This word is usually used between <xref linkend="core-less-number-sign"/>
+      and <xref linkend="core-number-sign-greater"/>
+      for inserting <acronym>ASCII</acronym> strings into numeric
+      conversions.
+    </para>
+    <para>
+      The conditions for <xref linkend="core-ext-holds"/> need to be valid
+      if <xref linkend="core-ext-holds"/> is used outside of
+      <xref linkend="core-less-number-sign"/> and
+      <xref linkend="core-number-sign-greater"/>, otherwise the converted
+      string may be stored into some unintentional location.
+    </para>
+    <example>
+      <title>holds</title>
+      <screen>
+<userinput>: .++ &lt;# #s s" ++" holds #&gt; ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>10. .++ type<keysym>&larrhk;</keysym></userinput> ++10 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

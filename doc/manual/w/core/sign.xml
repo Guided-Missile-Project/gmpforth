@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-sign" role="CORE" xreflabel="sign">
+  <glossterm>
+    <indexterm role="forth"><primary>sign</primary></indexterm>
+    <cmdsynopsis>
+      <command>sign</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Add an <acronym>ASCII</acronym> minus sign to the beginning of
+      the pictured numeric output buffer if <parameter>n</parameter>
+      is negative.
+    </para>
+    <para>
+      The conditions for <xref linkend="core-hold"/> need to be valid
+      if <xref linkend="core-sign"/> is used outside of
+      <xref linkend="core-less-number-sign"/> and
+      <xref linkend="core-number-sign-greater"/>, otherwise the minus
+      character may be stored into some unintentional location.
+    </para>
+    <example>
+      <title>sign</title>
+      <screen>
+<userinput>-100. &lt;# dup sign #&gt; type<keysym>&larrhk;</keysym></userinput> - ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

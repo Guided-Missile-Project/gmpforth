@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="search-ext-previous" role="SEARCH-EXT" xreflabel="previous">
+  <glossterm>
+    <indexterm role="forth"><primary>previous</primary></indexterm>
+    <cmdsynopsis>
+      <command>previous</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Drop the context vocabulary at the beginning of the search
+      order. An exception will be thrown if the context search list is
+      already empty.
+    </para>
+    <example>
+      <title>previous</title>
+      <screen>
+<userinput>also also cr order previous cr order<keysym>&larrhk;</keysym></userinput>
+forth forth forth / forth
+forth forth / forth ok
+<userinput>previous cr order<keysym>&larrhk;</keysym></userinput>
+forth / forth ok
+<userinput>previous cr order<keysym>&larrhk;</keysym></userinput>
+/ forth ok
+<userinput>previous cr order<keysym>&larrhk;</keysym></userinput> previous ? er-50
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

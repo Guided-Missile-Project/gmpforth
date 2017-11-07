@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-source" role="CORE" xreflabel="source">
+  <glossterm>
+    <indexterm role="forth"><primary>source</primary></indexterm>
+    <cmdsynopsis>
+      <command>source</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>c-addr</arg>
+        <arg>u</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the address <parameter>c-addr</parameter>
+      and length <parameter>u</parameter> of the current input buffer.
+    </para>
+    <example>
+      <title>source</title>
+      <screen>
+<userinput>source dump<keysym>&larrhk;</keysym></userinput>
+    3680  73 6F 75 72 63 65 20 64 75 6D 70 72 65 6D 20 2E  source dumprem . ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

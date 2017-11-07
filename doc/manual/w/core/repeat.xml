@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-repeat" role="CORE,IC" xreflabel="repeat">
+  <glossterm>
+    <indexterm role="forth"><primary>repeat</primary></indexterm>
+    <cmdsynopsis>
+      <command>repeat</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>orig dest</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile <xref linkend="impl-paren-branch"/> followed by
+            <parameter>dest</parameter>, then resolve
+            <parameter>orig</parameter>.
+            <parameter>dest</parameter>
+            is generally supplied by <xref linkend="core-begin"/>,
+            and <parameter>dest</parameter> is generally supplied by
+            <xref linkend="core-while"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Unconditionally branch to <parameter>dest</parameter>, generally
+            the beginning of a <xref linkend="core-begin"/>
+            <xref linkend="core-while"/> <xref linkend="core-repeat"/> loop.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>repeat</title>
+      <screen>
+<userinput>: test 5 begin ?dup while dup . 1- repeat ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 5 4 3 2 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

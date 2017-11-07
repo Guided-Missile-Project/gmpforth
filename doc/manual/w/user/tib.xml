@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-tib" role="USER" xreflabel="tib">
+  <glossterm>
+    <indexterm role="forth"><primary>tib</primary></indexterm>
+    <cmdsynopsis>
+      <command>tib</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable that contains the address of the terminal input buffer.
+    </para>
+  </glossdef>
+</glossentry>

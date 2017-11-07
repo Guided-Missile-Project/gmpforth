@@ -1,0 +1,1 @@
+-51 CONSTANT (error-changed)            \ compilation word list changed

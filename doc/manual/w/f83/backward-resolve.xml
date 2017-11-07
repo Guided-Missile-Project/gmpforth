@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-backward-resolve" role="F83" xreflabel="&lt;resolve">
+  <glossterm>
+    <indexterm role="forth"><primary>&lt;resolve</primary></indexterm>
+    <cmdsynopsis>
+      <command>&lt;resolve</command>
+      <group role="stack">
+        <arg>addr</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Store <parameter>addr</parameter> into the dictionary,
+      resolving a backward address reference typically supplied by
+      <xref linkend="f83-backward-mark"/>.
+    </para>
+    <example>
+      <title>&lt;resolve</title>
+      <screen>
+<userinput>&lt;mark dup &lt;resolve ? <keysym>&larrhk;</keysym></userinput> 14828  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

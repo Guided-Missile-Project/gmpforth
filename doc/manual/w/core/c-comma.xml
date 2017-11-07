@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-c-comma" role="CORE" xreflabel="c,">
+  <glossterm>
+    <indexterm role="forth"><primary>c,</primary></indexterm>
+    <cmdsynopsis>
+      <command>c,</command>
+      <group role="stack">
+        <arg>char</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Reserve space for one character at <xref linkend="core-here"/>
+      and store the character there. There are no alignment restrictions.
+    </para>
+    <example>
+      <title>c,</title>
+      <screen>
+<userinput>here 10 c, 10 dump<keysym>&larrhk;</keysym></userinput>
+    3868   A  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  ................ ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

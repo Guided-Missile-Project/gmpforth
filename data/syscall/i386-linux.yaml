@@ -1,0 +1,2343 @@
+---
+arch: i686
+os: Linux 3.12.5
+syscall:
+  0:
+    name: sys_restart_syscall
+    args: {}
+  1:
+    name: sys_exit
+    args:
+      error_code: int
+  2:
+    name: sys_fork
+    args: {}
+  3:
+    name: sys_read
+    args:
+      fd: unsigned int
+      buf: char *
+      count: size_t
+  4:
+    name: sys_write
+    args:
+      fd: unsigned int
+      buf: const char *
+      count: size_t
+  5:
+    name: sys_open
+    args:
+      filename: const char *
+      flags: int
+      mode: umode_t
+  6:
+    name: sys_close
+    args:
+      fd: unsigned int
+  7:
+    name: sys_waitpid
+    args:
+      pid: pid_t
+      stat_addr: int *
+      options: int
+  8:
+    name: sys_creat
+    args:
+      pathname: const char *
+      mode: umode_t
+  9:
+    name: sys_link
+    args:
+      oldname: const char *
+      newname: const char *
+  10:
+    name: sys_unlink
+    args:
+      pathname: const char *
+  11:
+    name: sys_execve
+    args:
+      filename: const char *
+      argv: const char *const *
+      envp: const char *const *
+  12:
+    name: sys_chdir
+    args:
+      filename: const char *
+  13:
+    name: sys_time
+    args:
+      tloc: time_t *
+  14:
+    name: sys_mknod
+    args:
+      filename: const char *
+      mode: umode_t
+      dev: unsigned
+  15:
+    name: sys_chmod
+    args:
+      filename: const char *
+      mode: umode_t
+  16:
+    name: sys_lchown16
+    args:
+      filename: const char *
+      user: old_uid_t
+      group: old_gid_t
+  18:
+    name: sys_stat
+    args:
+      filename: const char *
+      statbuf: struct __old_kernel_stat *
+  19:
+    name: sys_lseek
+    args:
+      fd: unsigned int
+      offset: off_t
+      whence: unsigned int
+  20:
+    name: sys_getpid
+    args: {}
+  21:
+    name: sys_mount
+    args:
+      dev_name: char *
+      dir_name: char *
+      type: char *
+      flags: unsigned long
+      data: void *
+  22:
+    name: sys_oldumount
+    args:
+      name: char *
+  23:
+    name: sys_setuid16
+    args:
+      uid: old_uid_t
+  24:
+    name: sys_getuid16
+    args: {}
+  25:
+    name: sys_stime
+    args:
+      tptr: time_t *
+  26:
+    name: sys_ptrace
+    args:
+      request: long
+      pid: long
+      addr: unsigned long
+      data: unsigned long
+  27:
+    name: sys_alarm
+    args:
+      seconds: unsigned int
+  28:
+    name: sys_fstat
+    args:
+      fd: unsigned int
+      statbuf: struct __old_kernel_stat *
+  29:
+    name: sys_pause
+    args: {}
+  30:
+    name: sys_utime
+    args:
+      filename: char *
+      times: struct utimbuf *
+  33:
+    name: sys_access
+    args:
+      filename: const char *
+      mode: int
+  34:
+    name: sys_nice
+    args:
+      increment: int
+  36:
+    name: sys_sync
+    args: {}
+  37:
+    name: sys_kill
+    args:
+      pid: pid_t
+      sig: int
+  38:
+    name: sys_rename
+    args:
+      oldname: const char *
+      newname: const char *
+  39:
+    name: sys_mkdir
+    args:
+      pathname: const char *
+      mode: umode_t
+  40:
+    name: sys_rmdir
+    args:
+      pathname: const char *
+  41:
+    name: sys_dup
+    args:
+      fildes: unsigned int
+  42:
+    name: sys_pipe
+    args:
+      fildes: int *
+  43:
+    name: sys_times
+    args:
+      tbuf: struct tms *
+  45:
+    name: sys_brk
+    args:
+      brk: unsigned long
+  46:
+    name: sys_setgid16
+    args:
+      gid: old_gid_t
+  47:
+    name: sys_getgid16
+    args: {}
+  48:
+    name: sys_signal
+    args:
+      sig: int
+      handler: __sighandler_t
+  49:
+    name: sys_geteuid16
+    args: {}
+  50:
+    name: sys_getegid16
+    args: {}
+  52:
+    name: sys_umount
+    args:
+      name: char *
+      flags: int
+  54:
+    name: sys_ioctl
+    args:
+      fd: unsigned int
+      cmd: unsigned int
+      arg: unsigned long
+  55:
+    name: sys_fcntl
+    args:
+      fd: unsigned int
+      cmd: unsigned int
+      arg: unsigned long
+  57:
+    name: sys_setpgid
+    args:
+      pid: pid_t
+      pgid: pid_t
+  59:
+    name: sys_olduname
+    args:
+      name: struct oldold_utsname *
+  60:
+    name: sys_umask
+    args:
+      mask: int
+  61:
+    name: sys_chroot
+    args:
+      filename: const char *
+  62:
+    name: sys_ustat
+    args:
+      dev: unsigned
+      ubuf: struct ustat *
+  63:
+    name: sys_dup2
+    args:
+      oldfd: unsigned int
+      newfd: unsigned int
+  64:
+    name: sys_getppid
+    args: {}
+  65:
+    name: sys_getpgrp
+    args: {}
+  66:
+    name: sys_setsid
+    args: {}
+  67:
+    name: sys_sigaction
+    args:
+      sig: int
+      act: const struct old_sigaction *
+      oact: struct old_sigaction *
+  68:
+    name: sys_sgetmask
+    args: {}
+  69:
+    name: sys_ssetmask
+    args:
+      newmask: int
+  70:
+    name: sys_setreuid16
+    args:
+      ruid: old_uid_t
+      euid: old_uid_t
+  71:
+    name: sys_setregid16
+    args:
+      rgid: old_gid_t
+      egid: old_gid_t
+  72:
+    name: sys_sigsuspend
+    args:
+      unused1: int
+      unused2: int
+      mask: old_sigset_t
+  73:
+    name: sys_sigpending
+    args:
+      set: old_sigset_t *
+  74:
+    name: sys_sethostname
+    args:
+      name: char *
+      len: int
+  75:
+    name: sys_setrlimit
+    args:
+      resource: unsigned int
+      rlim: struct rlimit *
+  76:
+    name: sys_old_getrlimit
+    args:
+      resource: unsigned int
+      rlim: struct rlimit *
+  77:
+    name: sys_getrusage
+    args:
+      who: int
+      ru: struct rusage *
+  78:
+    name: sys_gettimeofday
+    args:
+      tv: struct timeval *
+      tz: struct timezone *
+  79:
+    name: sys_settimeofday
+    args:
+      tv: struct timeval *
+      tz: struct timezone *
+  80:
+    name: sys_getgroups16
+    args:
+      gidsetsize: int
+      grouplist: old_gid_t *
+  81:
+    name: sys_setgroups16
+    args:
+      gidsetsize: int
+      grouplist: old_gid_t *
+  82:
+    name: sys_old_select
+    args:
+      arg: struct sel_arg_struct *
+  83:
+    name: sys_symlink
+    args:
+      oldname: const char *
+      newname: const char *
+  84:
+    name: sys_lstat
+    args:
+      filename: const char *
+      statbuf: struct __old_kernel_stat *
+  85:
+    name: sys_readlink
+    args:
+      path: const char *
+      buf: char *
+      bufsiz: int
+  86:
+    name: sys_uselib
+    args:
+      library: const char *
+  88:
+    name: sys_reboot
+    args:
+      magic1: int
+      magic2: int
+      cmd: unsigned int
+      arg: void *
+  89:
+    name: sys_old_readdir
+    args:
+      fd: unsigned int
+      dirent: struct old_linux_dirent *
+      count: unsigned int
+  90:
+    name: sys_old_mmap
+    args:
+      arg: struct mmap_arg_struct *
+  91:
+    name: sys_munmap
+    args:
+      addr: unsigned long
+      len: size_t
+  92:
+    name: sys_truncate
+    args:
+      path: const char *
+      length: long
+  93:
+    name: sys_ftruncate
+    args:
+      fd: unsigned int
+      length: unsigned long
+  94:
+    name: sys_fchmod
+    args:
+      fd: unsigned int
+      mode: umode_t
+  95:
+    name: sys_fchown16
+    args:
+      fd: unsigned int
+      user: old_uid_t
+      group: old_gid_t
+  96:
+    name: sys_getpriority
+    args:
+      which: int
+      who: int
+  97:
+    name: sys_setpriority
+    args:
+      which: int
+      who: int
+      niceval: int
+  99:
+    name: sys_statfs
+    args:
+      pathname: const char *
+      buf: struct statfs *
+  100:
+    name: sys_fstatfs
+    args:
+      fd: unsigned int
+      buf: struct statfs *
+  102:
+    name: sys_socketcall
+    args:
+      call: int
+      args: unsigned long *
+  103:
+    name: sys_syslog
+    args:
+      type: int
+      buf: char *
+      len: int
+  104:
+    name: sys_setitimer
+    args:
+      which: int
+      value: struct itimerval *
+      ovalue: struct itimerval *
+  105:
+    name: sys_getitimer
+    args:
+      which: int
+      value: struct itimerval *
+  106:
+    name: sys_newstat
+    args:
+      filename: const char *
+      statbuf: struct stat *
+  107:
+    name: sys_newlstat
+    args:
+      filename: const char *
+      statbuf: struct stat *
+  108:
+    name: sys_newfstat
+    args:
+      fd: unsigned int
+      statbuf: struct stat *
+  109:
+    name: sys_uname
+    args:
+      name: struct old_utsname *
+  110:
+    name: sys_iopl
+    args:
+      level: unsigned int
+  111:
+    name: sys_vhangup
+    args: {}
+  113:
+    name: sys_vm86old
+    args:
+      v86: struct vm86_struct *
+  114:
+    name: sys_wait4
+    args:
+      upid: pid_t
+      stat_addr: int *
+      options: int
+      ru: struct rusage *
+  116:
+    name: sys_sysinfo
+    args:
+      info: struct sysinfo *
+  118:
+    name: sys_fsync
+    args:
+      fd: unsigned int
+  120:
+    name: sys_clone
+    args:
+      clone_flags: unsigned long
+      newsp: unsigned long
+      parent_tidptr: int *
+      tls_val: int
+      child_tidptr: int *
+  121:
+    name: sys_setdomainname
+    args:
+      name: char *
+      len: int
+  122:
+    name: sys_newuname
+    args:
+      name: struct new_utsname *
+  124:
+    name: sys_adjtimex
+    args:
+      txc_p: struct timex *
+  125:
+    name: sys_mprotect
+    args:
+      start: unsigned long
+      len: size_t
+      prot: unsigned long
+  126:
+    name: sys_sigprocmask
+    args:
+      how: int
+      nset: old_sigset_t *
+      oset: old_sigset_t *
+  132:
+    name: sys_getpgid
+    args:
+      pid: pid_t
+  133:
+    name: sys_fchdir
+    args:
+      fd: unsigned int
+  134:
+    name: sys_bdflush
+    args:
+      func: int
+      data: long
+  135:
+    name: sys_sysfs
+    args:
+      option: int
+      arg1: unsigned long
+      arg2: unsigned long
+  136:
+    name: sys_personality
+    args:
+      personality: unsigned int
+  138:
+    name: sys_setfsuid16
+    args:
+      uid: old_uid_t
+  139:
+    name: sys_setfsgid16
+    args:
+      gid: old_gid_t
+  140:
+    name: sys_llseek
+    args:
+      fd: unsigned int
+      offset_high: unsigned long
+      offset_low: unsigned long
+      result: loff_t *
+      whence: unsigned int
+  141:
+    name: sys_getdents
+    args:
+      fd: unsigned int
+      dirent: struct linux_dirent *
+      count: unsigned int
+  142:
+    name: sys_select
+    args:
+      n: int
+      inp: fd_set *
+      outp: fd_set *
+      exp: fd_set *
+      tvp: struct timeval *
+  143:
+    name: sys_flock
+    args:
+      fd: unsigned int
+      cmd: unsigned int
+  144:
+    name: sys_msync
+    args:
+      start: unsigned long
+      len: size_t
+      flags: int
+  145:
+    name: sys_readv
+    args:
+      fd: unsigned long
+      vec: const struct iovec *
+      vlen: unsigned long
+  146:
+    name: sys_writev
+    args:
+      fd: unsigned long
+      vec: const struct iovec *
+      vlen: unsigned long
+  147:
+    name: sys_getsid
+    args:
+      pid: pid_t
+  148:
+    name: sys_fdatasync
+    args:
+      fd: unsigned int
+  149:
+    name: sys_sysctl
+    args:
+      args: struct __sysctl_args *
+  150:
+    name: sys_mlock
+    args:
+      start: unsigned long
+      len: size_t
+  151:
+    name: sys_munlock
+    args:
+      start: unsigned long
+      len: size_t
+  152:
+    name: sys_mlockall
+    args:
+      flags: int
+  153:
+    name: sys_munlockall
+    args: {}
+  154:
+    name: sys_sched_setparam
+    args:
+      pid: pid_t
+      param: struct sched_param *
+  155:
+    name: sys_sched_getparam
+    args:
+      pid: pid_t
+      param: struct sched_param *
+  156:
+    name: sys_sched_setscheduler
+    args:
+      pid: pid_t
+      policy: int
+      param: struct sched_param *
+  157:
+    name: sys_sched_getscheduler
+    args:
+      pid: pid_t
+  158:
+    name: sys_sched_yield
+    args: {}
+  159:
+    name: sys_sched_get_priority_max
+    args:
+      policy: int
+  160:
+    name: sys_sched_get_priority_min
+    args:
+      policy: int
+  161:
+    name: sys_sched_rr_get_interval
+    args:
+      pid: pid_t
+      interval: struct timespec *
+  162:
+    name: sys_nanosleep
+    args:
+      rqtp: struct timespec *
+      rmtp: struct timespec *
+  163:
+    name: sys_mremap
+    args:
+      addr: unsigned long
+      old_len: unsigned long
+      new_len: unsigned long
+      flags: unsigned long
+      new_addr: unsigned long
+  164:
+    name: sys_setresuid16
+    args:
+      ruid: old_uid_t
+      euid: old_uid_t
+      suid: old_uid_t
+  165:
+    name: sys_getresuid16
+    args:
+      ruidp: old_uid_t *
+      euidp: old_uid_t *
+      suidp: old_uid_t *
+  166:
+    name: sys_vm86
+    args:
+      cmd: unsigned long
+      arg: unsigned long
+  168:
+    name: sys_poll
+    args:
+      ufds: struct pollfd *
+      nfds: unsigned int
+      timeout_msecs: int
+  170:
+    name: sys_setresgid16
+    args:
+      rgid: old_gid_t
+      egid: old_gid_t
+      sgid: old_gid_t
+  171:
+    name: sys_getresgid16
+    args:
+      rgidp: old_gid_t *
+      egidp: old_gid_t *
+      sgidp: old_gid_t *
+  172:
+    name: sys_prctl
+    args:
+      option: int
+      arg2: unsigned long
+      arg3: unsigned long
+      arg4: unsigned long
+      arg5: unsigned long
+  174:
+    name: sys_rt_sigaction
+    args:
+      sig: int
+      act: const struct sigaction *
+      oact: struct sigaction *
+      sigsetsize: size_t
+  175:
+    name: sys_rt_sigprocmask
+    args:
+      how: int
+      nset: sigset_t *
+      oset: sigset_t *
+      sigsetsize: size_t
+  176:
+    name: sys_rt_sigpending
+    args:
+      uset: sigset_t *
+      sigsetsize: size_t
+  177:
+    name: sys_rt_sigtimedwait
+    args:
+      uthese: const sigset_t *
+      uinfo: siginfo_t *
+      uts: const struct timespec *
+      sigsetsize: size_t
+  178:
+    name: sys_rt_sigqueueinfo
+    args:
+      pid: pid_t
+      sig: int
+      uinfo: siginfo_t *
+  179:
+    name: sys_rt_sigsuspend
+    args:
+      unewset: sigset_t *
+      sigsetsize: size_t
+  180:
+    name: sys_pread64
+    args:
+      fd: unsigned int
+      buf: char *
+      count: size_t
+      pos: loff_t
+  181:
+    name: sys_pwrite64
+    args:
+      fd: unsigned int
+      buf: const char *
+      count: size_t
+      pos: loff_t
+  182:
+    name: sys_chown16
+    args:
+      filename: const char *
+      user: old_uid_t
+      group: old_gid_t
+  183:
+    name: sys_getcwd
+    args:
+      buf: char *
+      size: unsigned long
+  184:
+    name: sys_capget
+    args:
+      header: cap_user_header_t
+      dataptr: cap_user_data_t
+  185:
+    name: sys_capset
+    args:
+      header: cap_user_header_t
+      data: const cap_user_data_t
+  186:
+    name: sys_sigaltstack
+    args:
+      uss: const stack_t *
+      uoss: stack_t *
+  187:
+    name: sys_sendfile
+    args:
+      out_fd: int
+      in_fd: int
+      offset: off_t *
+      count: size_t
+  190:
+    name: sys_vfork
+    args: {}
+  191:
+    name: sys_getrlimit
+    args:
+      resource: unsigned int
+      rlim: struct rlimit *
+  192:
+    name: sys_mmap_pgoff
+    args:
+      addr: unsigned long
+      len: unsigned long
+      prot: unsigned long
+      flags: unsigned long
+      fd: unsigned long
+      pgoff: unsigned long
+  193:
+    name: sys_truncate64
+    args:
+      path: const char *
+      length: loff_t
+  194:
+    name: sys_ftruncate64
+    args:
+      fd: unsigned int
+      length: loff_t
+  195:
+    name: sys_stat64
+    args:
+      filename: const char *
+      statbuf: struct stat64 *
+  196:
+    name: sys_lstat64
+    args:
+      filename: const char *
+      statbuf: struct stat64 *
+  197:
+    name: sys_fstat64
+    args:
+      fd: unsigned long
+      statbuf: struct stat64 *
+  198:
+    name: sys_lchown
+    args:
+      filename: const char *
+      user: uid_t
+      group: gid_t
+  199:
+    name: sys_getuid
+    args: {}
+  200:
+    name: sys_getgid
+    args: {}
+  201:
+    name: sys_geteuid
+    args: {}
+  202:
+    name: sys_getegid
+    args: {}
+  203:
+    name: sys_setreuid
+    args:
+      ruid: uid_t
+      euid: uid_t
+  204:
+    name: sys_setregid
+    args:
+      rgid: gid_t
+      egid: gid_t
+  205:
+    name: sys_getgroups
+    args:
+      gidsetsize: int
+      grouplist: gid_t *
+  206:
+    name: sys_setgroups
+    args:
+      gidsetsize: int
+      grouplist: gid_t *
+  207:
+    name: sys_fchown
+    args:
+      fd: unsigned int
+      user: uid_t
+      group: gid_t
+  208:
+    name: sys_setresuid
+    args:
+      ruid: uid_t
+      euid: uid_t
+      suid: uid_t
+  209:
+    name: sys_getresuid
+    args:
+      ruidp: uid_t *
+      euidp: uid_t *
+      suidp: uid_t *
+  210:
+    name: sys_setresgid
+    args:
+      rgid: gid_t
+      egid: gid_t
+      sgid: gid_t
+  211:
+    name: sys_getresgid
+    args:
+      rgidp: gid_t *
+      egidp: gid_t *
+      sgidp: gid_t *
+  212:
+    name: sys_chown
+    args:
+      filename: const char *
+      user: uid_t
+      group: gid_t
+  213:
+    name: sys_setuid
+    args:
+      uid: uid_t
+  214:
+    name: sys_setgid
+    args:
+      gid: gid_t
+  215:
+    name: sys_setfsuid
+    args:
+      uid: uid_t
+  216:
+    name: sys_setfsgid
+    args:
+      gid: gid_t
+  217:
+    name: sys_pivot_root
+    args:
+      new_root: const char *
+      put_old: const char *
+  218:
+    name: sys_mincore
+    args:
+      start: unsigned long
+      len: size_t
+      vec: unsigned char *
+  219:
+    name: sys_madvise
+    args:
+      start: unsigned long
+      len_in: size_t
+      behavior: int
+  220:
+    name: sys_getdents64
+    args:
+      fd: unsigned int
+      dirent: struct linux_dirent64 *
+      count: unsigned int
+  221:
+    name: sys_fcntl64
+    args:
+      fd: unsigned int
+      cmd: unsigned int
+      arg: unsigned long
+  224:
+    name: sys_gettid
+    args: {}
+  225:
+    name: sys_readahead
+    args:
+      fd: int
+      offset: loff_t
+      count: size_t
+  226:
+    name: sys_setxattr
+    args:
+      pathname: const char *
+      name: const char *
+      value: const void *
+      size: size_t
+      flags: int
+  227:
+    name: sys_lsetxattr
+    args:
+      pathname: const char *
+      name: const char *
+      value: const void *
+      size: size_t
+      flags: int
+  228:
+    name: sys_fsetxattr
+    args:
+      fd: int
+      name: const char *
+      value: const void *
+      size: size_t
+      flags: int
+  229:
+    name: sys_getxattr
+    args:
+      pathname: const char *
+      name: const char *
+      value: void *
+      size: size_t
+  230:
+    name: sys_lgetxattr
+    args:
+      pathname: const char *
+      name: const char *
+      value: void *
+      size: size_t
+  231:
+    name: sys_fgetxattr
+    args:
+      fd: int
+      name: const char *
+      value: void *
+      size: size_t
+  232:
+    name: sys_listxattr
+    args:
+      pathname: const char *
+      list: char *
+      size: size_t
+  233:
+    name: sys_llistxattr
+    args:
+      pathname: const char *
+      list: char *
+      size: size_t
+  234:
+    name: sys_flistxattr
+    args:
+      fd: int
+      list: char *
+      size: size_t
+  235:
+    name: sys_removexattr
+    args:
+      pathname: const char *
+      name: const char *
+  236:
+    name: sys_lremovexattr
+    args:
+      pathname: const char *
+      name: const char *
+  237:
+    name: sys_fremovexattr
+    args:
+      fd: int
+      name: const char *
+  238:
+    name: sys_tkill
+    args:
+      pid: pid_t
+      sig: int
+  239:
+    name: sys_sendfile64
+    args:
+      out_fd: int
+      in_fd: int
+      offset: loff_t *
+      count: size_t
+  240:
+    name: sys_futex
+    args:
+      uaddr: u32 *
+      op: int
+      val: u32
+      utime: struct timespec *
+      uaddr2: u32 *
+      val3: u32
+  241:
+    name: sys_sched_setaffinity
+    args:
+      pid: pid_t
+      len: unsigned int
+      user_mask_ptr: unsigned long *
+  242:
+    name: sys_sched_getaffinity
+    args:
+      pid: pid_t
+      len: unsigned int
+      user_mask_ptr: unsigned long *
+  243:
+    name: sys_set_thread_area
+    args:
+      u_info: struct user_desc *
+  244:
+    name: sys_get_thread_area
+    args:
+      u_info: struct user_desc *
+  245:
+    name: sys_io_setup
+    args:
+      nr_events: unsigned
+      ctxp: aio_context_t *
+  246:
+    name: sys_io_destroy
+    args:
+      ctx: aio_context_t
+  247:
+    name: sys_io_getevents
+    args:
+      ctx_id: aio_context_t
+      min_nr: long
+      nr: long
+      events: struct io_event *
+      timeout: struct timespec *
+  248:
+    name: sys_io_submit
+    args:
+      ctx_id: aio_context_t
+      nr: long
+      iocbpp: struct iocb * *
+  249:
+    name: sys_io_cancel
+    args:
+      ctx_id: aio_context_t
+      iocb: struct iocb *
+      result: struct io_event *
+  250:
+    name: sys_fadvise64
+    args:
+      fd: int
+      offset: loff_t
+      len: size_t
+      advice: int
+  252:
+    name: sys_exit_group
+    args:
+      error_code: int
+  254:
+    name: sys_epoll_create
+    args:
+      size: int
+  255:
+    name: sys_epoll_ctl
+    args:
+      epfd: int
+      op: int
+      fd: int
+      event: struct epoll_event *
+  256:
+    name: sys_epoll_wait
+    args:
+      epfd: int
+      events: struct epoll_event *
+      maxevents: int
+      timeout: int
+  257:
+    name: sys_remap_file_pages
+    args:
+      start: unsigned long
+      size: unsigned long
+      prot: unsigned long
+      pgoff: unsigned long
+      flags: unsigned long
+  258:
+    name: sys_set_tid_address
+    args:
+      tidptr: int *
+  259:
+    name: sys_timer_create
+    args:
+      which_clock: const clockid_t
+      timer_event_spec: struct sigevent *
+      created_timer_id: timer_t *
+  260:
+    name: sys_timer_settime
+    args:
+      timer_id: timer_t
+      flags: int
+      new_setting: const struct itimerspec *
+      old_setting: struct itimerspec *
+  261:
+    name: sys_timer_gettime
+    args:
+      timer_id: timer_t
+      setting: struct itimerspec *
+  262:
+    name: sys_timer_getoverrun
+    args:
+      timer_id: timer_t
+  263:
+    name: sys_timer_delete
+    args:
+      timer_id: timer_t
+  264:
+    name: sys_clock_settime
+    args:
+      which_clock: const clockid_t
+      tp: const struct timespec *
+  265:
+    name: sys_clock_gettime
+    args:
+      which_clock: const clockid_t
+      tp: struct timespec *
+  266:
+    name: sys_clock_getres
+    args:
+      which_clock: const clockid_t
+      tp: struct timespec *
+  267:
+    name: sys_clock_nanosleep
+    args:
+      which_clock: const clockid_t
+      flags: int
+      rqtp: const struct timespec *
+      rmtp: struct timespec *
+  268:
+    name: sys_statfs64
+    args:
+      pathname: const char *
+      sz: size_t
+      buf: struct statfs64 *
+  269:
+    name: sys_fstatfs64
+    args:
+      fd: unsigned int
+      sz: size_t
+      buf: struct statfs64 *
+  270:
+    name: sys_tgkill
+    args:
+      tgid: pid_t
+      pid: pid_t
+      sig: int
+  271:
+    name: sys_utimes
+    args:
+      filename: char *
+      utimes: struct timeval *
+  272:
+    name: sys_fadvise64_64
+    args:
+      fd: int
+      offset: loff_t
+      len: loff_t
+      advice: int
+  284:
+    name: sys_waitid
+    args:
+      which: int
+      upid: pid_t
+      infop: struct siginfo *
+      options: int
+      ru: struct rusage *
+  289:
+    name: sys_ioprio_set
+    args:
+      which: int
+      who: int
+      ioprio: int
+  290:
+    name: sys_ioprio_get
+    args:
+      which: int
+      who: int
+  295:
+    name: sys_openat
+    args:
+      dfd: int
+      filename: const char *
+      flags: int
+      mode: umode_t
+  296:
+    name: sys_mkdirat
+    args:
+      dfd: int
+      pathname: const char *
+      mode: umode_t
+  297:
+    name: sys_mknodat
+    args:
+      dfd: int
+      filename: const char *
+      mode: umode_t
+      dev: unsigned
+  298:
+    name: sys_fchownat
+    args:
+      dfd: int
+      filename: const char *
+      user: uid_t
+      group: gid_t
+      flag: int
+  299:
+    name: sys_futimesat
+    args:
+      dfd: int
+      filename: const char *
+      utimes: struct timeval *
+  300:
+    name: sys_fstatat64
+    args:
+      dfd: int
+      filename: const char *
+      statbuf: struct stat64 *
+      flag: int
+  301:
+    name: sys_unlinkat
+    args:
+      dfd: int
+      pathname: const char *
+      flag: int
+  302:
+    name: sys_renameat
+    args:
+      olddfd: int
+      oldname: const char *
+      newdfd: int
+      newname: const char *
+  303:
+    name: sys_linkat
+    args:
+      olddfd: int
+      oldname: const char *
+      newdfd: int
+      newname: const char *
+      flags: int
+  304:
+    name: sys_symlinkat
+    args:
+      oldname: const char *
+      newdfd: int
+      newname: const char *
+  305:
+    name: sys_readlinkat
+    args:
+      dfd: int
+      pathname: const char *
+      buf: char *
+      bufsiz: int
+  306:
+    name: sys_fchmodat
+    args:
+      dfd: int
+      filename: const char *
+      mode: umode_t
+  307:
+    name: sys_faccessat
+    args:
+      dfd: int
+      filename: const char *
+      mode: int
+  308:
+    name: sys_pselect6
+    args:
+      n: int
+      inp: fd_set *
+      outp: fd_set *
+      exp: fd_set *
+      tsp: struct timespec *
+      sig: void *
+  309:
+    name: sys_ppoll
+    args:
+      ufds: struct pollfd *
+      nfds: unsigned int
+      tsp: struct timespec *
+      sigmask: const sigset_t *
+      sigsetsize: size_t
+  310:
+    name: sys_unshare
+    args:
+      unshare_flags: unsigned long
+  311:
+    name: sys_set_robust_list
+    args:
+      head: struct robust_list_head *
+      len: size_t
+  312:
+    name: sys_get_robust_list
+    args:
+      pid: int
+      head_ptr: struct robust_list_head * *
+      len_ptr: size_t *
+  313:
+    name: sys_splice
+    args:
+      fd_in: int
+      off_in: loff_t *
+      fd_out: int
+      off_out: loff_t *
+      len: size_t
+      flags: unsigned int
+  314:
+    name: sys_sync_file_range
+    args:
+      fd: int
+      offset: loff_t
+      nbytes: loff_t
+      flags: unsigned int
+  315:
+    name: sys_tee
+    args:
+      fdin: int
+      fdout: int
+      len: size_t
+      flags: unsigned int
+  316:
+    name: sys_vmsplice
+    args:
+      fd: int
+      iov: const struct iovec *
+      nr_segs: unsigned long
+      flags: unsigned int
+  318:
+    name: sys_getcpu
+    args:
+      cpup: unsigned *
+      nodep: unsigned *
+      unused: struct getcpu_cache *
+  319:
+    name: sys_epoll_pwait
+    args:
+      epfd: int
+      events: struct epoll_event *
+      maxevents: int
+      timeout: int
+      sigmask: const sigset_t *
+      sigsetsize: size_t
+  320:
+    name: sys_utimensat
+    args:
+      dfd: int
+      filename: const char *
+      utimes: struct timespec *
+      flags: int
+  321:
+    name: sys_signalfd
+    args:
+      ufd: int
+      user_mask: sigset_t *
+      sizemask: size_t
+  322:
+    name: sys_timerfd_create
+    args:
+      clockid: int
+      flags: int
+  323:
+    name: sys_eventfd
+    args:
+      count: unsigned int
+  324:
+    name: sys_fallocate
+    args:
+      fd: int
+      mode: int
+      offset: loff_t
+      len: loff_t
+  325:
+    name: sys_timerfd_settime
+    args:
+      ufd: int
+      flags: int
+      utmr: const struct itimerspec *
+      otmr: struct itimerspec *
+  326:
+    name: sys_timerfd_gettime
+    args:
+      ufd: int
+      otmr: struct itimerspec *
+  327:
+    name: sys_signalfd4
+    args:
+      ufd: int
+      user_mask: sigset_t *
+      sizemask: size_t
+      flags: int
+  328:
+    name: sys_eventfd2
+    args:
+      count: unsigned int
+      flags: int
+  329:
+    name: sys_epoll_create1
+    args:
+      flags: int
+  330:
+    name: sys_dup3
+    args:
+      oldfd: unsigned int
+      newfd: unsigned int
+      flags: int
+  331:
+    name: sys_pipe2
+    args:
+      fildes: int *
+      flags: int
+  333:
+    name: sys_preadv
+    args:
+      fd: unsigned long
+      vec: const struct iovec *
+      vlen: unsigned long
+      pos_l: unsigned long
+      pos_h: unsigned long
+  334:
+    name: sys_pwritev
+    args:
+      fd: unsigned long
+      vec: const struct iovec *
+      vlen: unsigned long
+      pos_l: unsigned long
+      pos_h: unsigned long
+  335:
+    name: sys_rt_tgsigqueueinfo
+    args:
+      tgid: pid_t
+      pid: pid_t
+      sig: int
+      uinfo: siginfo_t *
+  336:
+    name: sys_perf_event_open
+    args:
+      attr_uptr: struct perf_event_attr *
+      pid: pid_t
+      cpu: int
+      group_fd: int
+      flags: unsigned long
+  337:
+    name: sys_recvmmsg
+    args:
+      fd: int
+      mmsg: struct mmsghdr *
+      vlen: unsigned int
+      flags: unsigned int
+      timeout: struct timespec *
+  340:
+    name: sys_prlimit64
+    args:
+      pid: pid_t
+      resource: unsigned int
+      new_rlim: const struct rlimit64 *
+      old_rlim: struct rlimit64 *
+  343:
+    name: sys_clock_adjtime
+    args:
+      which_clock: const clockid_t
+      utx: struct timex *
+  344:
+    name: sys_syncfs
+    args:
+      fd: int
+  345:
+    name: sys_sendmmsg
+    args:
+      fd: int
+      mmsg: struct mmsghdr *
+      vlen: unsigned int
+      flags: unsigned int
+  346:
+    name: sys_setns
+    args:
+      fd: int
+      nstype: int
+  347:
+    name: sys_process_vm_readv
+    args:
+      pid: pid_t
+      lvec: const struct iovec *
+      liovcnt: unsigned long
+      rvec: const struct iovec *
+      riovcnt: unsigned long
+      flags: unsigned long
+  348:
+    name: sys_process_vm_writev
+    args:
+      pid: pid_t
+      lvec: const struct iovec *
+      liovcnt: unsigned long
+      rvec: const struct iovec *
+      riovcnt: unsigned long
+      flags: unsigned long
+argtype:
+  int:
+    size: 4
+  unsigned int:
+    size: 4
+  char *:
+    size: 4
+  char:
+    size: 1
+  size_t:
+    size: 4
+  const char *:
+    size: 4
+  const char:
+    size: 1
+  umode_t:
+    size: 2
+  pid_t:
+    size: 4
+  int *:
+    size: 4
+  const char *const *:
+    size: 4
+  const char *const:
+    size: 4
+  time_t *:
+    size: 4
+  time_t:
+    size: 4
+  unsigned:
+    size: 4
+  old_uid_t:
+    size: 2
+  old_gid_t:
+    size: 2
+  struct __old_kernel_stat *:
+    size: 4
+  short unsigned int:
+    size: 2
+  long unsigned int:
+    size: 4
+  struct __old_kernel_stat:
+    size: 32
+  off_t:
+    size: 4
+  unsigned long:
+    size: 4
+  void *:
+    size: 4
+  void:
+    size: 1
+  long:
+    size: 4
+  struct utimbuf *:
+    size: 4
+  __kernel_time_t:
+    size: 4
+  struct utimbuf:
+    size: 8
+  struct tms *:
+    size: 4
+  __kernel_clock_t:
+    size: 4
+  struct tms:
+    size: 16
+  __sighandler_t:
+    size: 4
+  struct oldold_utsname *:
+    size: 4
+  struct oldold_utsname:
+    size: 45
+  struct ustat *:
+    size: 4
+  __kernel_daddr_t:
+    size: 4
+  __kernel_ino_t:
+    size: 4
+  struct ustat:
+    size: 20
+  const struct old_sigaction *:
+    size: 4
+  old_sigset_t:
+    size: 4
+  __sigrestore_t:
+    size: 4
+  const struct old_sigaction:
+    size: 16
+  struct old_sigaction *:
+    size: 4
+  struct old_sigaction:
+    size: 16
+  old_sigset_t *:
+    size: 4
+  struct rlimit *:
+    size: 4
+  struct rlimit:
+    size: 8
+  struct rusage *:
+    size: 4
+  struct timeval:
+    size: 8
+  __kernel_suseconds_t:
+    size: 4
+  long int:
+    size: 4
+  struct rusage:
+    size: 72
+  struct timeval *:
+    size: 4
+  struct timezone *:
+    size: 4
+  struct timezone:
+    size: 8
+  old_gid_t *:
+    size: 4
+  struct sel_arg_struct *:
+    size: 4
+  fd_set:
+    size: 128
+  struct sel_arg_struct:
+    size: 20
+  struct old_linux_dirent *:
+    size: 4
+  struct old_linux_dirent:
+    size: 12
+  struct mmap_arg_struct *:
+    size: 4
+  struct mmap_arg_struct:
+    size: 24
+  struct statfs *:
+    size: 4
+  __u32:
+    size: 4
+  __kernel_fsid_t:
+    size: 8
+  struct statfs:
+    size: 64
+  unsigned long *:
+    size: 4
+  struct itimerval *:
+    size: 4
+  struct itimerval:
+    size: 16
+  struct stat *:
+    size: 4
+  struct stat:
+    size: 64
+  struct old_utsname *:
+    size: 4
+  struct old_utsname:
+    size: 325
+  struct vm86_struct *:
+    size: 4
+  struct vm86_regs:
+    size: 84
+  struct revectored_struct:
+    size: 32
+  struct vm86_struct:
+    size: 160
+  struct sysinfo *:
+    size: 4
+  __kernel_long_t:
+    size: 4
+  __kernel_ulong_t:
+    size: 4
+  __u16:
+    size: 2
+  struct sysinfo:
+    size: 64
+  struct new_utsname *:
+    size: 4
+  struct new_utsname:
+    size: 390
+  struct timex *:
+    size: 4
+  struct timex:
+    size: 128
+  loff_t *:
+    size: 4
+  loff_t:
+    size: 8
+  struct linux_dirent *:
+    size: 4
+  struct linux_dirent:
+    size: 12
+  fd_set *:
+    size: 4
+  const struct iovec *:
+    size: 4
+  __kernel_size_t:
+    size: 4
+  const struct iovec:
+    size: 8
+  struct __sysctl_args *:
+    size: 4
+  struct __sysctl_args:
+    size: 40
+  struct sched_param *:
+    size: 4
+  struct sched_param:
+    size: 4
+  struct timespec *:
+    size: 4
+  struct timespec:
+    size: 8
+  old_uid_t *:
+    size: 4
+  struct pollfd *:
+    size: 4
+  short int:
+    size: 2
+  struct pollfd:
+    size: 8
+  const struct sigaction *:
+    size: 4
+  sigset_t:
+    size: 8
+  const struct sigaction:
+    size: 20
+  struct sigaction *:
+    size: 4
+  struct sigaction:
+    size: 20
+  sigset_t *:
+    size: 4
+  const sigset_t *:
+    size: 4
+  const sigset_t:
+    size: 8
+  siginfo_t *:
+    size: 4
+  siginfo_t:
+    size: 128
+  const struct timespec *:
+    size: 4
+  const struct timespec:
+    size: 8
+  cap_user_header_t:
+    size: 4
+  cap_user_data_t:
+    size: 4
+  const cap_user_data_t:
+    size: 4
+  const stack_t *:
+    size: 4
+  const stack_t:
+    size: 12
+  stack_t *:
+    size: 4
+  stack_t:
+    size: 12
+  off_t *:
+    size: 4
+  struct stat64 *:
+    size: 4
+  long long unsigned int:
+    size: 8
+  unsigned char:
+    size: 1
+  long long int:
+    size: 8
+  struct stat64:
+    size: 96
+  uid_t:
+    size: 4
+  gid_t:
+    size: 4
+  gid_t *:
+    size: 4
+  uid_t *:
+    size: 4
+  unsigned char *:
+    size: 4
+  struct linux_dirent64 *:
+    size: 4
+  u64:
+    size: 8
+  s64:
+    size: 8
+  struct linux_dirent64:
+    size: 20
+  const void *:
+    size: 4
+  const void:
+    size: 1
+  u32 *:
+    size: 4
+  u32:
+    size: 4
+  struct user_desc *:
+    size: 4
+  struct user_desc:
+    size: 16
+  aio_context_t *:
+    size: 4
+  aio_context_t:
+    size: 4
+  struct io_event *:
+    size: 4
+  __u64:
+    size: 8
+  __s64:
+    size: 8
+  struct io_event:
+    size: 32
+  struct iocb * *:
+    size: 4
+  __s16:
+    size: 2
+  struct iocb:
+    size: 64
+  struct iocb *:
+    size: 4
+  struct epoll_event *:
+    size: 4
+  struct epoll_event:
+    size: 12
+  const clockid_t:
+    size: 4
+  struct sigevent *:
+    size: 4
+  sigval_t:
+    size: 4
+  struct sigevent:
+    size: 64
+  timer_t *:
+    size: 4
+  timer_t:
+    size: 4
+  const struct itimerspec *:
+    size: 4
+  const struct itimerspec:
+    size: 16
+  struct itimerspec *:
+    size: 4
+  struct itimerspec:
+    size: 16
+  struct statfs64 *:
+    size: 4
+  struct statfs64:
+    size: 84
+  struct siginfo *:
+    size: 4
+  struct siginfo:
+    size: 128
+  struct robust_list_head *:
+    size: 4
+  struct robust_list:
+    size: 4
+  struct robust_list_head:
+    size: 12
+  struct robust_list_head * *:
+    size: 4
+  size_t *:
+    size: 4
+  unsigned *:
+    size: 4
+  struct getcpu_cache *:
+    size: 4
+  struct getcpu_cache:
+    size: 128
+  struct perf_event_attr *:
+    size: 4
+  struct perf_event_attr:
+    size: 96
+  struct mmsghdr *:
+    size: 4
+  struct msghdr:
+    size: 28
+  struct iovec:
+    size: 8
+  struct mmsghdr:
+    size: 32
+  const struct rlimit64 *:
+    size: 4
+  const struct rlimit64:
+    size: 16
+  struct rlimit64 *:
+    size: 4
+  struct rlimit64:
+    size: 16
+struct:
+  __old_kernel_stat:
+    st_dev: short unsigned int
+    st_ino: short unsigned int
+    st_mode: short unsigned int
+    st_nlink: short unsigned int
+    st_uid: short unsigned int
+    st_gid: short unsigned int
+    st_rdev: short unsigned int
+    st_size: long unsigned int
+    st_atime: long unsigned int
+    st_mtime: long unsigned int
+    st_ctime: long unsigned int
+  utimbuf:
+    actime: __kernel_time_t
+    modtime: __kernel_time_t
+  tms:
+    tms_utime: __kernel_clock_t
+    tms_stime: __kernel_clock_t
+    tms_cutime: __kernel_clock_t
+    tms_cstime: __kernel_clock_t
+  oldold_utsname:
+    sysname: char[9]
+    nodename: char[9]
+    release: char[9]
+    version: char[9]
+    machine: char[9]
+  ustat:
+    f_tfree: __kernel_daddr_t
+    f_tinode: __kernel_ino_t
+    f_fname: char[6]
+    f_fpack: char[6]
+  old_sigaction:
+    sa_handler: __sighandler_t
+    sa_mask: old_sigset_t
+    sa_flags: long unsigned int
+    sa_restorer: __sigrestore_t
+  rlimit:
+    rlim_cur: long unsigned int
+    rlim_max: long unsigned int
+  rusage:
+    ru_utime: struct timeval
+    ru_stime: struct timeval
+    ru_maxrss: long int
+    ru_ixrss: long int
+    ru_idrss: long int
+    ru_isrss: long int
+    ru_minflt: long int
+    ru_majflt: long int
+    ru_nswap: long int
+    ru_inblock: long int
+    ru_oublock: long int
+    ru_msgsnd: long int
+    ru_msgrcv: long int
+    ru_nsignals: long int
+    ru_nvcsw: long int
+    ru_nivcsw: long int
+  timeval:
+    tv_sec: __kernel_time_t
+    tv_usec: __kernel_suseconds_t
+  timezone:
+    tz_minuteswest: int
+    tz_dsttime: int
+  sel_arg_struct:
+    n: long unsigned int
+    inp: fd_set*
+    outp: fd_set*
+    exp: fd_set*
+    tvp: struct timeval*
+  old_linux_dirent:
+    d_ino: long unsigned int
+    d_offset: long unsigned int
+    d_namlen: short unsigned int
+    d_name: char[1]
+  mmap_arg_struct:
+    addr: long unsigned int
+    len: long unsigned int
+    prot: long unsigned int
+    flags: long unsigned int
+    fd: long unsigned int
+    offset: long unsigned int
+  statfs:
+    f_type: __u32
+    f_bsize: __u32
+    f_blocks: __u32
+    f_bfree: __u32
+    f_bavail: __u32
+    f_files: __u32
+    f_ffree: __u32
+    f_fsid: __kernel_fsid_t
+    f_namelen: __u32
+    f_frsize: __u32
+    f_flags: __u32
+    f_spare: __u32[4]
+  itimerval:
+    it_interval: struct timeval
+    it_value: struct timeval
+  stat:
+    st_dev: long unsigned int
+    st_ino: long unsigned int
+    st_mode: short unsigned int
+    st_nlink: short unsigned int
+    st_uid: short unsigned int
+    st_gid: short unsigned int
+    st_rdev: long unsigned int
+    st_size: long unsigned int
+    st_blksize: long unsigned int
+    st_blocks: long unsigned int
+    st_atime: long unsigned int
+    st_atime_nsec: long unsigned int
+    st_mtime: long unsigned int
+    st_mtime_nsec: long unsigned int
+    st_ctime: long unsigned int
+    st_ctime_nsec: long unsigned int
+    __unused4: long unsigned int
+    __unused5: long unsigned int
+  old_utsname:
+    sysname: char[65]
+    nodename: char[65]
+    release: char[65]
+    version: char[65]
+    machine: char[65]
+  vm86_struct:
+    regs: struct vm86_regs
+    flags: long unsigned int
+    screen_bitmap: long unsigned int
+    cpu_type: long unsigned int
+    int_revectored: struct revectored_struct
+    int21_revectored: struct revectored_struct
+  vm86_regs:
+    ebx: long int
+    ecx: long int
+    edx: long int
+    esi: long int
+    edi: long int
+    ebp: long int
+    eax: long int
+    __null_ds: long int
+    __null_es: long int
+    __null_fs: long int
+    __null_gs: long int
+    orig_eax: long int
+    eip: long int
+    cs: short unsigned int
+    __csh: short unsigned int
+    eflags: long int
+    esp: long int
+    ss: short unsigned int
+    __ssh: short unsigned int
+    es: short unsigned int
+    __esh: short unsigned int
+    ds: short unsigned int
+    __dsh: short unsigned int
+    fs: short unsigned int
+    __fsh: short unsigned int
+    gs: short unsigned int
+    __gsh: short unsigned int
+  revectored_struct:
+    __map: long unsigned int[8]
+  sysinfo:
+    uptime: __kernel_long_t
+    loads: __kernel_ulong_t[3]
+    totalram: __kernel_ulong_t
+    freeram: __kernel_ulong_t
+    sharedram: __kernel_ulong_t
+    bufferram: __kernel_ulong_t
+    totalswap: __kernel_ulong_t
+    freeswap: __kernel_ulong_t
+    procs: __u16
+    pad: __u16
+    totalhigh: __kernel_ulong_t
+    freehigh: __kernel_ulong_t
+    mem_unit: __u32
+    _f: char[8]
+  new_utsname:
+    sysname: char[65]
+    nodename: char[65]
+    release: char[65]
+    version: char[65]
+    machine: char[65]
+    domainname: char[65]
+  timex:
+    modes: unsigned int
+    offset: long int
+    freq: long int
+    maxerror: long int
+    esterror: long int
+    status: int
+    constant: long int
+    precision: long int
+    tolerance: long int
+    time: struct timeval
+    tick: long int
+    ppsfreq: long int
+    jitter: long int
+    shift: int
+    stabil: long int
+    jitcnt: long int
+    calcnt: long int
+    errcnt: long int
+    stbcnt: long int
+    tai: int
+  linux_dirent:
+    d_ino: long unsigned int
+    d_off: long unsigned int
+    d_reclen: short unsigned int
+    d_name: char[1]
+  iovec:
+    iov_base: void*
+    iov_len: __kernel_size_t
+  __sysctl_args:
+    name: int*
+    nlen: int
+    oldval: void*
+    oldlenp: size_t*
+    newval: void*
+    newlen: size_t
+    __unused: long unsigned int[4]
+  sched_param:
+    sched_priority: int
+  timespec:
+    tv_sec: __kernel_time_t
+    tv_nsec: long int
+  pollfd:
+    fd: int
+    events: short int
+    revents: short int
+  sigaction:
+    sa_handler: __sighandler_t
+    sa_flags: long unsigned int
+    sa_restorer: __sigrestore_t
+    sa_mask: sigset_t
+  stat64:
+    st_dev: long long unsigned int
+    __pad0: unsigned char[4]
+    __st_ino: long unsigned int
+    st_mode: unsigned int
+    st_nlink: unsigned int
+    st_uid: long unsigned int
+    st_gid: long unsigned int
+    st_rdev: long long unsigned int
+    __pad3: unsigned char[4]
+    st_size: long long int
+    st_blksize: long unsigned int
+    st_blocks: long long unsigned int
+    st_atime: long unsigned int
+    st_atime_nsec: long unsigned int
+    st_mtime: long unsigned int
+    st_mtime_nsec: unsigned int
+    st_ctime: long unsigned int
+    st_ctime_nsec: long unsigned int
+    st_ino: long long unsigned int
+  linux_dirent64:
+    d_ino: u64
+    d_off: s64
+    d_reclen: short unsigned int
+    d_type: unsigned char
+    d_name[]: char
+  user_desc:
+    entry_number: unsigned int
+    base_addr: unsigned int
+    limit: unsigned int
+    seg_32bit: unsigned int:1
+    contents: unsigned int:2
+    read_exec_only: unsigned int:1
+    limit_in_pages: unsigned int:1
+    seg_not_present: unsigned int:1
+    useable: unsigned int:1
+  io_event:
+    data: __u64
+    obj: __u64
+    res: __s64
+    res2: __s64
+  iocb:
+    aio_data: __u64
+    aio_key: __u32
+    aio_reserved1: __u32
+    aio_lio_opcode: __u16
+    aio_reqprio: __s16
+    aio_fildes: __u32
+    aio_buf: __u64
+    aio_nbytes: __u64
+    aio_offset: __s64
+    aio_reserved2: __u64
+    aio_flags: __u32
+    aio_resfd: __u32
+  epoll_event:
+    events: __u32
+    data: __u64
+  sigevent:
+    sigev_value: sigval_t
+    sigev_signo: int
+    sigev_notify: int
+    _pad: int[13]
+    _tid: int
+  itimerspec:
+    it_interval: struct timespec
+    it_value: struct timespec
+  statfs64:
+    f_type: __u32
+    f_bsize: __u32
+    f_blocks: __u64
+    f_bfree: __u64
+    f_bavail: __u64
+    f_files: __u64
+    f_ffree: __u64
+    f_fsid: __kernel_fsid_t
+    f_namelen: __u32
+    f_frsize: __u32
+    f_flags: __u32
+    f_spare: __u32[4]
+  siginfo:
+    si_signo: int
+    si_errno: int
+    si_code: int
+    _pad: int[29]
+  robust_list_head:
+    list: struct robust_list
+    futex_offset: long int
+    list_op_pending: struct robust_list*
+  robust_list:
+    next: struct robust_list*
+  getcpu_cache:
+    blob: long unsigned int[32]
+  perf_event_attr:
+    type: __u32
+    size: __u32
+    config: __u64
+    sample_period: __u64
+    sample_freq: __u64
+    sample_type: __u64
+    read_format: __u64
+    disabled: __u64:1
+    inherit: __u64:1
+    pinned: __u64:1
+    exclusive: __u64:1
+    exclude_user: __u64:1
+    exclude_kernel: __u64:1
+    exclude_hv: __u64:1
+    exclude_idle: __u64:1
+    mmap: __u64:1
+    comm: __u64:1
+    freq: __u64:1
+    inherit_stat: __u64:1
+    enable_on_exec: __u64:1
+    task: __u64:1
+    watermark: __u64:1
+    precise_ip: __u64:2
+    mmap_data: __u64:1
+    sample_id_all: __u64:1
+    exclude_host: __u64:1
+    exclude_guest: __u64:1
+    exclude_callchain_kernel: __u64:1
+    exclude_callchain_user: __u64:1
+    mmap2: __u64:1
+    __reserved_1: __u64:40
+    wakeup_events: __u32
+    wakeup_watermark: __u32
+    bp_type: __u32
+    bp_addr: __u64
+    config1: __u64
+    bp_len: __u64
+    config2: __u64
+    branch_sample_type: __u64
+    sample_regs_user: __u64
+    sample_stack_user: __u32
+    __reserved_2: __u32
+  mmsghdr:
+    msg_hdr: struct msghdr
+    msg_len: unsigned int
+  msghdr:
+    msg_name: void*
+    msg_namelen: int
+    msg_iov: struct iovec*
+    msg_iovlen: __kernel_size_t
+    msg_control: void*
+    msg_controllen: __kernel_size_t
+    msg_flags: unsigned int
+  rlimit64:
+    rlim_cur: __u64
+    rlim_max: __u64

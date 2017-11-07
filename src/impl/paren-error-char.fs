@@ -1,0 +1,1 @@
+-57 CONSTANT (error-char)               \ exception in tx or rx a character

@@ -1,0 +1,1 @@
+-40 CONSTANT (error-base)               \ invalid BASE for floating point

@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+#
+# test: GMP Forth unit test driver
+#
+$VERBOSE=true
+require 'test_all'

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-dolit" role="IMPL,C" xreflabel="(dolit)">
+  <glossterm>
+    <indexterm role="forth"><primary>(dolit)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(dolit)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Push the contents of following cell to the stack. Execution continues
+      with the second following cell.
+    </para>
+    <para>
+      Used to implement the semantics of <xref linkend="core-literal"/> and
+      similar words.
+    </para>
+  </glossdef>
+</glossentry>

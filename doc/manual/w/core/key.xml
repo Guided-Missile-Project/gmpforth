@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-key" role="CORE" xreflabel="key">
+  <glossterm>
+    <indexterm role="forth"><primary>key</primary></indexterm>
+    <cmdsynopsis>
+      <command>key</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>c</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Receive <parameter>c</parameter>.
+    </para>
+    <example>
+      <title>key</title>
+      <screen>
+<userinput>key .<keysym>&larrhk;</keysym>@</userinput> 64  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

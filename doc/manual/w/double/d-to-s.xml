@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-d-to-s" role="DOUBLE" xreflabel="d&gt;s">
+  <glossterm>
+    <indexterm role="forth"><primary>d&gt;s</primary></indexterm>
+    <cmdsynopsis>
+      <command>d&gt;s</command>
+      <group role="stack">
+        <arg>d</arg>
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Convert the double number <parameter>d</parameter> to the single
+      number <parameter>n</parameter> by dropping the most significant
+      cell of <parameter>d</parameter>.
+    </para>
+    <example>
+      <title>d&gt;s</title>
+      <screen>
+<userinput>31. d&gt;s .<keysym>&larrhk;</keysym></userinput> 31  ok
+<userinput>-31. d&gt;s .<keysym>&larrhk;</keysym></userinput> -31  ok
+<userinput>$1.00000007 d>s .<keysym>&larrhk;</keysym></userinput> 7  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

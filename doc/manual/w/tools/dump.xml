@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-dump" role="TOOLS" xreflabel="dump">
+  <glossterm>
+    <indexterm role="forth"><primary>dump</primary></indexterm>
+    <cmdsynopsis>
+      <command>dump</command>
+      <group role="stack">
+        <arg>addr</arg>
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display at least <parameter>n</parameter> bytes starting at
+      <parameter>addr</parameter>.
+    </para>
+    <para>
+      The display shows <parameter>addr</parameter> in
+      <xref linkend="core-ext-hex"/>, 16 bytes in hex, and the same
+      16 bytes as characters, if the byte values are
+      greater than <acronym>ASCII</acronym> <xref linkend="core-bl"/>.
+    </para>
+    <para>
+      <xref linkend="tools-dump"/> uses the pictured numeric output buffer,
+      so displaying the area above <xref linkend="core-here"/> may give
+      inconsistent results.
+    </para>
+    <example>
+      <title>dump</title>
+      <screen>
+<userinput>latest 10 dump<keysym>&larrhk;</keysym></userinput>
+    35D4  84 63 6F 6C 64  0  0  0 E0  4  0  0 A0  1  0  0  .cold........... ok
+<userinput>: xfill  here (pad) 0 do i over i + c! loop (pad) dump ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>xfill<keysym>&larrhk;</keysym></userinput>
+    38CC   0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  ................
+    38DC  10 11 12 13 14 15 16 17 18 19 1A 1B 1C 1D 1E 1F  ................
+    38EC  20 21 22 23 24 25 26 27 28 29 2A 2B 2C 2D 2E 2F   !"#$%&amp;'()*+,-./
+    38FC  30 31 32 33 34 35 36 37 38 39 3A 3B 3C 3D 3E 3F  0123456789:;&lt;=&gt;?
+    390C  33 39 33 33  0  0  0  0  0  0  0  0  0  0  0  0  3930............ ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-link-to-name" role="F83" xreflabel="l&gt;name">
+  <glossterm>
+    <indexterm role="forth"><primary>l&gt;name</primary></indexterm>
+    <cmdsynopsis>
+      <command>l&gt;name</command>
+      <group role="stack">
+        <arg>lfa</arg>
+        <arg>--</arg>
+        <arg>nfa</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>nfa</parameter> is the name field associated with the
+      link field <parameter>lfa</parameter>.
+    </para>
+    <example>
+      <title>l&gt;name</title>
+      <screen>
+<userinput>current @ @ 10 dump<keysym>&larrhk;</keysym></userinput>
+    38F8  80 38  0  0 84 74 65 73 74  0  0  0 E0  4  0  0  .8...test....... ok
+<userinput>current @ @ l&gt;name 10 dump<keysym>&larrhk;</keysym></userinput>
+    38FC  84 74 65 73 74  0  0  0 E0  4  0  0 48 1C  0  0  .test.......H... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

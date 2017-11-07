@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-paren-here" role="USER" xreflabel="(here)">
+  <glossterm>
+    <indexterm role="forth"><primary>(here)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(here)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable that contains the current dictionary pointer.
+    </para>
+    <example>
+      <title>(here)</title>
+      <screen>
+<userinput>here . (here) ?<keysym>&larrhk;</keysym></userinput> 14384 14384  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,1 @@
+ -1 CONSTANT (error-ABORT)              \ ABORT

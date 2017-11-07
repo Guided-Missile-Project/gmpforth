@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-action-of" role="CORE-EXT,I" xreflabel="action-of">
+  <glossterm>
+    <indexterm role="forth"><primary>action-of</primary></indexterm>
+    <cmdsynopsis>
+      <command>action-of</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+              <arg>xt</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return <parameter>xt</parameter> of the current
+            action of <parameter>name</parameter> created by
+            <xref linkend="core-ext-defer"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile execution sematics below of <parameter>name</parameter>
+            created by <xref linkend="core-ext-defer"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>xt</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return <parameter>xt</parameter> of the current
+            action of <parameter>name</parameter> created by
+            <xref linkend="core-ext-defer"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>
+      <parameter>xt</parameter> is undefined if <parameter>name</parameter>
+      was not created by <xref linkend="core-ext-defer"/>.
+    </para>
+    <example>
+      <title>action-of</title>
+      <screen>
+<userinput>: test ." TEST" ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>defer x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' test is x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>action-of x .name<keysym>&larrhk;</keysym></userinput> test ok
+<userinput>: c action-of x .name ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>c<keysym>&larrhk;</keysym></userinput> test ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="core-ext-defer"/>
+    <glossseealso otherterm="core-ext-defer-fetch"/>
+    <glossseealso otherterm="core-ext-defer-store"/>
+    <glossseealso otherterm="core-ext-is"/>
+    -->
+  </glossdef>
+</glossentry>

@@ -1,0 +1,1 @@
+-14 CONSTANT (error-compile-only)       \ interpreting a compile-only word

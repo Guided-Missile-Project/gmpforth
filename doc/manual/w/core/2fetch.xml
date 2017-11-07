@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-2fetch" role="CORE" xreflabel="2@">
+  <glossterm>
+    <indexterm role="forth"><primary>2@</primary></indexterm>
+    <cmdsynopsis>
+      <command>2@</command>
+      <group role="stack">
+        <arg>a-addr</arg>
+        <arg>--</arg>
+        <arg>x1</arg>
+        <arg>x2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Fetch <parameter>x<subscript>2</subscript></parameter> from the cell
+      at <parameter>a-addr</parameter> and
+      <parameter>x<subscript>1</subscript></parameter> from the following cell.
+    </para>
+    <example>
+      <title>2@</title>
+      <screen>
+<userinput>2 pad ! 1 pad cell+ !<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>pad 2@ .s<keysym>&larrhk;</keysym></userinput> 1 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

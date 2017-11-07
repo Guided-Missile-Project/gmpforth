@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-find" role="CORE" xreflabel="find">
+  <glossterm>
+    <indexterm role="forth"><primary>find</primary></indexterm>
+    <cmdsynopsis>
+      <command>find</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>--</arg>
+        <arg>c-addr</arg>
+        <arg>0</arg>
+        <arg>|</arg>
+        <arg>xt</arg>
+        <arg>1</arg>
+        <arg>|</arg>
+        <arg>xt</arg>
+        <arg>-1</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Find the definition with the name corresponding to the
+      counted string <parameter>c-addr</parameter>. If the
+      definition was found, return <parameter>xt</parameter>
+      followed by <constant>1</constant> if the definition
+      is an immediate word or <constant>-1</constant>
+      (also known as <xref linkend="core-ext-true"/>) if the
+      definition is not an immediate word. If the definition was not
+      found, return the original counted string <parameter>c-addr</parameter>
+      followed by <constant>0</constant> (also known as
+      <xref linkend="core-ext-false"/>).
+    </para>
+    <example>
+      <title>find</title>
+      <screen>
+<userinput>bl word foo find . count dump<keysym>&larrhk;</keysym></userinput> 0
+    38E5  66 6F 6F  0  0  0  0  0  0  0  0  0  0  0  0  0  foo............. ok
+<userinput>bl word if find . .name<keysym>&larrhk;</keysym></userinput> 1 if ok
+<userinput>bl word cold find . .name<keysym>&larrhk;</keysym></userinput> -1 cold ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

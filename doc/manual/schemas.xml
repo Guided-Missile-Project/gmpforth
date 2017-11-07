@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+  <uri resource="wsect.xml" typeId="DocBook"/>
+  <uri resource="target-i386.xml" typeId="DocBook"/>
+  <uri resource="target-vmle32.xml" typeId="DocBook"/>
+  <uri resource="target-vmbe32.xml" typeId="DocBook"/>
+  <uri resource="target-general.xml" typeId="DocBook"/>
+  <uri resource="targets.xml" typeId="DocBook"/>
+  <uri resource="bookinfo.xml" typeId="DocBook"/>
+  <uri resource="gmpforth.xml" typeId="DocBook"/>
+  <uri resource="index.xml" typeId="DocBook"/>
+  <uri resource="intro.xml" typeId="DocBook"/>
+  <uri resource="title.xml" typeId="DocBook"/>
+  <uri resource="compiler.xml" typeId="DocBook"/>
+  <uri resource="words.xml" typeId="DocBook"/>
+</locatingRules>

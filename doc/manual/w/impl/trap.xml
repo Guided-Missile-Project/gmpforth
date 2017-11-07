@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-trap" role="IMPL" xreflabel="trap">
+  <glossterm>
+    <indexterm role="forth"><primary>trap</primary></indexterm>
+    <cmdsynopsis>
+      <command>trap</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Trap to debugger. May not always be present and specific behavior
+      is target and implementation dependent.
+    </para>
+  </glossdef>
+</glossentry>

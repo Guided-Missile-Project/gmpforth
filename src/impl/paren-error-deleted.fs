@@ -1,0 +1,1 @@
+-47 CONSTANT (error-deleted)            \ compilation word list deleted

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-from-name" role="F83" xreflabel="name&gt;">
+  <glossterm>
+    <indexterm role="forth"><primary>name&gt;</primary></indexterm>
+    <cmdsynopsis>
+      <command>name&gt;</command>
+      <group role="stack">
+        <arg>nfa</arg>
+        <arg>--</arg>
+        <arg>cfa</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>cfa</parameter> is the code field (<parameter>xt</parameter>)
+      associated with the
+      name field <parameter>nfa</parameter>.
+    </para>
+    <example>
+      <title>name&gt;</title>
+      <screen>
+<userinput>' cold dup .<keysym>&larrhk;</keysym></userinput> 13788  ok
+<userinput>&gt;name dup .<keysym>&larrhk;</keysym></userinput> 13780  ok
+<userinput>name&gt; .<keysym>&larrhk;</keysym></userinput> 13788  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

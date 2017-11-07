@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-munmap" role="IMPL" xreflabel="munmap">
+  <glossterm>
+    <indexterm role="forth"><primary>munmap</primary></indexterm>
+    <cmdsynopsis>
+      <command>munmap</command>
+      <group role="stack">
+        <arg>addr</arg>
+        <arg>len</arg>
+        <arg>--</arg>
+        <arg>ior</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Deallocate a memory region <parameter>addr</parameter>
+<parameter>len</parameter> allocated by <xref
+linkend="impl-mmap"/>. If <parameter>ior</parameter> is zero, then the
+deallocation was successful. If <parameter>ior</parameter> is not
+zero, then the deallocation failed and <parameter>ior</parameter> is a
+result code as returned by <xref linkend="impl-paren-ior"/>.
+    </para>
+    <example>
+      <title>munmap</title>
+      <screen>
+<userinput>-1 100 mmap throw 100 munmap throw<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-xor" role="CORE" xreflabel="xor">
+  <glossterm>
+    <indexterm role="forth"><primary>xor</primary></indexterm>
+    <cmdsynopsis>
+      <command>xor</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>--</arg>
+        <arg>x3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      XOR <parameter>x<subscript>1</subscript></parameter> with
+      <parameter>x<subscript>2</subscript></parameter>, returning
+      the bitwise exclusing OR
+      <parameter>x<subscript>3</subscript></parameter>.
+    </para>
+    <example>
+      <title>xor</title>
+      <screen>
+<userinput>hex ffff cccc xor . decimal<keysym>&larrhk;</keysym></userinput> 3333  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

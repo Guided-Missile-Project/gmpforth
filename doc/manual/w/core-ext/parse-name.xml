@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-parse-name" role="CORE-EXT" xreflabel="parse-name">
+  <glossterm>
+    <indexterm role="forth"><primary>parse-name</primary></indexterm>
+    <cmdsynopsis>
+      <command>parse-name</command>
+      <group role="stack">
+        <arg>"w"</arg>
+        <arg>--</arg>
+        <arg>addr</arg>
+        <arg>len</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Parse a non-blank name from the input stream delimited by a space.
+    </para>
+    <para>
+      An exception with throw-code -256 will be raised if <xref
+      linkend='user-to-in'/> is less than zero or greater than the
+      size of the input buffer being parsed.
+    </para>
+    <example>
+      <title>parse-name</title>
+      <screen>
+<userinput>: ?dump ?dup if dump else drop ." empty " then ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: get-name parse-name ?dump ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>get-name<keysym>&larrhk;</keysym></userinput> empty  ok
+<userinput>get-name blahblah<keysym>&larrhk;</keysym></userinput>
+    3689  62 6C 61 68 62 6C 61 68 6E 61 6D 65 20 3F 64 75  blahblahname ?du ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

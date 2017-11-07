@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-exit" role="CORE,C" xreflabel="exit">
+  <glossterm>
+    <indexterm role="forth"><primary>exit</primary></indexterm>
+    <cmdsynopsis>
+      <command>exit</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Exit immediately. The return stack must not be in use when
+      <xref linkend="core-exit"/> is called.
+    </para>
+    <example>
+      <title>exit</title>
+      <screen>
+<userinput>: test 1 if ." exiting " exit then ." not seen " ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> exiting  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-quote-comma" role="IMPL" xreflabel="(&quot;,)">
+  <glossterm>
+    <indexterm role="forth"><primary>(",)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(",)</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Compiles the string <parameter>c-addr</parameter>
+      <parameter>u</parameter> into the dictionary at
+      <xref linkend="core-here"/>
+      as a counted string followed by zero or
+      more pad characters so that <xref linkend="core-here"/>
+      is left as an aligned address.
+    </para>
+    <para>
+      If <parameter>u</parameter> is greater than 255, then the count
+      is silently truncated.
+    </para>
+    <example>
+      <title>(",)</title>
+      <screen>
+<userinput>hex here s" abcde" (",) ff c, 8 dump <keysym>&larrhk;</keysym></userinput>
+    3830   5 61 62 63 64 65  0  0 FF  0  0  0  0  0  0  0  .abcde.......... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

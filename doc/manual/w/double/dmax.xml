@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-max" role="DOUBLE" xreflabel="dmax">
+  <glossterm>
+    <indexterm role="forth"><primary>dmax</primary></indexterm>
+    <cmdsynopsis>
+      <command>dmax</command>
+      <group role="stack">
+        <arg>d1</arg>
+        <arg>d2</arg>
+        <arg>--</arg>
+        <arg>d3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>d<subscript>3</subscript></parameter> is the greater
+      of <parameter>d<subscript>1</subscript></parameter> or
+      <parameter>d<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>dmax</title>
+      <screen>
+<userinput>1 0 2. dmax d.<keysym>&larrhk;</keysym></userinput> 2  ok
+<userinput>-1. 1. dmax d.<keysym>&larrhk;</keysym></userinput> 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

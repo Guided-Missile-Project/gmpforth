@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-dollar-evaluate" role="IMPL" xreflabel="($evaluate)">
+  <glossterm>
+    <indexterm role="forth"><primary>($evaluate)</primary></indexterm>
+    <cmdsynopsis>
+      <command>($evaluate)</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Set up the string <parameter>c-addr</parameter>
+<parameter>n</parameter> for use as the current input
+source. Typically used as an argument to <xref
+linkend="impl-paren-paren-evaluate"/>.
+    </para>
+    <example>
+      <title>($evaluate)</title>
+      <screen>
+<userinput>s" 1 1 + ." ' ($evaluate) ((evaluate))<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

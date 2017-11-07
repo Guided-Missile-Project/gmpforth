@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-erase" role="CORE-EXT" xreflabel="erase">
+  <glossterm>
+    <indexterm role="forth"><primary>erase</primary></indexterm>
+    <cmdsynopsis>
+      <command>erase</command>
+      <group role="stack">
+        <arg>addr</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Fill the memory region from <parameter>addr</parameter> for
+      <parameter>u</parameter> bytes with zeros.
+    </para>
+    <example>
+      <title>erase</title>
+      <screen>
+<userinput>s" abcdefg" pad swap move<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>pad 3 erase<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>pad 10 dump<keysym>&larrhk;</keysym></userinput>
+    4624   0  0  0 64 65 66 67  0  0  0  0  0  0  0  0  0  ...defg......... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

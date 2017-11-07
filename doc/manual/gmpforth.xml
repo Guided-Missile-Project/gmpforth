@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<!-- GMP Forth Manual -->
+<book>
+  <title>GMP Forth</title>
+  <bookinfo>
+    <author><firstname>Daniel</firstname>
+    <surname>Kelley</surname></author>
+    <affiliation>
+      <orgname>Daniel Kelley and Associates</orgname>
+    </affiliation>
+    <copyright>
+      <year>2012</year>
+      <holder>Daniel Kelley</holder>
+    </copyright>
+    <revhistory>
+      <revision>
+        <revnumber>0.1</revnumber>
+        <date>06 January 2012</date>
+        <revremark>Initial release</revremark>
+      </revision>
+    </revhistory>
+  </bookinfo>
+  <!-- -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="intro.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="targets.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="compiler.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="words.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="index.xml" />
+  <!-- -->
+</book>
+
+
+
+

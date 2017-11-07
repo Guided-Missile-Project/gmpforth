@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-case" role="CORE-EXT,IC" xreflabel="case">
+  <glossterm>
+    <indexterm role="forth"><primary>case</primary></indexterm>
+    <cmdsynopsis>
+      <command>case</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>0</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Mark the beginning of a <xref linkend="core-ext-case"/>&hellip;
+            <xref linkend="core-ext-of"/>&hellip;
+            <xref linkend="core-ext-endof"/>&hellip;
+            <xref linkend="core-ext-endcase"/> construct.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Continue execution.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>
+      <xref linkend="core-ext-case"/> marks the beginning of a
+      multi-way test construct as a simpler alternative to nested
+      <xref linkend="core-if"/>&hellip;<xref linkend="core-else"/>&hellip;<xref
+      linkend="core-then"/>.
+    </para>
+    <para>
+      Typical use is
+      <programlisting>
+        <xref linkend="core-ext-case"/>
+          <xref linkend="core-ext-of"/>&hellip;<xref linkend="core-ext-endof"/>
+          <xref linkend="core-ext-of"/>&hellip;<xref linkend="core-ext-endof"/>
+        &vellip;
+        ( default )
+        <xref linkend="core-ext-endcase"/>
+      </programlisting>
+      where each <xref linkend="core-ext-of"/> tests a single-cell
+      value on the top of stack in turn. The default arm, if executed,
+      can further test and operate on the value.
+    </para>
+    <example>
+      <title>case</title>
+      <screen>
+<userinput>: test case<keysym>&larrhk;</keysym></userinput>
+<userinput>0 of ." zero " endof<keysym>&larrhk;</keysym></userinput>
+<userinput>1 of ." one " endof<keysym>&larrhk;</keysym></userinput>
+<userinput>.<keysym>&larrhk;</keysym></userinput>
+<userinput>endcase ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>0 test<keysym>&larrhk;</keysym></userinput> zero  ok
+<userinput>1 test<keysym>&larrhk;</keysym></userinput> one  ok
+<userinput>2 test<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

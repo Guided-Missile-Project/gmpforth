@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-forget" role="IMPL" xreflabel="(forget)">
+  <glossterm>
+    <indexterm role="forth"><primary>(forget)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(forget)</command>
+      <group role="stack">
+        <arg>cfa</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Remove all wordlists that are defined after the word represented
+      by <parameter>cfa</parameter> from the vocabulary list, reset
+      <xref linkend="user-current"/> and <xref
+      linkend="user-context"/> using <xref linkend="search-ext-only"/>
+      <xref linkend="search-definitions"/> if any such wordlists were
+      found and then execute <xref linkend="impl-paren-forget-wid"/>
+      on all remaining wordlists.
+    </para>
+    <example>
+      <title>(forget)</title>
+      <screen>
+<userinput>: foo ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>' foo (forget)<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>foo<keysym>&larrhk;</keysym></userinput> foo ? er-13
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

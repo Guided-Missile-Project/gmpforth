@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-less" role="DOUBLE" xreflabel="d&lt;">
+  <glossterm>
+    <indexterm role="forth"><primary>d&lt;</primary></indexterm>
+    <cmdsynopsis>
+      <command>d&lt;</command>
+      <group role="stack">
+        <arg>d1</arg>
+        <arg>d2</arg>
+        <arg>--</arg>
+        <arg>flag</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return <xref linkend="core-ext-true"/> if double number
+      <parameter>d<subscript>1</subscript></parameter> is less than
+      double number <parameter>d<subscript>2</subscript></parameter>,
+      otherwise return <xref linkend="core-ext-false"/>.
+    </para>
+    <example>
+      <title>d&lt;</title>
+      <screen>
+<userinput>1. 2. &lt; .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput>1. 1. &lt; .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>2 0 1. &lt; .<keysym>&larrhk;</keysym></userinput> 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

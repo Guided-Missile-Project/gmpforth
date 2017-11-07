@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="fetch">
+  <glossterm>
+    <indexterm role="forth"><primary>@</primary></indexterm>
+    <cmdsynopsis role="Core,I">
+      <command>@</command>
+      <group role="stack">
+        <arg>a</arg>
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Retrieves<parameter>n</parameter> from memory address
+      <parameter>a</parameter>.
+    </para>
+  </glossdef>
+</glossentry>

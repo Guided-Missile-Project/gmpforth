@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-create-file" role="IMPL" xreflabel="(error-create-file)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-create-file)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-create-file)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>CREATE-FILE</quote>.
+    </para>
+    <example>
+      <title>(error-create-file)</title>
+      <screen>
+<userinput>(error-create-file) .<keysym>&larrhk;</keysym></userinput> -63  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-fill" role="CORE" xreflabel="fill">
+  <glossterm>
+    <indexterm role="forth"><primary>fill</primary></indexterm>
+    <cmdsynopsis>
+      <command>fill</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>u</arg>
+        <arg>char</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Fill the region of memory from <parameter>c-addr</parameter> to
+      <parameter>c-addr+u-1</parameter> with the character value
+      <parameter>char</parameter>.
+    </para>
+    <example>
+      <title>fill</title>
+      <screen>
+<userinput>pad 10 char A fill<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>pad 10 dump<keysym>&larrhk;</keysym></userinput>
+    3910  41 41 41 41 41 41 41 41 41 41  0  0  0  0  0  0  AAAAAAAAAA...... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

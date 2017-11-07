@@ -1,0 +1,1 @@
+-16 CONSTANT (error-no-name)            \ used zero-length string as a name

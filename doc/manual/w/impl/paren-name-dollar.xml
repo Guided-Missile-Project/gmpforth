@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-name-dollar" role="IMPL" xreflabel="(name$)">
+  <glossterm>
+    <indexterm role="forth"><primary>(name$)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(name$)</command>
+      <group role="stack">
+        <arg>nfa</arg>
+        <arg>--</arg>
+        <arg>c-addr</arg>
+        <arg>u</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Given a <parameter>nfa</parameter>, return a string
+      <parameter>c-addr</parameter> <parameter>u</parameter>
+      corresponding to the name of the word.
+    </para>
+    <example>
+      <title>(name$)</title>
+      <screen>
+<userinput>' cold >name (name$) type<keysym>&larrhk;</keysym></userinput> cold ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

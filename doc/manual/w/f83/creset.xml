@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-creset" role="F83" xreflabel="creset">
+  <glossterm>
+    <indexterm role="forth"><primary>creset</primary></indexterm>
+    <cmdsynopsis>
+      <command>creset</command>
+      <group role="stack">
+        <arg>x</arg>
+        <arg>addr</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      For every bit that is set in <parameter>x</parameter> up to the
+      number of bits in a character, clear the corresponding bit of
+      the character at <parameter>addr</parameter>, otherwise leave
+      the corresponding bit unmodified.
+    </para>
+    <example>
+      <title>creset</title>
+      <screen>
+<userinput>5 pad c!<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>4 pad creset<keysym>&larrhk;</keysym></userinput>  ok
+
+<userinput>pad c@ .<keysym>&larrhk;</keysym></userinput> 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

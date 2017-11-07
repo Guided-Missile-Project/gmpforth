@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="exception-ext-abort-quote" role="EXCEPTION-EXT,IC" xreflabel="abort&quot;">
+  <glossterm>
+    <indexterm role="forth"><primary>abort"</primary></indexterm>
+    <cmdsynopsis>
+      <command>abort"</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;ccc&lt;quote&gt;&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Parse the input stream up to the next double quote
+            character, then compile <xref linkend="impl-paren-abort-quote"/>
+            followed by the parsed string. The string must be less than
+            256 characters long.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>x</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            If <parameter>x</parameter> is equal to zero, do nothing,
+            otherwise execute <xref linkend="exception-throw"/> with a
+            throw code of <xref
+            linkend="impl-paren-error-abort-quote"/>. If the exception
+            is caught by <xref linkend="impl-paren-quit"/>, then
+            <parameter>ccc</parameter> is displayed.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>abort"</title>
+      <screen>
+<userinput>: test abort" something happened" ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>0 test<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>1 test<keysym>&larrhk;</keysym></userinput> something happened
+<userinput>1 ' test catch .<keysym>&larrhk;</keysym></userinput> -2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

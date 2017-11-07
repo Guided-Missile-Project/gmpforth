@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-of" role="IMPL" xreflabel="(of)">
+  <glossterm>
+    <indexterm role="forth"><primary>(of)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(of)</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+        <arg>n1</arg>
+        <arg>0</arg>
+        <arg>|</arg>
+        <arg>-1</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Compare <parameter>n1</parameter> and
+      <parameter>n2</parameter>. If they are equal, then discard
+      <parameter>n1</parameter> and leave <xref
+      linkend="core-ext-true"/>, otherwike keep
+      <parameter>n1</parameter> and leave <xref
+      linkend="core-ext-false"/> . Used as a primitive for <xref
+      linkend="core-ext-of"/>.
+    </para>
+    <example>
+      <title>(of)</title>
+      <screen>
+<userinput>1 1 (of) .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput>2 1 (of) . .<keysym>&larrhk;</keysym></userinput> 0 2  ok
+<userinput>.s<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

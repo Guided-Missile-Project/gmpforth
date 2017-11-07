@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-eof" role="IMPL" xreflabel="(error-eof)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-eof)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-eof)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>unexpected end of file</quote>.
+    </para>
+    <example>
+      <title>(error-eof)</title>
+      <screen>
+<userinput>(error-eof) .<keysym>&larrhk;</keysym></userinput> -39 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

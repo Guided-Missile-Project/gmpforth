@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren" role="CORE,I" xreflabel="(">
+  <glossterm>
+    <indexterm role="forth"><primary>(</primary></indexterm>
+    <cmdsynopsis>
+      <command>(</command>
+      <group role="stack">
+        <arg>&ldquo;)&rdquo;</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Parse the input stream until a &ldquo;)&rdquo; character is
+      found or the end of the input buffer is reached. The parsed string
+      is discarded.
+    </para>
+    <para>
+      This word is primarily used for introducing an inline
+      comment. Although it appears to be useful as an end-of-line
+      comment, such a use is non-standard; use <xref linkend="core-ext-backslash"/> instead.
+    </para>
+    <para>
+      Because this is an <xref linkend="core-immediate"/> word, it is
+      also effective when compiling a word.
+    </para>
+    <example>
+      <title>(</title>
+      <screen>
+<userinput>( this is a comment ) 1 1 + . ( also a comment )<keysym>&larrhk;</keysym></userinput> 2  ok
+<userinput>: hello ( -- ) ." hello " ; ( comments also work when compiling )<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>hello<keysym>&larrhk;</keysym></userinput> hello  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

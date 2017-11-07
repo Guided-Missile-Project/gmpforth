@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-two-slash" role="CORE" xreflabel="2/">
+  <glossterm>
+    <indexterm role="forth"><primary>2/</primary></indexterm>
+    <cmdsynopsis>
+      <command>2/</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Divide <parameter>n<subscript>1</subscript></parameter> by 2
+      returning <parameter>n<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>2/</title>
+      <screen>
+<userinput>100 2/ .<keysym>&larrhk;</keysym></userinput> 50  ok
+<userinput>-100 2/ .<keysym>&larrhk;</keysym></userinput> -50  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

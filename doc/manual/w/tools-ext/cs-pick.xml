@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-ext-cs-pick" role="TOOLS-EXT" xreflabel="cs-pick">
+  <glossterm>
+    <indexterm role="forth"><primary>cs-pick</primary></indexterm>
+    <cmdsynopsis>
+      <command>cs-pick</command>
+      <group role="stack">
+        <arg>u*(dest|orig)</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+        <arg>u*x</arg>
+        <arg>x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Replace <parameter>u</parameter> with the <parameter>u</parameter>th
+      <parameter>dest</parameter> or <parameter>orig</parameter>
+      item on the stack.
+    </para>
+    <para>
+      As a non-standard extension, this word is available in the interpret
+      <xref linkend="user-state"/>.
+    </para>
+    <example>
+      <title>cs-pick</title>
+      <screen>
+<userinput>0 1 2 3 4 1 cs-pick .<keysym>&larrhk;</keysym></userinput> 3  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

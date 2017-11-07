@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-query" role="IMPL" xreflabel="query">
+  <glossterm>
+    <indexterm role="forth"><primary>query</primary></indexterm>
+    <cmdsynopsis>
+      <command>query</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Read a line from the input device into the terminal buffer.
+    </para>
+    <para>
+      <xref linkend="core-ext-refill"/> is considered to be the modern
+      standard replacement, but if one is only dealing with console
+      input, then this word is sufficient.
+    </para>
+    <example>
+      <title>query</title>
+      <screen>
+<userinput>query source evaluate<keysym>&larrhk;</keysym> 1 1 + .<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

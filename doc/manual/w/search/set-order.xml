@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="search-set-order" role="SEARCH" xreflabel="set-order">
+  <glossterm>
+    <indexterm role="forth"><primary>set-order</primary></indexterm>
+    <cmdsynopsis>
+      <command>set-order</command>
+      <group role="stack">
+        <arg>wid-n</arg>
+        <arg>wid1</arg>
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Set the context search order to the <parameter>n</parameter>
+      given wordlists, in order from first to last. If
+      <parameter>n</parameter> is zero, the search order is
+      cleared. If <parameter>n</parameter> is less than zero, the
+      search order is reset to the default as in <xref
+      linkend='search-ext-only'/>.
+    </para>
+    <example>
+      <title>set-order</title>
+      <screen>
+<userinput>wordlist constant wa<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>wordlist constant wb<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>wa . 134535152<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>wb . 134535180<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>wb wa 2 set-order<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>order<keysym>&larrhk;</keysym></userinput> 134535152  134535180  / forth ok
+     </screen>
+    </example>
+  </glossdef>
+</glossentry>

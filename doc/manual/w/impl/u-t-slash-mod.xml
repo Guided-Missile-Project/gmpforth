@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-t-m-slash-mod" role="IMPL" xreflabel="ut/mod">
+  <glossterm>
+    <indexterm role="forth"><primary>ut/mod</primary></indexterm>
+    <cmdsynopsis>
+      <command>ut/mod</command>
+      <group role="stack">
+        <arg>ut1</arg>
+        <arg>u1</arg>
+        <arg>--</arg>
+        <arg>u2</arg>
+        <arg>ut2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Divide <parameter>ut<subscript>1</subscript></parameter> by
+      <parameter>u<subscript>1</subscript></parameter>, returning
+      the single remainder <parameter>u<subscript>2</subscript></parameter>
+      and the triple quotient <parameter>ut<subscript>3</subscript></parameter>.
+    </para>
+    <para>
+      The behavior of division by zero or quotient overflow
+      is target and implementation
+      dependent and may result in program termination.
+    </para>
+  </glossdef>
+</glossentry>

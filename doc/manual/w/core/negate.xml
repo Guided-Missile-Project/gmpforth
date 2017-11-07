@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-negate" role="CORE" xreflabel="negate">
+  <glossterm>
+    <indexterm role="forth"><primary>negate</primary></indexterm>
+    <cmdsynopsis>
+      <command>negate</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>n<subscript>2</subscript></parameter> is the arithmetic
+      negation of <parameter>n<subscript>1</subscript></parameter>.
+    </para>
+    <example>
+      <title>negate</title>
+      <screen>
+<userinput>-1 negate .<keysym>&larrhk;</keysym></userinput> 1  ok
+<userinput>1 negate .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

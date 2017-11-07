@@ -1,0 +1,61 @@
+GMP Forth
+
+"classic" assembly based Forth kernel in the FIG-Forth tradition
+
+ANS Forth compatible, including Forth-200X
+
+Following targets:
+
+  PowerPC
+  Sparc32
+  Sparc64
+  MIPS
+  ARM non-thumb
+  ARM thumb
+  ColdFire
+  AVR
+  SM0 (Stack Machine Zero Forth Execution Engine)
+
+  16,32,64 bit word widths depending on architecture
+
+ROM-able
+
+Indirect threaded interpreter
+
+GPL license
+
+binutils GAS assembler
+
+High level specification in (stream) forth, convertable to
+target assembly.
+
+Targets configurable with high-level or ASM coded words.
+
+not as minimal as eForth, not as extensive as Gforth.
+
+Why not just use Gforth?
+  MCU/filesystem-less systems
+  Desire for classic FIG-Forth approach  
+  Pedagogical reasons
+
+
+Wordsets
+
+  Core
+  Core Extensions
+  Double
+  Double Extensions
+  Programming Tools
+  Error Handling
+  Search Order
+  Search Order Extensions
+  String
+  String Extensions
+  Locals
+  Memory Allocation
+  Memory Allocation Extensions
+  dpANS A.2 RAM ROM
+
+Nice-to-have
+
+Gforth compatibility

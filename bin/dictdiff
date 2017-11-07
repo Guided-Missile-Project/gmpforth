@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+#
+# test_dict_001 failure differences
+#
+
+require 'tempfile'
+
+a = []
+aa = []
+
+while !gets.nil? do
+  case $_
+  when /<\["(\S+)"/
+    a << $1
+  when /"(\S+)"\]>/
+    a << $1
+    aa << a.dup
+    a.clear
+  when /"(\S+)"/
+    a << $1
+  when /"(\S*\\"\S*)"/
+    a << $1
+  end
+end
+
+if aa.length != 0
+  raise "oops" if aa.length != 2
+
+  fa = Tempfile.new('old-')
+  aa[0].each { |v| fa.puts v }
+  fa.close
+
+  fb = Tempfile.new('new-')
+  aa[1].each { |v| fb.puts v }
+  fb.close
+
+  puts `diff -u #{fa.path} #{fb.path}`
+end

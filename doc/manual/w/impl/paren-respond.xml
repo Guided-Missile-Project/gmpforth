@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-respond" role="IMPL" xreflabel="(respond)">
+  <glossterm>
+    <indexterm role="forth"><primary>(respond)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(respond)</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      If <parameter>n</parameter> is non-zero, print an error message
+      if <parameter>n</parameter> is not <xref
+      linkend="impl-paren-error-abort"/> or <xref
+      linkend="impl-paren-error-abort-quote"/>  and set <xref
+      linkend="user-state"/> to interpret. If <parameter>n</parameter>
+      is zero, print a prompt if <xref linkend="user-state"/> is
+      interpret. No prompt is issued if <xref linkend="user-state"/> is
+      compiling.
+    </para>
+    <example>
+      <title>(respond)</title>
+      <screen>
+<userinput>0 (respond)<keysym>&larrhk;</keysym></userinput>  ok ok
+<userinput>-1 (respond)<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>-3 (respond)<keysym>&larrhk;</keysym></userinput> er-3  ok
+<userinput>3 (respond)<keysym>&larrhk;</keysym></userinput> er3  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

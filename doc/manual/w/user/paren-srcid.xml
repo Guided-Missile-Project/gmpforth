@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-paren-srcid" role="USER" xreflabel="(srcid)">
+  <glossterm>
+    <indexterm role="forth"><primary>(srcid)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(srcid)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable containing an identifier for the current input
+      source.
+    </para>
+    <example>
+      <title>(srcid)</title>
+      <screen>
+<userinput>(srcid) ?<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

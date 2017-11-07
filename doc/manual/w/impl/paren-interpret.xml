@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-interpret" role="IMPL" xreflabel="(interpret)">
+  <glossterm>
+    <indexterm role="forth"><primary>(interpret)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(interpret)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>j*x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Read and evaluate the input source.
+    </para>
+    <example>
+      <title>(interpret)</title>
+      <screen>
+<userinput>(interpret)<keysym>&larrhk;</keysym></userinput>
+<userinput>1 1 + .<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

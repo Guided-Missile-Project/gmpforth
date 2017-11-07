@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-scan" role="IMPL" xreflabel="(scan)">
+  <glossterm>
+    <indexterm role="forth"><primary>(scan)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(scan)</command>
+      <group role="stack">
+        <arg>c-addr1</arg>
+        <arg>u1</arg>
+        <arg>c</arg>
+        <arg>xt</arg>
+        <arg>--</arg>
+        <arg>c-addr2</arg>
+        <arg>u2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Scan a string <parameter>c-addr<subscript>1</subscript></parameter>
+      <parameter>u<subscript>1</subscript></parameter>
+      comparing each character in the string with <parameter>c</parameter>
+      while comparison function <parameter>xt</parameter> does not return
+      <xref linkend="core-ext-false"/>.
+    </para>
+    <para>
+      Return <parameter>c-addr<subscript>2</subscript></parameter>
+      <parameter>u<subscript>2</subscript></parameter> when
+      the comparison function returns <xref linkend="core-ext-false"/>, where
+      <parameter>u<subscript>2</subscript></parameter>
+      will be greater than zero, or the end of the string is reached, where
+      <parameter>u<subscript>2</subscript></parameter> will be equal to zero.
+    </para>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <title/>
+      <varlistentry>
+        <term>Comparison function</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>c1</arg>
+              <arg>c2</arg>
+              <arg>--</arg>
+              <arg>flag</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return <xref linkend="core-ext-false"/> if
+            <parameter>c<subscript>1</subscript></parameter> does not
+            meet comaprison criteria with
+            <parameter>c<subscript>2</subscript></parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+     <example>
+      <title>(scan)</title>
+      <screen>
+<userinput>s" ab de" 64 ' > (scan) dump<keysym>&larrhk;</keysym></userinput>
+ 804BB5A  20 64 65  0  0  0  0  0  0  0  0  0  0  0  0  0   de............. ok
+      </screen>
+    </example>
+ </glossdef>
+</glossentry>

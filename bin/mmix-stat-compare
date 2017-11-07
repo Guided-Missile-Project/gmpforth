@@ -1,0 +1,128 @@
+#!/usr/bin/env ruby
+#
+# Compare MMIX stat files
+#
+
+require 'yaml'
+require 'optparse'
+
+class Stat
+
+  attr_reader :length, :file, :data, :baseline
+
+  STAT_KEY = ["insn","mems","oops","good","bad"]
+
+  def initialize(file)
+    @file = file
+    File.open(file) { |yf| @data = YAML::load(yf) }
+    @length = @data.length
+
+    # find baseline
+    @baseline = nil
+    @data.each do |datum|
+      if datum['fn'] == "test_empty_colondef"
+        @baseline = datum
+        break
+      end
+    end
+
+    if @baseline.nil?
+      $stderr.puts "baseline data not in #{file}"
+      exit 2
+    end
+
+    # subtract fn overhead
+    @data.each do |datum|
+      next if datum['fn'] == "test_empty_colondef"
+      STAT_KEY.each { |k| datum[k] -= @baseline[k] }
+    end
+
+  end
+
+  def plot_datum(datum, baseline_a=[])
+    baseline_a.each do |base|
+      STAT_KEY.each { |k| datum[k] -= base[k] }
+    end
+    str = ""
+    STAT_KEY.each { |k| str += (datum[k].to_s + " ") }
+    fn = datum['fn']
+    str += "# #{fn}"
+    puts str
+  end
+
+  def plot(other=nil)
+    comment = "# #{@file}"
+    if !other.nil?
+      comment += " diff from #{other.file}"
+    end
+    if !$fn.nil?
+      comment += " only for #{$fn}"
+    end
+    puts comment
+    puts "# " + STAT_KEY.join(' ') + " # test_function"
+    @data.each_with_index do |datum, n|
+      base = []
+
+      # if there's another run being subtracted, snag that too
+      if !other.nil?
+        base << other.data[n]
+      end
+
+      if $fn.nil? || datum['fn'] == $fn
+        plot_datum(datum, base)
+      end
+    end
+    puts ""
+    puts ""
+    puts ""
+  end
+
+  def diff(other)
+    plot(other)
+  end
+
+end
+
+$fn = nil
+
+op = :plot
+@opts = OptionParser.new do |opts|
+  opts.banner = "Usage: #{File.basename($0)} [options]"
+  opts.on('--diff', '-d', 'Diff stat runs assuming first is baseline') do
+    op=:diff
+  end
+  opts.on('--func [F]', '-f', 'Diff stat runs assuming first is baseline') do |arg|
+    $fn=arg
+  end
+  opts.on('--help', '-h', 'Issue this message') do
+    puts opts
+    exit 0
+  end
+end
+@opts.parse! ARGV
+
+stat = []
+
+# collect data
+ARGV.each { |arg| stat << Stat.new(arg) }
+
+stat[1..-1].each do |s|
+  if s.length != stat[0].length
+    $stderr.puts "stats are not comparable because lengths differ"
+    exit 1
+  end
+  s.data.each_with_index do |datum, n|
+    if stat[0].data[n]['fn'] != datum['fn']
+      $stderr.puts "stats are not comparable because functions differ"
+      exit 1
+    end
+  end
+end
+
+case op
+when :plot
+  stat.each { |s| s.plot }
+when :diff
+  stat[1..-1].each { |s| s.diff(stat[0]) }
+end
+

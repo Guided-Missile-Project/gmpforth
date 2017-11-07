@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-to" role="CORE-EXT,I" xreflabel="to">
+  <glossterm>
+    <indexterm role="forth"><primary>to</primary></indexterm>
+    <cmdsynopsis>
+      <command>to</command>
+      <group role="stack">
+        <arg>i*j</arg>
+        <arg>&ldquo;name&rdquo;</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Store <parameter>i*j</parameter> in the value
+      <parameter>name</parameter>, defined by
+      <xref linkend="core-ext-value"/>
+      <!-- or <xref linkend="double-ext-two-value"/> -->.
+    </para>
+    <para>
+      Defining words can use <xref linkend="core-ext-to"/> semantics
+      by having an <parameter>xt</parameter> in the first cell of
+      the body that stores <parameter>i*j</parameter> elsewhere in
+      the body - typically starting at the second cell.
+    </para>
+    <para>
+      If <parameter>name</parameter> does not have a store function in
+      the first cell of its body, then the operation is unpredictable.
+    </para>
+    <para>
+      <xref linkend="core-ext-to"/> behaves as expected when
+            <xref linkend="core-postpone"/>,
+            <xref linkend="core-ext-bracket-compile"/>,
+            <xref linkend="core-tick"/> or
+            <xref linkend="core-bracket-tick"/> is applied.
+    </para>
+    <example>
+      <title>to</title>
+      <screen>
+<userinput>5 value x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>x . 5<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>10 to x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>x . 10<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

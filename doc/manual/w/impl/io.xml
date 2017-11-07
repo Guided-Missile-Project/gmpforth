@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-io" role="IMPL" xreflabel="(io)">
+  <glossterm>
+    <indexterm role="forth"><primary>(io)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(io)</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Perform system dependent IO operations. The operation code is a four
+      bit signed integer, with five operations defined. An undefined operation
+      code is treated as a <parameter>HALT</parameter>.
+    </para>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <title>IO operations</title>
+      <varlistentry>
+        <term>TX!</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>c</arg>
+              <arg>0</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Send <parameter>c</parameter> to the console.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>TX?</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>1</arg>
+              <arg>--</arg>
+              <arg>flag</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return <xref linkend="core-ext-true"/> if the console output
+            is ready for a character to be sent, otherwise return
+            <xref linkend="core-ext-false"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>RX@</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>2</arg>
+              <arg>--</arg>
+              <arg>c</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Receive <parameter>c</parameter> from the console.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>RX?</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>3</arg>
+              <arg>--</arg>
+              <arg>flag</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return <xref linkend="core-ext-true"/> if the console input
+            has a character ready to be received, otherwise return
+            <xref linkend="core-ext-false"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>HALT</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>-8</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return control to the caller of the
+            <application>GMP Forth</application> application.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>(io)</title>
+      <screen>
+<userinput>2 (io) 0 (io)<keysym>&larrhk;</keysym>A</userinput> ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

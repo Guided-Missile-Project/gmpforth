@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-if" role="CORE,IC" xreflabel="if">
+  <glossterm>
+    <indexterm role="forth"><primary>if</primary></indexterm>
+    <cmdsynopsis>
+      <command>if</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>orig</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile <xref linkend="impl-paren-zero-branch"/> and allocate
+            a cell for the branch address, returning <parameter>orig</parameter>
+            as a pointer to the branch address. <parameter>orig</parameter>
+            will be resolved by a consumer of <parameter>orig</parameter>,
+            usually <xref linkend="core-then"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>n</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            If <parameter>n</parameter> is equal to zero, branch to the
+             resolved <parameter>orig</parameter> address.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>if</title>
+      <screen>
+<userinput>: test if ." T" space then ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>true test<keysym>&larrhk;</keysym></userinput> T  ok
+<userinput>false test<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

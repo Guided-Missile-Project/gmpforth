@@ -1,0 +1,1 @@
+-10 CONSTANT (error-div)                \ division by zero

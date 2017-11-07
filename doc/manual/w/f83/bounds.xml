@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-bounds" role="F83" xreflabel="bounds">
+  <glossterm>
+    <indexterm role="forth"><primary>bounds</primary></indexterm>
+    <cmdsynopsis>
+      <command>bounds</command>
+      <group role="stack">
+        <arg>a1</arg>
+        <arg>n</arg>
+        <arg>--</arg>
+        <arg>a2</arg>
+        <arg>a1</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Convert an address <parameter>a1</parameter> and length
+      <parameter>n</parameter> to address bounds
+      <parameter>a2</parameter>
+      (<parameter>a1</parameter>+<parameter>n</parameter>) and
+      <parameter>a1</parameter>. The address bounds are suitable as
+      input to <xref linkend="core-do"/> and <xref
+      linkend="core-ext-question-do"/>.
+    </para>
+    <example>
+      <title>bounds</title>
+      <screen>
+<userinput>: SDUMP bounds ?do I c@ . loop ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>s" Hello" sdump<keysym>&larrhk;</keysym></userinput> 72 101 108 108 111  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

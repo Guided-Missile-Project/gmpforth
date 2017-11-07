@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="search-definitions" role="SEARCH" xreflabel="definitions">
+  <glossterm>
+    <indexterm role="forth"><primary>definitions</primary></indexterm>
+    <cmdsynopsis>
+      <command>definitions</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Make the current wordlist, the wordlist that all subsequent definitions
+      will be placed into, the same as the first context wordlist.
+    </para>
+    <example>
+      <title>definitions</title>
+      <screen>
+<userinput>vocabulary foo<keysym>&larrhk;</keysym></userinput>   ok
+<userinput>also foo definitions<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>words<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: bar ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>words<keysym>&larrhk;</keysym></userinput>
+bar  ok
+<userinput>order<keysym>&larrhk;</keysym></userinput> foo forth / foo ok
+     </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-dot-quote" role="CORE,I" xreflabel=".&quot;">
+  <glossterm>
+    <indexterm role="forth"><primary>."</primary></indexterm>
+    <cmdsynopsis>
+      <command>."</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg></arg>
+              <arg>&ldquo;ccc&lt;quote&gt;&rdquo;--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Display the quoted string.
+          </para>
+          <para>
+            This behavior is a <application>GMP Forth</application>
+            extension.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;ccc&lt;quote&gt;&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile the quoted string such that it is displayed when
+            the word is executed.
+          </para>
+          <para>
+            The target compiler has an extension that allows a quoted
+            string to contain replacable values. If the string contains
+            a sequence matching the regular expression
+            <quote>/%(\w+)%/</quote>, then the string between the percent signs
+            <quote>%</quote> is assumed to be a method name in the
+            <classname>GMPForth::Compiler</classname> class or target
+            compiler subclasses that accepts no arguments and returns a
+            string type. Currently, the only supported method is
+            <methodname>target_name</methodname>, which returns the
+            cross compiler target name.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Display the compiled quoted string.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>."</title>
+      <screen>
+<userinput>: test ." hello " ; test<keysym>&larrhk;</keysym></userinput> hello  ok
+<userinput>." really"<keysym>&larrhk;</keysym></userinput> really ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

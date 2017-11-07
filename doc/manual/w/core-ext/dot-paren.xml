@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-dot-paren" role="CORE-EXT,I" xreflabel=".(">
+  <glossterm>
+    <indexterm role="forth"><primary>.(</primary></indexterm>
+    <cmdsynopsis>
+      <command>.(</command>
+      <group role="stack">
+        <arg>&ldquo;ccc&lt;paren&gt;&rdquo;</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display the string up to the closing parenthesis.
+    </para>
+    <example>
+      <title>.(</title>
+      <screen>
+<userinput>: test .( hello) ." test " ;<keysym>&larrhk;</keysym></userinput> hello ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> test  ok
+<userinput>.( really)<keysym>&larrhk;</keysym></userinput> really ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

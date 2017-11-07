@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-flush-file" role="IMPL" xreflabel="(error-flush-file)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-flush-file)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-flush-file)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>FLUSH-FILE</quote>.
+    </para>
+    <example>
+      <title>(error-flush-file)</title>
+      <screen>
+<userinput>(error-flush-file) .<keysym>&larrhk;</keysym></userinput> -68 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

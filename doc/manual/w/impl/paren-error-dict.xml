@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-dict" role="IMPL" xreflabel="(error-dict)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-dict)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-dict)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>dictionary overflow</quote>.
+    </para>
+    <example>
+      <title>(error-dict)</title>
+      <screen>
+<userinput>(error-dict) .<keysym>&larrhk;</keysym></userinput> -8 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

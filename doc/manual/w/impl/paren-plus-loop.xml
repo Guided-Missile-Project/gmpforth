@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-plus-loop" role="IMPL,C" xreflabel="(+loop)">
+  <glossterm>
+    <indexterm role="forth"><primary>(+loop)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(+loop)</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Adds <parameter>n</parameter> to the current loop index, and
+      exits the current loop if the loop boundry condition is met. If
+      the loop boundry condition is not met, then branch to the
+      address contained in the cell immediately following the current
+      IP.
+    </para>
+    <para>
+      This word is used by <xref linkend="core-plus-loop"/> to
+      implement <xref linkend="core-plus-loop"/> semantics.
+    </para>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-name-a" role="IMPL" xreflabel="(error-name-a)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-name-a)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-name-a)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>invalid <parameter>name</parameter> argument</quote>.
+    </para>
+    <example>
+      <title>(error-name-a)</title>
+      <screen>
+<userinput>(error-name-a) .<keysym>&larrhk;</keysym></userinput> -32 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-range" role="IMPL" xreflabel="(error-range)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-range)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-range)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>result out of range</quote>.
+    </para>
+    <example>
+      <title>(error-range)</title>
+      <screen>
+<userinput>(error-range) .<keysym>&larrhk;</keysym></userinput> -11 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

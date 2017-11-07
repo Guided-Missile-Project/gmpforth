@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-mmap" role="IMPL" xreflabel="mmap">
+  <glossterm>
+    <indexterm role="forth"><primary>mmap</primary></indexterm>
+    <cmdsynopsis>
+      <command>mmap</command>
+      <group role="stack">
+        <arg>fd</arg>
+        <arg>len</arg>
+        <arg>--</arg>
+        <arg>addr</arg>
+        <arg>ior</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+If <parameter>fd</parameter> is positive, create a read-only memory
+mapping of the file corresponding to <parameter>fd</parameter> that is
+<parameter>len</parameter> bytes long starting at file offset 0. If
+<parameter>fd</parameter> is negative, allocate a system memory region
+of <parameter>len</parameter> bytes. If <parameter>ior</parameter> is
+zero, then <parameter>addr</parameter> is mapped memory region. If
+<parameter>ior</parameter> is not zero, then
+<parameter>addr</parameter> is undefined and
+<parameter>ior</parameter> is a result code as returned by <xref
+linkend="impl-paren-ior"/>.
+    </para>
+    <para>
+    </para>
+    <example>
+      <title>mmap</title>
+      <screen>
+<userinput>s" src/base.fs" r/o open-file throw<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>dup file-size throw drop<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>2dup mmap throw<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>dup 10 dump<keysym>&larrhk;</keysym></userinput>
+F7798000  5C 20 2D 2A 2D 66 6F 72 74 68 2D 2A 2D  A 5C  A  \ -*-forth-*-.\. ok
+<userinput>swap munmap throw<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>close-file throw<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>-1 100 mmap throw<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>dup 10 dump<keysym>&larrhk;</keysym></userinput>
+F779C000   0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  ................ ok
+<userinput>$a55aa55a over !<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>dup 10 dump<keysym>&larrhk;</keysym></userinput>
+F779C000  5A A5 5A A5  0  0  0  0  0  0  0  0  0  0  0  0  Z.Z............. ok
+<userinput>100 munmap throw<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-file-io" role="IMPL" xreflabel="(error-file-io)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-file-io)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-file-io)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>file I/O exception</quote>.
+    </para>
+    <example>
+      <title>(error-file-io)</title>
+      <screen>
+<userinput>(error-file-io) .<keysym>&larrhk;</keysym></userinput> -37 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

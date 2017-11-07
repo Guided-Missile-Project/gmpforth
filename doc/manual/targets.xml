@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<chapter id="targets">
+  <title>Targets</title>
+  <!-- -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-general.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-vmbe32.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-vmle32.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-i386.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-x86_64.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-mmix.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-arm-a32.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-arm-t32.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-arm-a64.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-mips32.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="target-mips64.xml" />
+</chapter>
+

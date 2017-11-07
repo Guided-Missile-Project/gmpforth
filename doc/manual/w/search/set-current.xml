@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="search-set-current" role="SEARCH" xreflabel="set-current">
+  <glossterm>
+    <indexterm role="forth"><primary>set-current</primary></indexterm>
+    <cmdsynopsis>
+      <command>set-current</command>
+      <group role="stack">
+        <arg>wid</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Set the current compilation wordlist.
+    </para>
+    <example>
+      <title>set-current</title>
+      <screen>
+<userinput>wordlist dup .wid set-current order<keysym>&larrhk;</keysym></userinput> 134535152 forth / 134535152  ok
+     </screen>
+    </example>
+  </glossdef>
+</glossentry>

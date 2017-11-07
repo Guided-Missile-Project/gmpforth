@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-c-fetch" role="CORE" xreflabel="c@">
+  <glossterm>
+    <indexterm role="forth"><primary>c@</primary></indexterm>
+    <cmdsynopsis>
+      <command>c@</command>
+      <group role="stack">
+        <arg>addr</arg>
+        <arg>--</arg>
+        <arg>char</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Fetch <parameter>char</parameter> from the address
+      <parameter>addr</parameter>.
+    </para>
+    <example>
+      <title>c@</title>
+      <screen>
+<userinput>10 pad c! pad c@ .<keysym>&larrhk;</keysym></userinput> 10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-slash" role="CORE" xreflabel="/">
+  <glossterm>
+    <indexterm role="forth"><primary>/</primary></indexterm>
+    <cmdsynopsis>
+      <command>/</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+        <arg>n3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Divide <parameter>n<subscript>1</subscript></parameter> by
+      <parameter>n<subscript>2</subscript></parameter>, returning
+      the quotient <parameter>n<subscript>3</subscript></parameter>.
+    </para>
+    <para>
+      If the signs of <parameter>n<subscript>1</subscript></parameter>
+      and <parameter>n<subscript>2</subscript></parameter> differ,
+      the value of <parameter>n<subscript>3</subscript></parameter>
+      is target dependent.
+    </para>
+    <para>
+      The behavior of division by zero is target and implementation
+      dependent, and may result in program termination.
+    </para>
+    <example>
+      <title>/</title>
+      <screen>
+<userinput>100 7 / .<keysym>&larrhk;</keysym></userinput> 14  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

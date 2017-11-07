@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-s-backslash-quote" role="CORE,I" xreflabel="s\&quot;">
+  <glossterm>
+    <indexterm role="forth"><primary>s\&quot;</primary></indexterm>
+    <cmdsynopsis>
+      <command>s\&quot;</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;ccc&lt;quote&gt;&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Parse the input stream up to the next double quote
+            character, convert any escaped characters, and then
+            compile <xref linkend="impl-paren-s-quote"/> followed by
+            the parsed string. The string must be less than 256
+            characters long.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>c-addr</arg>
+              <arg>len</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return the address and length of the compiled string literal.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>c-addr</arg>
+              <arg>len</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Convert any character preceded by a backslash to the
+            indicated character as follows:
+          </para>
+          <table frame='none' role='cellborder'>
+            <title/>
+            <tgroup cols='2' align='left'>
+              <colspec colname='c1'/>
+              <colspec colname='c2'/>
+              <tbody>
+                <row><entry>\a</entry><entry>7</entry></row>
+                <row><entry>\b</entry><entry>8</entry></row>
+                <row><entry>\e</entry><entry>27</entry></row>
+                <row><entry>\f</entry><entry>12</entry></row>
+                <row><entry>\l</entry><entry>10</entry></row>
+                <row><entry>\m</entry><entry>13,10</entry></row>
+                <row><entry>\n</entry><entry>10</entry></row>
+                <row><entry>\q</entry><entry>34</entry></row>
+                <row><entry>\r</entry><entry>13</entry></row>
+                <row><entry>\t</entry><entry>9</entry></row>
+                <row><entry>\v</entry><entry>11</entry></row>
+                <row><entry>\z</entry><entry>0</entry></row>
+                <row><entry>\"</entry><entry>not supported</entry></row>
+                <row><entry>\xAB</entry><entry>AB</entry></row>
+                <row><entry>\\</entry><entry>92</entry></row>
+              </tbody>
+            </tgroup>
+          </table>
+          <para>
+            Any character preceded by a backslash not in the table
+            above will be copied as is.
+          </para>
+          <para>
+            As a non-standard extension, return the address and length
+            of an interpreted string literal. Multiple string literals
+            are allowed in a single input line.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>s\&quot;</title>
+      <screen>
+<userinput>s\" \a\b\e\f\l\m\n\q\r\t\v\z\x01\xaa\\abc" dump<keysym>&larrhk;</keysym></userinput>
+ 804DCEF   7  8 1B  C  A  D  A  A 22  D  9  B  0  1 AA 5C  ........"......\
+ 804DCFF  61 62 63  0  0  0  0  0  0  0  0  0  0  0  0  0  abc............. ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

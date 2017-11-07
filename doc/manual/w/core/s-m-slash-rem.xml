@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-s-m-slash-rem" role="CORE" xreflabel="sm/rem">
+  <glossterm>
+    <indexterm role="forth"><primary>sm/rem</primary></indexterm>
+    <cmdsynopsis>
+      <command>sm/rem</command>
+      <group role="stack">
+        <arg>d</arg>
+        <arg>n1</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+        <arg>n3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Divide double number <parameter>d</parameter> by
+      <parameter>n<subscript>1</subscript></parameter>, returning
+      the remainder <parameter>n<subscript>2</subscript></parameter>
+      and the symmetric quotient
+      <parameter>n<subscript>3</subscript></parameter>.
+    </para>
+    <para>
+      The behavior of division by zero or quotient overflow
+      is target and implementation
+      dependent, and may result in program termination.
+    </para>
+    <example>
+      <title>sm/rem</title>
+      <screen>
+<userinput> 10.  7 sm/rem . .<keysym>&larrhk;</keysym></userinput> 1 3  ok
+<userinput> 10. -7 sm/rem . .<keysym>&larrhk;</keysym></userinput> -1 3  ok
+<userinput>-10.  7 sm/rem . .<keysym>&larrhk;</keysym></userinput> -1 -3  ok
+<userinput>-10. -7 sm/rem . .<keysym>&larrhk;</keysym></userinput> 1 -3  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,1 @@
+-30 CONSTANT (error-obsolete)           \ obsolescent feature

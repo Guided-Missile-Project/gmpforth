@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="search-wordlist" role="SEARCH" xreflabel="wordlist">
+  <glossterm>
+    <indexterm role="forth"><primary>wordlist</primary></indexterm>
+    <cmdsynopsis>
+      <command>wordlist</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>wid</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Create a new wordlist, returning <parameter>wid</parameter>.
+    </para>
+    <example>
+      <title>wordlist</title>
+      <screen>
+<userinput>wordlist constant foo<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>foo .wid<keysym>&larrhk;</keysym></userinput> 4234192  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

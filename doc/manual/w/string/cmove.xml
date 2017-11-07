@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="string-cmove" role="STRING" xreflabel="cmove">
+  <glossterm>
+    <indexterm role="forth"><primary>cmove</primary></indexterm>
+    <cmdsynopsis>
+      <command>cmove</command>
+      <group role="stack">
+        <arg>c-addr1</arg>
+        <arg>c-addr2</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Copy <parameter>u</parameter> characters from
+      <parameter>c-addr<subscript>1</subscript></parameter> to
+      <parameter>c-addr<subscript>2</subscript></parameter>, starting from
+      <parameter>c-addr<subscript>1</subscript></parameter>.
+    </para>
+    <example>
+      <title>cmove</title>
+      <screen>
+<userinput>s" abcde" pad swap cmove<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>pad 10 dump<keysym>&larrhk;</keysym></userinput>
+    394C  61 62 63 64 65  0  0  0  0  0  0  0  0  0  0  0  abcde........... ok
+<userinput>pad pad char+ 5 cmove<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>pad 10 dump<keysym>&larrhk;</keysym></userinput>
+    394C  61 61 61 61 61 61  0  0  0  0  0  0  0  0  0  0  aaaaaa.......... ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

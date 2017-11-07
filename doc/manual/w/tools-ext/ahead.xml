@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-ext-ahead" role="TOOLS-EXT,IC" xreflabel="ahead">
+  <glossterm>
+    <indexterm role="forth"><primary>ahead</primary></indexterm>
+    <cmdsynopsis>
+      <command>ahead</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>orig</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile <xref linkend="impl-paren-branch"/> and allocate
+            a cell for the branch address, returning
+            <parameter>orig</parameter>
+            as a pointer to the branch address. <parameter>orig</parameter>
+            will be resolved by a consumer of <parameter>orig</parameter>,
+            usually <xref linkend="core-then"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Unconditionally branch to the resolved <parameter>orig</parameter>
+            address.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>ahead</title>
+      <screen>
+<userinput>: test ahead ." not here " then ." but here " ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> but here  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

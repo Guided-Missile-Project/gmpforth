@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-postpone" role="IMPL" xreflabel="(error-postpone)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-postpone)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-postpone)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>invalid <xref linkend="core-postpone"/></quote>.
+    </para>
+    <example>
+      <title>(error-postpone)</title>
+      <screen>
+<userinput>(error-postpone) .<keysym>&larrhk;</keysym></userinput> -48 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

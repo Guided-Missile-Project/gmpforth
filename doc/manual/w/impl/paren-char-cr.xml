@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-char-cr" role="IMPL" xreflabel="(=cr)">
+  <glossterm>
+    <indexterm role="forth"><primary>(=cr)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(=cr)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the <acronym>ASCII</acronym> carriage return
+      character CR.
+    </para>
+    <example>
+      <title>(=cr)</title>
+      <screen>
+<userinput>(=cr) .<keysym>&larrhk;</keysym></userinput> 13  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

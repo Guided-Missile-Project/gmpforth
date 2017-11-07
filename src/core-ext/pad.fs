@@ -1,0 +1,3 @@
+: PAD ( -- a )
+    here (pad) + ;
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="doube-two-variable" role="DOUBLE" xreflabel="2variable">
+  <glossterm>
+    <indexterm role="forth"><primary>2variable</primary></indexterm>
+    <cmdsynopsis>
+      <command>2variable</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Create a 2variable called <parameter>name</parameter>,
+            allocating two cells of storage in the
+            dictionary. The initial value of the 2variable is
+            <constant>0.</constant>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>a-addr</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return the address corresponding to 2variable
+            <parameter>name</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>2variable</title>
+      <screen>
+<userinput>2variable 2var<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>2var 2@ d.<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>10. 2var 2!<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>2var 2@ d.<keysym>&larrhk;</keysym></userinput> 10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

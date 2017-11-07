@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="string-slash-string" role="STRING" xreflabel="/string">
+  <glossterm>
+    <indexterm role="forth"><primary>/string</primary></indexterm>
+    <cmdsynopsis>
+      <command>/string</command>
+      <group role="stack">
+        <arg>c-addr1</arg>
+        <arg>u1</arg>
+        <arg>n</arg>
+        <arg>--</arg>
+        <arg>c-addr2</arg>
+        <arg>u2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Adjust the string <parameter>c-addr<subscript>1</subscript></parameter>
+      <parameter>u<subscript>1</subscript></parameter> by
+      <parameter>n</parameter> characters such that
+      <parameter>c-addr<subscript>2</subscript></parameter>=
+      <parameter>c-addr<subscript>1</subscript></parameter>+
+      <parameter>n</parameter> and
+      <parameter>u<subscript>2</subscript></parameter>=
+      <parameter>u<subscript>1</subscript></parameter>-
+      <parameter>n</parameter>.
+    </para>
+    <example>
+      <title>/string</title>
+      <screen>
+<userinput>s" abcdefg" 4 /string dump<keysym>&larrhk;</keysym></userinput>
+    376C  65 66 67  0  0  0  0  0  0  0  0  0  0  0  0  0  efg............. ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

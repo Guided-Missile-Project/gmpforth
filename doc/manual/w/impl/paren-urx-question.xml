@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-urx-question" role="IMPL" xreflabel="(urx?)">
+  <glossterm>
+    <indexterm role="forth"><primary>(urx?)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(urx?)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>flag</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return true if the default console has a character ready to receive
+      without blocking.
+    </para>
+    <example>
+      <title>(urx?)</title>
+      <screen>
+<userinput>(urx?) .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

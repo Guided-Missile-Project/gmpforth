@@ -1,0 +1,1 @@
+-48 CONSTANT (error-postpone)           \ invalid POSTPONE

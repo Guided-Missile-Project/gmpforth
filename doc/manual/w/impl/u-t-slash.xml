@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-u-t-slash" role="IMPL" xreflabel="ut/">
+  <glossterm>
+    <indexterm role="forth"><primary>ut/</primary></indexterm>
+    <cmdsynopsis>
+      <command>ut/</command>
+      <group role="stack">
+        <arg>ut</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+        <arg>ud</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Divide unsigned triple dividend <parameter>ut</parameter> by unsigned
+divisor <parameter>u</parameter> yielding the unsigned double quotient
+<parameter>ud</parameter>.
+    </para>
+    <example>
+      <title>ut/</title>
+      <screen>
+<userinput>10000. 0 8 ut/ d.<keysym>&larrhk;</keysym></userinput> 1250  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

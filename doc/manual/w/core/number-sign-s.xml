@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-number-sign-s" role="CORE" xreflabel="#s">
+  <glossterm>
+    <indexterm role="forth"><primary>#s</primary></indexterm>
+    <cmdsynopsis>
+      <command>#s</command>
+      <group role="stack">
+        <arg>ud1</arg>
+        <arg>--</arg>
+        <arg>ud2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Convert <parameter>ud<subscript>1</subscript></parameter> with
+      <xref linkend="core-number-sign"/> until the quotient
+      <parameter>ud<subscript>2</subscript></parameter> is zero.
+    </para>
+    <para>
+      The conditions for <xref linkend="core-number-sign-s"/> need to be valid
+      if <xref linkend="core-number-sign-s"/> is used outside of <xref linkend="core-less-number-sign"/> and <xref linkend="core-number-sign-greater"/>, otherwise the converted
+      digit may be stored into some unintentional location.
+    </para>
+    <example>
+      <title>#s</title>
+      <screen>
+<userinput>: .d. &lt;# #s #&gt; ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>10. .d. type<keysym>&larrhk;</keysym></userinput> 10 ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="core-number-sign-greater"/>
+    <glossseealso otherterm="core-number-sign"/>
+    <glossseealso otherterm="core-less-number-sign"/>
+    -->
+  </glossdef>
+</glossentry>

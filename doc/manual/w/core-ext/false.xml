@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-false" role="CORE-EXT" xreflabel="false">
+  <glossterm>
+    <indexterm role="forth"><primary>false</primary></indexterm>
+    <cmdsynopsis>
+      <command>false</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>flag</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the constant <constant>0</constant> representing a logical
+      false flag value.
+    </para>
+    <example>
+      <title>false</title>
+      <screen>
+<userinput>false .<keysym>&larrhk;</keysym></userinput> 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

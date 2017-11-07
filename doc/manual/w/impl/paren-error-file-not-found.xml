@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-file-not-found" role="IMPL" xreflabel="(error-file-not-found)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-file-not-found)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-file-not-found)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>non-existent file</quote>.
+    </para>
+    <example>
+      <title>(error-file-not-found)</title>
+      <screen>
+<userinput>(error-file-not-found) .<keysym>&larrhk;</keysym></userinput> -38 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

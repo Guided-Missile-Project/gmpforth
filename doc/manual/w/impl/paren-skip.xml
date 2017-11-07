@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-skip" role="IMPL" xreflabel="(skip)">
+  <glossterm>
+    <indexterm role="forth"><primary>(skip)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(skip)</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Skip leading whitespace in the parse-area, advancing <xref
+      linkend='user-to-in'/> for each whitespace character found. Any
+      character less than or equal <xref linkend='core-bl'/> is
+      considered whitespace.
+    </para>
+    <example>
+      <title>(skip)</title>
+      <screen>
+<userinput>: test (skip) >in ? ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput>  4 ok
+<userinput>test     <keysym>&larrhk;</keysym></userinput> 9  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

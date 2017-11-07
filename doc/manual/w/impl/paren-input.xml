@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-input" role="IMPL" xreflabel="(input)">
+  <glossterm>
+    <indexterm role="forth"><primary>(input)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(input)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>c-addr2</arg>
+        <arg>c-addr1</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the end <parameter>caddr-<subscript>2</subscript></parameter> and
+      beginning <parameter>caddr-<subscript>2</subscript></parameter> of the current
+      parse area.
+    </para>
+    <para>
+      An exception with throw-code -256 will be raised if <xref
+      linkend='user-to-in'/> is less than zero or greater than the
+      size of the parse area.
+    </para>
+    <example>
+      <title>(input)</title>
+      <screen>
+<userinput>(input) swap over - dump<keysym>&larrhk;</keysym></userinput>
+    4340  73 77 61 70 20 6F 76 65 72 20 2D 20 64 75 6D 70  swap over - dump ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

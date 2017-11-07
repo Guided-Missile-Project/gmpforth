@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-sp-store" role="IMPL" xreflabel="sp!">
+  <glossterm>
+    <indexterm role="forth"><primary>sp!</primary></indexterm>
+    <cmdsynopsis>
+      <command>sp!</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Set the parameter stack index to <parameter>n</parameter>. Whether
+      <parameter>n</parameter> is an offset or an address is target
+      dependent.
+    </para>
+    <example>
+      <title>sp!</title>
+      <screen>
+<userinput>sp@ sp!<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

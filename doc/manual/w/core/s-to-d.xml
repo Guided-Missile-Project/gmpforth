@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-s-to-d" role="CORE" xreflabel="s&gt;d">
+  <glossterm>
+    <indexterm role="forth"><primary>s&gt;d</primary></indexterm>
+    <cmdsynopsis>
+      <command>s&gt;d</command>
+      <group role="stack">
+        <arg>n</arg>
+        <arg>--</arg>
+        <arg>d</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Convert the single number <parameter>n</parameter> to the
+      double number <parameter>d</parameter>.
+    </para>
+    <example>
+      <title>s&gt;d</title>
+      <screen>
+<userinput>31 s&gt;d d.<keysym>&larrhk;</keysym></userinput> 31  ok
+<userinput>-31 s&gt;d . .<keysym>&larrhk;</keysym></userinput> -1 -31  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

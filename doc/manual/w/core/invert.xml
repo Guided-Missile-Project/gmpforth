@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-invert" role="CORE" xreflabel="invert">
+  <glossterm>
+    <indexterm role="forth"><primary>invert</primary></indexterm>
+    <cmdsynopsis>
+      <command>invert</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>--</arg>
+        <arg>n2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>n<subscript>2</subscript></parameter> is the bitwise
+      inversion of <parameter>n<subscript>1</subscript></parameter>.
+    </para>
+    <example>
+      <title>invert</title>
+      <screen>
+<userinput>hex a5a5a5a5 invert .<keysym>&larrhk;</keysym></userinput> 5A5A5A5A  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

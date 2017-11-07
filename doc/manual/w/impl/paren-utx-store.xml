@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-utx-store" role="IMPL" xreflabel="(utx!)">
+  <glossterm>
+    <indexterm role="forth"><primary>(utx!)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(utx!)</command>
+      <group role="stack">
+        <arg>c</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Send a character to the console. This will block if a
+      character is not ready to be sent.
+    </para>
+    <example>
+      <title>(utx!)</title>
+      <screen>
+<userinput>64 (utx!)<keysym>&larrhk;</keysym></userinput> @ ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

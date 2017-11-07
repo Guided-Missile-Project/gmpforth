@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-number-sign-greater" role="CORE" xreflabel="#&gt;">
+  <glossterm>
+    <indexterm role="forth"><primary>#&gt;</primary></indexterm>
+    <cmdsynopsis>
+      <command>#&gt;</command>
+      <group role="stack">
+        <arg>ud</arg>
+        <arg>--</arg>
+        <arg>c-addr</arg>
+        <arg>u</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <parameter>ud</parameter> is dropped and the pictured numeric
+      output string is made available via the string
+      <parameter>c-addr</parameter> <parameter>u</parameter>.
+    </para>
+    <example>
+      <title>#&gt;</title>
+      <screen>
+<userinput>: .3 &lt;# # # # #&gt; type ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>10. .3<keysym>&larrhk;</keysym></userinput> 010 ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="core-number-sign"/>
+    <glossseealso otherterm="core-number-sign-s"/>
+    <glossseealso otherterm="core-less-number-sign"/>
+    -->
+  </glossdef>
+</glossentry>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-body" role="IMPL" xreflabel="(error-body)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-body)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-body)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>
+        <xref linkend="core-to-body"/> used on
+        non-<xref linkend="core-create"/>d definition
+      </quote>.
+    </para>
+    <example>
+      <title>(error-body)</title>
+      <screen>
+<userinput>(error-body) .<keysym>&larrhk;</keysym></userinput> -31  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

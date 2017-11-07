@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-two-slash" role="DOUBLE" xreflabel="d2/">
+  <glossterm>
+    <indexterm role="forth"><primary>d2/</primary></indexterm>
+    <cmdsynopsis>
+      <command>d2/</command>
+      <group role="stack">
+        <arg>d1</arg>
+        <arg>--</arg>
+        <arg>d2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Divide double number
+      <parameter>d<subscript>1</subscript></parameter> by 2 returning
+      double number <parameter>d<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>d2/</title>
+      <screen>
+<userinput>100. 2/ d.<keysym>&larrhk;</keysym></userinput> 50  ok
+<userinput>-100. 2/ d.<keysym>&larrhk;</keysym></userinput> -50  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

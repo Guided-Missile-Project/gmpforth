@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+#
+# Stack Acrobatic Investigation
+#
+
+# Using the primitive operations >R R> SWAP ROT, Search for the
+# minumum number of operations required for a stack permutation up to
+# a given depth.
+
+require 'optparse'
+require 'stackrobatic'
+
+verbose=false
+from=1
+to=6
+
+opts = OptionParser.new do |opts|
+  opts.banner = "Usage: #{File.basename($0)} [options]"
+  opts.on('--verbose', '-v', 'Verbose messages') do
+    verbose=true
+  end
+  opts.on('--from idx', '-f', 'starting index') do |arg|
+    from = to = arg.to_i
+  end
+  opts.on('--to idx', '-t', 'ending index') do |arg|
+    to = arg.to_i
+  end
+  opts.on('--help', '-h', 'Issue this message') do
+    puts opts
+    exit 0
+  end
+end
+opts.parse! ARGV
+
+(from..to).each do |ops|
+  puts "#{ops} -----" if verbose
+  Stackrobatic.new(verbose).analyze ops
+end
+Stackrobatic.show
+

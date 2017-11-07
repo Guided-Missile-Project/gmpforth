@@ -1,0 +1,164 @@
+* F83 model multitasker
+
+Make simple enough to use in small embedded targets
+
+Extend to use Posix FDs and timers
+
+Cooperative multitasking (so called green threads) within a process
+and pipes between tasks and processes.
+
+
+* user area changes
+see (TASK)
+
+* dictionary
+
+** PAUSE
+pause the current task and yield to the next
+
+if !(#sleeping == 0 && #tasks == 1)
+  push ip
+  push rp
+  push fp
+  save sp
+  if #sleeping = #tasks
+    # OS Dependent
+    select on fds
+    for each fd activated
+      wake task associate with fd
+    end
+  end
+  # shouldn't be an infinite loop is above is working
+  begin
+    select next task
+  until task flags is !stopped
+  restore sp
+  pop fp
+  pop rp
+  pop ip
+end
+$NEXT
+
+or
+
+: (SCHEDULE) ( -- task )
+  begin
+    select on fds
+    for each fd activated
+      wake task associate with fd
+    end
+    begin
+      select next task
+    until task flags is !stopped
+  until something
+;
+
+code (SWITCH) ( task -- )
+  push ip
+  push rp
+  push fp
+  save task(sp)
+  up = task
+  restore task(sp)
+  pop fp
+  pop rp
+  pop ip
+  $NEXT
+end-code
+
+: PAUSE ( -- ) (SCHEDULE) (SWITCH) ;
+
+** RESTART
+wake the current task
+: RESTART ( -- ) (task) wake ;
+** LOCAL ( task addr1 -- addr2)
+Given user area 'task' and current task user variable addr1, return
+the address of the user variable in 'task'
+: LOCAL (task) - + ;
+** @LINK ( -- task )
+Return the task link field of the next task (low level?)
+: @LINK ( -- task ) (LINK) @ ;
+** !LINK ( task -- )
+Set the task link field of this task to the given task (low level?)
+: !LINK ( task -- ) (LINK) ! ;
+** SLEEP ( task -- )
+The given task is made to sleep
+: SLEEP ( task -- ) (task) local 1 swap creset ;
+** WAKE ( task -- )
+The given task is woken up
+: WAKE ( task -- ) (task) local 1 swap cset ;
+** STOP ( -- )
+The current task is made to sleep
+: STOP (task) sleep pause ;
+** TASK: ( "name" size -- )
+Create a task called "name" with the given size
+: TASK:  variable dup , allot ;
+** SET-TASK ( cfa task -- )
+Configure task to execute cfa
+: SET-TASK (boot) local ! ;
+** ACTIVATE ( task -- )
+Activate task (what does this mean?)
+: ACTIVATE ( task -- ) >r (link) @ (link) r@ local ! >r (link) ! pause ;
+** BACKGROUND: ( "name" -- )
+Create a background task with a default task size and execute the
+following colon definition
+
+** (LINK) ( -- addr )
+1 +USER (LINK)
+** (TASK) ( -- addr )
+4 +USER (TASK)
+Task control area - nice to be first user variable; not strictly necessary
+5 words:
+  task flags
+     0 stopped
+     1 run-able
+  TOS when paused
+  timer deadline
+  timer link     [priority queue]
+  key/emit FDs
+
+* other word changes
+** FILE
+Opened file descriptors that are waitable are put in a table
+associating the fd with a task. Such descriptors are removed when
+descriptors are closed.
+Blocking operations perform an implicit PAUSE.
+*** close-file
+remove fileid from fd table
+*** create-file
+on success add fileid to fd table
+*** open-file
+on success add fileid to fd table
+*** read-file
+PAUSE before IO
+*** read-line
+PAUSE before IO
+*** write-file
+PAUSE before IO
+*** write-line
+PAUSE before IO
+** CORE
+*** key
+PAUSE before IO
+
+*** emit
+PAUSE before IO
+** FACILITY-EXT
+*** MS
+arrange for signal to wake task on timer expiry
+** IMPL
+*** (FORGET)
+raise exception if a task area is in a region above the potential new
+HERE is runnable or has open file descriptors.
+*** (FORGET-TASK)
+similar to (FORGET-WID) - check for legality (see above) and unlink
+from task chain. As a bonus, user blocks become an implicit fence, as
+the default user block just behind the initial here.
+*** (IO)
+use key/emit FDs
+*** (@urx@)
+: ((io)) ( -- )  pause (io) ;
+: (urx?) ( -- tf ) IO_RX_QUESTION ((io)) ;
+: (urx@) ( -- c )  begin (urx?) until IO_RX_FETCH ((io)) ;
+: (utx?) ( -- tf ) IO_TX_QUESTION ((io)) ;
+: (utx!) ( c -- )  begin (utx?) until IO_TX_STORE ((io)) ;

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="fig-zero" role="FIG" xreflabel="0">
+  <glossterm>
+    <indexterm role="forth"><primary>0</primary></indexterm>
+    <cmdsynopsis>
+      <command>0</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return the constant <constant>0</constant>.
+    </para>
+    <para>
+      This is a primitive optimization to avoid searching the entire
+      dictionary for a common numeric constant.
+    </para>
+    <example>
+      <title>0</title>
+      <screen>
+<userinput>' 0 execute .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>' 100 .<keysym>&larrhk;</keysym></userinput> 100 ? er-13
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

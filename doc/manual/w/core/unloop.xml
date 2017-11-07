@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-unloop" role="CORE,C" xreflabel="unloop">
+  <glossterm>
+    <indexterm role="forth"><primary>unloop</primary></indexterm>
+    <cmdsynopsis>
+      <command>unloop</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Discard the current loop parameters in preparation for
+      <xref linkend="core-exit"/>ing the loop. Nested loops
+      require an <xref linkend="core-unloop"/> for each
+      level of nesting.
+    </para>
+    <para>
+      If called outside of a
+      <xref linkend="core-do"/> <xref linkend="core-loop"/>,
+      then an implementation dependent number of cells is
+      dropped from the return stack.
+    </para>
+    <example>
+      <title>unloop</title>
+      <screen>
+<userinput>: test 10 0 do i . i 5 > if unloop exit then loop ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 0 1 2 3 4 5 6  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

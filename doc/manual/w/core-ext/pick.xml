@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-pick" role="CORE-EXT" xreflabel="pick">
+  <glossterm>
+    <indexterm role="forth"><primary>pick</primary></indexterm>
+    <cmdsynopsis>
+      <command>pick</command>
+      <group role="stack">
+        <arg>i*x</arg>
+        <arg>u</arg>
+        <arg>--</arg>
+        <arg>x</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Replace <parameter>u</parameter> by a copy of the
+      <parameter>u</parameter>th item on the stack
+       on to the top of the
+      stack, numbering starting at zero.
+    </para>
+    <para>
+      The result is target dependent if there are less than
+      <parameter>u</parameter>+2 items on the stack, and could result
+      in random data being placed on the top of the stack, or an
+      exception.
+    </para>
+    <example>
+      <title>pick</title>
+      <screen>
+<userinput>1 2 3 4 5 4 pick .<keysym>&larrhk;</keysym></userinput> 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

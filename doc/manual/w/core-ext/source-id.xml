@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-source-id" role="CORE-EXT" xreflabel="source-id">
+  <glossterm>
+    <indexterm role="forth"><primary>source-id</primary></indexterm>
+    <cmdsynopsis>
+      <command>source-id</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Returns <constant>0</constant> if the current input source is
+      the console or <constant>-1</constant> if the current input
+      source is a string.
+    </para>
+    <example>
+      <title>source-id</title>
+      <screen>
+<userinput>source-id .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>s" source-id" evaluate .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

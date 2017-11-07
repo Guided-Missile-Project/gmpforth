@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-paren-tx-store" role="USER" xreflabel="(tx!)">
+  <glossterm>
+    <indexterm role="forth"><primary>(tx!)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(tx!)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A user variable containing the <parameter>xt</parameter> of the
+      console output store function.
+    </para>
+    <para>
+      This must be paired with the corresponding
+      <xref linkend="user-paren-tx-question"/> function.
+    </para>
+    <example>
+      <title>(tx!)</title>
+      <screen>
+<userinput>(tx!) @ .name<keysym>&larrhk;</keysym></userinput> (utx!) ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

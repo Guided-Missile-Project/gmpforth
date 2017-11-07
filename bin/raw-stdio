@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# run pgm with raw stdio
+here=`dirname $0`
+
+setting=""
+# only set raw if on a tty
+if tty -s
+then
+    setting=`stty -g`
+    stty -echo raw
+fi
+
+$*
+
+if [ z"$setting" != z ]
+then
+    stty "$setting"
+fi
+

@@ -1,0 +1,2 @@
+: FORGET ( "name" -- )
+  ' (forget) ;

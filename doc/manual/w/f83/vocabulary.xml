@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-vocabulary" role="F83" xreflabel="vocabulary">
+  <glossterm>
+    <indexterm role="forth"><primary>vocabulary</primary></indexterm>
+    <cmdsynopsis>
+      <command>vocabulary</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Create a vocabulary called <parameter>name</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Make vocabulary <parameter>name</parameter> the
+            <xref linkend="user-context"/> vocabulary that will
+            searched first for definitions.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>vocabulary</title>
+      <screen>
+<userinput>vocabulary x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>also x definitions<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>order x forth / x<keysym>&larrhk;</keysym></userinput> ok
+<userinput>: test ." test " ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> test  ok
+<userinput>only forth definitions<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> test ? er-13
+<userinput>also x<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> test  ok
+     </screen>
+    </example>
+  </glossdef>
+</glossentry>

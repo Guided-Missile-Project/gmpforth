@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-return-i" role="IMPL" xreflabel="(error-return-i)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-return-i)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-return-i)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>return stack imbalance</quote>.
+    </para>
+    <example>
+      <title>(error-return-i)</title>
+      <screen>
+<userinput>(error-return-i) .<keysym>&larrhk;</keysym></userinput> -25 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

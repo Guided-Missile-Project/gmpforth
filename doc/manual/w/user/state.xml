@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="user-state" role="CORE" xreflabel="state">
+  <glossterm>
+    <indexterm role="forth"><primary>state</primary></indexterm>
+    <!-- implemented as a USER variable, but is a CORE word  -->
+    <cmdsynopsis>
+      <command>state</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>a-addr</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Return <xref linkend="core-ext-false"/> if interpreting or
+      <xref linkend="core-ext-true"/> if compiling.
+    </para>
+    <example>
+      <title>state</title>
+      <screen>
+<userinput>state ?<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>: .state state @ . ; immediate<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: test .state ;<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

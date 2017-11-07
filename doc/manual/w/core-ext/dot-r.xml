@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-dot-r" role="CORE-EXT" xreflabel=".r">
+  <glossterm>
+    <indexterm role="forth"><primary>.r</primary></indexterm>
+    <cmdsynopsis>
+      <command>.r</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Display <parameter>n<subscript>1</subscript></parameter> right
+      justified in a field <parameter>n<subscript>2</subscript></parameter>
+      characters wide. If <parameter>n<subscript>1</subscript></parameter>
+      is negative, then a leading <acronym>ASCII</acronym> minus sign
+      is displayed.
+      If <parameter>n<subscript>1</subscript></parameter>
+      requires more characters than provided by
+      <parameter>n<subscript>2</subscript></parameter>, then
+      all digits of <parameter>n<subscript>1</subscript></parameter>
+      are displayed with no leading spaces.
+    </para>
+    <example>
+      <title>.r</title>
+      <screen>
+<userinput>100 1 .r<keysym>&larrhk;</keysym></userinput> 100 ok
+<userinput>100 10 .r<keysym>&larrhk;</keysym></userinput>        100 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="file-close-file" role="FILE" xreflabel="close-file">
+  <glossterm>
+    <indexterm role="forth"><primary>close-file</primary></indexterm>
+    <cmdsynopsis>
+      <command>close-file</command>
+      <group role="stack">
+        <arg>fd</arg>
+        <arg>--</arg>
+        <arg>ior</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Close the file descriptor <parameter>fd</parameter>. If
+<parameter>ior</parameter> is zero, then <parameter>fd</parameter> is
+successfully closed. If <parameter>ior</parameter> is not zero, then
+the state of <parameter>fd</parameter> is undefined and <parameter>ior</parameter>
+is a result code as returned by <xref linkend="impl-paren-ior"/>.
+    </para>
+    <example>
+      <title>close-file</title>
+      <screen>
+<userinput>s" /dev/null" r/o open-file throw close-file throw<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>1000 close-file .<keysym>&larrhk;</keysym></userinput> -1009  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

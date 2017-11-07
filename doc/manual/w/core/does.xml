@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-does" role="CORE,IC" xreflabel="does&gt;">
+  <glossterm>
+    <indexterm role="forth"><primary>does&gt;</primary></indexterm>
+    <cmdsynopsis>
+      <command>does&gt;</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Specify the execution behavior of a new defining word.  The
+      definition is terminated by <xref linkend="core-semicolon"/>.
+      Generally used in conjunction
+      with <xref linkend="core-create"/> to define new defining words, but
+      can be used with any other defining word.
+    </para>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile the execution time behavior of the defining word.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>pfa</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            The <parameter>pfa</parameter> of the <emphasis>defined</emphasis>
+            word is made available to the <xref linkend="core-does"/> list.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>
+      The current definition name is not available via dictionary search 
+      until the <xref linkend="core-semicolon"/>
+      that terminates <xref linkend="core-does"/>, but is available via
+      <xref linkend="core-recurse"/>.
+    </para>
+    <example>
+      <title>does></title>
+      <screen>
+<userinput>: con create , does> @ ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>1 con one<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>one .<keysym>&larrhk;</keysym></userinput> 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

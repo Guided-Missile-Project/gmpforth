@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-ext-semicolon-code" role="TOOLS-EXT" xreflabel=";code">
+  <glossterm>
+    <indexterm role="forth"><primary>;code</primary></indexterm>
+    <cmdsynopsis>
+      <command>;code</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Specify the execution behavior of a new defining word using
+      machine code.  The definition is terminated by <xref
+      linkend="impl-end-code"/>. Like <xref
+      linkend="tools-ext-code"/>, the machine code syntax is target
+      dependent.  Generally used in conjunction with <xref
+      linkend="core-create"/> to define new defining words, but can be
+      used with any other defining word.
+    </para>
+    <example>
+      <title>;code</title>
+      <screen>
+<userinput>: var create 1 , ;code 100 , end-code<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>var bar  bar ?<keysym>&larrhk;</keysym></userinput> 1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-char" role="IMPL" xreflabel="(error-char)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-char)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-char)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>exception in sending or receiving a character</quote>.
+    </para>
+    <example>
+      <title>(error-char)</title>
+      <screen>
+<userinput>(error-char) .<keysym>&larrhk;</keysym></userinput> -57  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

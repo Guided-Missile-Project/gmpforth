@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-m-plus" role="DOUBLE" xreflabel="m+">
+  <glossterm>
+    <indexterm role="forth"><primary>m+</primary></indexterm>
+    <cmdsynopsis>
+      <command>m+</command>
+      <group role="stack">
+        <arg>d1</arg>
+        <arg>n</arg>
+        <arg>--</arg>
+        <arg>d2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Add <parameter>n</parameter> to double number
+      <parameter>d<subscript>1</subscript></parameter>, returning
+      the double number sum <parameter>d<subscript>2</subscript></parameter>.
+    </para>
+    <example>
+      <title>m+</title>
+      <screen>
+<userinput>1. 1 m+ d.<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

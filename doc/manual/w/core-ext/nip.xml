@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-nip" role="CORE-EXT" xreflabel="nip">
+  <glossterm>
+    <indexterm role="forth"><primary>nip</primary></indexterm>
+    <cmdsynopsis>
+      <command>nip</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>--</arg>
+        <arg>x2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Remove <parameter>x<subscript>1</subscript></parameter> from the stack
+leaving <parameter>x<subscript>2</subscript></parameter> on top.
+    </para>
+    <example>
+      <title>nip</title>
+      <screen>
+<userinput>1 2 .s<keysym>&larrhk;</keysym></userinput> 1 2  ok
+<userinput>nip .s<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

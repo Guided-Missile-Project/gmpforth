@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-error-file-status" role="IMPL" xreflabel="(error-file-status)">
+  <glossterm>
+    <indexterm role="forth"><primary>(error-file-status)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(error-file-status)</command>
+      <group role="stack">
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      A constant representing the standard <xref linkend="exception-throw"/>
+      code for <quote>FILE-STATUS</quote>.
+    </para>
+    <example>
+      <title>(error-file-status)</title>
+      <screen>
+<userinput>(error-file-status) .<keysym>&larrhk;</keysym></userinput> -67 ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

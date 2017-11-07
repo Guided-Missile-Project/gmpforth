@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="double-d-plus" role="DOUBLE" xreflabel="d+">
+  <glossterm>
+    <indexterm role="forth"><primary>d+</primary></indexterm>
+    <cmdsynopsis>
+      <command>d+</command>
+      <group role="stack">
+        <arg>d1</arg>
+        <arg>d2</arg>
+        <arg>--</arg>
+        <arg>d3</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Add <parameter>d<subscript>1</subscript></parameter> to
+      <parameter>d<subscript>2</subscript></parameter>, returning
+      the sum <parameter>d<subscript>3</subscript></parameter>.
+    </para>
+    <example>
+      <title>d+</title>
+      <screen>
+<userinput>1. 1. d+ d.<keysym>&larrhk;</keysym></userinput> 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

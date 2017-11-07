@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-number-sign" role="CORE" xreflabel="#">
+  <glossterm>
+    <indexterm role="forth"><primary>#</primary></indexterm>
+    <cmdsynopsis>
+      <command>#</command>
+      <group role="stack">
+        <arg>ud1</arg>
+        <arg>--</arg>
+        <arg>ud2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Prepend the <acronym>ASCII</acronym> representation of the least
+      significant digit of <parameter>ud<subscript>1</subscript></parameter>
+      to the pictured numeric output buffer according to
+      <xref linkend="user-base"/>.
+      <parameter>ud<subscript>2</subscript></parameter> is
+      <parameter>ud<subscript>1</subscript></parameter> divided by <xref linkend="user-base"/>.
+    </para>
+    <para>
+      This word is usually used between <xref linkend="core-less-number-sign"/>
+      and <xref linkend="core-number-sign-greater"/>
+      for converting numbers into strings, and uses <xref linkend="core-hold"/>
+      to store the converted digit.
+    </para>
+    <para>
+      The conditions for <xref linkend="core-hold"/> need to be valid
+      if <xref linkend="core-number-sign"/> is used outside of
+      <xref linkend="core-less-number-sign"/> and
+      <xref linkend="core-number-sign-greater"/>, otherwise the converted
+      digit may be stored into some unintentional location.
+    </para>
+    <example>
+      <title>#</title>
+      <screen>
+<userinput>101. &lt;# # # # # #&gt; type<keysym>&larrhk;</keysym></userinput> 0101 ok
+      </screen>
+    </example>
+    <!--
+    <glossseealso otherterm="core-number-sign-greater"/>
+    <glossseealso otherterm="core-number-sign-s"/>
+    <glossseealso otherterm="core-less-number-sign"/>
+    -->
+  </glossdef>
+</glossentry>

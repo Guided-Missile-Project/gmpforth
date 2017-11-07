@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-to-number" role="CORE" xreflabel="&gt;number">
+  <glossterm>
+    <indexterm role="forth"><primary>&gt;number</primary></indexterm>
+    <cmdsynopsis>
+      <command>&gt;number</command>
+      <group role="stack">
+        <arg>ud1</arg>
+        <arg>c-addr1</arg>
+        <arg>u1</arg>
+        <arg>--</arg>
+        <arg>ud2</arg>
+        <arg>c-addr2</arg>
+        <arg>u2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Convert each valid digit in the string
+      <parameter>c-addr<subscript>1</subscript></parameter>
+      <parameter>u<subscript>1</subscript></parameter>
+      according to the current <xref linkend="user-base"/>, accumulating
+      the conversion in to <parameter>ud<subscript>1</subscript></parameter>.
+    </para>
+    <para>
+      <parameter>ud<subscript>2</subscript></parameter> is the resulting
+      accumulated value of the conversion. If
+      <parameter>u<subscript>2</subscript></parameter> is zero, then
+      all digits were converted, and
+      <parameter>c-addr<subscript>2</subscript></parameter> is a
+      character address just beyond the given string, otherwise
+      <parameter>c-addr<subscript>2</subscript></parameter> is the
+      character address of the first unconvertable character, and
+      <parameter>u<subscript>2</subscript></parameter> is the number
+      of characters that remain to be converted.
+    </para>
+    <example>
+      <title>&gt;number</title>
+      <screen>
+<userinput>0. s" 123.456" >number .s<keysym>&larrhk;</keysym></userinput> 123 0 14187 4  ok
+<userinput>over c@ emit<keysym>&larrhk;</keysym></userinput> . ok
+<userinput>1 /string >number .s<keysym>&larrhk;</keysym></userinput> 123456 0 14191 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

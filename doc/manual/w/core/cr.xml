@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-cr" role="CORE" xreflabel="cr">
+  <glossterm>
+    <indexterm role="forth"><primary>cr</primary></indexterm>
+    <cmdsynopsis>
+      <command>cr</command>
+      <group role="stack">
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Emit an <quote>end of line </quote> sequence such that
+      subsequent output begins on a new line.
+    </para>
+    <example>
+      <title>cr</title>
+      <screen>
+<userinput>." hello" cr ." there " cr<keysym>&larrhk;</keysym></userinput> hello
+there 
+ ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-casecompare" role="IMPL" xreflabel="casecompare">
+  <glossterm>
+    <indexterm role="forth"><primary>casecompare</primary></indexterm>
+    <cmdsynopsis>
+      <command>casecompare</command>
+      <group role="stack">
+        <arg>c-addr1</arg>
+        <arg>u1</arg>
+        <arg>c-addr2</arg>
+        <arg>u2</arg>
+        <arg>--</arg>
+        <arg>n</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      <!-- -1|0|+1 -->
+      Compare the first string
+      <parameter>c-addr<subscript>1</subscript></parameter>
+      <parameter>u<subscript>1</subscript></parameter>
+      with the second string
+      <parameter>c-addr<subscript>2</subscript></parameter>
+      <parameter>u<subscript>2</subscript></parameter>
+      up to the length of the shortest
+      string, ignoring alphabetic case.
+    </para>
+    <para>
+      If the strings are identical, and the lengths are identical,
+      <parameter>n</parameter> is zero.
+    </para>
+    <para>
+      <parameter>n</parameter> is -1 if the first string is alphabetically
+      before the second string.
+      <parameter>n</parameter> is 1 if the first string is alphabetically
+      after the second string.
+    </para>
+    <example>
+      <title>casecompare</title>
+      <screen>
+<userinput>s" abc" s" abc"  casecompare .<keysym>&larrhk;</keysym></userinput> 0  ok 
+<userinput>s" aBc" s" AbC"  casecompare .<keysym>&larrhk;</keysym></userinput> 0  ok 
+<userinput>s" abc" s" abd"  casecompare .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput>s" abb" s" abc"  casecompare .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput>s" bbc" s" abc"  casecompare .<keysym>&larrhk;</keysym></userinput> 1  ok 
+<userinput>s" abcd" s" abc" casecompare .<keysym>&larrhk;</keysym></userinput> 1  ok 
+<userinput>s" abc" s" abcd" casecompare .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput>s" abc" s" defg" casecompare .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>
+
+
+
+
+
+
+
+
+

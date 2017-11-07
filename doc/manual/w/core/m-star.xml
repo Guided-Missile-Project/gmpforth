@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-m-star" role="CORE" xreflabel="m*">
+  <glossterm>
+    <indexterm role="forth"><primary>m*</primary></indexterm>
+    <cmdsynopsis>
+      <command>m*</command>
+      <group role="stack">
+        <arg>n1</arg>
+        <arg>n2</arg>
+        <arg>--</arg>
+        <arg>d</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Multiply <parameter>n<subscript>1</subscript></parameter> by
+      <parameter>n<subscript>2</subscript></parameter>, returning
+      the double product <parameter>d</parameter>.
+    </para>
+    <example>
+      <title>m*</title>
+      <screen>
+<userinput>100000 100000 m* d.<keysym>&larrhk;</keysym></userinput> 10000000000  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

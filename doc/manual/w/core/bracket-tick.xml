@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-bracket-tick" role="CORE,IC" xreflabel="[']">
+  <glossterm>
+    <indexterm role="forth"><primary>[']</primary></indexterm>
+    <cmdsynopsis>
+      <command>[']</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Compile a <xref linkend="core-literal"/> value of the
+            <parameter>xt</parameter> corresponding to
+            <parameter>name</parameter>. <xref linkend="exception-throw"/>s
+            an error if <parameter>name</parameter> is not found.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>xt</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return the
+            <parameter>xt</parameter> corresponding to
+            <parameter>name</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>[']</title>
+      <screen>
+<userinput>: test ['] cold . ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> 13788  ok
+<userinput>' cold .<keysym>&larrhk;</keysym></userinput> 13788  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

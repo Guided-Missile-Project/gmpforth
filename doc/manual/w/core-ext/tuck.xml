@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-ext-tuck" role="CORE-EXT" xreflabel="tuck">
+  <glossterm>
+    <indexterm role="forth"><primary>tuck</primary></indexterm>
+    <cmdsynopsis>
+      <command>tuck</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>--</arg>
+        <arg>x2</arg>
+        <arg>x1</arg>
+        <arg>x2</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Duplicate <parameter>x<subscript>2</subscript></parameter>, placing it
+beneath <parameter>x<subscript>1</subscript></parameter> on the stack.
+    </para>
+    <example>
+      <title>tuck</title>
+      <screen>
+<userinput>1 2 .s<keysym>&larrhk;</keysym></userinput> 1 2  ok
+<userinput>tuck .s<keysym>&larrhk;</keysym></userinput> 2 1 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-match-name" role="IMPL" xreflabel="(match-name)">
+  <glossterm>
+    <indexterm role="forth"><primary>(match-name)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(match-name)</command>
+      <group role="stack">
+        <arg>c-addr</arg>
+        <arg>u1</arg>
+        <arg>lfa</arg>
+        <arg>--</arg>
+        <arg>c-addr</arg>
+        <arg>u1</arg>
+        <arg>lfa</arg>
+        <arg>false</arg>
+        <arg>|</arg>
+        <arg>xt</arg>
+        <arg>u2</arg>
+        <arg>true</arg>
+        <arg>|</arg>
+        <arg>false</arg>
+        <arg>true</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Match the string <parameter>c-addr</parameter> <parameter>u</parameter>
+      against the name of the dictionary entry corresponding to
+      <parameter>lfa</parameter>. If there was no match, leave the
+      input parameters unchanged and push <xref linkend="core-ext-false"/>.
+      If there was a match, return <parameter>xt</parameter>, the
+      non-zero lex byte <parameter>u<subscript>2</subscript></parameter>,
+      and <xref linkend="core-ext-true"/>.
+      If <parameter>lfa</parameter> was zero, corresponding to the end of the
+      wordlist being searched, push <xref linkend="core-ext-false"/> then
+      <xref linkend="core-ext-true"/>.
+    </para>
+    <example>
+      <title>(match-name)</title>
+      <screen>
+<userinput>: test ." test " ;<keysym>&larrhk;</keysym>  ok</userinput>
+<userinput>s" test" context @ @ (match-name) .<keysym>&larrhk;</keysym></userinput> -1  ok
+<userinput>.s<keysym>&larrhk;</keysym></userinput> 14396 132  ok
+<userinput>drop execute<keysym>&larrhk;</keysym></userinput> test  ok
+<userinput>s" foo" context @ @ (match-name) .<keysym>&larrhk;</keysym></userinput> 0  ok
+<userinput>.<keysym>&larrhk;</keysym></userinput> 14384  ok
+<userinput>.<keysym>&larrhk;</keysym></userinput> 3  ok
+<userinput>.<keysym>&larrhk;</keysym></userinput> 14128  ok
+<userinput>s" test" 0 (match-name) . .<keysym>&larrhk;</keysym></userinput> -1 0  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

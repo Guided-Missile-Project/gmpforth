@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="impl-paren-abort-quote" role="IMPL,C" xreflabel="(abort&quot;)">
+  <glossterm>
+    <indexterm role="forth"><primary>(abort&quot;)</primary></indexterm>
+    <cmdsynopsis>
+      <command>(abort&quot;)</command>
+      <group role="stack">
+        <arg>x</arg>
+        <arg>c-addr</arg>
+        <arg>n</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      If <parameter>x</parameter> is zero, continue execution from the
+      cell following the counted string, otherwise save the address of
+      the string <parameter>c-addr</parameter>
+      <parameter>n</parameter> as a counted string in <xref
+      linkend="user-paren-abort-quote-dollar"/> and execute <xref
+      linkend="exception-throw"/> with a throw code of <xref
+      linkend="impl-paren-error-abort-quote"/>.
+    </para>
+    <example>
+      <title>(abort&quot;)</title>
+      <screen>
+<userinput>: abort( postpone true postpone (s") [char] ) parse (",) postpone (abort")  ; immediate compile-only<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>: test abort( yuk) ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>test<keysym>&larrhk;</keysym></userinput> yuk
+<userinput>' test catch .<keysym>&larrhk;</keysym></userinput> -2  ok
+<userinput>(abort"$) @ count type<keysym>&larrhk;</keysym></userinput> yuk ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

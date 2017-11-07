@@ -1,0 +1,1 @@
+-34 CONSTANT (error-blk-write)          \ block write exception

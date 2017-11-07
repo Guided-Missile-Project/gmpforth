@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="tools-ext-forget" role="TOOLS-EXT" xreflabel="forget">
+  <glossterm>
+    <indexterm role="forth"><primary>forget</primary></indexterm>
+    <cmdsynopsis>
+      <command>forget</command>
+      <group role="stack">
+        <arg>&ldquo;name&rdquo;</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+Restore the dictionary to the state just before
+<parameter>name</parameter> was created, i.e., forget all words up to
+and including <parameter>name</parameter>.
+    </para>
+    <para>
+If any wordlist being forgotten is in <xref linkend="user-context"/>
+or <xref linkend="user-current"/>, then the search order and current
+wordlist will be reset with <xref linkend="search-ext-only"/> <xref
+linkend="search-definitions"/>.
+    </para>
+    <example>
+      <title>forget</title>
+      <screen>
+<userinput>here : foo ; forget foo here = .<keysym>&larrhk;</keysym></userinput> -1  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

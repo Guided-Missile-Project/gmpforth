@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-then" role="CORE,IC" xreflabel="then">
+  <glossterm>
+    <indexterm role="forth"><primary>then</primary></indexterm>
+    <cmdsynopsis>
+      <command>then</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Compilation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>orig</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Resolve <parameter>orig</parameter> to the current location in the
+            definition. Generally, <parameter>orig</parameter> is supplied by
+            <xref linkend="core-if"/> or <xref linkend="core-else"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Continue execution past <xref linkend="core-then"/>
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>then</title>
+      <screen>
+<userinput>: test if ." T" space then ;<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>true test<keysym>&larrhk;</keysym></userinput> T  ok
+<userinput>false test<keysym>&larrhk;</keysym></userinput>  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

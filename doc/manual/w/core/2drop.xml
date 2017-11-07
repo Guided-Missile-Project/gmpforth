@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="core-2drop" role="CORE" xreflabel="2drop">
+  <glossterm>
+    <indexterm role="forth"><primary>2drop</primary></indexterm>
+    <cmdsynopsis>
+      <command>2drop</command>
+      <group role="stack">
+        <arg>x1</arg>
+        <arg>x2</arg>
+        <arg>--</arg>
+      </group>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <para>
+      Drop the top two items from the data stack.
+    </para>
+    <example>
+      <title>2drop</title>
+      <screen>
+<userinput>1 2 3 4 2drop .s<keysym>&larrhk;</keysym></userinput> 1 2  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

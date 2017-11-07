@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE glossentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<glossentry id="f83-user" role="F83" xreflabel="user">
+  <glossterm>
+    <indexterm role="forth"><primary>user</primary></indexterm>
+    <cmdsynopsis>
+      <command>user</command>
+    </cmdsynopsis>
+  </glossterm>
+  <glossdef>
+    <variablelist>
+      <?dbfo list-presentation="blocks" ?>
+      <?dbhtml list-presentation="table" ?>
+      <varlistentry>
+        <term>Interpretation</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>n</arg>
+              <arg>&ldquo;name&rdquo;</arg>
+              <arg>--</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Create a user variable called <parameter>name</parameter>
+            at cell index <parameter>n</parameter> within the user area.
+            The initial value of the user variable is undefined.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Execution</term>
+        <listitem>
+          <cmdsynopsis>
+            <group role="stack">
+              <arg>--</arg>
+              <arg>a-addr</arg>
+            </group>
+          </cmdsynopsis>
+          <para>
+            Return the address corresponding to user variable
+            <parameter>name</parameter>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <example>
+      <title>user</title>
+      <screen>
+<userinput>31 user uvar<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>10 uvar !<keysym>&larrhk;</keysym></userinput>  ok
+<userinput>uvar ?<keysym>&larrhk;</keysym></userinput> 10  ok
+      </screen>
+    </example>
+  </glossdef>
+</glossentry>

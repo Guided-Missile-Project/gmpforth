@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                  "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<section id="MIPS64">
+  <title>MIPS64</title>
+  <para>
+    The <parameter>MIPS64</parameter> target is a real Forth target,
+    creating <application>GNU GAS</application> assembly for MIPS 64 bit processors.
+  </para>
+  <qandaset>
+    <title>MIPS64 Characteristics</title>
+    <qandadiv>
+      <title>Implementation Options</title>
+      <qandaentry>
+        <question>
+          <para> Aligned address requirements</para>
+        </question>
+        <answer>
+          <para>
+            Cell addresses are recommended to be but are not required
+            to be aligned to a cell address boundry
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Number of bits in one address unit</para>
+        </question>
+        <answer>
+          <para>64</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Number representation and arithmetic</para>
+        </question>
+        <answer>
+          <para>64 bit, two&rsquor;s-complement, big-endian</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            Ranges for
+            <parameter>n</parameter>,
+            <parameter>+n</parameter>,
+            <parameter>u</parameter>,
+            <parameter>d</parameter>,
+            <parameter>+d</parameter>, and
+            <parameter>ud</parameter>
+          </para>
+        </question>
+        <answer>
+          <table frame='none' role='cellborder'>
+            <title/>
+            <tgroup cols='2' align='left'>
+              <colspec colname='c1' colwidth="1in"/>
+              <colspec colname='c2' colwidth="3in"/>
+              <tbody>
+                <row>
+                  <entry>
+                    <parameter>n</parameter>
+                  </entry>
+                  <entry>
+                    -0x8000000000000000 - 0x7fffffffffffffff
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <parameter>+n</parameter>
+                  </entry>
+                  <entry>
+                    0x0000000000000000 - 0x7fffffffffffffff
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <parameter>u</parameter>
+                  </entry>
+                  <entry>
+                    0x0000000000000000 - 0xffffffffffffffff
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <parameter>d</parameter>
+                  </entry>
+                  <entry>
+                    -0x80000000000000000000000000000000 - 0x7fffffffffffffffffffffffffffffff
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <parameter>+d</parameter>
+                  </entry>
+                  <entry>
+                    0x00000000000000000000000000000000 - 0x7fffffffffffffffffffffffffffffff
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <parameter>ud</parameter>
+                  </entry>
+                  <entry>
+                    0x00000000000000000000000000000000 - 0xffffffffffffffffffffffffffffffff
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Read-only data-space regions</para>
+        </question>
+        <answer>
+          <para>None</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Size of one cell in address units</para>
+        </question>
+        <answer>
+          <para>8</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Size of one character in address units</para>
+        </question>
+        <answer>
+          <para>1</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Type of division rounding</para>
+        </question>
+        <answer>
+          <para>Symmetric</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Values returned after arithmetic overflow</para>
+        </question>
+        <answer>
+          <para>Values truncated to 64 bits</para>
+        </answer>
+      </qandaentry>
+    </qandadiv>
+    <qandadiv>
+      <title>Ambiguous Conditions</title>
+      <qandaentry>
+        <question>
+          <para>Addressing a region not listed in data space</para>
+        </question>
+        <answer>
+          <para>
+            May raise a system exception such as a Segmentation Fault
+            if accessing memory below the text segment or above the
+            data segment
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Data space read/write with incorrect alignment</para>
+        </question>
+        <answer>
+          <para>
+            No alignment restrictions
+          </para>
+        </answer>
+      </qandaentry>
+    </qandadiv>
+    <qandadiv>
+      <title>Other Stuff</title>
+      <qandaentry>
+        <question>
+          <para>Program data space available, in address units</para>
+        </question>
+        <answer>
+          <para>
+            Default dictionary size is 64KB, controlled by
+            <symbol>DICT_SIZE</symbol> defined in
+            <filename>src/impl/parameter/size.fs</filename>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Return stack space available, in cells</para>
+        </question>
+        <answer>
+          <para>
+            Default return stack space is 256 cells, controlled by
+            <symbol>RP_SIZE</symbol> defined in
+            <filename>src/impl/parameter/size.fs</filename>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>Parameter stack space available, in cells</para>
+        </question>
+        <answer>
+          <para>
+            Default parameter stack space is 256 cells, controlled by
+            <symbol>SP_SIZE</symbol> defined in
+            <filename>src/impl/parameter/size.fs</filename>
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>System dictionary space required, in address units</para>
+        </question>
+        <answer>
+          <para>48k (full image)</para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para><xref linkend="f83-question-stack"/> implementation</para>
+        </question>
+        <answer>
+          <para>
+            Throws <xref linkend="impl-paren-error-stack-u"/> and
+           <xref linkend="impl-paren-error-stack-o"/>.
+          </para>
+        </answer>
+      </qandaentry>
+    </qandadiv>
+  </qandaset>
+</section>

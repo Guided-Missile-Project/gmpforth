@@ -1,0 +1,1 @@
+-43 CONSTANT (error-float-range)        \ floating-point result out of range

@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# run riscv forth on QEMU
+here=`dirname $0`
+exec $here/../../../../bin/raw-stdio ${QEMU_RV32:-qemu-riscv} $here/forth.elf

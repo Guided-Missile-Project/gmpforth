@@ -1,0 +1,16 @@
+Risc V port
+
+* register mappings
+* opcode mapping
+* QEMU paths
+* ./{32,64}/start.inc
+mode
+.set mips64
+* linux syscall
+not needed for bare metal
+but maybe for sim bringup
+* _start.inc
+_NO_DOT_END
+
+* remove
+./32/kernel.inc.d

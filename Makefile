@@ -236,6 +236,12 @@ test-ht-gas-mips-64: gas-mips-64-forth
 	$(RUBY) test/test_ht_gas_mips_64.rb
 
 
+test-gas-rv32i: gas-rv32i-forth
+	$(RUBY) test/test_gas_rv32i.rb
+
+test-ht-gas-rv32i: gas-rv32i-forth
+	$(RUBY) test/test_ht_gas_rv32i.rb
+
 test-gas-rv32im: gas-rv32im-forth
 	$(RUBY) test/test_gas_rv32im.rb
 
@@ -348,6 +354,15 @@ gas-mips-64-forth:
 gas-mips-64-clean:
 	$(MAKE) -C src/gas/mips/64 clean
 
+gas-rv32i-forth:
+	$(MAKE) -C src/gas/riscv/rv32i
+
+gas-rv32i-run:
+	$(MAKE) -C src/gas/riscv/rv32i run
+
+gas-rv32i-clean:
+	$(MAKE) -C src/gas/riscv/rv32i clean
+
 gas-rv32im-forth:
 	$(MAKE) -C src/gas/riscv/rv32im
 
@@ -415,6 +430,6 @@ clean: cvm-clean i386-clean gas-vm-clean x86_64-clean doc-clean \
 	gas-mmix-pure-clean gas-mmix-c10-clean gas-mmix-c11-clean \
 	gas-arm-a32-clean gas-arm-t32-clean gas-arm-a64-clean \
 	gas-mips-32-clean gas-mips-64-clean \
-	gas-rv32im-clean gas-rv64im-clean
+	gas-rv32i-clean gas-rv32im-clean gas-rv64im-clean
 	-rm -rf $(FILES) $(GENERATED) $(COV_OUTPUT) output
 

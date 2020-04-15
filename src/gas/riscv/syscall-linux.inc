@@ -1,6 +1,6 @@
         .macro  $SYS sys
-        $SET    $v0, \sys
-        syscall
+        $SET    a7, \sys
+        ecall
         .endm
 
-        /* argument order $a0 $a1 $a2 $a3 $t0 $t1 */
+        /* argument order a0 a1 a2 a3 a4 a5 */

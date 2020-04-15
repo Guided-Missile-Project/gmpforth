@@ -1,29 +1,39 @@
 #
-#  mipscompiler.rb
-# 
-#  Copyright (c) 2016 by Daniel Kelley
-# 
-# 
+#  riscvcompiler.rb
+#
+#  Copyright (c) 2020 by Daniel Kelley
+#
+#
 
 require 'gmpforth/gascompiler'
 
-class GMPForth::MIPSCompiler < GMPForth::GASCompiler
+class GMPForth::RISCVCompiler < GMPForth::GASCompiler
 
   HERE = File.expand_path(File.dirname(__FILE__))
   ROOT = File.expand_path("#{HERE}/../..")
   SRC  = File.expand_path("#{ROOT}/src")
   GAS  = File.expand_path("#{SRC}/gas")
-  MACH = File.expand_path("#{GAS}/mips")
+  MACH = File.expand_path("#{GAS}/riscv")
+  FLAGS = {
+    "rv32i" => "-mabi=ilp32 -march=rv32i",
+    "rv32im" => "-mabi=ilp32 -march=rv32im",
+    "rv64im" => "-mabi=lp64 -march=rv64im",
+  }
+  CROSS = {
+    "rv32i" => "CROSS_RV32",
+    "rv32im" => "CROSS_RV32",
+    "rv64im" => "CROSS_RV64",
+  }
 
   def initialize(options={})
-    @submodel = options[:target_opt] || "32"
-    @model = "mips"
+    @submodel = options[:target_opt] || "rv32im"
+    @model = "riscv"
     @arch = @model
-    @cross = ENV["CROSS_MIPS_#{@submodel}"] || ENV['CROSS'] || "#{@arch}-elf-"
-    @databytes = @submodel == "64" ? 8 : 4
+    @cross = ENV[CROSS[@submodel]] || ENV['CROSS'] || "#{@arch}-elf-"
+    @databytes = @submodel =~ /64/ ? 8 : 4
     @as = "#{@cross}as"
     @ld = "#{@cross}ld"
-    @abi = @submodel == "64" ? "-mabi=64" : ""
+    @abi = FLAGS[@submodel]
     super
   end
 
@@ -52,8 +62,9 @@ class GMPForth::MIPSCompiler < GMPForth::GASCompiler
   def run(cmd)
     $stderr.puts(cmd) if @verbose
     if !system(cmd)
-      $stderr.puts("#{cmd} returned #{$?}")
-      exit $?.to_i
+      raise "#{cmd} returned #{$?}"
+      #$stderr.puts("#{cmd} returned #{$?}")
+      #exit $?.to_i
     end
   end
   #
@@ -102,7 +113,6 @@ class GMPForth::MIPSCompiler < GMPForth::GASCompiler
     asflags = "-g #{@abi} -aldm=#{listing.path}"
     ldflags = "-g"
     ldflags += " --verbose" if @verbose
-    ldflags += " -melf64btsmip" if @submodel == "64"
     as = "#{@as} #{asflags} #{inc} -o #{obj.path} #{kernel.path}"
     run(as)
     ld = "#{@ld} #{ldflags} -o #{file} #{obj.path}"

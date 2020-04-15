@@ -120,7 +120,7 @@ module ARMRun
       end
     end
     n += 1
-    gdb.send("#{n}-data-evaluate-expression _spsave")
+    gdb.send("#{n}-data-evaluate-expression (int)_spsave")
     rsp = gdb.receive
     sp1 = rsp.result.value['value']
     if !sp0.nil? && !sp1.nil?

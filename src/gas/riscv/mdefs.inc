@@ -19,7 +19,7 @@
         /* push entity 'e' to stack 'x' */
         .macro $XPUSH x e
         $XAPPEND \x
-        $XST     \e, (\x)
+        $ST     \e, \x
         .endm
 
         /* discard 'n' items from stack 'x' */
@@ -86,7 +86,7 @@
 
         /* invert bits of entity e */
         .macro $INV e
-        nor     \e, $zero, \e
+        $XOP xori, \e, \e, -1
         .endm
 
         /*
@@ -95,60 +95,182 @@
 
         /* logical AND  e=e&f */
         .macro $AND e f
-        and     \e, \e, \f
+        $XOP and, \e, \e, \f
+        .endm
+
+        /* logical AND immediate e=e&f */
+        .macro $ANDI e f k
+        $XOP andi, \e, \f, \k
         .endm
 
         /* logical OR  e=e|f */
-        .macro $OR e f
-        or      \e, \e, \f
+        .macro $OR e f g
+        .ifb \g
+        $XOP or, \e, \e, \f
+        .else
+        $XOP or, \e, \f, \g
+        .endif
         .endm
 
         /* logical XOR  e=e^f */
-        .macro $XOR e f
-        xor     \e, \e, \f
+        .macro $XOR e f g
+        .ifb \g
+        $XOP xor, \e, \e, \f
+        .else
+        $XOP xor, \e, \f, \g
+        .endif
         .endm
 
 
         /* e=f where e is a register and f is a constant */
         .macro $SET e f
-        li \e, \f
+        $XOP li, \e, \f
         .endm
 
         /* e=f where where e is a register and f is a register */
         .macro $MOV e f
-        move   \e, \f
+        $XOP move, \e, \f
         .endm
 
         /*
           Load and Store
         */
 
-        /* load byte e at address f */
+        /* load byte into e from address in f */
         .macro $LDB e f
-        lbu    \e, (\f)
+        $XLB   \e, \f, 0
         .endm
 
-        /* load _SZ word e at address f, or f+g */
-        .macro $LD e f g
-        .ifb \g
-        $XLD    \e, (\f)
+        /* load _SZ word into e from address in f, or f+k */
+        .macro $LD e f k
+        .ifb \k
+        $XLD    \e, \f, 0
         .else
-        $XLD    \e, \g(\f)
+        $XLD    \e, \f, \k
         .endif
         .endm
 
-        /* store byte e at address f */
+        /* load e from address symbol f; uses t0 */
+        .macro $LDA e f
+        $LA    t0, \f
+        $LD    \e, t0
+        .endm
+
+        /* store byte in e to address in f */
         .macro $STB e f
-        sb      \e, (\f)
+        $XSB    \e, \f, 0
         .endm
 
-        /* store _SZ word e at address f or f+g */
-        .macro $ST e f g
-        .ifb \g
-        $XST    \e, (\f)
+        /* store _SZ word in e to address in f or f+k */
+        .macro $ST e f k
+        .ifb \k
+        $XST    \e, \f, 0
         .else
-        $XST    \e, \g(\f)
+        $XST    \e, \f, \k
         .endif
+        .endm
+
+        /* store e to address symbol f; uses t0 */
+        .macro $STA e f
+        $LA    t0, \f
+        $ST    \e, t0
+        .endm
+
+        /* Store an 8 bit byte in 'e' from register 'x' offset k */
+        .macro $XSB e x k
+        $XOP sb, \e, \x, \k, ofs
+        .endm
+
+        /* Load an 8 bit byte in 'e' from register 'x' offset k */
+        .macro $XLB e x k
+        $XOP lbu, \e, \x, \k, ofs
+        .endm
+
+        /* Load a 32 bit address 'x' in register 'e' */
+        .macro $LA e x
+        $XOP la, \e, \x
+        .endm
+
+        /* Load a small immediate 'x' in register 'e' */
+        .macro $LI e x
+        $XOP li, \e, \x
+        .endm
+
+        /* Add */
+        .macro $ADD a b c
+        .ifb \c
+        $XOP add, \a, \a, \b
+        .else
+        $XOP add, \a, \b, \c
+        .endif
+        .endm
+
+        /* Add Immediate */
+        .macro $ADDI a b k
+        $XOP addi, \a, \b, \k
+        .endm
+
+        /* Subtract */
+        .macro $SUB a b c
+        .ifb \c
+        $XOP sub, \a, \a, \b
+        .else
+        $XOP sub, \a, \b, \c
+        .endif
+        .endm
+
+        /* Negate */
+        .macro $NEG a b
+        .ifb \b
+        $XOP neg, \a, \a
+        .else
+        $XOP neg, \a, \b
+        .endif
+        .endm
+
+        /* Shift left */
+        .macro $SHL a b c
+        $XOP   slli, \a, \b, \c, shift
+        .endm
+
+        /* Shift right logical */
+        .macro $SHR a b c
+        $XOP   srli, \a, \b, \c, shift
+        .endm
+
+        /* Shift right arithmetic */
+        .macro $SAR a b c
+        $XOP   srai, \a, \b, \c, shift
+        .endm
+
+        /* Set if less than unsigned */
+        .macro $SLTU a b c
+        $XOP   sltu, \a, \b, \c
+        .endm
+
+        /* Set if less than */
+        .macro $SLT a b c
+        $XOP   slt, \a, \b, \c
+        .endm
+
+        /* Set if less than immediate */
+        .macro $SLTI a b c
+        $XOP   slti, \a, \b, \c
+        .endm
+
+        /* Set if 0= */
+        .macro $SEQZ a b
+        $XOP   seqz, \a, \b
+        .endm
+
+        /* NxN multiply */
+        .macro $MUL a b c
+        $XOP   mul, \a, \b, \c, shift
+        .endm
+
+        /* NxN multiply high */
+        .macro $MULHU a b c
+        $XOP   mulhu, \a, \b, \c, shift
         .endm
 
         /*
@@ -158,7 +280,21 @@
         /* Jump to address label 'a' */
         .macro $JMP a
         j       \a
-        nop
+        .endm
+
+        /* branch if r>=0 */
+        .macro $BGEZ a b
+        $XOP bgez, \a, \b
+        .endm
+
+        /* branch if r!=0 */
+        .macro $BNEZ a b
+        $XOP bnez, \a, \b
+        .endm
+
+        /* branch if r==0 */
+        .macro $BEQ a b c
+        $XOP beq, \a, \b, \c
         .endm
 
         /*
@@ -194,36 +330,32 @@
         .macro $EXECUTE
         $LD     t1, w           /* get code interpreter addr */
         jr      t1              /* branch to interpreter */
-        nop
         .endm
 
         /* load the next code word into 'w' and advance 'ip' */
         .macro $NEXT
         $TRACE next
-        /* Optimized to put 'ip' advance in delay slot */
         $LD w, ipp
         $LD t1, w
-        jr  t1
         $SKIP
+        jr  t1
         .endm
 
         /* Set IP to the start of the DOES> list */
         .macro $DOES_TARGET
-        $MOV    ipp, $ra
+        $MOV    ipp, ra
         .endm
 
         .macro $DODOES
         .set _NEED_DOES, 1
         $TRANSFER
         jal  does_handler
-        nop
         .endm
 
         .macro  $RALIGN x
         $BLOCK
-        li      w, _ALIGN
+        $LI     w, _ALIGN
         $SUB    w, w, \x
-        andi    w, w, _SZ-1
+        $ANDI   w, w, _SZ-1
         $ADD    \x, \x, w
         .endm
-

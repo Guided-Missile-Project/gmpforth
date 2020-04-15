@@ -17,8 +17,9 @@ UBFD ?= /usr/local
 INC := $(UBFD)/include
 LIB := $(UBFD)/lib
 CFLAGS := -Wall -Wextra -MMD
+CFLAGS += -I.
 CFLAGS += -I$(INC)
-LDFLAGS := -g -L $(LIB)
+LDFLAGS := -g -L $(LIB) -Wl,-rpath=$(LIB)
 LDLIBS := -lbfd -lopcodes -liberty -lz
 
 all: profile disasm

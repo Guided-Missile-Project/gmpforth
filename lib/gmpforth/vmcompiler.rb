@@ -116,7 +116,7 @@ class GMPForth::VMCompiler < GMPForth::Compiler
     @interp.each do |name, handler|
       if handler.nil?
         udf << name
-      elsif handler =~ /^@/
+      elsif !handler.is_a?(Integer) && handler =~ /^@/
         fwd << name
       end
     end

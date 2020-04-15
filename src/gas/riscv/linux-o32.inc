@@ -1,6 +1,6 @@
 /* Linux O32 ABI syscalls */
 
-   .set  SYS_READ,      4003
-   .set  SYS_WRITE,     4004
-   .set  SYS_EXIT,      4001
+   .set  SYS_READ,      63
+   .set  SYS_WRITE,     64
+   .set  SYS_EXIT,      93
 

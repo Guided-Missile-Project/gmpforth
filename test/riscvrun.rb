@@ -1,16 +1,19 @@
 #
-#  x86run.rb
+#  riscvrun.rb
 #
-#  Copyright (c) 2016 by Daniel Kelley
+#  Copyright (c) 2020 by Daniel Kelley
+#
+# RISCV model test runner
+#
+# Uses model defined externally as the stack model
 #
 
 require 'pp'
 require 'target'
 require 'gdb/mi2'
-require 'gmpforth/x86compiler'
-require 'gmpforth/x86_64compiler'
+require 'gmpforth/riscvcompiler'
 
-module X86Run
+module RISCVRun
 
   def model
     self.class.const_get(:MODEL)
@@ -21,11 +24,16 @@ module X86Run
   end
 
   def setup
-    # data size
-    @databits = (model == "i386") ? 32 : 64
+    @arch = model
+    @databits = (@arch =~ /64/) ? 64 : 32
+    @cross_env = "CROSS_RV#{@databits}"
+    @qemu_env = "QEMU_RV#{@databits}"
+    @cross = ENV[@cross_env]
+    raise "oops" if @cross.nil?
+    # minus one / mask with all bits set
+    # FIXME: model dependent; should get from the compiler
+    # SAME
     @size = @databits/8
-    @compiler = (model == "i386") ?
-        GMPForth::X86Compiler : GMPForth::X86_64Compiler
     # minus one / mask with all bits set
     @m1 = 2**@databits - 1
     # largest negative
@@ -41,18 +49,26 @@ module X86Run
   # return the 2's complement signed form of the unsigned integer 'n'
   def signed(n, width=@databits)
     i = n & ((1<<width) - 1)
-    n[width-1] != 0 ? -((1<<width) - i) : i;
+    n[width-1] != 0 ? -((1<<width) - i) : i
   end
 
   def compile(s)
-    srcfile = "/tmp/gas-#{model}-test.fs"
+    # bin/gmpfc -Btest3 -tx86 -Lsrc/gas/riscv ~/tmp/test3.fs
+    srcfile = "/tmp/gas-#{@arch}-#{model}-test.fs"
     File.open(srcfile, 'w') do |f|
       f.puts s
     end
-    imagefile = "/tmp/gas-#{model}-image"
-    c = @compiler.new
+    imagefile = "/tmp/gas-#{@arch}-#{model}-image"
+    c = GMPForth::RISCVCompiler.new({:target_opt => model})
     c.verbose = true if !ENV['VERBOSE'].nil?
-    c.library_path "src/gas/#{model}/lib"
+    if model =~ /m/
+      c.library_path "src/gas/riscv/m"
+    end
+    c.library_path "src/gas/riscv/i"
+    libs.each { |lib| c.library_path(lib)  } # extra model specific hacks
+    c.library_path "src/core-ext/recursive/roll"
+    c.library_path "src/gas/c10"
+    c.library_path "src/gas/common"
     c.library_path "src/core"
     c.library_path "src/core-ext"
     c.library_path "src/fig"
@@ -67,17 +83,20 @@ module X86Run
     c.hosted = false
     c.savetemp = true if !ENV['SAVE_TEMP'].nil?
     c.scan srcfile
+    # c.asm_header("src/gas/riscv/#{model}/const.inc")
     c.compile
     c.image imagefile
     imagefile
   end
 
   def gdbtalk(gdb, tgt)
+    gdb.send("target remote localhost:#{@gdbport}")
+    rsp = gdb.receive
     n = 1
-    gdb.send("#{n}-break-insert _atexit_begin")
+    gdb.send("#{n}-break-insert _sysret")
     rsp = gdb.receive
     n += 1
-    gdb.send("#{n}-exec-run")
+    gdb.send("#{n}-exec-continue")
     rsp = gdb.receive # run
     rsp = gdb.receive # stopped
     if !rsp.notify.nil?
@@ -104,7 +123,7 @@ module X86Run
       end
     end
     n += 1
-    gdb.send("#{n}-data-evaluate-expression (int)sp_save")
+    gdb.send("#{n}-data-evaluate-expression (int)_spsave")
     rsp = gdb.receive
     sp1 = rsp.result.value['value']
     if !sp0.nil? && !sp1.nil?
@@ -131,18 +150,13 @@ module X86Run
   # run the image file in gdb
   def gdbrun(imagefile)
     tgt = Target.new
-    Open3.popen3("gdb --interpreter=mi2 #{imagefile}") do |input,output,err|
+    Open3.popen3("#{@cross}gdb --interpreter=mi2 #{imagefile}") do |input,output,err|
       gdb = GDB::MI2.new(input, output)
       gdb.verbose = true if !ENV['VERBOSE'].nil?
       begin
         gdbtalk(gdb, tgt)
       rescue
-        $stderr.puts "Caught #{$!} from GDB talk"
-        begin
-          Process.kill("INT", tgt.pid) if !tgt.pid.nil?
-        rescue
-          $stderr.puts "Caught #{$!} from Process.kill"
-        end
+        Process.kill("INT", tgt.pid) if !tgt.pid.nil?
         gdb.send("-gdb-exit")
         raise
       end
@@ -150,14 +164,33 @@ module X86Run
     tgt
   end
 
+  # run the image file in qemu
+  def qemurun(imagefile)
+    @gdbport = ENV['QEMU_GDB'] || 3000
+    @qemu_riscv = ENV[@qemu_env]
+    raise "oops" if @qemu_riscv.nil?
+    @qemu = IO.popen("#{@qemu_riscv} -g #{@gdbport} #{imagefile}")
+  end
+
+  def riscvrun(imagefile)
+    tgt = nil
+    qemu = qemurun(imagefile)
+    if !qemu.nil?
+      tgt = gdbrun(imagefile)
+      Process.kill("TERM",qemu.pid)
+    end
+    tgt
+  end
+
   # compile and run 's', return a response
   def exec(s)
-    gdbrun(compile(s))
+    riscvrun(compile(s))
   end
 
   # return stack in response
   def stack(tgt)
     tgt.stack.reverse.map { |n| signed(n) }
   end
+
 
 end

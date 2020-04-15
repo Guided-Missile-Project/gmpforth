@@ -12,12 +12,17 @@
         .globl  _sysret
         .globl  _osdata
         .globl  _pool
-        .globl  _gp             /* Defined in linker script */
+        .globl  __global_pointer$ /* Defined in linker script */
+        .globl  __fini
+        .globl  __args
+        .globl  __sp0
+        .globl  __rp0
+        .globl  __ex0
+        .globl  __user
+        .globl  __entry
 
         .set SP_SLACK, 1        /* need one word of slack space in pstack */
         .set DICT_IN_DATA, 1
-        .set _NO_DOT_END, 1     /* mips .end is different... */
-        .set    noreorder
 
         .text
         $BLOCK
@@ -29,22 +34,27 @@ __start:
              sp: argc, argv[0], ..., NULL, envp[0], ..., NULL
         */
 _restart:
-        $LA     $gp, _gp
-        $ST     $v0, $gp, %gp_rel(__fini)
-        $ST     spp, $gp, %gp_rel(__args)
-        $LD     spp, $gp, %gp_rel(__sp0)
-        $LD     rp,  $gp, %gp_rel(__rp0)
+        .option push
+        .option norelax
+        $LA gp, __global_pointer$
+        .option pop
+
+        $STA    a0, __fini
+        $STA    sp, __args
+
+        $LDA    sp, __sp0
+        $LDA    s4, __rp0
 
         /* set ipp to _exit0, _ENTRY's DOCOL will push to return stack */
-        $LD     ipp, $gp, %gp_rel(__ex0)
+        $LDA    s3, __ex0
 
         /* set USER area */
-        $LD     u, $gp, %gp_rel(__user)
+        $LDA    s6, __user
 
-        xor     pp1, pp1, pp1   /* clear cached ptos */
+        li      s7, 0   /* clear cached ptos */
 
         /* execute from _ENTRY */
-        $LD     w, $gp, %gp_rel(__entry)
+        $LDA    s2, __entry
         $EXECUTE
         $ENDCODE
 
@@ -53,25 +63,23 @@ _exit:  $BLOCK
         /* for test purposes: */
         /*  flush TOS to memory */
         /*  save final stack pointer */
-        $S_PTOS pp1
-        $ST     spp, $gp, %gp_rel(_spsave)
-
+        $S_PTOS s7
+        $STA    sp, _spsave
         /* return to OS */
 _sysret:                /* testing breakpoint */
-        $LD     t2, $gp, %gp_rel(__fini)
+        $LDA    t2, __fini
         beqz    t2, 1f
-        nop
-        jal     t2      /* OS fini */
-        nop
+        jalr    t2      /* OS fini */
 1:
-        $SET    $a0, 0
-        $SYS    SYS_EXIT /* sys_exit(0) */
+        $SET    a0, 0
+        $SYS    SYS_EXIT
 1:
-        b       1b
-        nop
+        j       1b
         $ENDCODE
 
-        .sdata
+        .data
+        /*.section .sdata - doesn't work because data is uninitialized...*/
+
 __sp0:  $WORD   _SP0
 __rp0:  $WORD   _RP0
 __ex0:  $WORD   _exit0
@@ -86,7 +94,7 @@ _spsave:
         $WORD   0
 
 
-        .data
+        .section .data
         /* colon def fragment pushed on return stack to exit after
           _ENTRY returns. */
 _exit0: $WORD   _exit1

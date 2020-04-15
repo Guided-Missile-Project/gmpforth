@@ -6,6 +6,9 @@
 */
 
 #include "config.h"
+#if !defined PACKAGE && !defined PACKAGE_VERSION
+#error config.h malformed
+#endif
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -92,6 +95,7 @@ static int is_does_comma_arm32(const bfd_byte *data);
 static int is_does_comma_thumb32(const bfd_byte *data);
 static int is_does_comma_arm64(const bfd_byte *data);
 static int is_does_comma_mips32(const bfd_byte *data);
+static int is_does_comma_riscv(const bfd_byte *data);
 
 static struct does_comma_checker_s {
   const char *target;
@@ -105,6 +109,8 @@ static struct does_comma_checker_s {
   {"aarch64", is_does_comma_arm64},
   {"mips:3000", is_does_comma_mips32},
   {"mips:4000", is_does_comma_mips32},
+  {"riscv:rv32", is_does_comma_riscv},
+  {"riscv:rv64", is_does_comma_riscv},
 };
 
 /* compare symbols by name */
@@ -583,6 +589,19 @@ static int is_does_comma_mips32(const bfd_byte *data)
   return !memcmp(a,b,sizeof(a));
 }
 
+static int is_does_comma_riscv(const bfd_byte *data)
+{
+  unsigned char a[4];
+  unsigned char b[4] = {0xef, 0x00, 0x00, 0x00};
+  unsigned char m[4] = {0xff, 0x00, 0x00, 0x00};
+  a[0] = *UCHAR_PTR(data+0) & m[0];
+  a[1] = *UCHAR_PTR(data+1) & m[1];
+  a[2] = *UCHAR_PTR(data+2) & m[2];
+  a[3] = *UCHAR_PTR(data+3) & m[3];
+
+  return !memcmp(a,b,sizeof(a));
+}
+
 static void mark_paren_semi_code(const bfd_byte *data,
                                  uint64_t size,
                                  uint64_t vma,
@@ -837,40 +856,43 @@ static int disasm_fprintf(FILE *stream __attribute__((unused)),
 
 static int setup_machine(struct disassembler *d)
 {
-  d->disassemble = disassembler(d->abfd);
-  if (d->disassemble) {
-    d->info.flavour = bfd_get_flavour(d->abfd);
-    d->info.arch = bfd_get_arch(d->abfd);
-    d->info.mach = bfd_get_mach(d->abfd);
-    d->info.disassembler_options = "";
-    d->info.octets_per_byte = bfd_octets_per_byte(d->abfd);
-    d->info.skip_zeroes = 0;
-    d->info.skip_zeroes_at_end = 0;
-    d->info.disassembler_needs_relocs = FALSE;
+  d->info.flavour = bfd_get_flavour(d->abfd);
+  d->info.arch = bfd_get_arch(d->abfd);
+  d->info.mach = bfd_get_mach(d->abfd);
+  d->info.disassembler_options = "";
+  d->info.octets_per_byte = bfd_arch_mach_octets_per_byte
+    (bfd_get_arch_info(d->abfd)->arch, bfd_get_arch_info(d->abfd)->mach);
+  d->info.skip_zeroes = 0;
+  d->info.skip_zeroes_at_end = 0;
+  d->info.disassembler_needs_relocs = FALSE;
 
-    if (bfd_big_endian(d->abfd)) {
-      d->info.display_endian = d->info.endian = BFD_ENDIAN_BIG;
-      to_h_uint32_t = d_be32toh;
-      to_h_uint64_t = d_be64toh;
-    } else if (bfd_little_endian(d->abfd)) {
-      d->info.display_endian = d->info.endian = BFD_ENDIAN_LITTLE;
-      to_h_uint32_t = d_le32toh;
-      to_h_uint64_t = d_le64toh;
-    } else {
-      d->info.endian = BFD_ENDIAN_UNKNOWN;
-      fprintf(stderr, "error: target endian is unknown");
-      assert(0);
-    }
-    d->info.fprintf_func = (fprintf_ftype)disasm_fprintf;
-    d->info.stream = stdout;
-    d->info.application_data = d;
-    /* d->info.section set later */
-    /* d->info.symbols set later */
-    /* d->info.num_symbols set later */
-    d->info.read_memory_func = read_memory;
-    d->info.memory_error_func = memory_error;
-    d->info.print_address_func = print_address;
+  if (bfd_big_endian(d->abfd)) {
+    d->info.display_endian = d->info.endian = BFD_ENDIAN_BIG;
+    to_h_uint32_t = d_be32toh;
+    to_h_uint64_t = d_be64toh;
+  } else if (bfd_little_endian(d->abfd)) {
+    d->info.display_endian = d->info.endian = BFD_ENDIAN_LITTLE;
+    to_h_uint32_t = d_le32toh;
+    to_h_uint64_t = d_le64toh;
+  } else {
+    d->info.endian = BFD_ENDIAN_UNKNOWN;
+    fprintf(stderr, "error: target endian is unknown");
+    assert(0);
   }
+  d->info.fprintf_func = (fprintf_ftype)disasm_fprintf;
+  d->info.stream = stdout;
+  d->info.application_data = d;
+  /* d->info.section set later */
+  /* d->info.symbols set later */
+  /* d->info.num_symbols set later */
+  d->info.read_memory_func = read_memory;
+  d->info.memory_error_func = memory_error;
+  d->info.print_address_func = print_address;
+
+  d->disassemble = disassembler(d->info.arch,
+                                (d->info.endian == BFD_ENDIAN_BIG),
+                                d->info.mach,
+                                d->abfd);
 
   return (d->disassemble != NULL);
 }
@@ -1152,10 +1174,10 @@ static void disasm_section(bfd *abfd, asection *sect, struct info *info)
   uint64_t vma;
   bfd_byte *data;
   unsigned char *dis_op;
-  const char *sname = bfd_section_name(abfd, sect);
+  const char *sname = bfd_section_name(sect);
   printf("*** section %s\n", sname);
   bfd_disassembler.info.section = sect;
-  size = bfd_get_section_size(sect);
+  size = bfd_section_size(sect);
 
   if (!bfd_malloc_and_get_section(abfd, sect, &data)) {
     bfd_perror(prog);
@@ -1163,7 +1185,7 @@ static void disasm_section(bfd *abfd, asection *sect, struct info *info)
     return;
   }
 
-  vma = bfd_get_section_vma(abfd, sect);
+  vma = bfd_section_vma(sect);
 
   bfd_disassembler.size = size;
   bfd_disassembler.vma = vma;
@@ -1196,8 +1218,8 @@ static void dump_section(bfd *abfd, asection *sect, struct info *info)
   int offset = 0;
   const char *sname;
 
-  sname = bfd_section_name(abfd, sect);
-  size = bfd_get_section_size(sect);
+  sname = bfd_section_name(sect);
+  size = bfd_section_size(sect);
   printf("*** section %s\n", sname);
 
   if (!bfd_malloc_and_get_section(abfd, sect, &data)) {
@@ -1206,7 +1228,7 @@ static void dump_section(bfd *abfd, asection *sect, struct info *info)
     return;
   }
 
-  vma = bfd_get_section_vma(abfd, sect);
+  vma = bfd_section_vma(sect);
 
   sym = lookup_sym_value(vma);
   while (sym) {
@@ -1214,7 +1236,7 @@ static void dump_section(bfd *abfd, asection *sect, struct info *info)
     asymbol **next = NULL;
 
     /* make sure we are in the same section... */
-    if (strcmp(sname, bfd_section_name(abfd, bfd_get_section(*sym)))) {
+    if (strcmp(sname, bfd_section_name(bfd_asymbol_section(*sym)))) {
       break;
     }
 
@@ -1251,16 +1273,16 @@ static void dump_section(bfd *abfd, asection *sect, struct info *info)
 
 static void find_user(bfd *abfd, asection *sect, void *obj)
 {
-  const char *name = bfd_get_section_name(abfd, sect);
+  const char *name = bfd_section_name(sect);
   struct info *info = (struct info *)obj;
-  asection *usersym_sect = bfd_get_section(*info->usersym);
+  asection *usersym_sect = bfd_asymbol_section(*info->usersym);
   uint64_t user_vma = bfd_asymbol_value(*info->usersym);
-  uint64_t sect_vma = bfd_get_section_vma(abfd, sect);
-  uint64_t sect_size = bfd_get_section_size(sect);
+  uint64_t sect_vma = bfd_section_vma(sect);
+  uint64_t sect_size = bfd_section_size(sect);
   uint64_t paren_vocs_vma;
   uint64_t pvv_offset;
 
-  if (!strcmp(name, bfd_get_section_name(abfd, usersym_sect)) &&
+  if (!strcmp(name, bfd_section_name(usersym_sect)) &&
       user_vma >= sect_vma && user_vma < (sect_vma+sect_size)) {
     if (!bfd_malloc_and_get_section(abfd, sect, &info->data)) {
       bfd_perror(prog);
@@ -1275,7 +1297,7 @@ static void find_user(bfd *abfd, asection *sect, void *obj)
 
 static void handle_section(bfd *abfd, asection *sect, void *obj)
 {
-  const char *name = bfd_get_section_name(abfd, sect);
+  const char *name = bfd_section_name(sect);
   struct info *info = (struct info *)obj;
 
   if (!strcmp(name, ".text")) {
@@ -1391,7 +1413,6 @@ static int disasm(const char *appl, const char *target)
     }
 
     /* let's not get too weird yet */
-    assert(bfd_octets_per_byte(abfd) == 1);
     assert(bfd_arch_mach_octets_per_byte(bfd_get_arch_info(abfd)->arch,
                                          bfd_get_arch_info(abfd)->mach) == 1);
 

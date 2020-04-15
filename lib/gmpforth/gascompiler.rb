@@ -91,6 +91,7 @@ class GMPForth::GASCompiler < GMPForth::Compiler
     @sym = {}
     @vardef = []
     @dotword = DotWord[@databytes]
+    @prev_sym = nil
     raise 'oops' if @dotword.nil?
     super
   end
@@ -317,8 +318,13 @@ EOF
     name = word.name
     ename = gas_escape(name)
     sym = word.asm_symbol
+    wstr = "#{Indent}#{macro} #{lexbyte}, \"#{ename}\", #{sym}"
+    if !@prev_sym.nil?
+      wstr << ", #{@prev_sym}"
+    end
+    @prev_sym = sym
     @handle.puts ""
-    @handle.puts "#{Indent}#{macro} #{lexbyte}, \"#{ename}\", #{sym}"
+    @handle.puts wstr
     send("compile_#{word.kind}", word)
   end
 
@@ -378,8 +384,7 @@ EOF
       end
     end
     @handle.puts ""
-    @handle.puts "#{Indent}.globl _ENTRY"
-    @handle.puts "#{Indent}.set _ENTRY, #{@entry.asm_symbol}"
+    @handle.puts "#{Indent}$ENTRY #{@entry.asm_symbol}, #{@prev_sym}"
     @handle.puts ""
     self
   end

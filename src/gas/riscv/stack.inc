@@ -65,57 +65,57 @@
 
         /* push entity 'e' to return stack */
         .macro $RPUSH e
-        $XPUSH s4, \e
+        $XPUSH rp, \e
         .endm
 
         /* discard n items from top of return stack */
         .macro $RDIS n=1
-        $XDISCARD s4, \n
+        $XDISCARD rp, \n
         .endm
 
         /* append n items to return stack */
         .macro $RPND n=1
-        $XAPPEND s4, \n
+        $XAPPEND rp, \n
         .endm
 
         /* pop entity 'e' from return stack */
         .macro $RPOP e
-        $XPOP s4, \e
+        $XPOP rp, \e
         .endm
 
         /* set entity 'e' to 'n'th element from return stack */
         .macro $RPICK e n
-        $XPICK  s4, \e, \n
+        $XPICK  rp, \e, \n
         .endm
 
         /* set entity 'e' to TOS (first element) from return stack */
         .macro $RTOS e
-        $XTOS   s4, \e
+        $XTOS   rp, \e
         .endm
 
         /* set entity 'e' to NOS (second element) from return stack */
         .macro $RNOS e
-        $XNOS   s4, \e
+        $XNOS   rp, \e
         .endm
 
         /* set entity 'e' to the third element from return stack */
         .macro $R3OS e
-        $X3OS   s4, \e
+        $X3OS   rp, \e
         .endm
 
         /* set entity 'e' to TOS (first element) from return stack */
         .macro $S_RTOS e
-        $X_S_TOS s4, \e
+        $X_S_TOS rp, \e
         .endm
 
         /* set entity 'e' to NOS (second element) from return stack */
         .macro $S_RNOS e
-        $X_S_NOS s4, \e
+        $X_S_NOS rp, \e
         .endm
 
         /* set entity 'e' to the third element from return stack */
         .macro $S_R3OS e
-        $X_S_3OS s4, \e
+        $X_S_3OS rp, \e
         .endm
 
         /*
@@ -125,10 +125,10 @@
         .macro $DOES_HANDLER
         .globl does_handler
 does_handler:
-        $S_PTOS s7      /* save current TOS */
+        $S_PTOS pp1     /* save current TOS */
         $PPND
-        $ADD    s7, s2, _SZ
-        $RPUSH  s3
+        $ADD    pp1, w, _SZ
+        $RPUSH  ipp
         $DOES_TARGET
         $NEXT
         .endm
@@ -136,23 +136,23 @@ does_handler:
         .macro $DOCOL
         .set _HAS_DOCOL, 1
         $BLOCK
-        $RPUSH  s3
-        $ADD    s2, s2, _SZ
-        $MOV    s3, s2
+        $RPUSH  ipp
+        $ADD    w, w, _SZ
+        $MOV    ipp, w
         $NEXT
         $ENDCODE
         .endm
 
         .macro $UNNEST
-        $RPOP   s3
+        $RPOP   ipp
         .endm
 
         .macro $DOCON
         .set _HAS_DOCON, 1
         $BLOCK
-        $S_PTOS s7          /* save current TOS; make room for new TOS */
+        $S_PTOS pp1         /* save current TOS; make room for new TOS */
         $PPND
-        $LD     s7, s2, _SZ /* get constant value */
+        $LD     pp1, w, _SZ /* get constant value */
         $NEXT
         $ENDCODE
         .endm
@@ -160,9 +160,9 @@ does_handler:
         .macro $DOVAR
         .set _HAS_DOVAR, 1
         $BLOCK
-        $S_PTOS s7          /* save current TOS; make room for new TOS */
+        $S_PTOS pp1         /* save current TOS; make room for new TOS */
         $PPND
-        $ADD    s7, s2, _SZ
+        $ADD    pp1, w, _SZ
         $NEXT
         $ENDCODE
         .endm
@@ -170,10 +170,10 @@ does_handler:
         .macro $DOUSE
         .set _HAS_DOUSE, 1
         $BLOCK
-        $S_PTOS s7          /* save current TOS; make room for new TOS */
+        $S_PTOS pp1         /* save current TOS; make room for new TOS */
         $PPND
-        $LD     s7, s2, _SZ
-        $ADD    s7, s7, s6
+        $LD     pp1, w, _SZ
+        $ADD    pp1, pp1, u
         $NEXT
         $ENDCODE
         .endm

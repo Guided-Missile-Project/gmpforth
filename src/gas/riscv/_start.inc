@@ -43,18 +43,18 @@ _restart:
         $STA    sp, __args
 
         $LDA    sp, __sp0
-        $LDA    s4, __rp0
+        $LDA    rp, __rp0
 
         /* set ipp to _exit0, _ENTRY's DOCOL will push to return stack */
-        $LDA    s3, __ex0
+        $LDA    ipp, __ex0
 
         /* set USER area */
-        $LDA    s6, __user
+        $LDA    u, __user
 
-        li      s7, 0   /* clear cached ptos */
+        $LI     pp1, 0  /* clear cached ptos */
 
         /* execute from _ENTRY */
-        $LDA    s2, __entry
+        $LDA    w, __entry
         $EXECUTE
         $ENDCODE
 
@@ -63,7 +63,7 @@ _exit:  $BLOCK
         /* for test purposes: */
         /*  flush TOS to memory */
         /*  save final stack pointer */
-        $S_PTOS s7
+        $S_PTOS pp1
         $STA    sp, _spsave
         /* return to OS */
 _sysret:                /* testing breakpoint */

@@ -1,7 +1,7 @@
 include" src/64/word-size.fs"
 include" src/impl/parameter/size.fs"
 include" src/impl/parameter/io.fs"
-include" src/gas/riscv/64/mach.fs"
+include" src/gas/riscv/rv64im/mach.fs"
 include" src/impl/paren-cell.fs"
 include" src/64/paren-pad.fs"
 include" src/f83/sp-down/question-stack.fs"

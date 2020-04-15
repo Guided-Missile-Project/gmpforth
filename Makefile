@@ -242,6 +242,12 @@ test-gas-rv32im: gas-rv32im-forth
 test-ht-gas-rv32im: gas-rv32im-forth
 	$(RUBY) test/test_ht_gas_rv32im.rb
 
+test-gas-rv64im: gas-rv64im-forth
+	$(RUBY) test/test_gas_rv64im.rb
+
+test-ht-gas-rv64im: gas-rv64im-forth
+	$(RUBY) test/test_ht_gas_rv64im.rb
+
 
 test-cli:
 	bin/test_cli
@@ -353,6 +359,9 @@ gas-rv32im-clean:
 
 gas-rv64im-forth:
 	$(MAKE) -C src/gas/riscv/rv64im
+
+gas-rv64im-run:
+	$(MAKE) -C src/gas/riscv/rv64im run
 
 gas-rv64im-clean:
 	$(MAKE) -C src/gas/riscv/rv64im clean

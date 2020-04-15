@@ -52,6 +52,20 @@ https://github.com/riscv/riscv-elf-psabi-doc/blob/master/riscv-elf.md
         $XOP ld, \e, \f, \k, ofs
         .endm
 
+        /* DODOES needs to occupy one cell */
+        .macro $DODOES
+        .set _NEED_DOES, 1
+        $TRANSFER
+        jal  does_handler
+        nop
+        .endm
+
+        /* Set IP to the start of the cell aligned DOES> list */
+        .macro $DOES_TARGET
+        $MOV    ipp, ra
+        $ADDI   ipp, ipp, _SZ/2
+        .endm
+
 /*
  * riscv as does not support register renaming so that must be handled
  * with macro replacement. There is a macro each successive potential

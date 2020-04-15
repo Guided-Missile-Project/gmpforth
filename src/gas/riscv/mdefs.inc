@@ -341,17 +341,6 @@
         jr  t1
         .endm
 
-        /* Set IP to the start of the DOES> list */
-        .macro $DOES_TARGET
-        $MOV    ipp, ra
-        .endm
-
-        .macro $DODOES
-        .set _NEED_DOES, 1
-        $TRANSFER
-        jal  does_handler
-        .endm
-
         .macro  $RALIGN x
         $BLOCK
         $LI     w, _ALIGN

@@ -52,6 +52,17 @@ https://github.com/riscv/riscv-elf-psabi-doc/blob/master/riscv-elf.md
         $XOP lw, \e, \f, \k, ofs
         .endm
 
+        .macro $DODOES
+        .set _NEED_DOES, 1
+        $TRANSFER
+        jal  does_handler
+        .endm
+
+        /* Set IP to the start of the DOES> list */
+        .macro $DOES_TARGET
+        $MOV    ipp, ra
+        .endm
+
 /*
  * riscv as does not support register renaming so that must be handled
  * with macro replacement. There is a macro each successive potential

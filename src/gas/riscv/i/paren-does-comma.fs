@@ -16,6 +16,11 @@
 \ daaaaaaaaaabccccccccrrrrrkkkkkkk  - JAL instruction decoding
 \ daaaaaaaaaabcccccccc000011101111  - jal ra instruction
 \ ddddddddddddccccccccbaaaaaaaaaa0  - address bit sources
+\
+\ Note that this code occupies one cell so $DOES_TARGET needs to
+\ align 'ra' to a cell boundry. For little endian architectures,
+\ the 'jal' is at the lowest address, so subsequent addresses are
+\ not executed. Not going to bother filling it with nops.
 
 : (does,) ( -- )
     $000000ef                       \ jal opcode

@@ -98,8 +98,7 @@ hlt:
         $TRANSFER
         $JMP    _exit
 
-        /*.section .sdata */
-        .data
+        .section .sdata, "aw"
 
 iotbl_end:
         $WORD   ret_false       /* -16 unimplemented   */

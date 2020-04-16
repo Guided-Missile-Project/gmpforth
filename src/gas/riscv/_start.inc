@@ -77,8 +77,7 @@ _sysret:                /* testing breakpoint */
         j       1b
         $ENDCODE
 
-        .data
-        /*.section .sdata - doesn't work because data is uninitialized...*/
+        .section .sdata, "aw"
 
 __sp0:  $WORD   _SP0
 __rp0:  $WORD   _RP0

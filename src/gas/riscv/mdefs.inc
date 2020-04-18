@@ -1,6 +1,7 @@
 /*
  * Risc V Common Machine definitions
  */
+        .include "rdefs.inc"
         .include "sdefs.inc"
         .include "const.inc"
 
@@ -280,6 +281,11 @@
         /* Jump to address label 'a' */
         .macro $JMP a
         j       \a
+        .endm
+
+        /* Jump via register 'a' */
+        .macro $JR a
+        $XOP jr, \a
         .endm
 
         /* branch if r>=0 */

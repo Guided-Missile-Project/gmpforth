@@ -242,6 +242,12 @@ test-gas-rv32i: gas-rv32i-forth
 test-ht-gas-rv32i: gas-rv32i-forth
 	$(RUBY) test/test_ht_gas_rv32i.rb
 
+test-gas-rv32ic: gas-rv32ic-forth
+	$(RUBY) test/test_gas_rv32ic.rb
+
+test-ht-gas-rv32ic: gas-rv32ic-forth
+	$(RUBY) test/test_ht_gas_rv32ic.rb
+
 test-gas-rv32im: gas-rv32im-forth
 	$(RUBY) test/test_gas_rv32im.rb
 
@@ -363,6 +369,15 @@ gas-rv32i-run:
 gas-rv32i-clean:
 	$(MAKE) -C src/gas/riscv/rv32i clean
 
+gas-rv32ic-forth:
+	$(MAKE) -C src/gas/riscv/rv32ic
+
+gas-rv32ic-run:
+	$(MAKE) -C src/gas/riscv/rv32ic run
+
+gas-rv32ic-clean:
+	$(MAKE) -C src/gas/riscv/rv32ic clean
+
 gas-rv32im-forth:
 	$(MAKE) -C src/gas/riscv/rv32im
 
@@ -430,6 +445,7 @@ clean: cvm-clean i386-clean gas-vm-clean x86_64-clean doc-clean \
 	gas-mmix-pure-clean gas-mmix-c10-clean gas-mmix-c11-clean \
 	gas-arm-a32-clean gas-arm-t32-clean gas-arm-a64-clean \
 	gas-mips-32-clean gas-mips-64-clean \
-	gas-rv32i-clean gas-rv32im-clean gas-rv64im-clean
+	gas-rv32i-clean gas-rv32ic-clean \
+	gas-rv32im-clean gas-rv64im-clean
 	-rm -rf $(FILES) $(GENERATED) $(COV_OUTPUT) output
 

@@ -16,11 +16,13 @@ class GMPForth::RISCVCompiler < GMPForth::GASCompiler
   MACH = File.expand_path("#{GAS}/riscv")
   FLAGS = {
     "rv32i" => "-mabi=ilp32 -march=rv32i",
+    "rv32ic" => "-mabi=ilp32 -march=rv32ic",
     "rv32im" => "-mabi=ilp32 -march=rv32im",
     "rv64im" => "-mabi=lp64 -march=rv64im",
   }
   CROSS = {
     "rv32i" => "CROSS_RV32",
+    "rv32ic" => "CROSS_RV32",
     "rv32im" => "CROSS_RV32",
     "rv64im" => "CROSS_RV64",
   }

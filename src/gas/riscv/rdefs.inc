@@ -72,13 +72,13 @@ temporary register.
          */
         .macro $XOP op rd rs1 rs2 arg
         .ifc \rd, w
-        $XOP_RS1 \op s2, \rs1, \rs2, \arg,
+        $XOP_RS1 \op s0, \rs1, \rs2, \arg,
         .else
         .ifc \rd, ipp
-        $XOP_RS1 \op s3, \rs1, \rs2, \arg
+        $XOP_RS1 \op s1, \rs1, \rs2, \arg
         .else
         .ifc \rd, rp
-        $XOP_RS1 \op s4, \rs1, \rs2, \arg
+        $XOP_RS1 \op a3, \rs1, \rs2, \arg
         .else
         .ifc \rd, spp
         $XOP_RS1 \op sp, \rs1, \rs2, \arg
@@ -90,10 +90,10 @@ temporary register.
         $XOP_RS1 \op s6, \rs1, \rs2, \arg
         .else
         .ifc \rd, pp1
-        $XOP_RS1 \op s7, \rs1, \rs2, \arg
+        $XOP_RS1 \op a4, \rs1, \rs2, \arg
         .else
         .ifc \rd, pp2
-        $XOP_RS1 \op s8, \rs1, \rs2, \arg
+        $XOP_RS1 \op a5, \rs1, \rs2, \arg
         .else
         .ifc \rd, pp3
         $XOP_RS1 \op s9, \rs1, \rs2, \arg
@@ -114,13 +114,13 @@ temporary register.
         /* rd,rs1,rs2,arg - rd converted, convert rs1 */
         .macro $XOP_RS1 op rd rs1 rs2 arg
         .ifc \rs1, w
-        $XOP_RS2 \op \rd, s2, \rs2, \arg
+        $XOP_RS2 \op \rd, s0, \rs2, \arg
         .else
         .ifc \rs1, ipp
-        $XOP_RS2 \op \rd, s3, \rs2, \arg
+        $XOP_RS2 \op \rd, s1, \rs2, \arg
         .else
         .ifc \rs1, rp
-        $XOP_RS2 \op \rd, s4, \rs2, \arg
+        $XOP_RS2 \op \rd, a3, \rs2, \arg
         .else
         .ifc \rs1, spp
         $XOP_RS2 \op \rd, sp, \rs2, \arg
@@ -132,10 +132,10 @@ temporary register.
         $XOP_RS2 \op \rd, s6, \rs2, \arg
         .else
         .ifc \rs1, pp1
-        $XOP_RS2 \op \rd, s7, \rs2, \arg
+        $XOP_RS2 \op \rd, a4, \rs2, \arg
         .else
         .ifc \rs1, pp2
-        $XOP_RS2 \op \rd, s8, \rs2, \arg
+        $XOP_RS2 \op \rd, a5, \rs2, \arg
         .else
         .ifc \rs1, pp3
         $XOP_RS2 \op \rd, s9, \rs2, \arg
@@ -153,16 +153,16 @@ temporary register.
         .endif
         .endm
 
-        /* */
+        /* rd,rs1,rs2,arg - rd,rs1 converted, convert rs2 */
         .macro $XOP_RS2 op rd rs1 rs2 arg
         .ifc \rs2, w
-        $XOP_EMIT \op, \rd, \rs1, s2, \arg
+        $XOP_EMIT \op, \rd, \rs1, s0, \arg
         .else
         .ifc \rs2, ipp
-        $XOP_EMIT \op, \rd, \rs1, s3, \arg
+        $XOP_EMIT \op, \rd, \rs1, s1, \arg
         .else
         .ifc \rs2, rp
-        $XOP_EMIT \op, \rd, \rs1, s4, \arg
+        $XOP_EMIT \op, \rd, \rs1, a3, \arg
         .else
         .ifc \rs2, spp
         $XOP_EMIT \op, \rd, \rs1, sp, \arg
@@ -174,10 +174,10 @@ temporary register.
         $XOP_EMIT \op, \rd, \rs1, s6, \arg
         .else
         .ifc \rs2, pp1
-        $XOP_EMIT \op, \rd, \rs1, s7, \arg
+        $XOP_EMIT \op, \rd, \rs1, a4, \arg
         .else
         .ifc \rs2, pp2
-        $XOP_EMIT \op, \rd, \rs1, s8, \arg
+        $XOP_EMIT \op, \rd, \rs1, a5, \arg
         .else
         .ifc \rs2, pp3
         $XOP_EMIT \op, \rd, \rs1, s9, \arg
@@ -195,6 +195,7 @@ temporary register.
         .endif
         .endm
 
+        /* Emit final instruction form */
         .macro $XOP_EMIT op rd rs1 rs2 arg
         .ifb \rd
           \op

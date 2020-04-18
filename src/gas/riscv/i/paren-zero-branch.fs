@@ -1,7 +1,7 @@
 CODE (0branch) ( x -- )
-        $LIT    t1              /* branch address */
+        $LIT    pp2             /* branch address */
         $BNEZ   pp1, 1f
-        $MOV    ipp, t1         /* branch if 'pp1' zero */
+        $MOV    ipp, pp2        /* branch if 'pp1' zero */
 1:
         $PDIS
         $PTOS   pp1             /* refresh TOS */

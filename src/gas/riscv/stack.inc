@@ -130,7 +130,7 @@ does_handler:
         $ADD    pp1, w, _SZ
         $RPUSH  ipp
         $DOES_TARGET
-        $NEXT
+        $DO_NEXT
         .endm
 
         .macro $DOCOL

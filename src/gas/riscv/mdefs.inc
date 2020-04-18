@@ -338,13 +338,20 @@
         jr      t1              /* branch to interpreter */
         .endm
 
-        /* load the next code word into 'w' and advance 'ip' */
+        /* jump to next handler */
         .macro $NEXT
         $TRACE next
+        j do_next
+        .endm
+
+        /* load the next code word into 'w' and advance 'ip' */
+       .macro $DO_NEXT
+       .globl do_next
+do_next:
         $LD w, ipp
-        $LD t1, w
+        $LD pp2, w /* using pp2 as tmp for compressed encoding */
         $SKIP
-        jr  t1
+        $JR pp2
         .endm
 
         .macro  $RALIGN x

@@ -3,6 +3,7 @@
         .ifndef _NEED_DOES
         .text
 does_handler:
+        $DO_NEXT
         .endif
 
         /* give __iotbl something even if no IO */

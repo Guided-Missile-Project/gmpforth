@@ -829,7 +829,7 @@ static void print_address(bfd_vma addr,
   if (labels) {
     snprintf(bfd_disassembler.buf+len,
              sizeof(bfd_disassembler.buf)-len,
-             "%8"PRIx64"x <%s>", (uint64_t)addr, bfd_asymbol_name(*labels));
+             "%8"PRIx64" <%s>", (uint64_t)addr, bfd_asymbol_name(*labels));
   } else {
     snprintf(bfd_disassembler.buf+len,
              sizeof(bfd_disassembler.buf)-len,
@@ -988,7 +988,7 @@ static uint64_t disasm_word(const bfd_byte *data,
       if (labels) {
         show_labels(labels);
       }
-      printf("%8"PRIx64"x %8"PRIx64, vma+idx, w);
+      printf("%8"PRIx64" %8"PRIx64, vma+idx, w);
       spaces(WIDTH);
       /* don't mark an executable entry as live if it's just a
          parameter for (dolit) */
@@ -1039,7 +1039,7 @@ static uint64_t disasm_cfa(const bfd_byte *data,
     if (labels) {
       show_labels(labels);
     }
-    printf("%8"PRIx64"x %8"PRIx64, vma+idx, itp);
+    printf("%8"PRIx64" %8"PRIx64, vma+idx, itp);
     spaces(WIDTH);
     printf("> %s %s\n", ientry->name, centry ? centry->name : "");
   } else {

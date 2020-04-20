@@ -54,7 +54,7 @@ then
 fi
 nm $symfile > $symtab
 
-text=`grep "T _start" $symtab | awk '{print $1}'`
+text=`grep "T __text" $symtab | awk '{print $1}'`
 
 if [ -f $output ]
 then

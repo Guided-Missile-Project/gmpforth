@@ -18,10 +18,11 @@ class GMPForth::MMIXCompiler < GMPForth::GASCompiler
   def initialize(options={})
     @submodel = options[:target_opt] || "pure"
     @model = "mmix"
+    @cross = ENV["CROSS_MMIX"] || ENV['CROSS'] || "#{@model}-elf-"
     @databytes = 8
 #    @align_arg = :bytes
-    @as = "mmix-as"
-    @ld = "mmix-ld"
+    @as = "#{@cross}as"
+    @ld = "#{@cross}ld"
     super
   end
 

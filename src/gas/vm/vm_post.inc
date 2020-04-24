@@ -56,7 +56,6 @@ _SCRATCH:
 _END:
 
         .set    paren_user_default, _USER
-        .set    _LAST, _LFA
-        .set    forth_last, _LFA
+        .set    forth_last, _LAST
 
 

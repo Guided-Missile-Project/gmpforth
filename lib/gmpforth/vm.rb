@@ -1204,9 +1204,8 @@ class GMPForth::VM
         mem_store(w, q)
         @partial.delete(w)
       end
-      x = nil
     else
-      x = mem_store(w, c_form(value, v, m))
+      mem_store(w, c_form(value, v, m))
     end
     value
   end

@@ -225,7 +225,12 @@ class GMPForth::GASCompiler < GMPForth::Compiler
       return word.asm_symbol
 
     when :fwdref
-      return lookup(param)
+      word = lookup(param)
+      if word.nil?
+        forward_reference(param, true)
+        word = "#{Indent}#{@dotword} "+asm_symbol(param)
+      end
+      return word
 
     when :does
       param.each { |p| @handle.puts p }

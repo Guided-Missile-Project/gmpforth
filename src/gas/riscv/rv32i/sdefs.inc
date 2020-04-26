@@ -1,2 +1,2 @@
 /* RV32I specific definitions */
-        .include "sdef32.inc"
+        .include "32/sdefs.inc"

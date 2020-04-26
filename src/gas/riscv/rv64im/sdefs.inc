@@ -1,2 +1,2 @@
 /* RV64IM specific definitions */
-        .include "sdef64.inc"
+        .include "64/sdefs.inc"

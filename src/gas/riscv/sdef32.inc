@@ -20,3 +20,9 @@
         .macro $DOES_TARGET
         $MOV    ipp, ra
         .endm
+
+        /* CSR ops */
+
+        .macro $RDCYCLEH e
+        $XOP    rdcycleh, \e
+        .endm

@@ -298,9 +298,14 @@
         $XOP bnez, \a, \b
         .endm
 
-        /* branch if r==0 */
+        /* branch if a==b */
         .macro $BEQ a b c
         $XOP beq, \a, \b, \c
+        .endm
+
+        /* branch if a!=b */
+        .macro $BNE a b c
+        $XOP bne, \a, \b, \c
         .endm
 
         /*
@@ -360,4 +365,9 @@ do_next:
         $SUB    w, w, \x
         $ANDI   w, w, _SZ-1
         $ADD    \x, \x, w
+        .endm
+
+        /* CSR ops */
+        .macro $RDCYCLE e
+        $XOP    rdcycle, \e
         .endm

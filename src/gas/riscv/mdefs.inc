@@ -371,3 +371,7 @@ do_next:
         .macro $RDCYCLE e
         $XOP    rdcycle, \e
         .endm
+
+        .macro  $DICT_SECTION
+        .data
+        .endm

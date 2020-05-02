@@ -9,7 +9,7 @@
         .globl  _osdata
 
         .set SP_SLACK, 1                @ need one word of slack space in pstack
-        .set DICT_IN_DATA, 1
+        .set DICT_SECTION, 1
 
         .include "syscall-linux.inc"
         @ THUMB

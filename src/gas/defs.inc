@@ -38,8 +38,8 @@
         .endif
 
         .macro $HEAD     lex, name, interp, label, prev_label
-        .ifdef DICT_IN_DATA
-        .data
+        .ifdef DICT_SECTION
+        $DICT_SECTION
         .else
         .text
         .endif

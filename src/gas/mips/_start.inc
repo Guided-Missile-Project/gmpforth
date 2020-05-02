@@ -15,7 +15,7 @@
         .globl  _gp             /* Defined in linker script */
 
         .set SP_SLACK, 1        /* need one word of slack space in pstack */
-        .set DICT_IN_DATA, 1
+        .set DICT_SECTION, 1
         .set _NO_DOT_END, 1     /* mips .end is different... */
         .set    noreorder
 

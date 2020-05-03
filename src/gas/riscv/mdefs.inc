@@ -4,6 +4,7 @@
         .include "rdefs.inc"
         .include "sdefs.inc"
         .include "const.inc"
+        .include "dict.inc"
 
         .set BITS_PER_BYTE, 8
 
@@ -298,6 +299,26 @@
         $XOP bnez, \a, \b
         .endm
 
+        /* branch if r==0 */
+        .macro $BEQZ a b
+        $XOP beqz, \a, \b
+        .endm
+
+        /* branch if r<=0 */
+        .macro $BLEZ a b
+        $XOP blez, \a, \b
+        .endm
+
+        /* branch if r<0 */
+        .macro $BLTZ a b
+        $XOP bltz, \a, \b
+        .endm
+
+        /* branch if r>0 */
+        .macro $BGTZ a b
+        $XOP bgtz, \a, \b
+        .endm
+
         /* branch if a==b */
         .macro $BEQ a b c
         $XOP beq, \a, \b, \c
@@ -370,8 +391,4 @@ do_next:
         /* CSR ops */
         .macro $RDCYCLE e
         $XOP    rdcycle, \e
-        .endm
-
-        .macro  $DICT_SECTION
-        .data
         .endm

@@ -24,6 +24,9 @@ class GMPForth::Compiler
   # Target image is host (can defined words)
   attr_accessor :hosted
   
+  # Kernel is in Read Only Memory
+  attr_accessor :rom
+
   # Verbose
   attr_accessor :verbose
 
@@ -117,6 +120,7 @@ class GMPForth::Compiler
     @bootimage = false
     @verbose = false
     @headless = true
+    @rom = false
     @savetemp = false
     @hosted = true
     @optim_combine_next = false
@@ -612,6 +616,7 @@ EOF
       defs << " #{v}" if v != true
       defs << "\n"
     end
+    defs << "#define ROM 1\n" if @rom
     File.open(file, 'w') do |f|
       f.puts <<EOF
 /* 
@@ -639,6 +644,7 @@ EOF
     @macro.sort.each do |k,v|
       defs << "#{k} = #{v}\n"
     end
+    defs << "ROM = 1\n" if @rom
     File.open(file, 'w') do |f|
       f.puts <<EOF
 #
@@ -666,6 +672,7 @@ EOF
       defs << ", #{v}" if v != true
       defs << "\n"
     end
+    defs << "        .set ROM, 1\n" if @rom
     File.open(file, 'w') do |f|
       f.puts <<EOF
 /*

@@ -17,7 +17,8 @@ module GMPForth::CLI
     attr_reader :verbose 
     attr_reader :trace   
     attr_reader :heads   
-    attr_reader :image   
+    attr_reader :rom
+    attr_reader :image
     attr_reader :output  
     attr_reader :include 
     attr_reader :lib     
@@ -39,6 +40,7 @@ module GMPForth::CLI
       @verbose=nil
       @trace=[]
       @heads=false
+      @rom=false
       @image=nil
       @output=nil
       @include=[]
@@ -71,6 +73,9 @@ module GMPForth::CLI
         end
         opts.on('--heads', '-H', 'Compile dictionary headers') do
           @heads=true
+        end
+        opts.on('--rom', '-R', 'Kernel is in ROM') do
+          @rom=true
         end
         opts.on('--boot IMAGE', '-B', 'Create target boot image') do |arg|
           @image=arg
@@ -170,6 +175,7 @@ module GMPForth::CLI
       @c.display(*@trace)    if @trace.length > 0  && @c.respond_to?(:display)
       @c.run_limit=@limit    if !@limit.nil?    && @c.respond_to?(:run_limit=)
       @c.headless=!@heads    if                    @c.respond_to?(:headless=)
+      @c.rom=@rom            if                    @c.respond_to?(:rom=)
       @c.savetemp=@savetemp  if                    @c.respond_to?(:savetemp=)
       @c.optimize(@optimization) if @c.respond_to?(:optimize)
       @macro.each { |m| macro(m) }

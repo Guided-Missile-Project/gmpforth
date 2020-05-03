@@ -303,7 +303,13 @@ EOF
     word.param.each_with_index do |p, index|
       case index
       when 0
-        @handle.puts "#{Indent}#{@dotword} #{word.asm_symbol}_last"
+        s = "#{Indent}#{@dotword} #{word.asm_symbol}_last"
+        if @rom
+          # Vocabulary current needs to be in RAM, so add a level
+          # of indirection
+          s << "_ptr"
+        end
+        @handle.puts s
       when 1
         @handle.puts "#{Indent}#{@dotword} #{p}"
       when 2

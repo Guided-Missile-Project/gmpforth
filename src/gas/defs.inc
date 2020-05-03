@@ -112,7 +112,11 @@ __trace_\point\()_\subsys\()_\@:
         .endm
         
         .macro  $VOCABULARY   lex, name, label, prev_label
+        .ifdef ROM
+        $HEAD    \lex, \name, DOVOC_ROM, \label, \prev_label
+        .else
         $HEAD    \lex, \name, DOVOC, \label, \prev_label
+        .endif
         .endm
 
         .macro  $ENTRY   entry_sym, last_sym

@@ -42,11 +42,18 @@ typedef int (*is_does_comma_f)(const bfd_byte *data);
 struct info
 {
   int rc;
+  bfd_byte *text;
+  uint64_t text_size;
+  asection *text_section;
+  uint64_t text_vma;
   bfd_byte *data;
-  bfd_byte data_size;
+  uint64_t data_size;
+  asection *data_section;
+  uint64_t data_vma;
   asymbol **usersym;
   asymbol **doessym;
   asymbol **exitsym;
+  asymbol **dovoc_romsym;
   uint64_t voc_head_vma;
 };
 
@@ -709,9 +716,17 @@ static void scan_voc(const bfd_byte *data,
                      uint64_t size,
                      uint64_t vma,
                      uint64_t link_vma,
-                     unsigned char *dis_op)
+                     unsigned char *dis_op,
+                     struct info *info)
 {
   link_vma = word_at(data + link_vma - vma);
+  if (info->dovoc_romsym) {
+    /* ROMable vocabulary first parameter word has another level of
+     * indirection that points the head of the vocabulary list in the
+     * data segment. The resulting VMA should be in the text segment.
+     */
+    link_vma = word_at(info->data + link_vma - info->data_vma);
+  }
   while (link_vma != 0) {
     mark_dict_entry(data,size,vma,link_vma,dis_op);
     link_vma = word_at(data + link_vma - vma);
@@ -757,7 +772,7 @@ static unsigned char *scan_dict(const bfd_byte *data,
     }
 
     while (voc_vma != 0) {
-      scan_voc(data, size, vma, voc_vma, dis_op);
+      scan_voc(data, size, vma, voc_vma, dis_op, info);
       voc_link = voc_vma + wl;
       voc_vma = word_at(data + voc_link - vma);
     }
@@ -1271,11 +1286,13 @@ static void dump_section(bfd *abfd, asection *sect, struct info *info)
   free(data);
 }
 
-static void find_user(bfd *abfd, asection *sect, void *obj)
+static void find_user(bfd *abfd __attribute__((unused)),
+                      asection *sect, void *obj)
 {
   const char *name = bfd_section_name(sect);
   struct info *info = (struct info *)obj;
   asection *usersym_sect = bfd_asymbol_section(*info->usersym);
+  bfd_byte *mem = NULL;
   uint64_t user_vma = bfd_asymbol_value(*info->usersym);
   uint64_t sect_vma = bfd_section_vma(sect);
   uint64_t sect_size = bfd_section_size(sect);
@@ -1284,14 +1301,18 @@ static void find_user(bfd *abfd, asection *sect, void *obj)
 
   if (!strcmp(name, bfd_section_name(usersym_sect)) &&
       user_vma >= sect_vma && user_vma < (sect_vma+sect_size)) {
-    if (!bfd_malloc_and_get_section(abfd, sect, &info->data)) {
-      bfd_perror(prog);
-      info->data = NULL;
-      info->rc = 1;
-    }
     paren_vocs_vma = user_vma + (PAREN_VOCS_OFFSET * wl);
     pvv_offset = paren_vocs_vma - sect_vma;
-    info->voc_head_vma = word_at(info->data + pvv_offset);
+    if (!strcmp(name, ".text")) {
+      mem = info->text;
+    } else if (!strcmp(name, ".data")) {
+      mem = info->data;
+    } else {
+      fprintf(stderr, "warning: info missing %s section\n", name);
+    }
+    if (mem) {
+      info->voc_head_vma = word_at(mem + pvv_offset);
+    }
   }
 }
 
@@ -1425,6 +1446,38 @@ static int disasm(const char *appl, const char *target)
            bfd_get_arch_info(abfd)->bits_per_word,
            bfd_get_arch_info(abfd)->bits_per_address);
 
+    info.text_section = bfd_get_section_by_name(abfd, ".text");
+    if (!info.text_section) {
+      bfd_perror(prog);
+      info.rc = 1;
+      break;
+    }
+    if (!bfd_malloc_and_get_section(abfd,
+                                    info.text_section,
+                                    &info.text)) {
+      bfd_perror(prog);
+      info.rc = 1;
+      break;
+    }
+    info.text_size = bfd_section_size(info.text_section);
+    info.text_vma = bfd_section_vma(info.text_section);
+
+    info.data_section = bfd_get_section_by_name(abfd, ".data");
+    if (!info.data_section) {
+      bfd_perror(prog);
+      info.rc = 1;
+      break;
+    }
+    if (!bfd_malloc_and_get_section(abfd,
+                                    info.data_section,
+                                    &info.data)) {
+      bfd_perror(prog);
+      info.rc = 1;
+      break;
+    }
+    info.data_size = bfd_section_size(info.data_section);
+    info.data_vma = bfd_section_vma(info.data_section);
+
     info.usersym = lookup_sym_name("_USER");
     if (info.usersym) {
       bfd_map_over_sections(abfd,find_user, &info);
@@ -1442,6 +1495,8 @@ static int disasm(const char *appl, const char *target)
       fprintf(stderr, "cannot find exit\n");
     }
 
+    info.dovoc_romsym = lookup_sym_name("DOVOC_ROM");
+
     if (info.rc == 0) {
       bfd_map_over_sections(abfd,handle_section, &info);
       rc = info.rc;
@@ -1451,6 +1506,10 @@ static int disasm(const char *appl, const char *target)
 
   if (rc == 0 && abfd && !bfd_close(abfd)) {
     bfd_perror(prog);
+  }
+
+  if (info.text) {
+    free(info.text);
   }
 
   if (info.data) {
@@ -1486,7 +1545,7 @@ int main(int argc, char *argv[])
       verbose = 1;
       break;
     case 't':
-      target = strdup(optarg);
+      target = optarg;
       break;
     case 'L':
       run = 0;
@@ -1547,10 +1606,6 @@ int main(int argc, char *argv[])
 
   if (arg0) {
     free(arg0);
-  }
-
-  if (target) {
-    free(target);
   }
 
   return rc;

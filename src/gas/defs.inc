@@ -37,19 +37,21 @@
         .endm
         .endif
 
-        .macro $HEAD     lex, name, interp, label
-        .ifdef DICT_IN_DATA
-        .data
+        .macro $HEAD     lex, name, interp, label, prev_label
+        .ifdef DICT_SECTION
+        $DICT_SECTION
         .else
         .text
         .endif
         .ifndef _HEADLESS
         $ALIGN
-        .set    _LFA, .
         .globl \label\()_lfa
 \label\()_lfa:
-        $WORD   _LINK
-        .set    _LINK, _LFA
+        .ifb \prev_label
+        $WORD   0
+        .else
+        $WORD   \prev_label\()_lfa
+        .endif
         .globl \label\()_nfa
 \label\()_nfa:
         .byte   \lex
@@ -84,31 +86,42 @@ __trace_\point\()_\subsys\()_\@:
         $TRACE transfer_cfa
         .endm
 
-        .macro  $CODE lex, name, label
-        $HEAD    \lex, \name, "", \label
+        .macro  $CODE lex, name, label, prev_label
+        $HEAD    \lex, \name, "", \label, \prev_label
         $BLOCK
         .endm
 
-        .macro  $COLON lex, name, label
+        .macro  $COLON lex, name, label, prev_label
         .set    _NEED_DOCOL, 1 
-        $HEAD    \lex, \name, DOCOL, \label
+        $HEAD    \lex, \name, DOCOL, \label, \prev_label
         .endm
 
-        .macro  $CONSTANT lex, name, label
+        .macro  $CONSTANT lex, name, label, prev_label
         .set    _NEED_DOCON, 1 
-        $HEAD    \lex, \name, DOCON, \label
+        $HEAD    \lex, \name, DOCON, \label, \prev_label
         .endm
 
-        .macro  $USER    lex, name, label
+        .macro  $USER    lex, name, label, prev_label
         .set    _NEED_DOUSE, 1 
-        $HEAD    \lex, \name, DOUSE, \label
+        $HEAD    \lex, \name, DOUSE, \label, \prev_label
         .endm
 
-        .macro  $VARIABLE   lex, name, label
+        .macro  $VARIABLE   lex, name, label, prev_label
         .set    _NEED_DOVAR, 1 
-        $HEAD    \lex, \name, DOVAR, \label
+        $HEAD    \lex, \name, DOVAR, \label, \prev_label
         .endm
         
-        .macro  $VOCABULARY   lex, name, label
-        $HEAD    \lex, \name, DOVOC, \label
+        .macro  $VOCABULARY   lex, name, label, prev_label
+        .ifdef ROM
+        $HEAD    \lex, \name, DOVOC_ROM, \label, \prev_label
+        .else
+        $HEAD    \lex, \name, DOVOC, \label, \prev_label
+        .endif
+        .endm
+
+        .macro  $ENTRY   entry_sym, last_sym
+        .globl _ENTRY
+        .globl _LAST
+        .set _ENTRY, \entry_sym
+        .set _LAST, \last_sym\()_lfa
         .endm

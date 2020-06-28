@@ -1,0 +1,33 @@
+Risc V port
+
+* CPU target
+SiFive FE310-G000 RV32IMAC
+16kB ROM
+16kB RAM
+
+* todo
+rv32i
+rv32im (done)
+rv32ic
+rv32imc
+rv64i
+rv64im
+rv64imc
+
+* bugs
+.sdata is not initialized
+* enhancements
+use ISA for model
+* _start.inc
+_NO_DOT_END
+* more
+need high level * um* for "no-m"
+need low level um/mod, etc. for 'm'
+
+: * ( n1 n2 -- n3 ) */mod swap drop ;
+
+: * m* d>s ;
+
+um*
+
+src/impl/u-m-star-slash.fs

@@ -8,4 +8,4 @@
 #define __CONFIG_H__ 1
 /* Name of package */
 #define PACKAGE "binutils"
-#define PACKAGE_VERSION "2.24"
+#define PACKAGE_VERSION "2.34"

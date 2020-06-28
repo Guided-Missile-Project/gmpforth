@@ -8,6 +8,8 @@
    This file derived from Lackey, an example Valgrind tool that does
    some simple program measurement and tracing.
 
+   See also https://valgrind.org/docs/manual/manual-writing-tools.html
+
    Copyright (C) 2002-2012 Nicholas Nethercote
       njn@valgrind.org
 
@@ -43,23 +45,6 @@
 #include "pub_tool_options.h"
 #include "pub_tool_machine.h"     // VG_(fnptr_to_fnentry)
 
-#if !defined(__VALGRIND_MAJOR__)
-#error Unsupported
-#endif
-
-#if __VALGRIND_MAJOR__ != 3
-#error Unsupported
-#endif
-
-#if __VALGRIND_MINOR__ == 8 && defined(VALGRIND_VEX_INJECT_IR)
-/* Valgrind 3.9.0 defines __VALGRIND_MINOR__ as 8 but many interfaces
-   changed, so fix it up here. I would guess it's unlikely to be fixed
-   upstream, as there's already 3.10 which doesn't have this same
-   problem. */
-#undef __VALGRIND_MINOR__
-#define __VALGRIND_MINOR__ 9
-#endif
-
 #define MAX_ADDR 256*1024
 #define MAGIC 0xa55a3003
 
@@ -78,18 +63,6 @@ static struct info {
    struct stat pc;
    struct stat ip;
    struct stat w;
-   #if 0
-   UInt  *pc_count;
-   UInt  *ip_count;
-   UInt  *w_count;
-   ULong  pc_min;
-   ULong  pc_max;
-   ULong  ip_min;
-   ULong  ip_max;
-   UInt   pc_oor;
-   UInt   ip_oor;
-   UInt   w_oor;
-#endif
 } info;
 
 /*------------------------------------------------------------*/
@@ -292,11 +265,7 @@ static Bool gfp_parse_symtab(const Char* symtab)
    return rc;
 }
 
-#if __VALGRIND_MINOR__ < 9
-static Bool gfp_process_cmd_line_option(Char* arg)
-#else
 static Bool gfp_process_cmd_line_option(const HChar* arg)
-#endif
 {
    VG_(umsg)("CLO %s\n", arg);
    if VG_STR_CLO(arg, "--output", clo_output) {
@@ -315,7 +284,7 @@ static Bool gfp_process_cmd_line_option(const HChar* arg)
 }
 
 static void gfp_print_usage(void)
-{  
+{
    VG_(printf)(
       "    --output=file             report file\n"
       "    --verbose=[yes|no]        verbosity\n"
@@ -323,7 +292,7 @@ static void gfp_print_usage(void)
 }
 
 static void gfp_print_debug_usage(void)
-{  
+{
    VG_(printf)(
       "    (none)\n"
       );
@@ -441,8 +410,11 @@ static int gfp_report(void)
    Int i;
    Int fd;
 
-   if (clo_output == NULL) {
+   if (clo_output == NULL || clo_output[0] == 0) {
       clo_output = "gfp.yaml";
+      if (clo_verbose) {
+         VG_(umsg)("Using default output file %s\n", clo_output);
+      }
    }
 
    fd = VG_(fd_open)(clo_output, VKI_O_WRONLY|VKI_O_CREAT|VKI_O_TRUNC, 0644);
@@ -513,7 +485,8 @@ static int gfp_report(void)
 static void gfp_post_clo_init(void)
 {
    /* Make sure guest state is accurate at instruction boundaries */
-   VG_(clo_vex_control).iropt_register_updates
+
+   VG_(clo_vex_control).iropt_register_updates_default
       = VexRegUpdAllregsAtEachInsn;
 
    if (clo_text) {
@@ -566,11 +539,11 @@ static void gfp_insert_pc(IRSB* sbOut, IRStmt* st)
    di = unsafeIRDirty_0_N(0, "gfp_i_pc",
                           VG_(fnptr_to_fnentry)( &gfp_i_pc ),
                           mkIRExprVec_2(offset, inf));
-#if 0
-   VG_(umsg)("\r\nDI@%lld: ", addr);
-   ppIRDirty(di);
-   VG_(umsg)("\r\n");
-#endif
+   if (clo_verbose) {
+     VG_(umsg)("\r\nDI@%lld: ", addr);
+     ppIRDirty(di);
+     VG_(umsg)("\r\n");
+   }
    /* Insert our call */
    addStmtToIRSB( sbOut,  IRStmt_Dirty(di));
 
@@ -581,27 +554,21 @@ static void gfp_insert_ip(IRSB* sbOut, IRStmt* st)
    IRDirty*   di;
    IRExpr* inf = mkIRExpr_HWord( (HWord)&info );
 
-#if __VALGRIND_MINOR__ < 9
    di = unsafeIRDirty_0_N(0, "gfp_i_ip",
                           VG_(fnptr_to_fnentry)( &gfp_i_ip ),
-                          mkIRExprVec_1(inf));
-   di->needsBBP = True;
-#else
-   di = unsafeIRDirty_0_N(0, "gfp_i_ip",
-                          VG_(fnptr_to_fnentry)( &gfp_i_ip ),
-                          mkIRExprVec_2(IRExpr_BBPTR(), inf));
-#endif
+                          mkIRExprVec_2(IRExpr_GSPTR(), inf));
+
    di->mFx = Ifx_None;
    di->nFxState = 1;
    VG_(memset)(&di->fxState, 0, sizeof(di->fxState));
    di->fxState[0].fx = Ifx_Read;
    di->fxState[0].offset = IP_OFFSET;
    di->fxState[0].size = REGLEN;
-#if 0
-   VG_(umsg)("\r\nDI@%lld: ", st->Ist.IMark.addr);
-   ppIRDirty(di);
-   VG_(umsg)("\r\n");
-#endif
+   if (clo_verbose) {
+     VG_(umsg)("\r\nDI@%lu: ", st->Ist.IMark.addr);
+     ppIRDirty(di);
+     VG_(umsg)("\r\n");
+   }
    /* Insert our call */
    addStmtToIRSB( sbOut,  IRStmt_Dirty(di));
 
@@ -612,27 +579,21 @@ static void gfp_insert_w(IRSB* sbOut, IRStmt* st)
    IRDirty*   di;
    IRExpr* inf = mkIRExpr_HWord( (HWord)&info );
 
-#if __VALGRIND_MINOR__ < 9
    di = unsafeIRDirty_0_N(0, "gfp_i_w",
                           VG_(fnptr_to_fnentry)( &gfp_i_w ),
-                          mkIRExprVec_1(inf));
-   di->needsBBP = True;
-#else
-   di = unsafeIRDirty_0_N(0, "gfp_i_w",
-                          VG_(fnptr_to_fnentry)( &gfp_i_w ),
-                          mkIRExprVec_2(IRExpr_BBPTR(), inf));
-#endif
+                          mkIRExprVec_2(IRExpr_GSPTR(), inf));
+
    di->mFx = Ifx_None;
    di->nFxState = 1;
    VG_(memset)(&di->fxState, 0, sizeof(di->fxState));
    di->fxState[0].fx = Ifx_Read;
    di->fxState[0].offset = W_OFFSET;
    di->fxState[0].size = REGLEN;
-#if 0
-   VG_(umsg)("\r\nDI@%lld: ", st->Ist.IMark.addr);
-   ppIRDirty(di);
-   VG_(umsg)("\r\n");
-#endif
+   if (clo_verbose) {
+     VG_(umsg)("\r\nDI@%lu: ", st->Ist.IMark.addr);
+     ppIRDirty(di);
+     VG_(umsg)("\r\n");
+   }
    /* Insert our call */
    addStmtToIRSB( sbOut,  IRStmt_Dirty(di));
 
@@ -667,12 +628,10 @@ static void gfp_insert(IRSB* sbOut, IRStmt* st)
 
 static
 IRSB* gfp_instrument ( VgCallbackClosure* closure,
-                       IRSB* sbIn, 
-                       VexGuestLayout* layout, 
-                       VexGuestExtents* vge,
-#if __VALGRIND_MINOR__ > 8
-                      VexArchInfo* archinfo_host,
-#endif
+                       IRSB* sbIn,
+                       const VexGuestLayout* layout,
+                       const VexGuestExtents* vge,
+                       const VexArchInfo* archinfo_host,
                        IRType gWordTy, IRType hWordTy )
 {
    Int        i = 0;

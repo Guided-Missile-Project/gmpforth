@@ -1,0 +1,7 @@
+.aarch64
+.arm
+.mips32
+.mips64
+.mmix
+.riscv
+profile/.ubfd

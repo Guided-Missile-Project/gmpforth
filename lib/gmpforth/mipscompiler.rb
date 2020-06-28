@@ -53,7 +53,7 @@ class GMPForth::MIPSCompiler < GMPForth::GASCompiler
     $stderr.puts(cmd) if @verbose
     if !system(cmd)
       $stderr.puts("#{cmd} returned #{$?}")
-      exit $?
+      exit $?.to_i
     end
   end
   #

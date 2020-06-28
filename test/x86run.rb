@@ -104,7 +104,7 @@ module X86Run
       end
     end
     n += 1
-    gdb.send("#{n}-data-evaluate-expression sp_save")
+    gdb.send("#{n}-data-evaluate-expression (int)sp_save")
     rsp = gdb.receive
     sp1 = rsp.result.value['value']
     if !sp0.nil? && !sp1.nil?

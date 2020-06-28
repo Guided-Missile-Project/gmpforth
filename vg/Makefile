@@ -24,12 +24,13 @@ M32LIB := -L$(VGLIB32) -lcoregrind-x86-linux -lvex-x86-linux -lgcc
 
 LDFLAGS := -static -nodefaultlibs -nostartfiles -u _start -Wl,-Ttext-segment=0x38000000
 
-GOAL := $(TOOL)-x86-linux
+GOAL :=
 
 ifeq (x86_64,$(shell uname -m))
 GOAL += $(TOOL)-amd64-linux
 SYSLIB := $(LIB64)
 else
+GOAL += $(TOOL)-x86-linux
 SYSLIB := $(LIB64)
 endif
 

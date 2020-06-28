@@ -263,3 +263,7 @@
         add     \x, \x, w
         .endm
 
+        .macro  $DICT_SECTION
+        .data
+        .endm
+

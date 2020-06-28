@@ -32,9 +32,8 @@ GENERATED += syscall.inc
 GENERATED += const.inc
 GENERATED += *.d
 
-# FIXME: pick up from .cross
-AS := $(TARGET)-as
-LD := $(TARGET)-ld
+AS := $(CROSS_MMIX)as
+LD := $(CROSS_MMIX)ld
 
 all: forth.mmo
 

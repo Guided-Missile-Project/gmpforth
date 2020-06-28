@@ -16,6 +16,7 @@ class GMPForth::Colon
   end
 
   def add(p)
+    raise "oops: need something to add" if p.nil?
     @body << p
   end
 

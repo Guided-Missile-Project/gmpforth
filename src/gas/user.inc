@@ -85,8 +85,7 @@ _SCRATCH:
         .space  SCRATCH_SIZE
 
         .set    paren_user_default, _USER
-        .set    _LAST, _LFA
-        .set    forth_last, _LFA
+        .set    forth_last, _LAST
 
         .globl _USER_PAREN_SRC0
         .globl _USER_PAREN_SRCEND

@@ -1,9 +1,7 @@
 #
 #  Makefile
-# 
+#
 #  Copyright (c) 2010 by Daniel Kelley
-# 
-#  $Id:$
 #
 
 RUBY19 ?= ruby19
@@ -16,9 +14,13 @@ LIDX := src/core/Library.yaml
 LIDX += src/core-ext/Library.yaml
 LIDX += src/double/Library.yaml
 LIDX += src/double-f/Library.yaml
+LIDX += src/double-ext/Library.yaml
 LIDX += src/exception/Library.yaml
 LIDX += src/impl/Library.yaml
+LIDX += src/impl/parameter/Library.yaml
+LIDX += src/impl-ext/Library.yaml
 LIDX += src/search/Library.yaml
+LIDX += src/search-ext/Library.yaml
 LIDX += src/string/Library.yaml
 LIDX += src/tools/Library.yaml
 LIDX += src/tools-ext/Library.yaml
@@ -31,6 +33,7 @@ LIDX += src/f83/sp-none/Library.yaml
 LIDX += src/f83/sp-down/Library.yaml
 LIDX += src/f83/sp-up/Library.yaml
 LIDX += src/fig/Library.yaml
+LIDX += src/file/Library.yaml
 LIDX += src/gas/common/Library.yaml
 LIDX += src/gas/mmix/common/Library.yaml
 LIDX += src/gas/pure/Library.yaml
@@ -48,6 +51,8 @@ LIDX += src/gas/mips/32/lib/Library.yaml
 LIDX += src/gas/mips/64/lib/Library.yaml
 LIDX += src/gas/i386/lib/Library.yaml
 LIDX += src/gas/x86_64/lib/Library.yaml
+LIDX += src/gas/riscv/i/Library.yaml
+LIDX += src/gas/riscv/m/Library.yaml
 
 FILES := image32be
 FILES += image32le
@@ -136,6 +141,11 @@ RELEASE_TESTS += test-gas-mips-64
 HAYES_TESTS   += test-ht-gas-mips-64
 FORTH += gas-mips-64-forth
 include .mips64
+endif
+
+# add if riscv
+ifneq (,$(wildcard .riscv))
+include .riscv
 endif
 
 RELEASE_TESTS += $(HAYES_TESTS)
@@ -231,6 +241,30 @@ test-ht-gas-mips-64: gas-mips-64-forth
 	$(RUBY) test/test_ht_gas_mips_64.rb
 
 
+test-gas-rv32i: gas-rv32i-forth
+	$(RUBY) test/test_gas_rv32i.rb
+
+test-ht-gas-rv32i: gas-rv32i-forth
+	$(RUBY) test/test_ht_gas_rv32i.rb
+
+test-gas-rv32ic: gas-rv32ic-forth
+	$(RUBY) test/test_gas_rv32ic.rb
+
+test-ht-gas-rv32ic: gas-rv32ic-forth
+	$(RUBY) test/test_ht_gas_rv32ic.rb
+
+test-gas-rv32im: gas-rv32im-forth
+	$(RUBY) test/test_gas_rv32im.rb
+
+test-ht-gas-rv32im: gas-rv32im-forth
+	$(RUBY) test/test_ht_gas_rv32im.rb
+
+test-gas-rv64im: gas-rv64im-forth
+	$(RUBY) test/test_gas_rv64im.rb
+
+test-ht-gas-rv64im: gas-rv64im-forth
+	$(RUBY) test/test_ht_gas_rv64im.rb
+
 
 test-cli:
 	bin/test_cli
@@ -258,8 +292,8 @@ cvm-clean:
 
 cvm/cvm: cvm
 
-cvm-test: cvm image32le 
-	$(RUBY) -rproject test/test_cvm.rb	
+cvm-test: cvm image32le
+	$(RUBY) -rproject test/test_cvm.rb
 
 i386-forth: generated
 	$(MAKE) -C src/gas/i386 forth
@@ -331,6 +365,42 @@ gas-mips-64-forth:
 gas-mips-64-clean:
 	$(MAKE) -C src/gas/mips/64 clean
 
+gas-rv32i-forth:
+	$(MAKE) -C src/gas/riscv/rv32i
+
+gas-rv32i-run:
+	$(MAKE) -C src/gas/riscv/rv32i run
+
+gas-rv32i-clean:
+	$(MAKE) -C src/gas/riscv/rv32i clean
+
+gas-rv32ic-forth:
+	$(MAKE) -C src/gas/riscv/rv32ic
+
+gas-rv32ic-run:
+	$(MAKE) -C src/gas/riscv/rv32ic run
+
+gas-rv32ic-clean:
+	$(MAKE) -C src/gas/riscv/rv32ic clean
+
+gas-rv32im-forth:
+	$(MAKE) -C src/gas/riscv/rv32im
+
+gas-rv32im-run:
+	$(MAKE) -C src/gas/riscv/rv32im run
+
+gas-rv32im-clean:
+	$(MAKE) -C src/gas/riscv/rv32im clean
+
+gas-rv64im-forth:
+	$(MAKE) -C src/gas/riscv/rv64im
+
+gas-rv64im-run:
+	$(MAKE) -C src/gas/riscv/rv64im run
+
+gas-rv64im-clean:
+	$(MAKE) -C src/gas/riscv/rv64im clean
+
 generated: $(GENERATED)
 
 lib: $(LIDX)
@@ -379,6 +449,8 @@ show_tests:
 clean: cvm-clean i386-clean gas-vm-clean x86_64-clean doc-clean \
 	gas-mmix-pure-clean gas-mmix-c10-clean gas-mmix-c11-clean \
 	gas-arm-a32-clean gas-arm-t32-clean gas-arm-a64-clean \
-	gas-mips-32-clean gas-mips-64-clean
+	gas-mips-32-clean gas-mips-64-clean \
+	gas-rv32i-clean gas-rv32ic-clean \
+	gas-rv32im-clean gas-rv64im-clean
 	-rm -rf $(FILES) $(GENERATED) $(COV_OUTPUT) output
 

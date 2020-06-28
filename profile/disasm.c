@@ -6,6 +6,9 @@
 */
 
 #include "config.h"
+#if !defined PACKAGE && !defined PACKAGE_VERSION
+#error config.h malformed
+#endif
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -39,11 +42,18 @@ typedef int (*is_does_comma_f)(const bfd_byte *data);
 struct info
 {
   int rc;
+  bfd_byte *text;
+  uint64_t text_size;
+  asection *text_section;
+  uint64_t text_vma;
   bfd_byte *data;
-  bfd_byte data_size;
+  uint64_t data_size;
+  asection *data_section;
+  uint64_t data_vma;
   asymbol **usersym;
   asymbol **doessym;
   asymbol **exitsym;
+  asymbol **dovoc_romsym;
   uint64_t voc_head_vma;
 };
 
@@ -92,6 +102,7 @@ static int is_does_comma_arm32(const bfd_byte *data);
 static int is_does_comma_thumb32(const bfd_byte *data);
 static int is_does_comma_arm64(const bfd_byte *data);
 static int is_does_comma_mips32(const bfd_byte *data);
+static int is_does_comma_riscv(const bfd_byte *data);
 
 static struct does_comma_checker_s {
   const char *target;
@@ -105,6 +116,8 @@ static struct does_comma_checker_s {
   {"aarch64", is_does_comma_arm64},
   {"mips:3000", is_does_comma_mips32},
   {"mips:4000", is_does_comma_mips32},
+  {"riscv:rv32", is_does_comma_riscv},
+  {"riscv:rv64", is_does_comma_riscv},
 };
 
 /* compare symbols by name */
@@ -583,6 +596,19 @@ static int is_does_comma_mips32(const bfd_byte *data)
   return !memcmp(a,b,sizeof(a));
 }
 
+static int is_does_comma_riscv(const bfd_byte *data)
+{
+  unsigned char a[4];
+  unsigned char b[4] = {0xef, 0x00, 0x00, 0x00};
+  unsigned char m[4] = {0xff, 0x00, 0x00, 0x00};
+  a[0] = *UCHAR_PTR(data+0) & m[0];
+  a[1] = *UCHAR_PTR(data+1) & m[1];
+  a[2] = *UCHAR_PTR(data+2) & m[2];
+  a[3] = *UCHAR_PTR(data+3) & m[3];
+
+  return !memcmp(a,b,sizeof(a));
+}
+
 static void mark_paren_semi_code(const bfd_byte *data,
                                  uint64_t size,
                                  uint64_t vma,
@@ -690,9 +716,17 @@ static void scan_voc(const bfd_byte *data,
                      uint64_t size,
                      uint64_t vma,
                      uint64_t link_vma,
-                     unsigned char *dis_op)
+                     unsigned char *dis_op,
+                     struct info *info)
 {
   link_vma = word_at(data + link_vma - vma);
+  if (info->dovoc_romsym) {
+    /* ROMable vocabulary first parameter word has another level of
+     * indirection that points the head of the vocabulary list in the
+     * data segment. The resulting VMA should be in the text segment.
+     */
+    link_vma = word_at(info->data + link_vma - info->data_vma);
+  }
   while (link_vma != 0) {
     mark_dict_entry(data,size,vma,link_vma,dis_op);
     link_vma = word_at(data + link_vma - vma);
@@ -738,7 +772,7 @@ static unsigned char *scan_dict(const bfd_byte *data,
     }
 
     while (voc_vma != 0) {
-      scan_voc(data, size, vma, voc_vma, dis_op);
+      scan_voc(data, size, vma, voc_vma, dis_op, info);
       voc_link = voc_vma + wl;
       voc_vma = word_at(data + voc_link - vma);
     }
@@ -810,7 +844,7 @@ static void print_address(bfd_vma addr,
   if (labels) {
     snprintf(bfd_disassembler.buf+len,
              sizeof(bfd_disassembler.buf)-len,
-             "%8"PRIx64"x <%s>", (uint64_t)addr, bfd_asymbol_name(*labels));
+             "%8"PRIx64" <%s>", (uint64_t)addr, bfd_asymbol_name(*labels));
   } else {
     snprintf(bfd_disassembler.buf+len,
              sizeof(bfd_disassembler.buf)-len,
@@ -837,40 +871,43 @@ static int disasm_fprintf(FILE *stream __attribute__((unused)),
 
 static int setup_machine(struct disassembler *d)
 {
-  d->disassemble = disassembler(d->abfd);
-  if (d->disassemble) {
-    d->info.flavour = bfd_get_flavour(d->abfd);
-    d->info.arch = bfd_get_arch(d->abfd);
-    d->info.mach = bfd_get_mach(d->abfd);
-    d->info.disassembler_options = "";
-    d->info.octets_per_byte = bfd_octets_per_byte(d->abfd);
-    d->info.skip_zeroes = 0;
-    d->info.skip_zeroes_at_end = 0;
-    d->info.disassembler_needs_relocs = FALSE;
+  d->info.flavour = bfd_get_flavour(d->abfd);
+  d->info.arch = bfd_get_arch(d->abfd);
+  d->info.mach = bfd_get_mach(d->abfd);
+  d->info.disassembler_options = "";
+  d->info.octets_per_byte = bfd_arch_mach_octets_per_byte
+    (bfd_get_arch_info(d->abfd)->arch, bfd_get_arch_info(d->abfd)->mach);
+  d->info.skip_zeroes = 0;
+  d->info.skip_zeroes_at_end = 0;
+  d->info.disassembler_needs_relocs = FALSE;
 
-    if (bfd_big_endian(d->abfd)) {
-      d->info.display_endian = d->info.endian = BFD_ENDIAN_BIG;
-      to_h_uint32_t = d_be32toh;
-      to_h_uint64_t = d_be64toh;
-    } else if (bfd_little_endian(d->abfd)) {
-      d->info.display_endian = d->info.endian = BFD_ENDIAN_LITTLE;
-      to_h_uint32_t = d_le32toh;
-      to_h_uint64_t = d_le64toh;
-    } else {
-      d->info.endian = BFD_ENDIAN_UNKNOWN;
-      fprintf(stderr, "error: target endian is unknown");
-      assert(0);
-    }
-    d->info.fprintf_func = (fprintf_ftype)disasm_fprintf;
-    d->info.stream = stdout;
-    d->info.application_data = d;
-    /* d->info.section set later */
-    /* d->info.symbols set later */
-    /* d->info.num_symbols set later */
-    d->info.read_memory_func = read_memory;
-    d->info.memory_error_func = memory_error;
-    d->info.print_address_func = print_address;
+  if (bfd_big_endian(d->abfd)) {
+    d->info.display_endian = d->info.endian = BFD_ENDIAN_BIG;
+    to_h_uint32_t = d_be32toh;
+    to_h_uint64_t = d_be64toh;
+  } else if (bfd_little_endian(d->abfd)) {
+    d->info.display_endian = d->info.endian = BFD_ENDIAN_LITTLE;
+    to_h_uint32_t = d_le32toh;
+    to_h_uint64_t = d_le64toh;
+  } else {
+    d->info.endian = BFD_ENDIAN_UNKNOWN;
+    fprintf(stderr, "error: target endian is unknown");
+    assert(0);
   }
+  d->info.fprintf_func = (fprintf_ftype)disasm_fprintf;
+  d->info.stream = stdout;
+  d->info.application_data = d;
+  /* d->info.section set later */
+  /* d->info.symbols set later */
+  /* d->info.num_symbols set later */
+  d->info.read_memory_func = read_memory;
+  d->info.memory_error_func = memory_error;
+  d->info.print_address_func = print_address;
+
+  d->disassemble = disassembler(d->info.arch,
+                                (d->info.endian == BFD_ENDIAN_BIG),
+                                d->info.mach,
+                                d->abfd);
 
   return (d->disassemble != NULL);
 }
@@ -966,7 +1003,7 @@ static uint64_t disasm_word(const bfd_byte *data,
       if (labels) {
         show_labels(labels);
       }
-      printf("%8"PRIx64"x %8"PRIx64, vma+idx, w);
+      printf("%8"PRIx64" %8"PRIx64, vma+idx, w);
       spaces(WIDTH);
       /* don't mark an executable entry as live if it's just a
          parameter for (dolit) */
@@ -1017,7 +1054,7 @@ static uint64_t disasm_cfa(const bfd_byte *data,
     if (labels) {
       show_labels(labels);
     }
-    printf("%8"PRIx64"x %8"PRIx64, vma+idx, itp);
+    printf("%8"PRIx64" %8"PRIx64, vma+idx, itp);
     spaces(WIDTH);
     printf("> %s %s\n", ientry->name, centry ? centry->name : "");
   } else {
@@ -1152,10 +1189,10 @@ static void disasm_section(bfd *abfd, asection *sect, struct info *info)
   uint64_t vma;
   bfd_byte *data;
   unsigned char *dis_op;
-  const char *sname = bfd_section_name(abfd, sect);
+  const char *sname = bfd_section_name(sect);
   printf("*** section %s\n", sname);
   bfd_disassembler.info.section = sect;
-  size = bfd_get_section_size(sect);
+  size = bfd_section_size(sect);
 
   if (!bfd_malloc_and_get_section(abfd, sect, &data)) {
     bfd_perror(prog);
@@ -1163,7 +1200,7 @@ static void disasm_section(bfd *abfd, asection *sect, struct info *info)
     return;
   }
 
-  vma = bfd_get_section_vma(abfd, sect);
+  vma = bfd_section_vma(sect);
 
   bfd_disassembler.size = size;
   bfd_disassembler.vma = vma;
@@ -1196,8 +1233,8 @@ static void dump_section(bfd *abfd, asection *sect, struct info *info)
   int offset = 0;
   const char *sname;
 
-  sname = bfd_section_name(abfd, sect);
-  size = bfd_get_section_size(sect);
+  sname = bfd_section_name(sect);
+  size = bfd_section_size(sect);
   printf("*** section %s\n", sname);
 
   if (!bfd_malloc_and_get_section(abfd, sect, &data)) {
@@ -1206,7 +1243,7 @@ static void dump_section(bfd *abfd, asection *sect, struct info *info)
     return;
   }
 
-  vma = bfd_get_section_vma(abfd, sect);
+  vma = bfd_section_vma(sect);
 
   sym = lookup_sym_value(vma);
   while (sym) {
@@ -1214,7 +1251,7 @@ static void dump_section(bfd *abfd, asection *sect, struct info *info)
     asymbol **next = NULL;
 
     /* make sure we are in the same section... */
-    if (strcmp(sname, bfd_section_name(abfd, bfd_get_section(*sym)))) {
+    if (strcmp(sname, bfd_section_name(bfd_asymbol_section(*sym)))) {
       break;
     }
 
@@ -1249,33 +1286,39 @@ static void dump_section(bfd *abfd, asection *sect, struct info *info)
   free(data);
 }
 
-static void find_user(bfd *abfd, asection *sect, void *obj)
+static void find_user(bfd *abfd __attribute__((unused)),
+                      asection *sect, void *obj)
 {
-  const char *name = bfd_get_section_name(abfd, sect);
+  const char *name = bfd_section_name(sect);
   struct info *info = (struct info *)obj;
-  asection *usersym_sect = bfd_get_section(*info->usersym);
+  asection *usersym_sect = bfd_asymbol_section(*info->usersym);
+  bfd_byte *mem = NULL;
   uint64_t user_vma = bfd_asymbol_value(*info->usersym);
-  uint64_t sect_vma = bfd_get_section_vma(abfd, sect);
-  uint64_t sect_size = bfd_get_section_size(sect);
+  uint64_t sect_vma = bfd_section_vma(sect);
+  uint64_t sect_size = bfd_section_size(sect);
   uint64_t paren_vocs_vma;
   uint64_t pvv_offset;
 
-  if (!strcmp(name, bfd_get_section_name(abfd, usersym_sect)) &&
+  if (!strcmp(name, bfd_section_name(usersym_sect)) &&
       user_vma >= sect_vma && user_vma < (sect_vma+sect_size)) {
-    if (!bfd_malloc_and_get_section(abfd, sect, &info->data)) {
-      bfd_perror(prog);
-      info->data = NULL;
-      info->rc = 1;
-    }
     paren_vocs_vma = user_vma + (PAREN_VOCS_OFFSET * wl);
     pvv_offset = paren_vocs_vma - sect_vma;
-    info->voc_head_vma = word_at(info->data + pvv_offset);
+    if (!strcmp(name, ".text")) {
+      mem = info->text;
+    } else if (!strcmp(name, ".data")) {
+      mem = info->data;
+    } else {
+      fprintf(stderr, "warning: info missing %s section\n", name);
+    }
+    if (mem) {
+      info->voc_head_vma = word_at(mem + pvv_offset);
+    }
   }
 }
 
 static void handle_section(bfd *abfd, asection *sect, void *obj)
 {
-  const char *name = bfd_get_section_name(abfd, sect);
+  const char *name = bfd_section_name(sect);
   struct info *info = (struct info *)obj;
 
   if (!strcmp(name, ".text")) {
@@ -1391,7 +1434,6 @@ static int disasm(const char *appl, const char *target)
     }
 
     /* let's not get too weird yet */
-    assert(bfd_octets_per_byte(abfd) == 1);
     assert(bfd_arch_mach_octets_per_byte(bfd_get_arch_info(abfd)->arch,
                                          bfd_get_arch_info(abfd)->mach) == 1);
 
@@ -1403,6 +1445,38 @@ static int disasm(const char *appl, const char *target)
                                    bfd_get_arch_info(abfd)->mach),
            bfd_get_arch_info(abfd)->bits_per_word,
            bfd_get_arch_info(abfd)->bits_per_address);
+
+    info.text_section = bfd_get_section_by_name(abfd, ".text");
+    if (!info.text_section) {
+      bfd_perror(prog);
+      info.rc = 1;
+      break;
+    }
+    if (!bfd_malloc_and_get_section(abfd,
+                                    info.text_section,
+                                    &info.text)) {
+      bfd_perror(prog);
+      info.rc = 1;
+      break;
+    }
+    info.text_size = bfd_section_size(info.text_section);
+    info.text_vma = bfd_section_vma(info.text_section);
+
+    info.data_section = bfd_get_section_by_name(abfd, ".data");
+    if (!info.data_section) {
+      bfd_perror(prog);
+      info.rc = 1;
+      break;
+    }
+    if (!bfd_malloc_and_get_section(abfd,
+                                    info.data_section,
+                                    &info.data)) {
+      bfd_perror(prog);
+      info.rc = 1;
+      break;
+    }
+    info.data_size = bfd_section_size(info.data_section);
+    info.data_vma = bfd_section_vma(info.data_section);
 
     info.usersym = lookup_sym_name("_USER");
     if (info.usersym) {
@@ -1421,6 +1495,8 @@ static int disasm(const char *appl, const char *target)
       fprintf(stderr, "cannot find exit\n");
     }
 
+    info.dovoc_romsym = lookup_sym_name("DOVOC_ROM");
+
     if (info.rc == 0) {
       bfd_map_over_sections(abfd,handle_section, &info);
       rc = info.rc;
@@ -1430,6 +1506,10 @@ static int disasm(const char *appl, const char *target)
 
   if (rc == 0 && abfd && !bfd_close(abfd)) {
     bfd_perror(prog);
+  }
+
+  if (info.text) {
+    free(info.text);
   }
 
   if (info.data) {
@@ -1465,7 +1545,7 @@ int main(int argc, char *argv[])
       verbose = 1;
       break;
     case 't':
-      target = strdup(optarg);
+      target = optarg;
       break;
     case 'L':
       run = 0;
@@ -1526,10 +1606,6 @@ int main(int argc, char *argv[])
 
   if (arg0) {
     free(arg0);
-  }
-
-  if (target) {
-    free(target);
   }
 
   return rc;

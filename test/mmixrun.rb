@@ -104,7 +104,8 @@ module MMIXRun
 
   def mmixsymtab(imagefile)
     symtab = {}
-    IO.popen("mmix-nm #{imagefile}") do |f|
+    cross = ENV["CROSS_MMIX"] || ENV['CROSS'] || "#{@model}-elf-"
+    IO.popen("#{cross}nm #{imagefile}") do |f|
       f.readlines.each do |line|
         if line =~ /(\w+)\s+(\w+)\s+(\w+)/
           symtab[$3] = $1.to_i(16)

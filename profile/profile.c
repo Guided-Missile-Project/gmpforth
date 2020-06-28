@@ -53,15 +53,13 @@ static int strmatch(const char *a, const char *b)
   return strncmp(a,b,strlen(b));
 }
 
-/* bfd_section_name() is a macro that doesn't use the bfd* arg so is
-   unused as an argument here */
-static int scan_symbol(bfd *abfd __attribute__((unused)), asymbol *symbol)
+static int scan_symbol(asymbol *symbol)
 {
   const char *sect_name;
   const char *sym_name;
   unsigned long value;
 
-  sect_name = bfd_section_name(abfd, bfd_get_section(symbol));
+  sect_name = bfd_section_name(bfd_asymbol_section(symbol));
   if (!strcmp(sect_name, ".text")) {
     sym_name = bfd_asymbol_name(symbol);
     value = bfd_asymbol_value(symbol);
@@ -103,7 +101,7 @@ static int scan_prog(bfd *abfd)
     }
 
     for (i=0; i<count; i++) {
-      rc = scan_symbol(abfd, symtab[i]);
+      rc = scan_symbol(symtab[i]);
       if (rc) {
         break;
       }

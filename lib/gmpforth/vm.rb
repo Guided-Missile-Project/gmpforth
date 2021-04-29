@@ -836,7 +836,7 @@ class GMPForth::VM
       b7 = (value >> 56) & 0xff
       ((b0 << 56) | (b1 << 48) | (b2 << 40) | (b3 << 32) |
        (b4 << 24) | (b5 << 16) | (b6 <<  8) | (b7))
-    elsif
+    else
       raise "unsupported"
     end
   end

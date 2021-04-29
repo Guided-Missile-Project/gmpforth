@@ -215,21 +215,21 @@ module VMOp
     _docol = @vm.compile(nil, nil, :vm_docol, :vm_next)
     _exit = @vm.compile(nil, nil, :vm_exit, :vm_next)
     _0branch = @vm.compile(nil, nil, :vm_zero_branch, :vm_next)
-    _0 = @vm.compile(nil, nil, :vm_push_0, :vm_next)
-    _1 = @vm.compile(nil, nil, :vm_push_1, :vm_next)
+    _zero = @vm.compile(nil, nil, :vm_push_0, :vm_next)
+    _one = @vm.compile(nil, nil, :vm_push_1, :vm_next)
     _test = 
       @vm.compile(nil, 
                   @vm.fetch(_docol), 
-                  _0,
+                  _zero,
                   _0branch,
                   '@L1',
                   'L2',
-                  _1,
+                  _one,
                   _0branch,
                   '@L3',
                   _halt,
                   'L1',
-                  _0,
+                  _zero,
                   _0branch,
                   '@L2',
                   'L3',
@@ -270,12 +270,12 @@ module VMOp
     _docol = @vm.compile(nil, nil, :vm_docol, :vm_next)
     _exit = @vm.compile(nil, nil, :vm_exit, :vm_next)
     _0branchnp = @vm.compile(nil, nil, :vm_zero_branch_no_pop, :vm_next)
-    _0 = @vm.compile(nil, nil, :vm_push_0, :vm_next)
+    _zero = @vm.compile(nil, nil, :vm_push_0, :vm_next)
     _1plus = @vm.compile(nil, nil, :vm_push_1, :vm_plus, :vm_next)
     _test = 
       @vm.compile(nil, 
                   @vm.fetch(_docol), 
-                  _0,
+                  _zero,
                   _0branchnp,
                   '@L1',
                   'L2',

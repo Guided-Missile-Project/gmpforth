@@ -296,7 +296,7 @@ class GMPForth::Compiler
   # add a library directory
   def library(dir)
     idxfile = File.expand_path(LIB_INDEX, dir)
-    if File.exists?(idxfile)
+    if File.exist?(idxfile)
       File.open(idxfile, 'r') do |f|
         map = YAML::load(f)
 

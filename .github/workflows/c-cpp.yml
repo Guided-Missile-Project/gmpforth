@@ -13,6 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: prep
+      run: |
+        sudo apt-get update
+        sudo apt-get install gcc-multilib
+        sudo apt-get install binutils-dev
+        gcc -v
+        objdump -v
     - name: make
       run: make
     - name: make check

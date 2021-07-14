@@ -154,7 +154,9 @@ INC := -I. -Isrc/vm -Isrc
 
 .PHONY: test cvm all doc lib generated
 
-all: lib generated image32be image32le cvm $(FORTH) profile_tools
+all: forth
+
+forth: lib generated $(FORTH)
 
 test: generated
 	bin/test
@@ -284,7 +286,7 @@ image32be: src/vm/forth32.fs src/forth-vm.fs src/fig/cold.fs
 image32le: src/vm/forth32.fs src/forth-vm.fs src/fig/cold.fs
 	bin/gmpfc $(INC) -El -B$@ -H $^
 
-cvm: generated image32le
+cvm: generated image32le image32be
 	$(MAKE) -C cvm
 
 cvm-clean:
@@ -422,6 +424,7 @@ coverage: profile_tools vg_tools output $(COV_TARGET)
 	-rm -f $(COV_OUTPUT)
 	PROFILE=vg/profile PROFILE_OUTPUT=output $(MAKE) $(COV_HAYES_TEST) $(COV_OUTPUT)
 
+# needs special 'universal' binutils build
 profile_tools:
 	$(MAKE) -C profile
 
@@ -446,7 +449,7 @@ doc-clean:
 show_tests:
 	@echo $(RELEASE_TESTS) $(HAYES_TESTS)
 
-check: $(shell uname -m)-test
+check: forth $(shell uname -m)-test
 
 clean: cvm-clean i386-clean gas-vm-clean x86_64-clean doc-clean \
 	gas-mmix-pure-clean gas-mmix-c10-clean gas-mmix-c11-clean \

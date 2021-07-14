@@ -169,101 +169,101 @@ test19-le: generated
 	$(RUBY19) bin/test -- -El
 
 test-cvm:  generated cvm
-	$(RUBY) test/test_cvm.rb
+	$(RUBY) test/test_cvm.rb $(TEST_ARG)
 
 test-gdb-mi2:
-	$(RUBY) test/test_gdb_mi2.rb
+	$(RUBY) test/test_gdb_mi2.rb $(TEST_ARG)
 
 test-gas-i386: i386-forth lib
-	$(RUBY) test/test_gas_i386.rb
+	$(RUBY) test/test_gas_i386.rb $(TEST_ARG)
 
 test-gas-x86_64: x86_64-forth lib
-	$(RUBY) test/test_gas_x86_64.rb
+	$(RUBY) test/test_gas_x86_64.rb $(TEST_ARG)
 
 test-ht-cvm: cvm
-	$(RUBY) test/test_ht_cvm.rb
+	$(RUBY) test/test_ht_cvm.rb $(TEST_ARG)
 
 test-ht-gas-i386: i386-forth
-	$(RUBY) test/test_ht_gas_i386.rb
+	$(RUBY) test/test_ht_gas_i386.rb $(TEST_ARG)
 
 test-ht-gas-vm: gas-vm-forth
-	$(RUBY) test/test_ht_gas_vm.rb
+	$(RUBY) test/test_ht_gas_vm.rb $(TEST_ARG)
 
 test-ht-gas-x86_64: x86_64-forth
-	$(RUBY) test/test_ht_gas_x86_64.rb
+	$(RUBY) test/test_ht_gas_x86_64.rb $(TEST_ARG)
 
 test-gas-mmix-pure: gas-mmix-pure-forth
-	$(RUBY) test/test_gas_mmix_pure.rb
+	$(RUBY) test/test_gas_mmix_pure.rb $(TEST_ARG)
 
 test-gas-mmix-c10: gas-mmix-c10-forth
-	$(RUBY) test/test_gas_mmix_c10.rb
+	$(RUBY) test/test_gas_mmix_c10.rb $(TEST_ARG)
 
 test-gas-mmix-c11: gas-mmix-c11-forth
-	$(RUBY) test/test_gas_mmix_c11.rb
+	$(RUBY) test/test_gas_mmix_c11.rb $(TEST_ARG)
 
 test-ht-gas-mmix-pure: gas-mmix-pure-forth
-	$(RUBY) test/test_ht_gas_mmix_pure.rb
+	$(RUBY) test/test_ht_gas_mmix_pure.rb $(TEST_ARG)
 
 test-ht-gas-mmix-c10: gas-mmix-c10-forth
-	$(RUBY) test/test_ht_gas_mmix_c10.rb
+	$(RUBY) test/test_ht_gas_mmix_c10.rb $(TEST_ARG)
 
 test-ht-gas-mmix-c11: gas-mmix-c10-forth
-	$(RUBY) test/test_ht_gas_mmix_c11.rb
+	$(RUBY) test/test_ht_gas_mmix_c11.rb $(TEST_ARG)
 
 test-gas-arm-a32: gas-arm-a32-forth
-	$(RUBY) test/test_gas_arm_a32.rb
+	$(RUBY) test/test_gas_arm_a32.rb $(TEST_ARG)
 
 test-gas-arm-t32: gas-arm-t32-forth
-	$(RUBY) test/test_gas_arm_t32.rb
+	$(RUBY) test/test_gas_arm_t32.rb $(TEST_ARG)
 
 test-gas-arm-a64: gas-arm-a64-forth
-	$(RUBY) test/test_gas_arm_a64.rb
+	$(RUBY) test/test_gas_arm_a64.rb $(TEST_ARG)
 
 test-ht-gas-arm-a32: gas-arm-a32-forth
-	$(RUBY) test/test_ht_gas_arm_a32.rb
+	$(RUBY) test/test_ht_gas_arm_a32.rb $(TEST_ARG)
 
 test-ht-gas-arm-t32: gas-arm-t32-forth
-	$(RUBY) test/test_ht_gas_arm_t32.rb
+	$(RUBY) test/test_ht_gas_arm_t32.rb $(TEST_ARG)
 
 test-ht-gas-arm-a64: gas-arm-a64-forth
-	$(RUBY) test/test_ht_gas_arm_a64.rb
+	$(RUBY) test/test_ht_gas_arm_a64.rb $(TEST_ARG)
 
 test-gas-mips-32: gas-mips-32-forth
-	$(RUBY) test/test_gas_mips_32.rb
+	$(RUBY) test/test_gas_mips_32.rb $(TEST_ARG)
 
 test-gas-mips-64: gas-mips-64-forth
-	$(RUBY) test/test_gas_mips_64.rb
+	$(RUBY) test/test_gas_mips_64.rb $(TEST_ARG)
 
 test-ht-gas-mips-32: gas-mips-32-forth
-	$(RUBY) test/test_ht_gas_mips_32.rb
+	$(RUBY) test/test_ht_gas_mips_32.rb $(TEST_ARG)
 
 test-ht-gas-mips-64: gas-mips-64-forth
-	$(RUBY) test/test_ht_gas_mips_64.rb
+	$(RUBY) test/test_ht_gas_mips_64.rb $(TEST_ARG)
 
 
 test-gas-rv32i: gas-rv32i-forth
-	$(RUBY) test/test_gas_rv32i.rb
+	$(RUBY) test/test_gas_rv32i.rb $(TEST_ARG)
 
 test-ht-gas-rv32i: gas-rv32i-forth
-	$(RUBY) test/test_ht_gas_rv32i.rb
+	$(RUBY) test/test_ht_gas_rv32i.rb $(TEST_ARG)
 
 test-gas-rv32ic: gas-rv32ic-forth
-	$(RUBY) test/test_gas_rv32ic.rb
+	$(RUBY) test/test_gas_rv32ic.rb $(TEST_ARG)
 
 test-ht-gas-rv32ic: gas-rv32ic-forth
-	$(RUBY) test/test_ht_gas_rv32ic.rb
+	$(RUBY) test/test_ht_gas_rv32ic.rb $(TEST_ARG)
 
 test-gas-rv32im: gas-rv32im-forth
-	$(RUBY) test/test_gas_rv32im.rb
+	$(RUBY) test/test_gas_rv32im.rb $(TEST_ARG)
 
 test-ht-gas-rv32im: gas-rv32im-forth
-	$(RUBY) test/test_ht_gas_rv32im.rb
+	$(RUBY) test/test_ht_gas_rv32im.rb $(TEST_ARG)
 
 test-gas-rv64im: gas-rv64im-forth
 	$(RUBY) test/test_gas_rv64im.rb
 
 test-ht-gas-rv64im: gas-rv64im-forth
-	$(RUBY) test/test_ht_gas_rv64im.rb
+	$(RUBY) test/test_ht_gas_rv64im.rb $(TEST_ARG)
 
 
 test-cli:
@@ -445,6 +445,8 @@ doc-clean:
 
 show_tests:
 	@echo $(RELEASE_TESTS) $(HAYES_TESTS)
+
+check: $(shell uname -m)-test
 
 clean: cvm-clean i386-clean gas-vm-clean x86_64-clean doc-clean \
 	gas-mmix-pure-clean gas-mmix-c10-clean gas-mmix-c11-clean \

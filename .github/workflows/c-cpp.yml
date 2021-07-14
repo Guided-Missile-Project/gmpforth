@@ -13,6 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: prep
+      run: |
+        sudo apt-get update
+        sudo apt-get install gcc-multilib
+        ls /usr/include/asm
+        head  /usr/include/asm/unistd.h
     - name: make
       run: make
     - name: make check

@@ -18,7 +18,7 @@ MFLAGS := -g $(INC)
 
 CFLAGS := $(MFLAGS) -O2 -fomit-frame-pointer $(INC)
 
-LDFLAGS := $(MFLAGS) -Wl,-N -Wl,-Map=forth.map -Wl,-e_start -nostartfiles -nodefaultlibs -nostdlib -Wl,--build-id
+LDFLAGS := $(MFLAGS) -Wl,-N -Wl,-Map=forth.map -Wl,-e_start -no-pie -nostartfiles -nodefaultlibs -nostdlib -Wl,--build-id -Wl,--no-dynamic-linker
 
 GENERATED := kernel.inc
 GENERATED += syscall.inc
